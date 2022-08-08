@@ -3,7 +3,6 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-    "prettier/@typescript-eslint"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -36,13 +35,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": 0,
     "no-underscore-dangle": 0,
-    "comma-dangle": ["error", {
-      "arrays": "only-multiline",
-      "objects": "only-multiline",
-      "imports": "only-multiline",
-      "exports": "only-multiline",
-      "functions": "only-multiline"
-    }],
+    "comma-dangle": ["error", "always-multiline"],
     "no-use-before-define": "error",
     "no-console": 0,
     "no-plusplus": 0,
@@ -63,10 +56,6 @@
     "react/jsx-filename-extension": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/member-naming": ["error", {
-      "private": "^__",
-      "protected": "^_"
-    }],
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-unused-vars": 0
