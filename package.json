@@ -1,0 +1,53 @@
+{
+  "name": "claireduchamp",
+  "version": "0.0.0",
+  "description": "Claire Duchamp / Architecte",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack --bail",
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint **/*/*.ts --fix",
+    "node": "node",
+    "serve": "node ./dist/index.js",
+    "start": "npm ci && cross-env NODE_ENV=production webpack --bail && node ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "v": "node -v",
+    "winbuild": "cross-env NODE_ENV=production webpack --bail --colors",
+    "winstart": "npm ci && cross-env NODE_ENV=production webpack --bail --colors && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrien-febvay/claireduchamp.git"
+  },
+  "author": "Adrien Febvay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrien-febvay/claireduchamp/issues"
+  },
+  "homepage": "https://github.com/adrien-febvay/claireduchamp#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1",
+    "node": "14.12.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.13",
+    "copy-webpack-plugin": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "ts-loader": "^8.2.0",
+    "typescript": "^3.9.10",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-shell-plugin-next": "^1.2.0"
+  }
+}

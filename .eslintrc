@@ -1,0 +1,74 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import",
+    "promise",
+    "prettier",
+    "@typescript-eslint/eslint-plugin"
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "jsx": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."],
+        "extensions": [".js", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "curly": [2, "all"],
+    "indent": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": 0,
+    "no-underscore-dangle": 0,
+    "comma-dangle": ["error", {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "imports": "only-multiline",
+      "exports": "only-multiline",
+      "functions": "only-multiline"
+    }],
+    "no-use-before-define": "error",
+    "no-console": 0,
+    "no-plusplus": 0,
+    "no-minusminus": 0,
+    "no-unused-expressions": 0,
+    "no-unused-vars": 0,
+    "object-curly-newline": 0,
+    "function-paren-newline": 0,
+    "no-return-await": 0,
+    "max-params": ["error", 5],
+    "max-depth": ["error", 5],
+    "promise/always-return": "off",
+    "promise/catch-or-return": "off",
+    "promise/param-names": "error",
+    "promise/no-return-wrap": "error",
+    "prettier/prettier": ["error"],
+    "react/prop-types": "off",
+    "react/jsx-filename-extension": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/member-naming": ["error", {
+      "private": "^__",
+      "protected": "^_"
+    }],
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": 0
+  }
+}
