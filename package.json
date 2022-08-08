@@ -5,17 +5,14 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack",
-    "build": "cross-env NODE_ENV=production webpack --bail",
+    "build": "cross-env NODE_ENV=production webpack --bail --colors",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint **/*/*.ts --fix",
     "node": "node",
     "serve": "node ./dist/index.js",
-    "start": "npm ci && cross-env NODE_ENV=production webpack --bail && node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-    "v": "node -v",
-    "winbuild": "cross-env NODE_ENV=production webpack --bail --colors",
-    "winstart": "npm ci && cross-env NODE_ENV=production webpack --bail --colors && node ./dist/index.js"
+    "v": "node -v"
   },
   "repository": {
     "type": "git",
