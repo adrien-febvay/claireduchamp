@@ -19,7 +19,6 @@
     "url": "git+https://github.com/adrien-febvay/claireduchamp.git"
   },
   "author": "Adrien Febvay",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/adrien-febvay/claireduchamp/issues"
   },
@@ -47,6 +46,7 @@
     "typescript": "^3.9.10",
     "webpack": "^5.74.0",
     "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2",
     "webpack-shell-plugin-next": "^1.2.0"
   }
 }

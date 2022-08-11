@@ -9,7 +9,7 @@ const args = process.argv.slice(2).join(' ');
 
 module.exports = {
   entry: './src/index.ts',
-  // externals: [ require('webpack-node-externals')() ],
+  externals: [ require('webpack-node-externals')() ],
   mode: NODE_ENV,
   module: {
     rules: [
@@ -55,6 +55,6 @@ module.exports = {
   watch: dev,
   watchOptions: {
     aggregateTimeout: 1000,
-    ignored: ['node_modules', 'debug'],
+    ignored: ['node_modules'],
   },
 }

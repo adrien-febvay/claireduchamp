@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Calibri Light';
-  src: local('Calibri Light'), url('calibril.woff2') format('woff2');
+  src: url('/fonts/calibri-light.woff2') format('woff2');
 }
 
 @font-face {
   font-family: 'Bodoni MT Italic';
-  src: local('Bodoni MT Italic'), url('bodoni-mt-italic.woff') format('woff2');
+  src: url('/fonts/bodoni-mt-italic.woff2') format('woff2');
 }
 
 * {
@@ -14,15 +14,15 @@
 
 html {
   font-family: 'Calibri Light';
-  font-size: 2vh;
+  font-size: 1.8vh;
   text-align: center;
-  background: #e8e8e8;
+  background: #ffffff;
   color: #804000;
 }
 
 @media (max-height: 760px) {
   body {
-    font-size: 15.2px;
+    font-size: 13.7px;
   }
 }
 
@@ -54,19 +54,21 @@ h1 {
   font-size: 2.7em;
   font-weight: 400;
   margin: 1em 0 0;
+  text-transform: lowercase;
 }
 
 h2 {
   font-size: 1.4em;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   font-weight: 400;
   line-height: 0.6em;
-  margin: 0 0 0.2em;
+  margin: 0 0 0.3em;
+  text-transform: uppercase;
 }
 
 h3 {
   font-size: 0.9em;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   font-weight: 400;
 }
 
@@ -78,22 +80,21 @@ address {
   font-style: normal;
 }
 
-a, a:active, a:focus, a:link, a:visited {
+a, a:active, a:focus, a:hover, a:link, a:visited {
   text-decoration: none;
-  color: #804000;
+  color: #a55400;
   transition: color 0.4s;
 }
 
-@media (hover: none) {
-  a, a:active, a:focus, a:link, a:visited {
-    color: #c46200;
-  }
-}
 a:hover {
-  color: #c46200;
+  text-decoration: underline;
 }
 
 ul {
   list-style-type: none;
   padding-inline-start: 0;
+}
+
+li {
+  margin: 0.3em 0 0;
 }
