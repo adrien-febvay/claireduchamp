@@ -1,6 +1,6 @@
-import { ErrorRequestHandler } from 'express';
+import { ErrorRequestHandler, Request } from 'express';
 import { Router } from '@/routers/utils';
-import { sendIndex } from './Main';
+import { INDEX_PATH, sendIndex } from './Main';
 import { stringify } from './utils';
 
 const NotFound = Router((me) => {
@@ -10,22 +10,34 @@ const NotFound = Router((me) => {
   });
 });
 
-const InternalError: ErrorRequestHandler = (e, req, res, _next) => {
-  res.status(500);
-  const str = stringify(e);
-  const { __debug } = req.cookies;
-  if (__debug) {
-    res.write(`<!--\n${str.replace(/-(?=\\*->)/g, '-\\')}\n-->`);
+function log(label: string, { cookies, res }: Request, e?: any) {
+  const debug = !cookies || +cookies.__debug;
+  // Todo: log errors in file here
+  if (debug) {
+    const title = `Fallback.${label}:`;
+    const str = `${title} ${stringify(e)}`;
+    const escaped = str.replace(/-(?=\\*->)/g, '-\\');
+    res?.write?.(`<!--\n${escaped}\n-->`);
+    console.error(title, e?.message || e);
   }
-  // Todo: log errors here
-  try {
+  return debug;
+}
+
+const InternalError: ErrorRequestHandler = (e, req, res, next) => {
+  res.status(500);
+  if (e?.code === 'ENOENT' || e?.path === INDEX_PATH) {
+    next(e);
+  } else {
+    log('main', req, e);
     sendIndex(res);
-  } catch (e) {
-    if (!__debug) {
-      res.write('500 Internal Server Error');
-    }
-    res.end();
   }
 };
 
-export const Fallback = () => [NotFound, InternalError];
+const IndexError: ErrorRequestHandler = (e, req, res, _next) => {
+  if (!log('no-index', req, e)) {
+    res.write('500 Internal Server Error');
+  }
+  res.end();
+};
+
+export const Fallback = () => [NotFound, InternalError, IndexError];

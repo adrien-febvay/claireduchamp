@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction as Next } from 'express';
 import { Router, resolve } from '@/routers/utils';
 
-const INDEX_PATH = resolve('index.html');
+export const INDEX_PATH = resolve('index.html');
 
 export function sendIndex(res: Response): void;
 export function sendIndex(req: Request, res: Response, next?: Next): void;
