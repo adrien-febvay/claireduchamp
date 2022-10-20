@@ -1,17 +1,22 @@
-// HTTP listener
-import express from 'express';
-import Cookies from 'cookie-parser';
-import Routers from '@/routers';
+import App from '@/app';
 import conf from '../conf/server.json';
 
-// Create app
-const app = express();
-app.use(Cookies());
-app.use(Routers.Static());
-app.use(Routers.Main());
-app.use(Routers.Fallback());
+const { https, http } = conf;
+const port = https || http;
+const sslCert = () => App.sslCert('conf', conf['ssl-cert']);
 
-// Run server
-const server = app.listen(conf.http, () => {
-  console.log('App served on HTTP:', server.address());
-});
+if (port) {
+  console.log(`Serve app on HTTP${https ? 'S' : ''}, port ${port}`);
+}
+
+if (https && http) {
+  console.log(`Redirect HTTP from port ${http} to HTTPS on port ${https}`);
+  App.http(http, App.redirectTo(https));
+  App.https(https, sslCert(), App.main);
+} else if (http) {
+  App.http(http, App.main);
+} else if (https) {
+  App.https(https, sslCert(), App.main);
+} else {
+  throw new Error('No listener set, please configure HTTP or HTTPS');
+}
