@@ -40,4 +40,4 @@ const IndexError: ErrorRequestHandler = (e, req, res, _next) => {
   res.end();
 };
 
-export const Fallback = () => [NotFound, InternalError, IndexError];
+export const FallbackRouter = () => [NotFound, InternalError, IndexError];

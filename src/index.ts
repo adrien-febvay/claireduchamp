@@ -1,10 +1,8 @@
 // HTTP listener
 import express from 'express';
 import Cookies from 'cookie-parser';
-import * as Routers from '@/routers';
-
-// Get port
-const port = Number(process.env.PORT ?? 8080);
+import Routers from '@/routers';
+import conf from '../conf/server.json';
 
 // Create app
 const app = express();
@@ -14,6 +12,6 @@ app.use(Routers.Main());
 app.use(Routers.Fallback());
 
 // Run server
-const server = app.listen(port, () => {
+const server = app.listen(conf.http, () => {
   console.log('App served on HTTP:', server.address());
 });

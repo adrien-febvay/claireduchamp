@@ -10,7 +10,7 @@ export function sendIndex(arg1: Request | Response, arg2?: Response) {
   res.sendFile(INDEX_PATH);
 }
 
-export const Main = () =>
+export const MainRouter = () =>
   Router((me) => {
     me.get('/', sendIndex);
   });

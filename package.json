@@ -1,6 +1,6 @@
 {
   "name": "claireduchamp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Claire Duchamp / Architecte",
   "main": "dist/index.js",
   "scripts": {
@@ -8,10 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --bail --colors",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint **/*/*.ts --fix",
-    "node": "node",
-    "serve": "node ./dist/index.js",
+    "start": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc",
     "v": "node -v"
   },
   "repository": {
