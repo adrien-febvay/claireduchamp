@@ -1,6 +1,7 @@
 // Conf loader
-import { resolve } from 'path';
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { isAbsolutePath } from 'path-validation';
 
 export interface Conf {
   'http': number;
@@ -37,33 +38,48 @@ function isInteger(val: unknown): val is number {
 }
 
 function isPort(val: unknown): val is number {
-  return isInteger(val) && val > 0 && val < 65536;
+  return isInteger(val) && val >= 0 && val < 65536;
 }
 
-function loadConf(...path: string[]): Conf {
+function isString(val: unknown): val is string {
+  return val && typeof val === 'string';
+}
+
+function typeError(key: string, type: string, input: string): TypeError {
+  const message = `Expected \`${key}\` to be a valid ${type}, got ${input}`;
+  return new TypeError(message);
+}
+
+function loadConf(): Conf {
   try {
-    const bytes = readFileSync(resolve(...path, 'server.json'), 'utf8');
+    const bytes = readFileSync('conf/server.json', 'utf8');
     const conf: unknown = JSON.parse(bytes);
     if (!isObject(conf)) {
-      throw `Expected object, got ${xtype(conf)}`;
+      throw new TypeError(`Expected object, got ${xtype(conf)}`);
     } else {
       const { http, https, 'ssl-cert': sslCert, ...unknown } = conf;
+      const resolvedSslCert = isString(sslCert) && resolve('conf', sslCert);
       if (!isPort(http)) {
-        throw `Expected \`http\` to be a port, got ${xntype(http)}`;
+        throw typeError('http', 'port', xntype(http));
       } else if (!isPort(https)) {
-        throw `Expected \`https\` to be a port, got ${xntype(http)}`;
-      } else if (typeof sslCert !== 'string' || sslCert === '') {
-        throw `Expected \`ssl-cert\` to be a path, got ${xtype(sslCert)}`;
+        throw typeError('https', 'port', xntype(https));
+      } else if (!resolvedSslCert) {
+        throw typeError('sslCert', 'path', xtype(sslCert));
+      } else if (!isAbsolutePath(resolvedSslCert)) {
+        throw typeError('sslCert', 'path', JSON.stringify(sslCert));
       } else if (Object.keys(unknown).length) {
         const keys = Object.keys(unknown).map((key) => JSON.stringify(key));
-        throw `Unexpected parameters: ${keys.join(', ')}`;
+        throw new TypeError(`Unexpected parameters: ${keys.join(', ')}`);
+      } else {
+        return { http, https, 'ssl-cert': resolvedSslCert };
       }
-      return { http, https, 'ssl-cert': sslCert };
     }
   } catch (err) {
     console.error('Configuration loading failure');
-    throw typeof err === 'string' ? new TypeError(err) : err;
+    throw err;
   }
 };
 
 export const appConf = loadConf();
+
+console.log('Configuration:', appConf);
