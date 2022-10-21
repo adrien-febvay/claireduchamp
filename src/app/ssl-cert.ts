@@ -8,7 +8,7 @@ export interface SslCert {
 }
 
 function read(ext: string, ...path: string[]): string {
-  return readFileSync(resolve(...path, `ssl.${ext}`), 'utf8');
+  return readFileSync(`${resolve(...path)}.${ext}`, 'utf8');
 }
 
 export function appSslCert(...path: string[]): SslCert {
