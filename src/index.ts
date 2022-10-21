@@ -1,9 +1,8 @@
 import App from '@/app';
-import conf from '../conf/server.json';
 
-const { https, http } = conf;
+const { https, http } = App.conf;
 const port = https || http;
-const sslCert = () => App.sslCert('conf', conf['ssl-cert']);
+const sslCert = () => App.sslCert('conf', App.conf['ssl-cert']);
 
 if (port) {
   console.log(`Serve app on HTTP${https ? 'S' : ''}, port ${port}`);
