@@ -2,7 +2,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
@@ -18,9 +20,12 @@
   },
   "parserOptions": {
     "ecmaVersion": 2017,
+    "project": "./tsconfig.json",
     "sourceType": "module",
-    "jsx": true
+    "jsx": false
   },
+  // For VSCode failing to use "project" above: ignore some files.
+  "ignorePatterns": ["dist/*", "dist-tmp/*", "**/*.js", "**/*.mjs", "**/*.scss.d.ts", ".*"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -30,34 +35,49 @@
     }
   },
   "rules": {
-    "curly": [2, "all"],
-    "indent": "off",
     "arrow-body-style": ["error", "as-needed"],
-    "arrow-parens": 0,
-    "no-underscore-dangle": 0,
-    "comma-dangle": ["error", "always-multiline"],
-    "no-use-before-define": "error",
-    "no-console": 0,
-    "no-plusplus": 0,
-    "no-minusminus": 0,
-    "no-unused-expressions": 0,
-    "no-unused-vars": 0,
-    "object-curly-newline": 0,
-    "function-paren-newline": 0,
-    "no-return-await": 0,
+    "comma-dangle": ["error", {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "imports": "only-multiline",
+      "exports": "only-multiline",
+      "functions": "only-multiline"
+    }],
+    "curly": [2, "all"],
+    "indent": [2, 2, { "SwitchCase": 1}],
     "max-params": ["error", 5],
     "max-depth": ["error", 5],
+    "no-use-before-define": "off",
     "promise/always-return": "off",
-    "promise/catch-or-return": "off",
+    "promise/catch-or-return": "error",
     "promise/param-names": "error",
     "promise/no-return-wrap": "error",
     "prettier/prettier": ["error"],
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": "off",
+    "@typescript-eslint/array-type": ["error", {
+      "default": "array",
+      "readonly": "array"
+    }],
+    "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],
+    "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-member-accessibility": "off",
-    "@typescript-eslint/no-empty-interface": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-unused-vars": 0
+    "@typescript-eslint/explicit-member-accessibility": "error",
+    "@typescript-eslint/no-dynamic-delete": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": ["error", {
+      "ignoreRestArgs": true
+    }],
+    "@typescript-eslint/no-invalid-void-type": ["error", {
+      "allowAsThisParameter": true
+    }],
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-unsafe-declaration-merging": "off",
+    "@typescript-eslint/no-unused-vars": ["error", {
+      "argsIgnorePattern": "^_",
+      "caughtErrorsIgnorePattern": "^_",
+      "destructuredArrayIgnorePattern": "^_",
+      "ignoreRestSiblings": true
+    }],
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/unified-signatures": "off"
   }
 }

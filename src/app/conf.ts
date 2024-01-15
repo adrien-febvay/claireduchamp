@@ -4,8 +4,8 @@ import { resolve } from 'path';
 import { isAbsolutePath } from 'path-validation';
 
 export interface Conf {
-  'http': number;
-  'https': number;
+  http: number;
+  https: number;
   'ssl-cert': string;
 }
 
@@ -21,7 +21,7 @@ function xtype(val: unknown): string {
   if (val instanceof Array) {
     return `array(${val.length})`;
   } else if (val === null) {
-    return 'null'
+    return 'null';
   } else if (typeof val === 'string') {
     return `string(${val.length})`;
   } else {
@@ -29,12 +29,12 @@ function xtype(val: unknown): string {
   }
 }
 
-function isObject(val: unknown): val is Record<string, unknown> {
-  return val && typeof val === 'object';
+function isObject(val: unknown): val is { [key: string]: unknown } {
+  return val ? typeof val === 'object' : false;
 }
 
 function isInteger(val: unknown): val is number {
-  return typeof val === "number" && Number.isInteger(val);
+  return typeof val === 'number' && Number.isInteger(val);
 }
 
 function isPort(val: unknown): val is number {
@@ -42,7 +42,7 @@ function isPort(val: unknown): val is number {
 }
 
 function isString(val: unknown): val is string {
-  return val && typeof val === 'string';
+  return typeof val === 'string';
 }
 
 function typeError(key: string, type: string, input: string): TypeError {
@@ -78,7 +78,7 @@ function loadConf(): Conf {
     console.error('Configuration loading failure');
     throw err;
   }
-};
+}
 
 export const appConf = loadConf();
 
