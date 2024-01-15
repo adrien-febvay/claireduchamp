@@ -1,15 +1,7 @@
 import { ErrorRequestHandler, Request } from 'express';
-import { Router } from '@/routers/utils';
 import { _ } from '@/utils/types';
-import { INDEX_PATH, sendIndex } from './Main';
+import { indexPath, sendIndex } from './Main';
 import { stringify } from './utils';
-
-const NotFound = Router((me) => {
-  me.all('*', (_req, res) => {
-    res.status(404);
-    sendIndex(res);
-  });
-});
 
 function log(label: string, { cookies, res }: Request, e?: unknown) {
   const debug = _.object(cookies as unknown)?.__debug;
@@ -26,7 +18,7 @@ function log(label: string, { cookies, res }: Request, e?: unknown) {
 
 const InternalError: ErrorRequestHandler = (e: unknown, req, res, next) => {
   res.status(500);
-  if (_.isObject(e) && (e.code === 'ENOENT' || e.path === INDEX_PATH)) {
+  if (_.isObject(e) && (e.code === 'ENOENT' || e.path === indexPath)) {
     next(e);
   } else {
     log('main', req, e);
@@ -41,4 +33,4 @@ const IndexError: ErrorRequestHandler = (e, req, res, _next) => {
   res.end();
 };
 
-export const FallbackRouter = () => [NotFound, InternalError, IndexError];
+export const FallbackRouter = () => [InternalError, IndexError];

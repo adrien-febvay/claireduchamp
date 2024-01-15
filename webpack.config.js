@@ -26,10 +26,7 @@ module.exports = {
   },
   plugins: [
     new CopyPlugin({
-      patterns: [
-        { from: 'src/assets', to: 'assets' },
-        { from: 'src/index.html', to: 'index.html' },
-      ],
+      patterns: [{ from: 'src/gui', to: 'gui' }],
     }),
     new ShellPlugin({
       onBuildEnd: dev && {

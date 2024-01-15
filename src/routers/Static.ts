@@ -3,5 +3,5 @@ import { Router, resolve } from '@/routers/utils';
 
 export const StaticRouter = () =>
   Router((me) => {
-    me.use(ExpressStaticRouter(resolve('assets')));
+    me.use(ExpressStaticRouter(resolve('gui')));
   });

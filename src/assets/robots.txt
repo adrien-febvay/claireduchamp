@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /*.xml$
-Sitemap: https://www.claireduchamp.ch/sitemap.xml
