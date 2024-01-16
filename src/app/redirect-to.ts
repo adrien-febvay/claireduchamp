@@ -6,10 +6,10 @@ export function appRedirectTo(https: number) {
   const port = https === 443 ? '' : `:${https}`;
 
   // Redirecting all to https
-  app.all('*', function({ headers, url }, res) {
+  app.all('*', ({ headers, url }, res) => {
     const { host = '' } = headers;
     res.redirect(301, `https://${host.replace(/:.*|$/, port)}${url}`);
   });
 
   return app;
-};
+}

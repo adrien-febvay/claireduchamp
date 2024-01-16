@@ -1,21 +1,21 @@
-import App from '@/app';
+import { App } from '@/app';
 
 const { https, http } = App.conf;
 const port = https || http;
-const sslCert = () => App.sslCert();
+const sslCert = App.sslCert();
 
 if (port) {
-  console.log(`Serve app on HTTP${https ? 'S' : ''}, port ${port}`);
+  console.log(`Serve app on HTTP${https && sslCert ? 'S' : ''}, port ${port}`);
 }
 
-if (https && http) {
+if (http && https && sslCert) {
   console.log(`Redirect HTTP from port ${http} to HTTPS on port ${https}`);
   App.http(http, App.redirectTo(https));
-  App.https(https, sslCert(), App.main);
+  App.https(https, sslCert, App.main);
 } else if (http) {
   App.http(http, App.main);
-} else if (https) {
-  App.https(https, sslCert(), App.main);
+} else if (https && sslCert) {
+  App.https(https, sslCert, App.main);
 } else {
-  throw new Error('No listener set, please configure HTTP or HTTPS');
+  throw new Error('No valid listener set, please configure http, https and/or ssCert');
 }

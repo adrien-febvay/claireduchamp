@@ -1,5 +1,6 @@
 import { ErrorRequestHandler, Request } from 'express';
 import { Router } from '@/routers/utils';
+import { _ } from '@/utils/types';
 import { INDEX_PATH, sendIndex } from './Main';
 import { stringify } from './utils';
 
@@ -10,22 +11,22 @@ const NotFound = Router((me) => {
   });
 });
 
-function log(label: string, { cookies, res }: Request, e?: any) {
-  const debug = !cookies || +cookies.__debug;
+function log(label: string, { cookies, res }: Request, e?: unknown) {
+  const debug = _.object(cookies as unknown)?.__debug;
   // Todo: log errors in file here
   if (debug) {
     const title = `Fallback.${label}:`;
     const str = `${title} ${stringify(e)}`;
     const escaped = str.replace(/-(?=\\*->)/g, '-\\');
     res?.write?.(`<!--\n${escaped}\n-->`);
-    console.error(title, e?.message || e);
+    console.error(title, _.object(e)?.message || e);
   }
   return debug;
 }
 
-const InternalError: ErrorRequestHandler = (e, req, res, next) => {
+const InternalError: ErrorRequestHandler = (e: unknown, req, res, next) => {
   res.status(500);
-  if (e?.code === 'ENOENT' || e?.path === INDEX_PATH) {
+  if (_.isObject(e) && (e.code === 'ENOENT' || e.path === INDEX_PATH)) {
     next(e);
   } else {
     log('main', req, e);

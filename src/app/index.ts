@@ -13,5 +13,3 @@ export const App = {
   redirectTo: appRedirectTo,
   sslCert: appSslCert,
 };
-
-export default App;

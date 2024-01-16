@@ -11,13 +11,13 @@ export function Router(body: RouterBody) {
 const ENV_DIR = process.env.NODE_ENV === 'development' ? 'src' : 'dist';
 export const resolve = path.resolve.bind(path, ENV_DIR);
 
-export function stringify(val: any) {
+export function stringify(val: unknown) {
   const objects: object[] = [];
   const err = val instanceof Error;
   const adjusted = err && { ...val, message: val.message, stack: val.stack };
   return JSON.stringify(
     adjusted || err,
-    (_key, value) => {
+    (_key, value: unknown) => {
       if (value && typeof value === 'object') {
         if (objects.includes(value)) {
           return undefined;

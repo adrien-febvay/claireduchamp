@@ -9,4 +9,4 @@ export function appHttps(port: number, cert: SslCert, app: Express): void {
   server.listen(port, () => {
     console.log('HTTPS:', server.address());
   });
-};
+}

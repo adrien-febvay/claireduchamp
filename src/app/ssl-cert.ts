@@ -18,4 +18,4 @@ export function appSslCert(basename = App.conf['ssl-cert']): SslCert {
     console.error('SSL certification failure');
     throw e;
   }
-};
+}

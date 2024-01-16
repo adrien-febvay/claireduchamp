@@ -1,4 +1,3 @@
-// Router for static files
 import { static as ExpressStaticRouter } from 'express';
 import { Router, resolve } from '@/routers/utils';
 

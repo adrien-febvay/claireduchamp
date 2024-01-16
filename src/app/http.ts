@@ -6,4 +6,4 @@ export function appHttp(port: number, app: Express): void {
   const server = app.listen(port, () => {
     console.log('HTTP:', server.address());
   });
-};
+}

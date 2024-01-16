@@ -1,7 +1,7 @@
 // HTTP listener
 import express from 'express';
 import Cookies from 'cookie-parser';
-import Routers from '@/routers';
+import { Routers } from '@/routers';
 
 // Create app
 export const appMain = express();
