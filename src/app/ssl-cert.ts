@@ -1,19 +1,17 @@
 // SSL certificate loader
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import { App } from '@/app';
 
-export interface SslCert {
-  key: string;
-  cert: string;
+export type SslCert = Exclude<ReturnType<typeof appSslCert>, null>;
+
+function read(basename: string, ext: string) {
+  return readFileSync(resolve('conf', `${basename}.${ext}`), 'utf8');
 }
 
-function read(basename: string, ext: string): string {
-  return readFileSync(`${basename}.${ext}`, 'utf8');
-}
-
-export function appSslCert(basename = App.conf['ssl-cert']): SslCert {
+export function appSslCert(basename = App.conf.sslCert) {
   try {
-    return { key: read(basename, 'key'), cert: read(basename, 'crt') };
+    return basename ? { key: read(basename, 'key'), cert: read(basename, 'crt') } : null;
   } catch (e) {
     console.error('SSL certification failure');
     throw e;
