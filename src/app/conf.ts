@@ -7,6 +7,7 @@ const confSchema = z.object({
   http: z.number().min(1).max(65535).nullable().optional(),
   https: z.number().min(1).max(65535).nullable().optional(),
   proxy: z.string().min(1).nullable().optional(),
+  sslCert: z.string().min(1).nullable().optional(),
 });
 
 function loadConf() {

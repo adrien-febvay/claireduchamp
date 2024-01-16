@@ -1,5 +1,6 @@
 {
   "http": 80,
   "https": 443,
-  "ssl-cert": "./ssl-claireduchamp-ch"
+  "proxy": null,
+  "sslCert": "ssl-claireduchamp-ch"
 }
