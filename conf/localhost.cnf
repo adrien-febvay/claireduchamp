@@ -1,0 +1,16 @@
+[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+[ req_distinguished_name ]
+countryName                = Country Name (NL)
+stateOrProvinceName        = State or Province Name (ZH)
+localityName               = Locality Name (AADR)
+organizationName           = Organization Name (WGE)
+organizationalUnitName     = Organizational Unit Name
+commonName                 = Common Name (e.g. server FQDN)
+[ req_ext ]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1   = localhost
+IP.1    = 127.0.0.1
