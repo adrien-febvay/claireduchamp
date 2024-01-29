@@ -39,8 +39,8 @@ declare module '.' {
         type Equals<Left, Right, Then, Else = never> = Left extends Right
           ? Else
           : Right extends Left
-          ? Else
-          : Then;
+            ? Else
+            : Then;
 
         /**
          * If provided `[Type]` is not `never`, resolves as `Then`, otherwise as `Else`.
