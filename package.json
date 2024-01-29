@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack",
     "stag": "cross-env NODE_ENV=staging webpack",
+    "eslint": "eslint src/**/*.ts",
+    "eslint-fix": "eslint **/*/*.ts --fix",
+    "tsc": "tsc && rimraf tsc",
+    "test": "npm run tsc && npm run eslint",
     "prebuild": "rimraf dist-tmp",
     "build": "cross-env NODE_ENV=production webpack --bail",
     "postbuild": "rimraf dist && npx cpy-cli dist-tmp/** dist/",
-    "lint": "eslint src/**/*.ts",
-    "lint-fix": "eslint **/*/*.ts --fix",
+    "pull-gui": "rimraf src/gui && npx cpy-cli ../claireduchamp-front/dist/** src/gui/",
+    "commit-gui": "git add src/gui/ && git commit -m \"Update GUI\"",
+    "pull-commit-gui": "npm run pull-gui && npm run commit-gui",
+    "preversion": "npm run test -- --silent && npm run build",
     "start": "node ./dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "v": "node -v"
   },
   "repository": {

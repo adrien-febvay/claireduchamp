@@ -5,6 +5,7 @@ node_modules/
 /dist/
 /dist-tmp/
 /log/
+/tsc/
 /.changelog
 .DS_Store
 *.tgz
