@@ -1,6 +1,7 @@
 .idea/
 .npm/
 .vscode/
+.VSCodeCounter/
 node_modules/
 /dist/
 /dist-tmp/
