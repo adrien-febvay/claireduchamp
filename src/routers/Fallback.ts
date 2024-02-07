@@ -28,6 +28,7 @@ const InternalError: ErrorRequestHandler = (e: unknown, req, res, next) => {
 
 const IndexError: ErrorRequestHandler = (e, req, res, _next) => {
   if (!log('no-index', req, e)) {
+    res.setHeader('Content-Type', 'text/pain');
     res.write('500 Internal Server Error');
   }
   res.end();
