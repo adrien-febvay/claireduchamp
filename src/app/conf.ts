@@ -10,15 +10,17 @@ const confSchema = z.object({
   sslCert: z.string().min(1).nullable().optional(),
 });
 
+const file = `conf/${process.env.NODE_ENV}.json`;
+
 function loadConf() {
-  const data: unknown = JSON.parse(readFileSync('conf/server.json', 'utf8'));
+  const data: unknown = JSON.parse(readFileSync(file, 'utf8'));
   try {
     const conf = confSchema.parse(data);
     try {
       confSchema.strict().parse(data);
     } catch (cause) {
       if (cause instanceof z.ZodError) {
-        console.warn(`Configuration warning:\n${stringifyIssues(cause).join('\n')}`);
+        console.warn(`Configuration warning:\n${file}\n${stringifyIssues(cause).join('\n')}`);
       } else {
         throw cause;
       }
@@ -26,10 +28,10 @@ function loadConf() {
     return conf;
   } catch (cause) {
     if (cause instanceof z.ZodError) {
-      console.error(`Invalid configuration:\n${stringifyIssues(cause).join('\n')}`);
+      console.error(`Invalid configuration:\n${file}\n${stringifyIssues(cause).join('\n')}`);
       process.exit(400);
     } else {
-      console.error('Configuration loading failure');
+      console.error(`Configuration loading failure: ${file}`);
       throw cause;
     }
   }
@@ -37,4 +39,4 @@ function loadConf() {
 
 export const appConf = loadConf();
 
-console.log('Configuration:', appConf);
+console.log('Configuration:', file, appConf);
