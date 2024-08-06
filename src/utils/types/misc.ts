@@ -18,6 +18,9 @@ declare module '.' {
     /** Object with any type of index and values. */
     type Object = { [Key in string | number | symbol]?: unknown };
 
+    /** Sets properties with specified `Keys` to be optional. */
+    type OptionalKeys<T, Keys extends keyof T> = Omit<T, Keys> & Partial<Pick<T, Keys>>;
+
     namespace Promise {
       /** An object like a promise to a `Value`. */
       type Like<Value = unknown> = PromiseLike<Value>;
@@ -27,6 +30,9 @@ declare module '.' {
         type Or<Value = unknown> = Value | Like<Value>;
       }
     }
+
+    /** Sets properties with specified `Keys` to be required. */
+    type RequireKeys<T, Keys extends keyof T> = Omit<T, Keys> & Required<Pick<T, Keys>>;
 
     /** Forces TypeScript to resolve the type. */
     type Resolve<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
@@ -52,6 +58,15 @@ declare module '.' {
     /** All values of a `Type`. */
     type Values<Type> = Type[keyof Type];
   }
+}
+
+/**
+ * Is a value iterable?
+ * @param val Value to check.
+ * @returns A boolean accordingly.
+ */
+export function isIterable<Value>(val: Value): val is Extract<Value, Iterable<unknown>> {
+  return val != null ? typeof val[Symbol.iterator as keyof object] === 'function' : false;
 }
 
 /**

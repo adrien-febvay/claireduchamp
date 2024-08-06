@@ -1,0 +1,23 @@
+.root {
+  > .image {
+    width: 100%;
+  }
+}
+
+.error {
+  > .image {
+    display: none;
+  }
+}
+
+.fade-in {
+  > .image {
+    transition: opacity 750ms;
+  }
+  &.loading > .image {
+    opacity: 0;
+  }
+  &.loaded > .image {
+    opacity: 1;
+  }
+}

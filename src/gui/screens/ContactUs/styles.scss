@@ -1,0 +1,252 @@
+@import 'themes';
+
+.article {
+  min-height: 100dvh;
+  background: #4c4c4c;
+  background-size: cover;
+}
+
+.content {
+  display: grid;
+  justify-content: center;
+  gap: 40px;
+  margin: 0 auto;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.info {
+  display: grid;
+  font-size: 14pt;
+  animation: fade-in 1500ms;
+
+  > h2 {
+    text-transform: lowercase;
+  }
+}
+
+.address, .town {
+  display: block;
+  text-wrap: nowrap;
+}
+
+.form {
+  display: grid;
+  gap: 13px;
+  font-size: 13pt;
+  opacity: 0;
+  animation: fade-in 1500ms;
+  animation-delay: 500ms;
+  animation-fill-mode: forwards;
+
+  input, input[type=submit], textarea {
+    background: linear-gradient(90deg, #00000066, #00000066, #00000033) transparent;
+    border: 1px solid #ffffffcc;
+    outline: 2px solid transparent;
+    outline-offset: -3px;
+    transition: background-image 500ms, outline-color 500ms, opacity 500ms;
+
+    &::placeholder {
+      color: #ffffffcc;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+    }
+
+    &:focus, &[type=submit]:hover:not(:disabled) {
+      background-image: linear-gradient(90deg, unquote($lite-brown + '66'), unquote($lite-brown + '22'));
+      outline: 2px solid $lite-brown + '88';
+    }
+
+    &:-webkit-autofill {
+      &, &:focus, &:hover {
+        border: 1px solid #ffffffcc;
+        -webkit-text-fill-color: white;
+        -webkit-box-shadow: 0 0 0px 1000px #00000066 inset;
+        transition: background-color 5000s ease-in-out 0s;
+      }
+      &:focus {
+        -webkit-box-shadow: 0 0 0px 1000px unquote($lite-brown + '66') inset;
+      }
+    }
+  }
+
+  input {
+    height: 36px;
+    padding: 0 11px;
+  }
+
+  textarea {
+    height: 219px;
+    margin: 0 0 7px;
+    padding: 5px 11px;
+    resize: none;
+  }
+
+  input[type=submit] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    font-size: 15pt;
+    font-style: italic;
+  }
+
+  .form-error {
+    background: linear-gradient(90deg, #91000057, #91000057, #91000033) transparent;
+
+    &:-webkit-autofill {
+      &, &:hover {
+        -webkit-box-shadow: 0 0 0px 1000px #91000057 inset;
+      }
+    }
+  }
+}
+
+.prompt-box {
+  padding: 6px 11px;
+  font-size: 12pt;
+  line-height: normal;
+  background: linear-gradient(90deg, #00000066, #00000066, #00000033) transparent;
+}
+
+.submit-container {
+  @include bodoni-title(transparent);
+  position: relative;
+  margin: 13px 0 0;
+  padding: .16em;
+  overflow: hidden;
+  font-size: 15pt;
+  font-style: italic;
+  text-align: center;
+}
+
+.submit-animation {
+  top: 0;
+  right: 0;
+  width: 250%;
+  height: 100%;
+  position: absolute;
+  background-image: linear-gradient(90deg, unquote($lite-brown + '99'), unquote($lite-brown + '99') 40%, unquote($lite-brown + 'ff') 55%, unquote($lite-brown + 'ff') 59%, unquote($lite-brown + '99') 60%, unquote($lite-brown + '99'));
+  opacity: 0;
+  transition: opacity 500ms;
+  animation: wave 2s linear;
+  animation-iteration-count: infinite;
+}
+
+.sending {
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% { right: 0; }
+  100% { right: -150%; }
+}
+
+@include media-width(0, 480px) {
+  .article {
+    padding: 80px 0 20px;
+    background: url(/img/backgrounds/wall-light-mobile.jpg) #4c4c4c;
+    background-size: 100%;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .info {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    justify-items: start;
+    align-items: baseline;
+    column-gap: 20px;
+
+    > h2 {
+      font-size: 16pt;
+    }
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include media-width(480px, 860px) {
+  .article {
+    padding: 80px 0 60px;
+    background: url(/img/backgrounds/wall-light-mobile.jpg) #4c4c4c;
+    background-size: 100%;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .info {
+    grid-template-columns: auto auto;
+    justify-content: center;
+    justify-items: start;
+    align-items: baseline;
+    column-gap: 20px;
+
+    > h2 {
+      font-size: 18pt;
+    }
+  }
+
+  .form {
+    grid-template-columns: 1fr 1fr;
+
+    .submit-container, textarea, .prompt-box {
+      grid-column: span 2;
+    }
+  }
+}
+
+@include device(desktop) {
+  .article {
+    padding: 180px 0 60px;
+    background: url(/img/backgrounds/wall-light.jpg) no-repeat #4c4c4c;
+    background-size: cover;
+  }
+
+  .content {
+    grid-template-columns: 283px 1fr;
+    align-items: center;
+    width: 820px;
+  }
+
+  .info {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 3px;
+
+    > h2 {
+      font-size: 22pt;
+
+      &:not(:first-child) {
+        margin-top: 45px;
+      }
+    }
+  }
+  
+  .form {
+    grid-template-columns: 1fr 1fr;
+
+    .submit-container, textarea, .prompt-box {
+      grid-column: span 2;
+    }
+  }
+}

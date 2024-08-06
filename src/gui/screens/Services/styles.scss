@@ -1,0 +1,158 @@
+@import 'themes';
+
+.article {
+  background: white;
+}
+
+.content {
+  > .button {
+    background: #ffffffa0;
+    background: linear-gradient(90deg, transparent 0%, #ffffff80 20%, #ffffff80 80%, transparent 100%);
+    margin: 60px auto 0;
+  }
+
+  p {
+    margin: 10px 0 0;
+  }
+}
+
+.catchphrase {
+  margin: 32px 0;
+}
+
+.introduction {
+  margin: 40px 0;
+}
+
+.values {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+  justify-content: center;
+  margin: 60px 0 0;
+  column-gap: 20px;
+}
+
+.value {
+  margin: 0 0 40px;
+  max-width: 260px;
+
+  > h2 {
+    margin: 0;
+  }
+}
+
+.project {
+  width: 100%;
+  margin: 2px 0 0;
+}
+
+.services-title {
+  margin: 60px 0 40px;
+  font-size: 28pt;
+}
+
+.services-caption-separator {
+  margin: 0 1em;
+  white-space: nowrap;
+}
+
+.services-caption-item {
+  white-space: nowrap;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: space-around;
+  column-gap: 30px;
+  margin: 40px 0;
+  text-align: left;
+  white-space: nowrap;
+  list-style-type: disc;
+  list-style-position: inside;
+  
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+@include media-width(0, 600px) {
+  .article {
+    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background-size: 100%;
+  }
+
+  .content {
+    padding: 60px 20px;
+    text-align: justify;
+  }
+
+  .catchphrase, .introduction {
+    text-align: center;
+  }
+
+  .services-caption-separator {
+    display: none;
+  }
+  
+  .services-caption-item {
+    display: block;
+  }
+
+  .value {
+    max-width: 100%;
+  }
+  
+  .services-title, .services-caption {
+    text-align: center;
+  }
+
+  .services {
+    display: block;
+  }
+}
+
+@include media-width(600px, 860px) {
+  .article {
+    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background-size: 100%;
+  }
+
+  .content {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .services-caption-separator {
+    display: none;
+  }
+  
+  .services-caption-item {
+    display: block;
+  }
+
+  .services {
+    grid-template-columns: repeat(2, max-content);
+  }  
+}
+
+@include device(desktop) {
+  .article {
+    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background-size: 100%;
+  }
+
+  .content {
+    width: 820px;
+    margin: 0 auto;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .services-caption {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}

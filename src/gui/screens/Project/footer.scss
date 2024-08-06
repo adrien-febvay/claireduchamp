@@ -1,0 +1,7 @@
+@import 'themes';
+
+@include device(desktop) {
+  .root {
+    display: none;
+  }
+}

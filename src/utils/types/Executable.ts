@@ -3,19 +3,17 @@ import '.';
 
 declare module '.' {
   namespace _ {
-    type Constructor<
-      Args extends readonly unknown[] = readonly unknown[],
-      Instance extends object = object,
-    > = new (...args: Args) => Instance;
+    type Constructor<Args extends readonly unknown[] = readonly unknown[], Instance extends object = object> = new (
+      ...args: Args
+    ) => Instance;
 
     namespace Constructor {
       type Any = Constructor<any, any>;
     }
 
-    type Executable<
-      Args extends readonly unknown[] = readonly unknown[],
-      Instance extends object = object,
-    > = _.Function<Args, Instance> | Constructor<Args, Instance>;
+    type Executable<Args extends readonly unknown[] = readonly unknown[], Instance extends object = object> =
+      | _.Function<Args, Instance>
+      | Constructor<Args, Instance>;
 
     namespace Executable {
       type Any = Function.Any | Constructor.Any;

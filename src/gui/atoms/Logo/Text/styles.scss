@@ -1,0 +1,24 @@
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  width: max-content;
+  margin: 0.11em;
+  line-height: 0.5em;
+  font-family: 'Bodoni MT', Helvetica, sans-serif;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  text-wrap: nowrap;
+}
+
+.subtitle {
+  font-size: 0.45em;
+  line-height: 1.2em;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}

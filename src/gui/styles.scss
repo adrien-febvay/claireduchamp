@@ -1,0 +1,62 @@
+@import 'themes';
+
+@mixin font($name, $url, $id) {
+  @font-face {
+    font-family: $name;
+    src: url('/fonts/' + $url + '.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/' + $url + '.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('/fonts/' + $url + '.woff2') format('woff2'), /* Super Modern Browsers */
+        url('/fonts/' + $url + '.woff') format('woff'), /* Pretty Modern Browsers */
+        url('/fonts/' + $url + '.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('/fonts/' + $url + '.svg#' + $id) format('svg'); /* Legacy iOS */
+    @content;
+  }
+}
+
+@include font('Bodoni MT', 'bodoni-mt', 'BodoniMT') {
+  font-style: normal;
+}
+
+@include font('Bodoni MT', 'bodoni-mt-italic', 'BodoniMT-Italic') {
+  font-style: italic;
+}
+
+@include font('Calibri Light', 'calibri-light', 'Calibri-Light');
+
+html > body {
+  min-width: 320px;
+  background: #faf3ed;
+  color: $dark-brown;
+  font-size: 14pt;
+  user-select: none;
+
+  :global(#app), input[type=text], textarea {
+    font-family: 'Calibri Light', arial, sans-serif;
+  }
+
+  button, input[type=submit] {
+    padding: 0;
+    background: transparent;
+    outline: none;
+  }
+}
+
+:global(#app) {
+  min-width: 100%;
+}
+
+main, section, article {
+  user-select: text;
+}
+
+.dark-theme {
+  @include theme($lite-brown, white);
+}
+
+.light-theme {
+  @include theme(white, $dark-brown, $lite-brown);
+}
+
+@include device(desktop) {
+  min-width: 860px;
+}

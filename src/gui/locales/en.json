@@ -1,0 +1,98 @@
+{
+  "atoms/Logo/Text": {
+    "architect": "Architect"
+  },
+  "molecules/Footer": {
+    "legal-notice": "Legal notice",
+    "privacy-policy": "Privacy policy",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "photography": "Photos:",
+    "website": "Website:"
+  },
+  "molecules/Nav": {
+    "about-us": "About us",
+    "contact-us": "Contact us",
+    "projects": "Projects",
+    "services": "Services"
+  },
+  "Screens/AboutUs": {
+    "pathname": "/about-us",
+    "title": "About",
+    "description": "SIA architect and interior designer on various project scales for individuals, entrepreneurs and municipalities. Background and references.",
+    "introduction": "Claire Duchamp works on various project scales for individuals, entrepreneurs and municipalities.\nOriginally from the Lyon region, she grew up in an agricultural and industrial area. Large natural spaces mark his aesthetic and his taste for contemplation and freedom.\nShe did the first part of her studies in Lyon, then a second in Paris where she graduated from the Paris Malaquais school as an architect.\nShe then worked in renovation in Paris, then in the development of new constructions in architectural offices in Valais and Vaud.\nToday based in Vevey, in the center of the Vaud Riviera, she enjoys developing projects in a territory for which she feels desire and wonder.",
+    "hire-cd": "Entrust your project to Claire Duchamp"
+  },
+  "Screens/ContactUs": {
+    "pathname": "/contact-us",
+    "title": "Contact us",
+    "description": "Our contact details and form for any information and initial contact",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Postal address",
+    "firstname-label": "First name",
+    "lastname-label": "Last name",
+    "email-label": "Email",
+    "phone-label": "Phone",
+    "message-label": "Message (minimum 10 characters)",
+    "privacy": "Your personal data will be used exclusively to respond to you. Under no circumstances will they be transmitted to third parties.",
+    "availability-error": "The contact form is out of service. We apologize for the inconvenience and invite you to contact us using the contact details provided on this page.",
+    "generic-error": "An error occurred while sending your message. Please contact us using the contact details provided on this page.",
+    "input-error": "Please correct the form above and retry.",
+    "send-success": "Your message has been sent. We will respond to you using the contact details you provided.",
+    "send-in-progress": "Your message is being sent...",
+    "timeout-warning": "Sending your message is taking unusually long time, maybe because of network issues. Please wait.",
+    "send": "Send",
+    "sending": "Sending...",
+    "sent": "Sent"
+  },
+  "Screens/LegalNotice": {
+    "pathname": "/legal-notice",
+    "title": "Legal Notice"
+  },
+  "Screens/NotFound": {
+    "not-found": "<0>The requested page</0> <0>does not exist</0>",
+    "return-home": "<0>Click here to</0> return <0>to the homepage.</0>"
+  },
+  "Screens/PrivacyPolicy": {
+    "pathname": "/privacy-policy",
+    "title": "Privacy Policy"
+  },
+  "Screens/Project": {
+    "photography": "Photography"
+  },
+  "Screens/Project/Preview": {
+    "photography": "Photography"
+  },
+  "Screens/Projects": {
+    "pathname": "/projects",
+    "title": "Projects",
+    "description": "Villa transformation in Grandvaux — Bronze/blown glass lighting: collaboration with Ludivine Loursel — Apartment transformation in Chardonne...",
+    "keywords": "Achievements",
+    "in-progress": "in progress"
+  },
+  "Screens/Services": {
+    "pathname": "/services",
+    "title": "Services",
+    "description": "Construction, renovation, advice, building permit, feasibility study/sketch, calls for tenders, work monitoring, furniture design, decoration",
+    "goto": "#services",
+    "catchphrase": "Singularity as norm",
+    "introduction": "Convinced that architecture has its source in specificities, Claire Duchamp defends projects designed in relation to the singularities of contexts and project owners.",
+    "listening-caption": "Listening",
+    "listening-text": "Listening and the architect-client dynamic are at the heart of the development process of our projects, in order to achieve a tailor-made and unique result.",
+    "reactivity-caption": "Reactivity",
+    "reactivity-text": "We strive to demonstrate flexibility and open-mindedness to adapt as quickly as possible to challenges, unforeseen events and changes during the process.",
+    "singularity-caption": "Singularity",
+    "singularity-text": "From detail to the whole, our transversal vision of the project allows us to think from the gesture to the typology through the atmospheres.\nThis process highlights your singularity.",
+    "our-services": "Our services",
+    "our-services-caption": "Architecture – Interior architecture – Decoration",
+    "our-services-items": "New construction ; Advice before purchase ; Building permit ; Renovation ; Feasibility study/outline ; Call for tender ; Interior architecture ; Project ; Work monitoring ; Furniture design",
+    "explanation": "The agency works on various project scales for individuals, entrepreneurs and municipalities.\nIt relies on the architect-client dynamic as a design process.\nWe are concerned with an aesthetic highlighting the singularities of the site, the program and the client.",
+    "use-our-services": "Need our services? <0>Contact us</0>"
+  },
+  "support/Router/Meta": {
+    "title": "Claire Duchamp Architect",
+    "description": "SIA architect based in Vevey for individuals, entrepreneurs and municipalities — Singularity as standard — Listening and responsiveness as values",
+    "keywords": "Architecture, Construction, Renovation, Interior, Decoration, Vevey, Vaud, Switzerland, Swiss, Riviera, Geneva, Lausanne, Montreux"
+  }
+}

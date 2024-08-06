@@ -1,0 +1,52 @@
+@import 'themes';
+
+.root {
+  background: white;
+}
+
+.content {
+  padding: 0 20px;
+  white-space: pre-wrap;
+
+  > h2 {
+    margin: 50px 0 28px;
+  }
+
+  > h4 {
+    margin: 32px 0 0;
+    text-transform: uppercase;
+
+    + p {
+      margin: 0;
+    }
+  }
+
+  > p {
+    margin: 10px 0 0;
+
+    > a {
+      @include underlined-link($lite-brown);
+    }
+
+    > span {
+      white-space: nowrap;
+    }
+  }
+}
+
+@include device(not-desktop) {
+  .root {
+    padding: 120px 0 60px;
+  }
+}
+
+@include device(desktop) {
+  .root {
+    padding: 180px 0 60px;
+  }
+
+  .content {
+    width: 860px;
+    margin: 0 auto;
+  } 
+}

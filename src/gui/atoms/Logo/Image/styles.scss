@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  aspect-ratio: 546 / 823;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 350ms, fill 350ms;
+}

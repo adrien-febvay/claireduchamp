@@ -1,0 +1,42 @@
+@import 'themes';
+
+.button {
+  width: 12px;
+  height: 50px;
+}
+
+.prev, .next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev {
+  grid-area: prev;
+}
+
+.slideshow {
+  grid-area: slideshow;
+}
+
+.slide {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.photo {
+  height: 100%;
+  aspect-ratio: 1029 / 1440;
+}
+
+.next {
+  grid-area: next;
+}
+
+@include device(not-desktop) {
+  .prev, .slideshow, .next {
+    display: none;
+  }
+}

@@ -1,0 +1,50 @@
+@mixin clickable {
+  a, button, input[type=button] {
+    @content;
+  }
+}
+
+@mixin link($weight: 1.1, $transform: scale(1), $transition: all 0s) {
+  @include link-pseudo-classes {
+    @content;
+  }
+  &:not([disabled]):not(:global(.no-scaling)) {
+    @include link-anim($weight, $transform, $transition);
+  }
+  &[disabled], :global(.no-scaling) {
+    transition: $transition;
+    transform: $transform;
+  }
+}
+
+$index: 0;
+@mixin link-anim($weight: 1.1, $transform: scale(1), $transition: all 0s) {
+  $index: $index + 1 !global;
+  @if $weight != null and $weight != 1 {
+    cursor: pointer;
+    transition: $transition, transform 150ms;
+    transform: $transform;
+    &:hover {
+      transform: $transform scale($weight);
+      &:is(a) {
+        text-decoration: none;
+      }
+    }
+    &:focus {
+      animation: temporary-scale-#{$index} 2s;
+      @keyframes temporary-scale-#{$index} {
+        0%, 100% { transform: $transform; }
+        10% { transform: $transform scale($weight); }
+      }
+    }
+  }
+  @include link-pseudo-classes {
+    @content;
+  }
+}
+
+@mixin link-pseudo-classes {
+  &, &:hover, &:focus, &:link, &:active, &:visited {
+    @content;
+  }
+}

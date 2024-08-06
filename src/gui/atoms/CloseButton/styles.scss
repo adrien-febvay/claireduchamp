@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  box-sizing: border-box;
+  stroke-width: 0.75pt;
+  transition: stroke-width 750ms;
+
+  &:hover {
+    stroke-width: 1.5pt;
+  }
+
+  &:focus {
+    animation: focus 1s ease-in-out;
+  }
+}
+
+@keyframes focus {
+  0% { stroke-width: 0.75pt; }
+  10% { stroke-width: 1.5pt; }
+  100% { stroke-width: 0.75pt; }
+}

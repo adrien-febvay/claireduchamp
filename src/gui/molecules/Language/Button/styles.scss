@@ -1,0 +1,10 @@
+@import 'link';
+
+.el {
+  text-transform: uppercase;
+  @include link(1.2);
+  &:disabled {
+    font-weight: 800;
+    cursor: default;
+  }  
+}

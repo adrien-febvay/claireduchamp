@@ -2,33 +2,20 @@ import '.';
 
 declare module '.' {
   namespace _ {
-    type Event<
-      Host extends Event.Host.Generic = Event.Host.Generic,
-      Type extends string = Event.Type<Host>,
-    > = Values<{
+    type Event<Host extends Event.Host.Generic = Event.Host.Generic, Type extends string = Event.Type<Host>> = Values<{
       [Name in Event.Host.Name]: If.Equals<
         Host,
         Event.Map[Name][0],
-        Exclude<Type, keyof Event.Map[Name][1]> extends never
-          ? Value<Event.Map[Name][1], Type>
-          : globalThis.Event
+        Exclude<Type, keyof Event.Map[Name][1]> extends never ? Value<Event.Map[Name][1], Type> : globalThis.Event
       >;
     }>;
 
     namespace Event {
       namespace Host {
         type Generic = {
-          addEventListener: (
-            type: string,
-            listener: Listener.Generic,
-            options?: Listener.Options.Argument,
-          ) => void;
+          addEventListener: (type: string, listener: Listener.Generic, options?: Listener.Options.Argument) => void;
 
-          removeEventListener: (
-            type: string,
-            listener: Listener.Generic,
-            options?: Listener.Options.Argument,
-          ) => void;
+          removeEventListener: (type: string, listener: Listener.Generic, options?: Listener.Options.Argument) => void;
         };
 
         type Name = { [Key in keyof Event.Map]: Key }[keyof Event.Map];
@@ -36,9 +23,7 @@ declare module '.' {
         type Registered = Event.Map[keyof Event.Map][0];
 
         type Using<Type extends string> = Values<{
-          [Name in Event.Host.Name]: Type extends keyof Event.Map[Name][1]
-            ? Event.Map[Name][0]
-            : never;
+          [Name in Event.Host.Name]: Type extends keyof Event.Map[Name][1] ? Event.Map[Name][0] : never;
         }>;
       }
 

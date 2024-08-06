@@ -1,0 +1,43 @@
+@import 'link';
+@import 'themes';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 20px;
+  background: white;
+  cursor: default;
+}
+
+.content {
+  font-size: 16pt;
+  text-align: center;
+
+  > h1 {
+    margin: 0 0 20px;
+    font-size: 24pt;
+  }
+
+  > a {
+    @include underlined-link($dark-brown);
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+@include device(not-desktop) {
+  .container {
+    background: url(/img/backgrounds/tree-shadow-mobile.jpg) no-repeat white;
+    background-size: 100% 100%;
+  }
+}
+@include device(desktop) {
+  .container {
+    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background-size: 100%;
+  }
+}

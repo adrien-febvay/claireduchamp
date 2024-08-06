@@ -1,0 +1,13 @@
+@import 'themes';
+@import '../../molecules/Nav/nav-themes';
+
+:global(#app) {
+  @include nav-transparent-theme(white, $dark-brown);
+}
+
+@include device(desktop) {
+  .root {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+}

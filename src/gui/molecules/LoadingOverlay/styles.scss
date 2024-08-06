@@ -1,0 +1,50 @@
+@import '../../atoms/BarLoader/layout.scss';
+@import 'themes';
+
+.root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  text-align: center; 
+  color: $dark-brown;
+  overflow: hidden;
+  transition: opacity 350ms;
+  opacity: 0;
+  z-index: 32000;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  font-size: 22pt;
+  fill: $dark-brown;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.loader-container {
+  opacity: 0;
+  animation: fade-in 750ms ease-in-out 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.loader {
+  margin: 20px auto 0;
+  @include bar-loader(30%, 4px)
+}

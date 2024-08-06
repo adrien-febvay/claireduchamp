@@ -1,0 +1,7 @@
+@import 'themes';
+@import '../../molecules/Nav/nav-themes';
+
+:global(#app) {
+  @include nav-transparent-theme(transparent, $dark-brown);
+  @include nav-menu-theme(white, $dark-brown);
+}

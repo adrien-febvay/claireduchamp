@@ -1,0 +1,28 @@
+.root {
+  display: inline-block;
+  overflow: hidden;
+  text-align: center; 
+  text-wrap: nowrap;
+  transition: color 350ms;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.container, .title, .subtitle {
+  opacity: 0;
+  animation: fade-in 750ms ease-in-out 0;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.container {
+  margin: 0 auto 0.52em;
+  width: 3.83em;
+}
+
+.subtitle {
+  animation-delay: 750ms;
+}

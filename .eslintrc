@@ -19,13 +19,13 @@
     "browser": false
   },
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 2018,
     "project": "./tsconfig.json",
     "sourceType": "module",
     "jsx": false
   },
   // For VSCode failing to use "project" above: ignore some files.
-  "ignorePatterns": ["dist/*", "dist-tmp/*", "**/*.js", "**/*.mjs", "**/*.scss.d.ts", ".*"],
+  "ignorePatterns": ["dist/*", ".dist-tmp/*", "**/*.js", "**/*.mjs", "**/*.scss.d.ts", "**/node-modules/**/*"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -79,5 +79,11 @@
     }],
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/unified-signatures": "off"
-  }
+  },
+  "overrides": [{
+    "files": ["*.spec.ts"],
+    "rules": {
+      "@typescript-eslint/no-unsafe-assignment": "off"
+    }
+  }]
 }

@@ -1,0 +1,204 @@
+@import 'link';
+
+$dark-brown: #804000;
+$lite-brown: #895e34;
+
+@mixin calibri() {
+  font-family: 'Calibri Light', arial, sans-serif;
+}
+
+@mixin calibri-title($color, $size: 15pt, $weight: 600) {
+  @include calibri;
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
+  text-transform: uppercase;
+}
+
+@mixin calibri-light-title($color) {
+  @include calibri-title($color, 14pt, 300);
+  letter-spacing: .15em;
+}
+
+@mixin bodoni() {
+  font-family: 'Bodoni MT', Helvetica, sans-serif;
+}
+
+@mixin bodoni-title($color, $size: 20pt, $style: italic) {
+  @include bodoni;
+  color: $color;
+  font-size: $size;
+  font-style: $style;
+  font-weight: 300;
+}
+
+@mixin bodoni-big-title($color) {
+  @include bodoni-title($color, 24pt);
+}
+
+@mixin bodoni-light-title($color) {
+  @include bodoni-title($color, 20pt, normal);
+}
+
+@mixin bodoni-caption($color) {
+  @include bodoni-title($color, 18pt);
+  line-height: 1.2em;
+}
+
+
+@mixin scaled-button($color) {
+  display: block;
+  margin: 60px auto;
+  padding: 6px 40px;
+  width: fit-content;
+  background: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to right, transparent 0%, $color 20%, $color 80%, transparent 100%) 1;
+  color: $color;
+  font-family: 'Bodoni MT', Helvetica, sans-serif;
+  font-size: 19pt;
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
+
+  @include link {
+    color: $color;
+  }
+
+  @content;
+}
+
+@mixin scaled-link($color) {
+  @include link {
+    color: $color;
+
+    @content;
+  }
+}
+
+@mixin underlined-link($color) {
+  @include link-pseudo-classes {
+    color: $color;
+    text-decoration: none;
+
+    @content;
+  }
+  
+  &:focus {
+    text-decoration: underline $lite-brown dotted 1pt;
+  } 
+
+  &:hover {
+    text-decoration: underline $lite-brown solid 1pt;
+  }
+}
+
+@mixin theme($bg-color, $primary-color, $secondary-color: $primary-color) {
+  color: $primary-color;
+  fill: currentColor;
+  stroke: currentColor;
+
+  ::selection {
+    background-color: $primary-color;
+    color: $bg-color;
+    fill: $bg-color;
+  }
+
+  a, button {
+    @include link-pseudo-classes {
+      color: $secondary-color;
+    }
+  }
+
+  .caption {
+    @include bodoni-caption($secondary-color)
+  }
+
+  .scaled-button {
+    @include scaled-button($secondary-color);
+  }
+
+  .scaled-link {
+    @include scaled-link($secondary-color);
+  }
+
+  .underlined-link {
+    @include underlined-link($secondary-color);
+  }
+
+  h1 {
+    @include bodoni-big-title($secondary-color);
+  }
+
+  button, h2, input[type=submit], th {
+    @include bodoni-title($secondary-color);
+  }
+
+  h3 {
+    @include bodoni-light-title($secondary-color);
+  }
+
+  h4 {
+    @include calibri-title($secondary-color);
+  }
+
+  h5, h6 {
+    @include calibri-light-title($secondary-color);
+  }
+
+  @content;
+}
+
+@mixin media-width($min: 0, $max: 0) {
+  @if ($min == 0) and ($max == 0) {
+    @content;
+  } @else if ($min == 0) {
+    @media (max-width: ($max - 1px)) {
+      :global(#app.mobile) {
+        @content;
+      }
+    }
+  } @else if ($max == 0) {
+    :global(#app.desktop) {
+      @content;
+    }
+    @media (min-width: $min) {
+      :global(#app.mobile) {
+        @content;
+      }
+    }
+  } @else {
+    @media (min-width: $min) and (max-width: ($max - 1px)) {
+      :global(#app.mobile) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin device($type) {
+  @if ($type == not-mobile) {
+    @include media-width(320px) {
+      @content;
+    }
+  } @else if ($type == mobile) {
+    @include media-width(0, 320px) {
+      @content;
+    }
+  } @else if ($type == tablet) {
+    @include media-width(320px, 860px) {
+      @content;
+    }
+  } @else if ($type == desktop) {
+    @include media-width(860px) {
+      @content;
+    }
+  } @else if ($type == not-desktop) {
+    @include media-width(0, 860px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "atoms/Logo/Text": {
+    "architect": "Architecte"
+  },
+  "molecules/Footer": {
+    "legal-notice": "Mentions légales",
+    "privacy-policy": "Politique de confidentialité",
+    "instagram": "Instagram",
+    "linkedin": "LinkedIn",
+    "photography": "Photos :",
+    "website": "Site web :"
+  },
+  "molecules/Nav": {
+    "about-us": "A propos de",
+    "contact-us": "Contact",
+    "projects": "Projets",
+    "services": "Prestations"
+  },
+  "Screens/AboutUs": {
+    "pathname": "/a-propos",
+    "title": "A propos de",
+    "description": "Architecte SIA et architecte d'intérieur sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes. Parcours et références.",
+    "introduction": "Claire Duchamp travaille sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes.\nOriginaire de la région lyonnaise, elle grandit dans un territoire agricole et industriel. Les grands espaces naturels marquent son esthétique et son goût pour la contemplation et la liberté.\nElle fait une première partie de ses études à Lyon, puis une seconde à Paris où elle est diplômée à l'école de Paris Malaquais en tant qu'architecte.\nElle travaille ensuite dans la rénovation à Paris, puis dans le développement de constructions neuves dans des bureaux d'architecture en Valais et en Vaud.\nAujourd'hui basée à Vevey, au centre de la riviera vaudoise, elle a plaisir à développer des projets sur un territoire pour lequel elle éprouve du désir et de l'émerveillement.",
+    "hire-cd": "Confiez votre projet à Claire Duchamp"
+  },
+  "Screens/ContactUs": {
+    "pathname": "/nous-contacter",
+    "title": "Nous contacter",
+    "description": "Nos coordonnées et formulaire pour toute information et prise de contact",
+    "email": "E-mail",
+    "phone": "Tel",
+    "address": "Adresse postale",
+    "firstname-label": "Prénom",
+    "lastname-label": "Nom",
+    "email-label": "E-mail",
+    "phone-label": "Téléphone",
+    "message-label": "Message (minimum 10 caractères)",
+    "privacy": "Vos données personnelles seront utilisées exclusivement pour vous répondre. En aucun cas elles ne seront transmises à des tiers.",
+    "availability-error": "Le formulaire de contact est hors-service. Veuillez nous excuser pour le désagrément et nous vous invitons à nous contacter aux coordonnées indiquées sur cette page.",
+    "generic-error": "Une erreur est survenue lors de l'envoi de votre message. Veuillez nous contacter aux coordonnées indiquées sur cette page.",
+    "input-error": "Veuillez corriger le formulaire et réessayer.",
+    "send-success": "Votre message a bien été envoyé. Nous vous répondrons aux coordonnées que vous nous avez communiqué.",
+    "send-in-progress": "Envoi de votre message message en cours...",
+    "timeout-warning": "L'envoi de votre message est inhabituellement long, peut-être à cause d'un problème de réseau. Veuillez patienter.",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "sent": "Envoi effectué"
+  },
+  "Screens/LegalNotice": {
+    "pathname": "/mentions-legales",
+    "title": "Mentions légales"
+  },
+  "Screens/NotFound": {
+    "not-found": "<0>La page demandée</0> <0>n'existe pas</0>",
+    "return-home": "<0>Cliquez ici</0> pour revenir <0>à l'accueil.</0>"
+  },
+  "Screens/PrivacyPolicy": {
+    "pathname": "/politique-de-confidentialite",
+    "title": "Politique de confidentialité"
+  },
+  "Screens/Project": {
+    "photography": "Photographie"
+  },
+  "Screens/Project/Preview": {
+    "photography": "Photographie"
+  },
+  "Screens/Projects": {
+    "pathname": "/projets",
+    "title": "Projets",
+    "description": "Transformation de villa à Grandvaux — Luminaire bronze/verre soufflé: collaboration avec Ludivine Loursel — Transformation d'appartement à Chardonne...",
+    "keywords": "Réalisations",
+    "in-progress": "En cours"
+  },
+  "Screens/Services": {
+    "pathname": "/prestations",
+    "title": "Prestations",
+    "description": "Construction, rénovation, conseil, permis de construire, étude de faisabilité/esquisse, appels d'offre, suivi de travaux, design de mobilier, décoration",
+    "goto": "#services",
+    "catchphrase": "La singularité pour norme",
+    "introduction": "Convaincue que l'architecture prend sa source dans les spécificités, Claire Duchamp défend des projets pensés par rapport aux singularités des contextes et des maîtres d'ouvrage.",
+    "listening-caption": "Ecoute",
+    "listening-text": "L'écoute et la dynamique architecte-client sont au cœur du processus du développement de nos projets, afin d'aboutir à un résultat sur mesure et singulier.",
+    "reactivity-caption": "Réactivité",
+    "reactivity-text": "Nous nous efforçons de faire preuve de flexibilité et d'ouverture d'esprit pour nous adapter au plus vite face aux remises en question, imprévus et changements en cours de processus.",
+    "singularity-caption": "Singularité",
+    "singularity-text": "Du détail à l'ensemble, notre vision transversale du projet permet de raisonner du geste à la typologie en passant par les ambiances.\nCe processus met en avant votre singularité.",
+    "our-services": "Nos prestations",
+    "our-services-caption": "Architecture – Architecture d'intérieur – Décoration",
+    "our-services-items": "Construction neuve ; Conseil avant achat ; Permis de construire ; Rénovation ; Etude de faisabilité/esquisse ; Appels d'offre ; Architecture d'intérieur ; Projet ; Suivi de travaux ; Design de mobilier",
+    "explanation": "L'agence travaille sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes.\nElle s'appuie sur la dynamique architecte-client comme processus de conception.\nNous portons le souci d'une esthétique soulignant les singularités du site, du programme et du maître d'ouvrage.",
+    "use-our-services": "Besoin d'une prestation ? <0>Contactez-nous</0>"
+  },
+  "support/Router/Meta": {
+    "title": "Claire Duchamp Architecte",
+    "description": "Architecte SIA basée à Vevey pour particuliers, entrepreneurs et communes — La singularité pour norme — L'écoute et la réactivité comme valeurs",
+    "keywords": "Architecture, Construction, Rénovation, Intérieur, Décoration, Vevey, Vaud, Suisse, Riviera, Genève, Lausanne, Montreux"
+  }
+}

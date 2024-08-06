@@ -1,0 +1,26 @@
+@import 'link';
+
+.container {
+  position: relative;
+}
+
+.img {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.credit {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 8px;
+  line-height: 1em;
+  font-size: 10pt;
+  @include link(null) {
+    color: #eaeaea;
+  }
+}

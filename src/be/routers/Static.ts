@@ -1,0 +1,37 @@
+import type { _ } from '@/utils/types';
+
+import { Response, static as ExpressStaticRouter } from 'express';
+import { Router, resolve } from '@/be/routers/utils';
+
+const contentTypes: _.Dict<string> = {
+  eot: 'application/vnd.ms-fontobject',
+  ico: 'image/vnd.microsoft.icon',
+  jpg: 'image/jpeg',
+  js: 'text/javascript',
+  map: 'application/json',
+  otf: 'font/otf',
+  svg: 'image/svg+xml',
+  ttf: 'font/ttf',
+  txt: 'text/plain',
+  xml: 'application/xhtml+xml',
+  woff: 'font/woff',
+  woff2: 'font/woff2',
+};
+
+function setHeaders(res: Response, path: string): void {
+  const pathExt = path.replace(/.*\./, '');
+  for (const ext in contentTypes) {
+    if (pathExt === ext) {
+      const contentType = contentTypes[ext];
+      if (contentType) {
+        res.setHeader('Content-Type', contentType);
+      }
+      return;
+    }
+  }
+}
+
+export const StaticRouter = () =>
+  Router((me) => {
+    me.use(ExpressStaticRouter(resolve('gui'), { setHeaders }));
+  });

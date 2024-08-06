@@ -1,0 +1,53 @@
+.root {
+  position: fixed;
+  z-index: 60000;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background: white;
+  transition: opacity 500ms;
+  animation: fade-in 500ms;
+
+  .close-button {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 750ms;
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.frame {
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  transition: transform 500ms;
+}
+
+.slider {
+  position: absolute;
+  // left: calc(-100dvw - 2px);
+  overflow: visible;
+  transition: left 250ms;
+}
+
+.pictures {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  width: fit-content;
+  height: 100dvh;
+  margin-left: calc(-100dvw - 2px);
+}
+
+.photo {
+  width: 100dvw;
+  height: 100dvh;
+  object-fit: contain;
+}

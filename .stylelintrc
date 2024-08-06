@@ -1,0 +1,43 @@
+{
+  "customSyntax": "postcss-html",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-idiomatic-order"
+  ],
+  "ignoreFiles": ["src/gui/assets/scss/partial/reset.scss"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+    "color-hex-length": "long",
+    "color-named": "never",
+    "declaration-block-single-line-max-declarations": 2,
+    "font-family-no-missing-generic-family-keyword": [
+      true,
+      {
+        "ignoreFontFamilies": ["Font Awesome"]
+      }
+    ],
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": ["map-get"]
+      }
+    ],
+    "function-url-quotes": "always",
+    "no-empty-source": null,
+    "rule-empty-line-before": ["always", {
+      "except": ["first-nested"],
+      "ignore": ["after-comment"]
+    }],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+.root {
+  animation: bar-animation 2s infinite;
+}
+
+@keyframes bar-animation {
+    0%,
+   65%,
+  100% { background-position: 0% 100%, 33.33% 100%, 66.66% 100%, 100% 100% }
+   72% { background-position: 0%   0%, 33.33% 100%, 66.66% 100%, 100% 100% }
+   79% { background-position: 0% 100%, 33.33%   0%, 66.66% 100%, 100% 100% }
+   86% { background-position: 0% 100%, 33.33% 100%, 66.66%   0%, 100% 100% }
+   93% { background-position: 0% 100%, 33.33% 100%, 66.66% 100%, 100%   0% }
+}

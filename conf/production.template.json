@@ -1,6 +1,9 @@
 {
   "http": 80,
   "https": 443,
-  "proxy": null,
-  "sslCert": "ssl-claireduchamp-ch"
+  "sslCert": "ssl-claireduchamp-ch",
+  "gui": {
+    "gtmId": "GTM-K74M8N5V",
+    "web3formsAccessKey": "50e34a41-1869-456e-8510-1e1dd8122804"
+  }
 }

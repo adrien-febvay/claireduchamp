@@ -1,0 +1,52 @@
+@import 'link';
+
+@mixin large-nav-colors($bg-color, $fg-color) {
+  .large-nav {
+    color: $fg-color;
+    fill: $fg-color;
+  }
+
+  .large-nav-bar {
+    background-color: $bg-color;
+
+    @include clickable {
+      @include link {
+        color: $fg-color;
+      }
+    }
+  }
+}
+
+@mixin small-nav-colors($bg-color, $fg-color) {
+  .small-nav-bar, .menu-container {
+    background-color: $bg-color;
+    color: $fg-color;
+
+    @include clickable {
+      @include link-pseudo-classes {
+        color: $fg-color;
+        fill: $fg-color;
+      }
+    }
+  }
+}
+
+@mixin nav-solid-theme($bg-color, $fg-color) {
+  .solid {
+    @include small-nav-colors($bg-color, $fg-color);
+    @include large-nav-colors($bg-color, $fg-color);
+  }
+}
+
+@mixin nav-transparent-theme($bg-color, $fg-color) {
+  .transparent {
+    @include small-nav-colors($bg-color, $fg-color);
+    @include large-nav-colors($bg-color, $fg-color);
+  }
+}
+
+@mixin nav-menu-theme($bg-color, $fg-color) {
+  .open {
+    @include small-nav-colors($bg-color, $fg-color);
+  }
+}

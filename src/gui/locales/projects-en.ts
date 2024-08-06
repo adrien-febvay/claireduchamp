@@ -1,0 +1,78 @@
+const projects = {
+  villaGrandvaux2023: {
+    pathname: '/grandvaux-villa-2023',
+    title: 'Sequence game',
+    caption: 'Grandvaux Villa',
+    description: 'Transformation of an existing villa with annex',
+    year: '2023',
+    surface: '404m²',
+    info: null,
+    pictures: {
+      basename: 'villa-grandvaux-2023',
+      copyrights: { 0: '©JulieMasson' },
+      count: 30,
+    },
+  },
+  chardonneApartment2024: {
+    pathname: '/chardonne-apartement-2024',
+    title: 'The nest',
+    caption: 'Chardonne Apartement',
+    description: 'Apartement transformation',
+    year: '2024',
+    surface: '85m²',
+    info: null,
+    pictures: {
+      basename: 'appartement-chardonne-2024',
+      copyrights: { 0: '©JulieMasson' },
+      count: 42,
+    },
+  },
+  alpineLamp: {
+    pathname: '/alpine-lamp',
+    title: 'Alpine lamp',
+    caption: 'Lighting Design',
+    description: 'Bronze and blown glass',
+    year: null,
+    surface: null,
+    info: 'In collaboration with Ludivine Loursel, artist - craftswoman, glass blower and bronze maker',
+    pictures: {
+      basename: 'lampe-alpine',
+      copyrights: {
+        0: '©JulieMasson',
+        4: '©ClaireDuchamp',
+        9: '©ClaireDuchamp',
+        10: '©ClaireDuchamp',
+        15: '©ClaireDuchamp',
+      },
+      count: 15,
+    },
+  },
+  villaChexbres2024: {
+    pathname: null,
+    title: null,
+    caption: 'Chexbres Villa',
+    description: null,
+    year: null,
+    surface: null,
+    info: null,
+    pictures: {
+      basename: 'villa-chexbres-2024',
+      copyrights: { 0: '©ClaireDuchamp' },
+    },
+  },
+  contactUs: {
+    pathname: null,
+    title: 'Your Project',
+    caption: 'Contact Us',
+    description: null,
+    year: null,
+    surface: null,
+    info: null,
+    pictures: {
+      basename: 'nous-contacter',
+      copyrights: { 0: null },
+    },
+  },
+} as const;
+
+export default projects;

@@ -1,0 +1,129 @@
+@import 'link';
+@import 'themes';
+
+.article {
+  background: white;
+}
+
+.content {
+  display: grid;
+  gap: 20px;
+  margin: 0 auto;
+  text-align: center;
+  animation: fade-in 1750ms;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.project {
+  position: relative;
+  width: 260px;
+  height: 348px;
+  overflow: hidden;
+  background-color: #d6dde3a0;
+  box-shadow: 0 0 0 0 #80808080;
+  user-select: none;
+  opacity: 0;
+  animation: fade-in 1750ms;
+  animation-fill-mode: forwards;
+  transition: box-shadow 750ms, filter 750ms;
+}
+
+a.project {
+  @include link(1.05) {
+    background-color: #d6dde3a0;
+  }
+
+  &:hover, &:focus {
+    box-shadow: 4px 4px 4px 0 #80808080;
+  }
+
+  &:hover > .thumbnail {
+    transform: scale(1.2);
+    transition: transform 20s;
+  }
+}
+
+div.project {
+  &:hover, &:focus {
+    filter: grayscale(1);
+  }
+}
+
+.thumbnail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: transform 750ms;
+}
+
+.text {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  bottom: 1em;
+  right: 1em;
+  padding: 10px 16px;
+  background-image: linear-gradient(#ffffffff, #ffffffc0 40%, transparent);
+  overflow: hidden;
+
+  > h2 {
+    text-transform: lowercase;
+  }
+
+  > h5 {
+    margin: 0.5em 0 0;
+    font-size: 13pt;
+    letter-spacing: normal;
+    text-transform: uppercase;
+  }
+
+  > p {
+    margin: 0.2em 0 0;
+    font-size: 11pt;
+    line-height: normal;
+  }
+}
+
+@include media-width(0, 580px) {
+  .article {
+    padding: 100px 0 60px;
+    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background-size: 100%;
+  }
+
+  .content {
+    grid-template-columns: 260px;
+    width: 260px;
+  }
+}
+
+@include media-width(580px, 860px) {
+  .article {
+    padding: 100px 0 60px;
+    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background-size: 100%;
+  }
+
+  .content {
+    grid-template-columns: 260px 260px;
+    width: 540px;
+  }
+}
+
+@include device(desktop) {
+  .article {
+    padding: 180px 0 60px;
+    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background-size: 100%;
+  }
+
+  .content {
+    grid-template-columns: 260px 260px 260px;
+    width: 820px;
+  }
+}

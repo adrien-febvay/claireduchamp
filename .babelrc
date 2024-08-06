@@ -1,0 +1,46 @@
+{
+  "ignore": ["node_modules"],
+  "presets": [
+    "@babel/typescript",
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": ["last 2 versions"]
+        },
+        "useBuiltIns": "entry",
+        "corejs": "3.30.2"
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "extensions": [".scss", ".js", ".ts", ".tsx", ".json"],
+        "root": ["."],
+        "alias": {
+          "@": "./src"
+        }
+      }
+    ],
+    [
+      "@dr.pogodin/react-css-modules",
+      {
+        "webpackHotModuleReloading": true,
+        "filetypes": {
+          ".scss": {
+            "syntax": "postcss-scss"
+          }
+        },
+        "generateScopedName": "[path]___[name]__[local]"
+      }
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-class-properties",
+    "@babel/plugin-proposal-throw-expressions",
+    "@babel/plugin-proposal-function-bind"
+  ]
+}

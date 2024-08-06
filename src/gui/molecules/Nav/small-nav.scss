@@ -1,0 +1,124 @@
+@import 'link';
+@import 'themes';
+
+.small-nav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-nav-bar {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  padding: 8px 18px 12px;
+  transition: background-color 750ms, color 750ms, height 1ms 750ms;
+}
+
+.home {
+  flex-grow: 1;
+
+  > a {
+    display: inline-block;
+  }
+}
+
+.small-logo {
+  width: 38px;
+}
+
+.more {
+  > button {
+    width: 22px;
+    height: 22px;
+    border-top: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transition: border-color 750ms;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: currentColor;
+      transition: background-color 750ms;
+    }
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: background-color 750ms, color 750ms, height 1ms 750ms;
+}
+
+.menu {
+  display: flex;
+  margin: 12dvh 20px 20px;
+  gap: 20px;
+  flex-shrink: 0;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  opacity: 0;
+  transition: opacity 750ms;
+
+  > .language {
+    font-size: 16pt;
+  }
+}
+
+.small-logo-text {
+  flex-shrink: 0;
+  font-size: 26pt;
+}
+
+.menu-entries {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  flex-grow: 1;
+}
+
+.entry {
+  font-size: 16pt;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:not(:first-child)::before {
+    content: '';
+    margin: 20px 40px;
+    border-top: 1px solid currentColor;
+    transition: border-color 750ms;
+    display: block;
+  }
+}
+
+.open .menu {
+  opacity: 1;
+}
+
+.open .small-nav-bar {
+  background-color: transparent !important;
+}
+
+:not(.open) > .small-nav > .menu-container {
+  background-color: transparent !important;
+}
+
+@include device(desktop) {
+  .small-nav {
+    display: none;
+  }
+}

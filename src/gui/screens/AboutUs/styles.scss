@@ -1,0 +1,169 @@
+@import 'themes';
+
+.content {
+  margin: 0 auto;
+  font-size: 13pt;
+  text-align: center;
+  animation: fade-in 1750ms;
+
+  > .button {
+    display: inline-block;
+    margin: 60px 20px;
+  }
+
+  .nowrap {
+    text-wrap: nowrap;
+  }
+}
+
+.introduction-grid, .resume-grid {
+  display: grid;
+  justify-content: center;
+  gap: 20px;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.introduction-photo {
+  aspect-ratio: 422 / 585;
+  vertical-align: top;
+}
+
+.introduction-text {
+  text-align: justify;
+  & > p:not(:first-child) {
+    margin: 20px 0;
+  }
+}
+
+.resume-container {
+  padding: 60px 0;
+  background: white;
+}
+
+.resume-grid {
+  column-gap: 8px;
+}
+
+.career, .references {
+  padding: 12px 0 12px 12px;
+  background: #ffffffa0;
+  background: linear-gradient(90deg, #ffffff 0%, #ffffffa0 80%, transparent 100%);
+  text-align: left;
+  > h3 {
+    margin: 0 0 19px;
+    text-transform: uppercase;
+  }
+  > p:not(:last-child) {
+    margin: 0 0 16px;
+  }
+}
+
+.career {
+  > p:first-line {
+    font-weight: 600;
+  }
+}
+
+.references {
+  > h4 {
+    margin: 19px 0 4px;
+    text-transform: uppercase;
+  }
+
+  small {
+    font-size: 1em;
+    letter-spacing: -0.12em;
+  }
+
+  em {
+    font-style: normal;
+  }
+}
+
+@include media-width(0, 480px) {
+  .content > .button {
+    margin: 40px 20px;
+  }
+
+  .introduction-grid, .resume-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .introduction-container {
+    padding: 0 0 30px;
+    background: url(/img/backgrounds/pretty-blur-mobile.jpg) #6e5a4a;
+    background-size: 100%;
+  }
+
+  .introduction-text {
+    margin: 0 20px;
+  }
+    
+  .resume-container {
+    background: url(/img/backgrounds/white-paper-mobile.jpg) white;
+    background-size: 100%;
+  }
+
+  .career, .references {
+    margin: 0 8px;
+  }
+}
+
+@include media-width(480px, 860px) {
+  .content > .button {
+    margin: 40px 20px;
+  }
+
+  .introduction-container {
+    padding: 20px 0 30px;
+    background: url(/img/backgrounds/pretty-blur-mobile.jpg) #6e5a4a;
+    background-size: 100%;
+  }
+  
+  .introduction-grid {
+    grid-template-columns: min(100%, 452px);
+    margin: 0 20px;
+  }
+    
+  .resume-container {
+    background: url(/img/backgrounds/white-paper-mobile.jpg) white;
+    background-size: 100%;
+  }
+
+  .resume-grid {
+    grid-template-columns: min(100%, 452px);
+  }
+}
+
+@include device(desktop) {
+  .content {
+    width: 820px;
+
+    > .button {
+      margin: 60px 20px;
+    }
+  }
+
+  .introduction-container {
+    padding: 180px 0 30px;
+    background: url(/img/backgrounds/pretty-blur.jpg) no-repeat #6e5a4a;
+    background-size: 100%;
+  }
+  
+  .introduction-grid {
+    grid-template-columns: 422px 1fr;
+  }
+    
+  .resume-container {
+    background: url(/img/backgrounds/white-paper.jpg) white;
+    background-size: 100%;
+  }
+
+  .resume-grid {
+    grid-template-columns: 446px 1fr;
+  }
+}
