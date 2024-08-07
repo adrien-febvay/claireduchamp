@@ -3,13 +3,12 @@ import * as path from 'path';
 import { RouterBody } from './types';
 
 export function Router(body: RouterBody) {
-  const router = ExpressRouter();
+  const router = ExpressRouter({ strict: true });
   body(router);
   return router;
 }
 
-const ENV_DIR = process.env.NODE_ENV === 'development' ? 'src' : 'dist';
-export const resolve = path.resolve.bind(path, ENV_DIR);
+export const resolve = path.resolve.bind(path, path.dirname(process.argv[1] as string), '..');
 
 export function stringify(val: unknown) {
   const objects: object[] = [];

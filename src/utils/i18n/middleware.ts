@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 
 import { LanguageDetector, handle } from 'i18next-http-middleware';
 import { locales } from '@/gui/locales';
-import { i18n, i18nInit } from '.';
+import { i18n, i18nInit } from './index';
 
 const detection = {
   lookupCookie: 'lang',

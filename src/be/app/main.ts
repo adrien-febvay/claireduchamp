@@ -1,9 +1,8 @@
 // HTTP listener
 import express from 'express';
 import Cookies from 'cookie-parser';
-import { appConf } from '@/be/app/conf';
+import { conf } from '@/conf';
 import { Routers } from '@/be/routers';
-import { INDEX_FILE } from '@/be/routers/Main';
 import { i18nMiddleware } from '@/utils/i18n/middleware';
 import { Debug } from './debug';
 
@@ -12,10 +11,10 @@ export const appMain = express();
 appMain.use(Cookies());
 appMain.use(i18nMiddleware());
 Debug(appMain);
-if (appConf.devClientPort) {
-  appMain.use(Routers.Proxy(appConf.devClientPort));
+if (process.env.GUI_MODE === 'serve') {
+  appMain.use(Routers.Proxy(conf.devClientPort ?? 3000));
 } else {
-  appMain.use(`/${INDEX_FILE}`, Routers.Main());
+  appMain.get(/^\/index(\.html?)?$/, (_req, res) => res.redirect(301, '/'));
   appMain.use(Routers.Static());
   appMain.use(Routers.Main());
   appMain.use(Routers.Fallback());

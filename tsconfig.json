@@ -74,6 +74,6 @@
   },
 
   "include": ["src"],
-  "exclude": ["**/node_modules", ".tmp-dist", "dist", ".tsc", "src/be/gui"]
+  "exclude": ["**/node_modules", ".tsc", ".tmp-dist", "dist", "src/be/gui"]
 
 }

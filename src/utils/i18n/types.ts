@@ -1,7 +1,7 @@
 import type { InitOptions, Module as I18nModule, Resources, TypeOptions } from 'i18next';
 import type { locales } from '@/gui/locales';
 import type { _ } from '@/utils/types';
-import type { i18n as i18next } from '.';
+import type { i18n as i18next } from './index';
 
 declare module '.' {
   export type i18n = typeof i18n;

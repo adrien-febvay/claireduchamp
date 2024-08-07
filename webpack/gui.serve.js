@@ -1,12 +1,14 @@
-var fs = require('fs');
-var conf = JSON.parse(fs.readFileSync('conf/development.json', 'utf8'));
+const { conf } = require('../.dist-tmp/conf/silent');
 
 module.exports = {
   devServer: {
     historyApiFallback: { disableDotRule: true },
     host: '::1',
     allowedHosts: "all",
-    port: conf?.devClientPort ?? 3000,
+    port: conf.devClientPort,
+  },
+  module: {
+    rules: require('./loaders')(['style-loader', 'css-modules-typescript-loader']),
   },
   output: {
     filename: '[name].js',

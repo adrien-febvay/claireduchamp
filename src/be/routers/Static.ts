@@ -3,6 +3,8 @@ import type { _ } from '@/utils/types';
 import { Response, static as ExpressStaticRouter } from 'express';
 import { Router, resolve } from '@/be/routers/utils';
 
+const PATH = resolve('gui');
+
 const contentTypes: _.Dict<string> = {
   eot: 'application/vnd.ms-fontobject',
   ico: 'image/vnd.microsoft.icon',
@@ -31,7 +33,9 @@ function setHeaders(res: Response, path: string): void {
   }
 }
 
-export const StaticRouter = () =>
-  Router((me) => {
-    me.use(ExpressStaticRouter(resolve('gui'), { setHeaders }));
+export const StaticRouter = () => {
+  console.log('Serve static files from:', PATH);
+  return Router((me) => {
+    me.use(ExpressStaticRouter(PATH, { index: false, setHeaders }));
   });
+};

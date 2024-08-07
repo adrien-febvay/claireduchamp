@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import '.';
+export {};
 
 declare module '.' {
   namespace _ {

@@ -1,4 +1,4 @@
-import '.';
+export {};
 
 declare module '.' {
   namespace _ {

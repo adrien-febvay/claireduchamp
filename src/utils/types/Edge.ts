@@ -1,5 +1,3 @@
-import '.';
-
 declare module '.' {
   namespace _ {
     /** Any edge. */

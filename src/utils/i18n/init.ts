@@ -1,4 +1,4 @@
-import { i18n } from '.';
+import { i18n } from './index';
 
 /**
  * Initializes i18n with a language detector and options.

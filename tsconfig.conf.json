@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig",
+
+  "compilerOptions": {
+    "outDir": "./.tsc"
+  },
+
+  "include": ["src/conf"],
+  "exclude": ["**/node_modules", ".tsc", ".tmp-dist", "dist", "src/be", "src/gui"]
+}

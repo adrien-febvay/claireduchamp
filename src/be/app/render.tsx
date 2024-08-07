@@ -6,9 +6,17 @@ import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
 import { I18nextProvider } from 'react-i18next';
 import { createFetchRequest } from '@/be/utils/misc/create-fetch-request';
-import { appConf } from './conf';
+import { conf } from '@/conf';
 
 import type { Request, Response } from 'express';
+
+// Make GUI configuration available during SSR.
+Object.assign(global, { conf: conf.gui });
+
+const ssrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
+if (ssrOnly) {
+  console.log('SSR only: GUI main script on hold, type hydrate() in console to execute it');
+}
 
 export async function appRender(body: string, req: Request, res: Response) {
   const staticHandler = createStaticHandler(routes);
@@ -47,7 +55,7 @@ export async function appRender(body: string, req: Request, res: Response) {
   }
 
   /** GUI configuration. */
-  const guiConf = `Object.defineProperty(window,'conf',{value:Object.freeze(${JSON.stringify(appConf.gui)})});`;
+  const guiConf = `Object.defineProperty(window,'conf',{value:Object.freeze(${JSON.stringify(conf.gui)})});`;
 
   /** HTML to insert in the #app element. */
   const html = ReactDOMServer.renderToString(
@@ -77,7 +85,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     .replace(/(?<=<html[^>])(?=>)/, langAttrs)
     .replace(/(?<=<head>\n)/, `    ${head.replace(/(?<=>)(?=<[^/])/g, '\n    ')}\n`)
     .replace(/.*(?=<\/head>)/, '  $&\n  ')
-    // .replace('    <script defer src="/main.js"></script>\n', '')
+    .replace(/ {4}<script defer src="\/main(\.[a-z\d]+\.min)?.js"><\/script>\n/, ssrOnly ? '' : '$&')
     .replace(/(?<=<div id="app">)(?=<\/div>)/, html)
     .replace(/(?<=<div id="app")(?=>)/, ` class="${device}"`);
 
