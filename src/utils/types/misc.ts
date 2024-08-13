@@ -9,6 +9,14 @@ declare module '.' {
     /** Resolves a `Type`. */
     type Id<Type> = Type;
 
+    /** Iterable of `Type`. */
+    type Iterable<Type = unknown> = globalThis.Iterable<Type>;
+
+    namespace Iterable {
+      /** `Type`or iterable of `Type`. */
+      type Maybe<Type = unknown> = Type | Iterable<Type>;
+    }
+
     /** `Value` that can be nullish. */
     type Nullish<Value = never> = Value | null | undefined;
 

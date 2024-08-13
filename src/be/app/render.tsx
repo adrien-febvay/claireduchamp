@@ -10,6 +10,9 @@ import { conf } from '@/conf';
 
 import type { Request, Response } from 'express';
 
+const hydrateScript =
+  "<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)}</script>";
+
 // Make GUI configuration available during SSR.
 Object.assign(global, { conf: conf.gui });
 
@@ -85,7 +88,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     .replace(/(?<=<html[^>])(?=>)/, langAttrs)
     .replace(/(?<=<head>\n)/, `    ${head.replace(/(?<=>)(?=<[^/])/g, '\n    ')}\n`)
     .replace(/.*(?=<\/head>)/, '  $&\n  ')
-    .replace(/ {4}<script defer src="\/main(\.[a-z\d]+\.min)?.js"><\/script>\n/, ssrOnly ? '' : '$&')
+    .replace(/<script defer src="(\/main(\.[a-z\d]+\.min)?.js)"><\/script>/, ssrOnly ? hydrateScript : '$&')
     .replace(/(?<=<div id="app">)(?=<\/div>)/, html)
     .replace(/(?<=<div id="app")(?=>)/, ` class="${device}"`);
 
