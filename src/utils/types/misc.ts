@@ -65,8 +65,17 @@ declare module '.' {
  * @param val Value to check.
  * @returns A boolean accordingly.
  */
-export function isIterable<Value>(val: Value): val is Extract<Value, Iterable<unknown>> {
+export function isIterable<Value>(val: Value | Iterable<Value>): val is Iterable<Value> {
   return val != null ? typeof val[Symbol.iterator as keyof object] === 'function' : false;
+}
+
+/**
+ * Returns the provided value if it is an iterable, otherwise returns it wrapped in an array.
+ * @param val Value to return.
+ * @returns An iterable accordingly.
+ */
+export function forceIterable<Value>(val: Value | Iterable<Value>): Iterable<Value> {
+  return isIterable(val) ? val : [val];
 }
 
 /**

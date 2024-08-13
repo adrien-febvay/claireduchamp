@@ -1,5 +1,6 @@
 import useStyles from 'isomorphic-style-loader/useStyles';
 import { addClass } from '@/gui/utils/dom/addClass';
+import { classUnion } from '@/gui/utils/dom/classUnion';
 import { removeClass } from '@/gui/utils/dom/removeClass';
 
 import ownStyles from './styles.scss';
@@ -7,7 +8,7 @@ import ownStyles from './styles.scss';
 export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
   useStyles(ownStyles);
 
-  const { className, loop, onSlideChange, styles, ...divAttributes } = props;
+  const { children, className, loop, onSlideChange, styles, ...divAttributes } = props;
   const me = React.useComponent(
     () => ({
       currentSlide: null as Element | null,
@@ -43,12 +44,22 @@ export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
   );
   React.useImperativeHandle(ref, () => me);
   me.didRender(() => {
-    const children = me.rootRef.current?.children;
-    me.slides = children ? [...children] : [];
-    me.slides.forEach((el) => addClass(el, me.styles.slide));
-    if (!me.slides.includes(me.currentSlide as Element)) {
+    if (!me.slides.includes(me.currentSlide)) {
       me.setSlide(0, false);
     }
   });
-  return <div classNames={[me.styles.root, className]} ref={me.rootRef} {...divAttributes} />;
+
+  let setCurrentSlide = !me.slides.includes(me.currentSlide) && me.styles.current;
+  const slides = React.Children.map(children, (child) => {
+    if (React.isValidElement<{ className: unknown }>(child)) {
+      if (child.props.className === void 0 || typeof child.props.className === 'string') {
+        const className = classUnion(child.props.className, me.styles.slide, setCurrentSlide);
+        setCurrentSlide = '';
+        return React.cloneElement(child, { className });
+      }
+    }
+    return null;
+  });
+
+  return <div classNames={[me.styles.root, className]} ref={me.rootRef} children={slides} {...divAttributes} />;
 });
