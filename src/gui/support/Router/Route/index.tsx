@@ -51,19 +51,20 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
           <title>{title}</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="author" content="Claire Duchamp" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <Link rel="alternate" hrefLang="en" href={buildUrl(locales.en?.pathname)} />
-          <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.fr?.pathname)} />
-          <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.mul?.pathname)} />
-          <link rel="cannonical" hrefLang="fr" href={buildUrl(locales.mul?.pathname ?? pathnameFr)} />
           <meta name="description" content={description} />
           <meta name="keywords" content={keywords} />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:url" content={location.pathname} />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <meta name="twitter:url" content={location.pathname} />
+          <Link rel="alternate" hrefLang="en" href={buildUrl(locales.en?.pathname)} />
+          <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.fr?.pathname)} />
+          <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.mul?.pathname)} />
+          <link rel="cannonical" hrefLang="fr" href={buildUrl(locales.mul?.pathname ?? pathnameFr)} />
+          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
       )}
       <Layout Screen={Screen} goto={meta.goto} />
