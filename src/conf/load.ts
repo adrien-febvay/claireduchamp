@@ -75,7 +75,7 @@ export function loadSafeConf(silent = false) {
   const loadedConf = loadConf();
   if (loadedConf.data) {
     if (!silent) {
-      console.log('Configuration:', loadedConf.file, loadedConf.data);
+      // console.log('Configuration:', loadedConf.file, loadedConf.data);
       if (loadedConf.error) {
         console.error(loadedConf.error.message);
       }

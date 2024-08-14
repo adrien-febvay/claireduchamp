@@ -90,10 +90,7 @@ if (args.includes('help')) {
   }
   env = { ...envs[''], ...env };
   process.env.NODE_ENV = env.NODE_ENV;
-  console.log('Environment:');
-  for (const [key, value] of Object.entries(env)) {
-    console.log(`  ${key}=${value}`);
-  }
+  console.log(`NODE_ENV=${env.NODE_ENV}`);
   run.build('conf', env);
   if (env.NODE_ENV === 'production') {
     require('../.dist-tmp/conf');

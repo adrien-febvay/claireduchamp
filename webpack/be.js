@@ -1,4 +1,5 @@
 /* global process */
+const cp = require('child_process');
 const ShellPlugin = require('webpack-shell-plugin-next');
 const resolve = require('./resolve');
 const run = require('./run');
@@ -8,16 +9,38 @@ const env = { NODE_ENV, BE_MODE, GUI_MODE };
 const dev = NODE_ENV === 'development';
 const serve = /^serve\b/.test(BE_MODE);
 
-class Gui {
-  apply(compiler) {
-    const npm = /^win\d+$/.test(process.platform) ? 'npm.cmd' : 'npm';
-    if (GUI_MODE === 'build') {
-      run.build('gui', env);
-    } else if (!Gui.isTapped) {
-      compiler.hooks.afterPlugins.tap('Client', () => void run.serve('gui', env));
-      Gui.isTapped = true;
-    }
+function runOnce(fn) {
+  return (...args) => {
+    fn?.(...args);
+    fn = null;
   }
+}
+
+class Gui {
+  apply = runOnce((compiler) => {
+      if (GUI_MODE === 'build') {
+        run.build('gui', env);
+      } else {
+        compiler.hooks.afterEmit.tap('Gui.emit', runOnce(() => void run.serve('gui', env)));
+      }
+  });
+}
+
+class Launcher {
+  apply = runOnce((compiler) => {
+    compiler.hooks.afterEmit.tap('Launcher.emitOnce', runOnce(() => {
+      process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
+      if (serve) {
+        const npx = /^win\d+$/.test(process.platform) ? 'npx.cmd' : 'npx';
+        cp.spawn(npx, ['nodemon', '.dist-tmp/be', '--quiet', '--watch', '.dist-tmp/be'], { stdio: 'inherit' });
+        process.stdout.write('Type \x1b[32;1mrs\x1b[0m and hit enter to manually restart BE\n');
+        compiler.hooks.watchRun.tap('Launcher.update', () => process.stdout.write('\n>> \x1b[32mChange detected!\x1b[0m Updating BE...\n'))
+        compiler.hooks.afterEmit.tap('Launcher.emitAgain', () => process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, restarting...\n'));
+      } else if (dev) {
+        cp.spawnSync('node', ['.dist-tmp/be'], { stdio: 'inherit' });
+      }
+    }));
+  });
 }
 
 module.exports = {
@@ -42,23 +65,26 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    new Launcher(),
     new Gui(),
-    new ShellPlugin({
-      onBuildEnd: serve ? {
-        env,
-        parallel: true,
-        scripts: ['nodemon .dist-tmp/be/index.js --watch .dist-tmp/be'],
-      } : dev && {
-        env,
-        scripts: ['node .dist-tmp/be/index.js'],
-      },
-    }),
+    // new ShellPlugin({
+    //   onBuildEnd: serve ? {
+    //     env,
+    //     logging: false,
+    //     parallel: true,
+    //     scripts: ['nodemon .dist-tmp/be/index.js --quiet --watch .dist-tmp/be'],
+    //   } : dev && {
+    //     env,
+    //     logging: false,
+    //     scripts: ['node .dist-tmp/be/index.js'],
+    //   },
+    // }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: { '@': resolve('src') },
   },
-  stats: 'minimal',
+  stats: 'errors-only',
   target: 'node',
   watch: serve,
   watchOptions: {

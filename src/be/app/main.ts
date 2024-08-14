@@ -7,15 +7,18 @@ import { i18nMiddleware } from '@/utils/i18n/middleware';
 import { Debug } from './debug';
 
 // Create app
-export const appMain = express();
-appMain.use(Cookies());
-appMain.use(i18nMiddleware());
-Debug(appMain);
-if (process.env.GUI_MODE === 'serve') {
-  appMain.use(Routers.Proxy(conf.devGuiPort));
-} else {
-  appMain.get(/^\/index(\.html?)?$/, (_req, res) => res.redirect(301, '/'));
-  appMain.use(Routers.Static());
-  appMain.use(Routers.Main());
-  appMain.use(Routers.Fallback());
+export function appMain(port: number) {
+  const app = express();
+  app.use(Cookies());
+  app.use(i18nMiddleware());
+  Debug(app);
+  if (process.env.GUI_MODE === 'serve') {
+    app.use(Routers.Proxy(port, conf.devGuiPort));
+  } else {
+    app.get(/^\/index(\.html?)?$/, (_req, res) => res.redirect(301, '/'));
+    app.use(Routers.Static());
+    app.use(Routers.Main());
+    app.use(Routers.Fallback());
+  }
+  return app;
 }

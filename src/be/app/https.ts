@@ -7,6 +7,8 @@ export function appHttps(port: number, cert: SslCert, app: Express): void {
   // Starting the HTTPS listener on specified port
   const server = https.createServer(cert, app);
   server.listen(port, () => {
-    console.log('HTTPS:', server.address());
+    const address = server.address();
+    const resolvedPort = address && typeof address === 'object' ? address.port : port;
+    console.log(`Serve \x1b[32mhttps\x1b[0m on port \x1b[33m${resolvedPort}\x1b[0m`);
   });
 }

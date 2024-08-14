@@ -2,19 +2,18 @@ const { spawn, spawnSync } = require('child_process');
 
 const npx = /^win\d+$/.test(process.platform) ? 'npx.cmd' : 'npx';
 
-function run(fn, env, cmd) {
+function run(label, fn, module, env, cmd) {
+  console.log(`>> ${label}`, module.toUpperCase());
   env = Object.entries(env).map(([key, value]) => `${key}=${value}`);
-  fn(npx, ['cross-env', ...env, ...cmd.filter((chunk) => chunk)], { stdio: 'inherit' });
+  fn(npx, ['cross-env', ...env, ...cmd.filter((chunk) => chunk), '--config', `webpack/${module}.js`], { stdio: 'inherit' });
 }
 
 function build(module, env, label = 'Build') {
-  console.log(`>> ${label}`, module.toUpperCase());
-  run(spawnSync, env, ['webpack', env.NODE_ENV === 'production' && '--bail', '--config', `webpack/${module}.js`]);
+  run(label, spawnSync, module, env, ['webpack', env.NODE_ENV === 'production' && '--bail']);
 }
 
-function serve(module, env) {
-  console.log('>> Serve', module.toUpperCase());
-  run(spawn, env, ['webpack-dev-server', '--hot', '--config', `webpack/${module}.js`]);
+function serve(module, env, label = 'Serve') {
+  run(label, spawn, module, env, ['webpack-dev-server', '--hot']);
 }
 
 module.exports = { build, serve };

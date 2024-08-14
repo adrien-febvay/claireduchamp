@@ -4,21 +4,15 @@ import 'core-js/stable';
 import { App } from '@/be/app';
 
 const { https, http } = App.conf;
-const port = https || http;
 const sslCert = App.sslCert();
 
-if (port) {
-  console.log(`Serve app on HTTP${https && sslCert ? 'S' : ''}, port ${port}`);
-}
-
 if (http && https && sslCert) {
-  console.log(`Redirect HTTP from port ${http} to HTTPS on port ${https}`);
-  App.http(http, App.redirectTo(https));
-  App.https(https, sslCert, App.main);
+  App.https(https, sslCert, App.main(https));
+  App.http(http, App.redirectTo(http, https));
 } else if (http) {
-  App.http(http, App.main);
+  App.http(http, App.main(http));
 } else if (https && sslCert) {
-  App.https(https, sslCert, App.main);
+  App.https(https, sslCert, App.main(https));
 } else {
   throw new Error('No valid listener set, please configure http, https and/or ssCert');
 }
