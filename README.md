@@ -14,9 +14,9 @@ Before it can be built and/or launched, it needs to be installed with `npm insta
 
 The configuration files are located in the `conf` directory. There is one for the `development` mode, and one for the `production` mode.
 
-There is a `template` for each configuration file with the typical settings. Make a configuration file for each mode by copying the `template` files and removing the `template` part in their name.
+To create the configuration files, type `npm run init`. It will copy the `template` files and rename them accordingly.
 
-Beware that the `production` configuration file contains identifiers for the production services (GTM and web3forms). **ONLY use these values on the production machine.** If you want to test the built application, type `npm run dev --build` (see _Development_ section below).
+Beware that the `production` configuration file contains identifiers for the production services (GTM and web3forms). **ONLY use these values on the production machine.** If you want to test the built application, type `npm run dev build` (see _Development_ section below).
 
 ## Development
 

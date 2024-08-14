@@ -4,6 +4,7 @@ const syntax = `
   npm run [mode] [option]
 
   Mode
+    init    Create configuration files from their respective template
     dev     Serves the app in development mode, eventually with partial build
     build   Complete build for the production mode
 

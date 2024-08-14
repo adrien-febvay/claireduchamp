@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "help": "node webpack help",
+    "init": "ts-node src/conf/init",
     "dev": "node webpack dev",
     "tsc": "tsc && rimraf .tsc",
     "eslint": "eslint src/**/*.{ts,tsx}",
@@ -47,6 +48,7 @@
     "react-refresh": "^0.14.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.25.1",
+    "ts-node": "^10.9.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
