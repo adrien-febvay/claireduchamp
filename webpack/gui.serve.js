@@ -5,7 +5,7 @@ module.exports = {
     historyApiFallback: { disableDotRule: true },
     host: '::1',
     allowedHosts: "all",
-    port: conf.devClientPort,
+    port: conf.devGuiPort,
   },
   module: {
     rules: require('./loaders')(['style-loader', 'css-modules-typescript-loader']),

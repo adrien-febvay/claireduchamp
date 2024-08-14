@@ -10,21 +10,24 @@ const guiSchema = z.object({
   web3formsAccessKey: z.string().regex(accessKeyRe).default(''),
 });
 
-const portSchema = z.number().min(1).max(65535).nullable().optional();
+const portSchema = z.number().min(1).max(65535).optional();
 
 const confSchema = z.object({
-  devClientPort: process.env.NODE_ENV === 'production' ? z.null().optional() : portSchema.default(3000),
-  http: portSchema,
-  https: portSchema,
+  devGuiPort: portSchema.default(3000),
+  http: portSchema.nullable(),
+  https: portSchema.nullable(),
   sslCert: z.string().min(1).nullable().optional(),
   gui: guiSchema,
 });
 
-const strictConfSchema = confSchema.strict().extend({
-  gui: guiSchema.strict(),
-});
+const strictConfSchema = confSchema
+  .omit(process.env.NODE_ENV === 'production' ? { devGuiPort: true } : {})
+  .strict()
+  .extend({ gui: guiSchema.strict() });
 
 export type Conf = z.infer<typeof confSchema>;
+
+export type StrictConf = z.infer<typeof strictConfSchema>;
 
 class ConfError extends Error {
   public readonly code?: number;
@@ -38,25 +41,17 @@ class ConfError extends Error {
   }
 }
 
-export type ParsedConf =
-  | {
-      data: Conf;
-      error?: ConfError;
-    }
-  | {
-      data: undefined;
-      error: ConfError;
-    };
+export type ParsedConf = { data: Conf; error?: ConfError } | { data: undefined; error: ConfError };
 
+function parseConf(raw: unknown, data?: Conf): ParsedConf;
 function parseConf(raw: unknown, data?: Conf): ParsedConf {
   try {
-    const schema = data ? strictConfSchema : confSchema;
-    return { data: schema.parse(raw) };
+    return { data: data ? strictConfSchema.parse(raw) && data : confSchema.parse(raw) };
   } catch (cause) {
     if (cause instanceof z.ZodError) {
       const code = data ? 0 : 400;
       const message = data ? 'Configuration warning' : 'Invalid configuration';
-      return { data, error: new ConfError(code, `${message}:\n${file}\n${stringifyIssues(cause).join('\n')}`) };
+      return { data, error: new ConfError(code, `${message} in ${file}:\n${stringifyIssues(cause).join('\n')}`) };
     } else {
       return { data, error: new ConfError({ cause }, `Configuration loading failure:\n${file}`) };
     }
@@ -87,10 +82,10 @@ export function loadSafeConf(silent = false) {
     }
     return loadedConf.data;
   } else {
+    console.error(loadedConf.error.message);
     if (loadedConf.error.cause) {
-      console.error(loadedConf.error.message);
+      console.error(loadedConf.error.cause);
     }
-    console.error(loadedConf.error.cause ?? loadedConf.error);
     process.exit(loadedConf.error.code);
   }
 }

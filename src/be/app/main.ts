@@ -12,7 +12,7 @@ appMain.use(Cookies());
 appMain.use(i18nMiddleware());
 Debug(appMain);
 if (process.env.GUI_MODE === 'serve') {
-  appMain.use(Routers.Proxy(conf.devClientPort ?? 3000));
+  appMain.use(Routers.Proxy(conf.devGuiPort));
 } else {
   appMain.get(/^\/index(\.html?)?$/, (_req, res) => res.redirect(301, '/'));
   appMain.use(Routers.Static());
