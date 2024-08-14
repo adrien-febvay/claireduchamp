@@ -8,9 +8,6 @@ Villa, Grandvaux, VD<br>
 Villa, Majorque, ES<br>
 2021, on behalf of CP3
 
-Semi-detached villas OBF, Saint-Légier, VD<br>
-2021, on behalf of CP3
-
 Tenement, Lausanne, VD<br>
 15 apartments<br>
 2020, on behalf of CP3

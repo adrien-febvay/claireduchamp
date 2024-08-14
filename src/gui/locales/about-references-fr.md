@@ -8,9 +8,6 @@ Villa, Grandvaux, VD<br>
 Villa, Majorque, ES<br>
 2021, pour le compte de CP3
 
-Villas jumelées PPE, Saint-Légier, VD<br>
-2021, pour le compte de CP3
-
 Immeuble, Lausanne, VD<br>
 15 appartements<br>
 2020, pour le compte de CP3
