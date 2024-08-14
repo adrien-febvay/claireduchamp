@@ -85,13 +85,7 @@ const ProjectScreen: React.FC = () => {
             <h5>{project.caption}</h5>
             <h1>{project.title}</h1>
             {project.info && <p>{project.info}</p>}
-            {(project.year || project.surface) && (
-              <p>
-                {project.year}
-                {project.year && project.surface && ' – '}
-                {project.surface}
-              </p>
-            )}
+            {project.surface && <p>{project.surface}</p>}
           </div>
           <FullscreenButton classNames={styles.button} onClick={toggleFullscreen} revoke={fullscreen.active} />
           <CloseButton className={styles.button} onClick={() => void (prevPathname ? navigate(-1) : navigate('/'))} />

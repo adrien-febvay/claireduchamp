@@ -49,11 +49,7 @@ export const Screen_Projects: React.FC = () => {
                   <h2>{project.title ?? translate('in-progress')}</h2>
                   <h5>{project.caption}</h5>
                   <p>{project.description}</p>
-                  <p>
-                    {project.year}
-                    {project.year && project.surface && ' – '}
-                    {project.surface}
-                  </p>
+                  <p>{project.surface}</p>
                 </div>
               </>
             ),
