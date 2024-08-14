@@ -35,6 +35,7 @@ module.exports = {
     }),
   },
   node: { __dirname: true },
+  optimization: { minimize: false },
   output: {
     path: resolve('.dist-tmp/be'),
     filename: 'index.js',
