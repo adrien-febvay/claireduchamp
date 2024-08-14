@@ -91,7 +91,7 @@ if (args.includes('help')) {
   env = { ...envs[''], ...env };
   process.env.NODE_ENV = env.NODE_ENV;
   console.log(`NODE_ENV=${env.NODE_ENV}`);
-  run.build('conf', env);
+  run.build('conf', env, env.NODE_ENV === 'production' ? 'Check' : 'Load');
   if (env.NODE_ENV === 'production') {
     require('../.dist-tmp/conf');
   }
