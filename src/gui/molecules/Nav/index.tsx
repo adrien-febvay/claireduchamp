@@ -46,7 +46,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       props,
     },
   );
-
+  console.log('<Nav>', me.state);
   React.useImperativeHandle(ref, () => ({
     get height(): number | null {
       const navInnerHeight = getInner.height(me.nav.current);
@@ -182,7 +182,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     <>
       <div
         classNames={[allStyles.scrollDownContainer, me.state.show && !me.state.open && allStyles.show]}
-        style={{ display: props.delay || introPlaying === null ? 'none' : 'block' }}
+        style={{ display: introPlaying === null ? 'none' : 'block' }}
       >
         <button className={allStyles.scrollDownButton} onClick={() => void scroll.to(window.innerHeight)}>
           <div className={allStyles.downArrow} />

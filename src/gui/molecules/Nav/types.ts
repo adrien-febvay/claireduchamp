@@ -7,9 +7,6 @@ declare module '.' {
     /** <Nav> properties. */
     type Props = Omit<React.DivAttributes, 'children'> &
       React.Styles<typeof ownStyles> & {
-        /** Delay overlay hidding? (hide down button or not?). */
-        delay: boolean;
-
         /** Top of the content to scroll to (navigation bar initially solid or not?). */
         goto?: string;
 
