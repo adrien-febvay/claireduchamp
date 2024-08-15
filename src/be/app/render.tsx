@@ -138,7 +138,9 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     const renderedRes = { content, status: headContext.status ?? 200 };
 
-    writeFileSync(cacheFile, renderedRes);
+    if (renderedRes.status === 200) {
+      writeFileSync(cacheFile, renderedRes);
+    }
 
     return renderedRes;
   }
