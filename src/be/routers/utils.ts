@@ -8,7 +8,7 @@ export function Router(body: RouterBody) {
   return router;
 }
 
-export const resolve = path.resolve.bind(path, path.dirname(process.argv[1] as string), '..');
+export const resolve = path.resolve.bind(path, path.dirname(process.argv[1] as string));
 
 export function stringify(val: unknown) {
   const objects: object[] = [];

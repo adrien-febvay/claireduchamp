@@ -16,5 +16,8 @@ export async function sendIndex(req: Request, res: Response) {
 
 export const MainRouter = () =>
   Router((me) => {
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Use \x1b[32mrendering\x1b[0m based on \x1b[33m${indexPath}\x1b[0m`);
+    }
     me.get('*', (req, res, next) => void sendIndex(req, res).catch(next));
   });
