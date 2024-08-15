@@ -73,7 +73,8 @@ export async function appRender(body: string, req: Request, res: Response) {
   const isMobile = !ua || detectMobile({ ua, tablet: true });
   const device = isMobile ? 'mobile' : 'desktop';
 
-  const cacheFile = path.join(CACHE_PATH, device, `${req.originalUrl.slice(1) || 'index'}.html`);
+  const pathname = req.originalUrl === '/' ? '' : req.originalUrl;
+  const cacheFile = path.join(CACHE_PATH, `${device}${pathname}.html`);
   const cachedRes = readFileSync(cacheFile);
 
   if (cachedRes) {
