@@ -60,9 +60,6 @@ function writeFileSync(file: string, data: z.infer<typeof cacheSchema>) {
 }
 
 export async function appRender(body: string, req: Request, res: Response) {
-  const cacheFile = path.join(CACHE_PATH, `${req.originalUrl.slice(1) || 'index'}.html`);
-  const cachedRes = readFileSync(cacheFile);
-
   /** CSS stylesheet to add to the document <head>. */
   const styleSet = new Set<Style>();
   function insertCss(...styles: Style[]) {
@@ -70,6 +67,14 @@ export async function appRender(body: string, req: Request, res: Response) {
       styleSet.add(style);
     }
   }
+
+  /** Client device type. */
+  const ua = req.headers['user-agent'];
+  const isMobile = !ua || detectMobile({ ua, tablet: true });
+  const device = isMobile ? 'mobile' : 'desktop';
+
+  const cacheFile = path.join(CACHE_PATH, device, `${req.originalUrl.slice(1) || 'index'}.html`);
+  const cachedRes = readFileSync(cacheFile);
 
   if (cachedRes) {
     return cachedRes;
@@ -82,11 +87,6 @@ export async function appRender(body: string, req: Request, res: Response) {
     if (context instanceof Response) {
       throw context;
     }
-
-    /** Client device type. */
-    const ua = req.headers['user-agent'];
-    const isMobile = !ua || detectMobile({ ua, tablet: true });
-    const device = isMobile ? 'mobile' : 'desktop';
 
     /** Document head context. */
     const host = req.get('host') ?? req.hostname;
