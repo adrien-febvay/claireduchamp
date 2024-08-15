@@ -31,13 +31,13 @@
 
 @include device(not-desktop) {
   .container {
-    background: url(/img/backgrounds/tree-shadow-mobile.jpg) no-repeat white;
-    background-size: 100% 100%;
+    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
+    background-size: 100%;
   }
 }
 @include device(desktop) {
   .container {
-    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background: url(/img/backgrounds/white-wall.jpg) white;
     background-size: 100%;
   }
 }

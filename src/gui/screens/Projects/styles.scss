@@ -1,10 +1,6 @@
 @import 'link';
 @import 'themes';
 
-.article {
-  background: white;
-}
-
 .content {
   display: grid;
   gap: 20px;
@@ -89,13 +85,15 @@ div.project {
   }
 }
 
-@include media-width(0, 580px) {
+@include media-width(0, 860px) {
   .article {
     padding: 100px 0 60px;
-    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
     background-size: 100%;
   }
+}
 
+@include media-width(0, 580px) {
   .content {
     grid-template-columns: 260px;
     width: 260px;
@@ -103,12 +101,6 @@ div.project {
 }
 
 @include media-width(580px, 860px) {
-  .article {
-    padding: 100px 0 60px;
-    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
-    background-size: 100%;
-  }
-
   .content {
     grid-template-columns: 260px 260px;
     width: 540px;
@@ -118,7 +110,7 @@ div.project {
 @include device(desktop) {
   .article {
     padding: 180px 0 60px;
-    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background: url(/img/backgrounds/white-wall.jpg) white;
     background-size: 100%;
   }
 

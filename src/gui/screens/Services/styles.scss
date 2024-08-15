@@ -80,7 +80,7 @@
 
 @include media-width(0, 600px) {
   .article {
-    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
     background-size: 100%;
   }
 
@@ -116,7 +116,7 @@
 
 @include media-width(600px, 860px) {
   .article {
-    background: url(/img/backgrounds/tree-shadow-mobile-repeat.jpg) white;
+    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
     background-size: 100%;
   }
 
@@ -140,7 +140,7 @@
 
 @include device(desktop) {
   .article {
-    background: url(/img/backgrounds/tree-shadow.jpg) no-repeat white;
+    background: url(/img/backgrounds/white-wall.jpg) white;
     background-size: 100%;
   }
 
