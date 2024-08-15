@@ -14,9 +14,9 @@
     "stylelint-fix": "npm run stylelint -- --fix",
     "test": "npm run tsc && npm run eslint && npm run stylelint",
     "build": "node webpack build",
-    "postbuild": "rimraf dist && npx cpy-cli \"./.dist-tmp/be/**\" dist/ && rimraf .dist-tmp",
+    "postbuild": "rimraf dist && npx cpy-cli \"./.dist-tmp/**\" dist/ && rimraf .dist-tmp",
     "preversion": "npm run test -- --silent && npm run build",
-    "start": "node dist",
+    "start": "node dist/be",
     "clean": "rimraf .dist-tmp && rimraf .tsc"
   },
   "repository": {
