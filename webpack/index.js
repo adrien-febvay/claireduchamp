@@ -71,7 +71,6 @@ if (args.includes('help')) {
         if (key in envOrigin) {
           error(`Conflicting options: ${quote(option)} and ${quote(envOrigin[key])}`);
         } else {
-          console.log(`Set ${key}=${value}`)
           env[key] = value;
           envOrigin[key] = option;
         }

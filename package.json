@@ -16,7 +16,7 @@
     "build": "node webpack build",
     "postbuild": "rimraf dist && npx cpy-cli \"./.dist-tmp/be/**\" dist/ && rimraf .dist-tmp",
     "preversion": "npm run test -- --silent && npm run build",
-    "start": "node ./dist/index.js",
+    "start": "node dist",
     "clean": "rimraf .dist-tmp && rimraf .tsc"
   },
   "repository": {

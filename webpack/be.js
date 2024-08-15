@@ -29,15 +29,18 @@ class Gui {
 class Launcher {
   apply = runOnce((compiler) => {
     compiler.hooks.afterEmit.tap('Launcher.emitOnce', runOnce(() => {
-      process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
       if (serve) {
         const npx = /^win\d+$/.test(process.platform) ? 'npx.cmd' : 'npx';
+        process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
         cp.spawn(npx, ['nodemon', '.dist-tmp/be', '--quiet', '--watch', '.dist-tmp/be'], { stdio: 'inherit' });
         process.stdout.write('Type \x1b[32;1mrs\x1b[0m and hit enter to manually restart BE\n');
         compiler.hooks.watchRun.tap('Launcher.update', () => process.stdout.write('\n>> \x1b[32mChange detected!\x1b[0m Updating BE...\n'))
         compiler.hooks.afterEmit.tap('Launcher.emitAgain', () => process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, restarting...\n'));
       } else if (dev) {
+        process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
         cp.spawnSync('node', ['.dist-tmp/be'], { stdio: 'inherit' });
+      } else {
+        process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully\n');
       }
     }));
   });
@@ -67,18 +70,6 @@ module.exports = {
   plugins: [
     new Launcher(),
     new Gui(),
-    // new ShellPlugin({
-    //   onBuildEnd: serve ? {
-    //     env,
-    //     logging: false,
-    //     parallel: true,
-    //     scripts: ['nodemon .dist-tmp/be/index.js --quiet --watch .dist-tmp/be'],
-    //   } : dev && {
-    //     env,
-    //     logging: false,
-    //     scripts: ['node .dist-tmp/be/index.js'],
-    //   },
-    // }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
