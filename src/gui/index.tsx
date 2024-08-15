@@ -15,8 +15,7 @@ import { I18nextProvider, i18nInit } from '@/utils/i18n';
 TagManager.initialize({ gtmId: conf.gtmId });
 
 export const appElement = document.getElementById('app') as HTMLDivElement;
-const forceMobile = window.localStorage?.getItem('__forceMobile') === 'true';
-const isMobile = forceMobile || detectMobile({ tablet: true });
+const isMobile = /(^|;)\s*__forceMobile=true(;|$)/.test(document.cookie) || detectMobile({ tablet: true });
 appElement.className = isMobile ? 'mobile' : 'desktop';
 
 const i18n = i18nInit(LanguageDetector, { resources: locales });

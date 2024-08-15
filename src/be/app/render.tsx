@@ -70,7 +70,7 @@ export async function appRender(body: string, req: Request, res: Response) {
 
   /** Client device type. */
   const ua = req.headers['user-agent'];
-  const isMobile = !ua || detectMobile({ ua, tablet: true });
+  const isMobile = req.cookies['__forceMobile'] === 'true' || !ua || detectMobile({ ua, tablet: true });
   const device = isMobile ? 'mobile' : 'desktop';
 
   const pathname = req.originalUrl === '/' ? '' : req.originalUrl;
