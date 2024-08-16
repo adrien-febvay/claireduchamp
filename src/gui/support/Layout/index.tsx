@@ -46,8 +46,8 @@ export const Support_Layout: React.FC<Props> = (props) => {
     to: (el, behavior = 'smooth') => {
       const elTop = typeof el === 'number' ? el : (getTop(el) ?? 0);
       const top = elTop - (me.nav.current?.height ?? 0);
-      const left = window.scrollX ?? document.documentElement.scrollLeft;
-      window.scroll({ top, left, behavior });
+      const left = window?.scrollX ?? document?.documentElement.scrollLeft;
+      window?.scroll({ top, left, behavior });
     },
   };
 

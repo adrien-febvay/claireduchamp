@@ -31,13 +31,15 @@ export type StrictConf = z.infer<typeof strictConfSchema>;
 
 class ConfError extends Error {
   public readonly code?: number;
+  public readonly cause?: unknown;
 
   public constructor(message: string);
   public constructor(code: number, message: string);
   public constructor(cause: { cause: unknown }, message: string);
   public constructor(arg0: string | number | { cause: unknown }, arg1?: string) {
-    super(arg1 ?? String(arg0), typeof arg0 === 'object' ? arg0 : void 0);
+    super(arg1 ?? String(arg0));
     this.code = typeof arg0 === 'number' ? arg0 : typeof arg0 === 'string' ? 0 : 500;
+    this.cause = typeof arg0 === 'object' ? arg0 : void 0;
   }
 }
 

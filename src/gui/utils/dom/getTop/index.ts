@@ -6,8 +6,8 @@
 export function getTop(el: Element): number;
 export function getTop(el: Element | string | null | undefined): number | null;
 export function getTop(el: Element | string | null | undefined): number | null {
-  const target = typeof el === 'string' ? document.querySelector(el) : el;
-  if (target) {
+  const target = typeof el === 'string' ? document?.querySelector(el) : el;
+  if (document && target) {
     const top = target.getBoundingClientRect().top;
     const scrollTop = document.documentElement.scrollTop ?? document.body.scrollTop;
     const clientTop = document.documentElement.clientTop ?? document.body.clientTop ?? 0;

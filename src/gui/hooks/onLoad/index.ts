@@ -5,13 +5,9 @@ import { onEvent } from '@/gui/hooks/onEvent';
  * @param fn Function to execute.
  */
 export function onLoad(fn: () => void): void {
-  if (typeof document !== 'undefined') {
-    const loading = document.readyState !== 'complete';
+  if (window) {
+    const loading = document?.readyState !== 'complete';
     onEvent(loading && window, 'load', fn);
-    React.useEffect(() => {
-      if (!loading) {
-        fn();
-      }
-    }, []);
+    React.useEffect(loading ? () => {} : fn, []);
   }
 }

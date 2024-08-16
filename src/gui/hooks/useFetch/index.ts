@@ -17,7 +17,7 @@ export function useFetch(defaultParams?: Params): [FetchFunction, typeof isAbort
 export function useFetch(defaultParams?: Params): [FetchFunction, typeof isAbort] {
   const memo = React.useMemo(() => ({ defaultParams, unmountController: new AbortController() }), []);
 
-  async function fetch(params?: Params): Promise<Response> {
+  async function hookedFetch(params?: Params): Promise<Response> {
     const abortablePromise = new AbortablePromise<Response>();
     const mergedParams = mergeSimilarObjects(memo.defaultParams, params);
     const signals = [mergedParams?.signal].flat();
@@ -27,7 +27,7 @@ export function useFetch(defaultParams?: Params): [FetchFunction, typeof isAbort
       throw new TypeError('Expected { url: RequestInfo | URL } in parameters, got undefined');
     } else {
       try {
-        return await window.fetch(mergedParams?.url, { ...mergedParams, signal: mergedSignal });
+        return await fetch(mergedParams?.url, { ...mergedParams, signal: mergedSignal });
       } catch (cause) {
         if (cause instanceof DOMException && cause.name === 'AbortError') {
           try {
@@ -50,5 +50,5 @@ export function useFetch(defaultParams?: Params): [FetchFunction, typeof isAbort
 
   React.useEffect(() => () => memo.unmountController.abort(isAbort.UNMOUNT), []);
 
-  return [fetch, isAbort];
+  return [hookedFetch, isAbort];
 }

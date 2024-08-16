@@ -2,6 +2,7 @@ import useStyles from 'isomorphic-style-loader/useStyles';
 import { useNavigate } from 'react-router-dom';
 import { LeftArrowButton as PrevButton } from '@/gui/atoms/LeftArrowButton';
 import { RightArrowButton as NextButton } from '@/gui/atoms/RightArrowButton';
+import { onEvent } from '@/gui/hooks/onEvent';
 import { Slideshow } from '@/gui/molecules/Slideshow';
 import { gridGen } from '@/gui/utils/grid/gen';
 import { getOuter } from '@/gui/utils/dom/getOuterSize';
@@ -41,30 +42,31 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
   );
 
   const navigate = useNavigate();
+  onEvent(window, 'resize', resizeViewer);
+  onEvent(document, 'keyup', handleKeyup);
 
   React.useEffect(() => {
-    window.addEventListener('resize', resizeViewer);
-    document.addEventListener('keyup', handleKeyup);
-
     const slideIndex = Math.floor((me.props.photoIndex - 1) / 3);
     if (slideIndex) {
       me.ref.slideshow.current?.setSlide(slideIndex, false);
     }
 
     return () => {
-      window.removeEventListener('resize', resizeViewer);
-      document.removeEventListener('keyup', handleKeyup);
-      document.body.style.overflow = '';
+      if (document) {
+        document.body.style.overflow = '';
+      }
     };
   }, []);
 
   React.useEffect(resizeViewer);
 
   function toogleScrollbars(): void {
-    const { innerWidth, innerHeight } = window;
-    const { offsetWidth, offsetHeight } = document.body;
-    const overflow = offsetWidth > innerWidth && offsetHeight > innerHeight;
-    document.body.style.overflow = overflow ? '' : 'hidden';
+    if (window) {
+      const { innerWidth, innerHeight } = window;
+      const { offsetWidth, offsetHeight } = window.document.body;
+      const overflow = offsetWidth > innerWidth && offsetHeight > innerHeight;
+      window.document.body.style.overflow = overflow ? '' : 'hidden';
+    }
   }
 
   function next(): void {

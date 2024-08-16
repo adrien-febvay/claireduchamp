@@ -1,5 +1,6 @@
 // Error without this line: Ambient module declaration cannot specify relative module name. ts(2436)
-import { RefObject } from 'react';
+import type { RefObject } from 'react';
+import type { _ } from '@/utils/types';
 
 declare module '.' {
   type Updater = (el: Element | null) => void;
@@ -15,6 +16,6 @@ declare module '.' {
 declare module './Fullscreen' {
   namespace Fullscreen {
     /** Fullscreen target: reference to element. */
-    type Target = RefObject<Element>;
+    type Target = RefObject<_.Nullish<Element>>;
   }
 }

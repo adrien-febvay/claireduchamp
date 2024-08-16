@@ -17,7 +17,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   const keywords = `${translate('keywords', '')}${meta.keywords ? `, ${meta.keywords}` : ''}`;
   const title = meta.title ? `${meta.title} • ${appTitle}` : appTitle;
 
-  if (typeof document !== 'undefined') {
+  if (document) {
     document.title = title;
   }
 
@@ -46,7 +46,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
 
   return (
     <Context.Provider value={{ locales, params, pathname: { ...pathname } }}>
-      {typeof document === 'undefined' && (
+      {!document && (
         <Head lang={language} status={status}>
           <title>{title}</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />

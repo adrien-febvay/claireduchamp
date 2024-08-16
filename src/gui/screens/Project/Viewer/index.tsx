@@ -35,7 +35,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
 
   React.useEffect(reset);
 
-  onEvent(typeof window !== 'undefined' && window, 'resize', onResize);
+  onEvent(window, 'resize', onResize);
 
   const toggleSwiping = useSwipe(me.ref.slider, handleSwipe);
   const swipeTimeoutPromiseManager = useTimeoutPromiseManager();
@@ -45,7 +45,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
   }
 
   function close(): void {
-    window.history.back();
+    window?.history.back();
   }
 
   function finalizePhotoChange(): void {
@@ -62,6 +62,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
   function handleSwipe(event: TouchEvent, data: useSwipe.Event.Data): void {
     const { axis, deltaX, deltaY, deltaT, speedX, speedY } = data;
     if (event.type === 'touchend') {
+      const { innerWidth = 1, innerHeight = 1 } = window ?? {};
       moveRoot(0, true);
       if (axis === null && deltaT < 750) {
         me.ref.closeButton.current?.toggle();
@@ -88,7 +89,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     const frame = me.ref.frame.current;
     const root = me.ref.root.current;
     if (frame && root) {
-      const amplitude = (y ?? 0) / innerHeight;
+      const amplitude = (y ?? 0) / (innerHeight ?? 1);
       const tenth = amplitude * 10;
       const transform = y ? `translateY(${tenth}%) translateY(${y}px) scale(${1 + amplitude})` : '';
       frame.style.transition = animate ? '' : 'none';
@@ -131,7 +132,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     const urlPhotoIndex = photoIndex && (photoIndex + me.currSlideIndex - 1) % pictures.count;
     const url = urlPhotoIndex ? `${pathname}/${urlPhotoIndex}` : pathname;
     if (url !== location.pathname) {
-      window.history?.replaceState(null, document.title, url);
+      window?.history?.replaceState(null, document?.title ?? '', url);
       if (urlPhotoIndex || me.prev) {
         gtm.pageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathname);
       }

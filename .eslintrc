@@ -15,7 +15,7 @@
   ],
   "env": {
     "es6": true,
-    "node": true,
+    "node": false,
     "browser": false
   },
   "parserOptions": {
@@ -25,7 +25,7 @@
     "jsx": false
   },
   // For VSCode failing to use "project" above: ignore some files.
-  "ignorePatterns": ["dist/*", ".dist-tmp/*", "**/*.js", "**/*.mjs", "**/*.scss.d.ts", "**/node-modules/**/*"],
+  "ignorePatterns": ["dist/*", ".dist-tmp/*", "**/*.js", "**/*.mjs", "**/*.scss.d.ts", "**/lib.*.d.ts", "**/node-modules/**/*"],
   "settings": {
     "import/resolver": {
       "node": {

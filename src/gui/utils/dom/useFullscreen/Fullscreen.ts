@@ -1,5 +1,7 @@
+import type { _ } from '@/utils/types';
+
 export class Fullscreen {
-  public readonly element: React.RefObject<Element>;
+  public readonly element: React.RefObject<_.Nullish<Element>>;
 
   public constructor(element: Fullscreen.Target) {
     this.element = element;
@@ -7,7 +9,7 @@ export class Fullscreen {
 
   /** Is fullscreen active? */
   public get active(): boolean {
-    return typeof document !== 'undefined' && document.fullscreenElement === (this.element.current ?? false);
+    return document?.fullscreenElement === (this.element.current ?? false);
   }
 
   /**
@@ -20,7 +22,7 @@ export class Fullscreen {
       if (enable ?? !this.active) {
         await this.element.current?.requestFullscreen();
       } else {
-        await document.exitFullscreen();
+        await document?.exitFullscreen();
       }
     }
   }

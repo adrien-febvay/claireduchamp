@@ -25,7 +25,7 @@ export function useDeviceSize(initializer: Initializer<Sizes> = defaultInitializ
   function getDeviceSize(): string {
     let sizeName = defaultSize;
     for (const [name, limit] of sizes) {
-      if (innerWidth > limit) {
+      if (innerWidth && innerWidth > limit) {
         break;
       }
       sizeName = name;

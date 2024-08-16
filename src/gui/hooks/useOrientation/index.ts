@@ -6,12 +6,10 @@ import { useMobileDetection } from '../useMobileDetection';
 export function useOrientation(override?: _.Nullish<OverrideFunction>): Orientation {
   const isMobile = useMobileDetection();
   const [orientation, setOrientation] = React.useState(getOrientation);
-  onEvent(typeof window !== 'undefined' && window, 'resize', updateOrientation);
+  onEvent(window, 'resize', updateOrientation);
 
   function getOrientation(): Orientation {
-    return (
-      override?.() || ((typeof window === 'undefined' ? isMobile : innerWidth < innerHeight) ? 'portrait' : 'landscape')
-    );
+    return override?.() || ((window ? window.innerWidth < window.innerHeight : isMobile) ? 'portrait' : 'landscape');
   }
 
   function updateOrientation(): void {

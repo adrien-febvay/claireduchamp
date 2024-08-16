@@ -1,3 +1,5 @@
+import '@/be/utils/misc/dom-globals';
+
 import fs from 'fs';
 import path from 'path';
 import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';

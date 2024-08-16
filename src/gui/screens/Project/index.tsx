@@ -13,6 +13,7 @@ import { usePathname } from '@/gui/hooks/usePathname';
 import { getCssValue } from '@/gui/utils/dom/getCssValue';
 import { getOuter } from '@/gui/utils/dom/getOuterSize';
 import { getPadding } from '@/gui/utils/dom/getPadding';
+import { localStorage } from '@/gui/utils/misc/localStorage';
 import { Preview } from './Preview';
 import { ProjectSlideshow } from './Slideshow';
 import { ProjectThumbnailGrid } from './ThumbnailGrid';
@@ -56,9 +57,9 @@ const ProjectScreen: React.FC = () => {
     const rowGap = getCssValue.toFloat(content, 'row-gap') ?? 0;
     const paddingWidth = getPadding.hrz.sum(me.ref.root.current) ?? 0;
     const paddingHeight = getPadding.vrt.sum(me.ref.root.current) ?? 0;
-    const width = innerWidth - paddingWidth - 2 * colGap;
-    const height = innerHeight - paddingHeight - heightSum - 3 * rowGap;
-    return width && height ? { width, height } : null;
+    const width = innerWidth && innerWidth - paddingWidth - 2 * colGap;
+    const height = innerHeight && innerHeight - paddingHeight - heightSum - 3 * rowGap;
+    return width && height && width > 0 && height > 0 ? { width, height } : null;
   }
 
   function autoFullscreen(): void {

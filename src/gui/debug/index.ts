@@ -6,7 +6,7 @@ const logParameters = {
 };
 
 function jsonReplacer(_key: string, value: unknown): unknown {
-  if (value instanceof HTMLElement) {
+  if (HTMLElement && value instanceof HTMLElement) {
     const id = value.id ? `#${value.id}` : '';
     const className = value.className ? `.${value.className.replace(/\s+/g, '.')}` : '';
     return `<${value.tagName.toLowerCase()}${id}${className}>`;
@@ -30,5 +30,7 @@ export function log(message: string, data?: unknown): void {
 }
 
 const debug = { log };
-Object.assign(window, { debug });
+if (window) {
+  Object.assign(window, { debug });
+}
 console.log('Custom debug tools available:', debug);

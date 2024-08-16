@@ -14,9 +14,11 @@ import { I18nextProvider, i18nInit } from '@/utils/i18n';
 
 TagManager.initialize({ gtmId: conf.gtmId });
 
-export const appElement = document.getElementById('app') as HTMLDivElement;
-const isMobile = /(^|;)\s*__forceMobile=true(;|$)/.test(document.cookie) || detectMobile({ tablet: true });
-appElement.className = isMobile ? 'mobile' : 'desktop';
+export const appElement = document?.getElementById('app');
+const isMobile = /(^|;)\s*__forceMobile=true(;|$)/.test(document?.cookie ?? '') || detectMobile({ tablet: true });
+if (appElement) {
+  appElement.className = isMobile ? 'mobile' : 'desktop';
+}
 
 const i18n = i18nInit(LanguageDetector, { resources: locales });
 
@@ -30,7 +32,9 @@ const App: React.FC = () => (
   </Head.Context.Provider>
 );
 
-if (appElement.children.length) {
+if (!appElement) {
+  console.error('Could not start React: #app not found');
+} else if (appElement.children.length) {
   ReactDOM.hydrateRoot(appElement, <App />);
 } else {
   ReactDOM.createRoot(appElement).render(<App />);

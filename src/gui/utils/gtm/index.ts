@@ -4,7 +4,7 @@ import { i18n } from '@/utils/i18n';
 
 export function push<Data extends gtm.Data>(data: Data): void {
   TagManager.dataLayer({ dataLayer: data });
-  if (!isProduction()) {
+  if (isProduction === false) {
     const { event, ...rest } = data;
     console.log('[dev] dataLayer:', event, rest);
   }

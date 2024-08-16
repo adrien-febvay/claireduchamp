@@ -12,11 +12,11 @@ export function getStyle(el: _.Nullish): null;
 export function getStyle(el: _.Optional<_.Stylable>): CSSStyleDeclaration | null;
 
 export function getStyle(el: _.Optional<_.Stylable>): CSSStyleDeclaration | null {
-  if (el instanceof CSSStyleDeclaration) {
-    return el;
-  } else if (!(el instanceof HTMLElement)) {
+  if (!CSSStyleDeclaration || !HTMLElement || !getComputedStyle) {
     return null;
-  } else if (el.offsetParent || document.fullscreenElement === el) {
+  } else if (el instanceof CSSStyleDeclaration) {
+    return el;
+  } else if (el instanceof HTMLElement && (el.offsetParent || document?.fullscreenElement === el)) {
     return getComputedStyle(el, null);
   } else {
     return null;

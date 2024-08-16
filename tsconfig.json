@@ -1,10 +1,60 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    // "incremental": true,                   /* Enable incremental compilation */
+    // "incremental": true,                   /* Enable incremental compilation. */
     "target": "ESNEXT",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
-    // "lib": [],                             /* Specify library files to be included in the compilation. */
+    "lib": [                                  /* Specify library files to be included in the compilation. */
+      "ES2015.Collection",
+      "ES2015.Core",
+      "ES2015.Generator",
+      "ES2015.Iterable",
+      "ES2015.Promise",
+      "ES2015.Proxy",
+      "ES2015.Reflect",
+      "ES2015.Symbol.WellKnown",
+      "ES2015.Symbol",
+      "ES2016.Array.Include",
+      "ES2017.Intl",
+      "ES2017.Object",
+      "ES2017.SharedMemory",
+      "ES2017.String",
+      "ES2017.TypedArrays",
+      "ES2018",
+      "ES2018.AsyncGenerator",
+      "ES2018.AsyncIterable",
+      "ES2018.Intl",
+      "ES2018.Promise",
+      "ES2018.Regexp",
+      "ES2019.Array",
+      "ES2019.Object",
+      "ES2019.String",
+      "ES2019.Symbol",
+      "ES2020.BigInt",
+      "ES2020.Promise",
+      "ES2020.String",
+      "ES2020.Symbol.WellKnown",
+      "ESNext.Array",
+      "ESNext.AsyncIterable",
+      "ESNext.BigInt",
+      "ESNext.Intl",
+      "ESNext.Promise",
+      "ESNext.String",
+      "ESNext.Symbol",
+      // "DOM",
+      // "DOM.Iterable",
+      "ScriptHost",
+      "WebWorker",
+      "WebWorker.ImportScripts",
+      "Webworker.Iterable",
+      "ES2020.SharedMemory",
+      "ES2020.Intl",
+      "ES2021.Promise",
+      "ES2021.String",
+      "ES2021.WeakRef",
+      "ESNext.WeakRef",
+      "es2021.intl"
+    ],
     // "allowJs": true,                       /* Allow javascript files to be compiled. */
     // "checkJs": true,                       /* Report errors in .js files. */
     "jsx": "react",                           /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
@@ -75,5 +125,4 @@
 
   "include": ["src"],
   "exclude": ["**/node_modules", ".tsc", ".tmp-dist", "dist", "src/be/gui"]
-
 }

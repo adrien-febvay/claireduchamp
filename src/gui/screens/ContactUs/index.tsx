@@ -72,8 +72,8 @@ export const Screen_ContactUs: React.FC = () => {
   function checkInput(name: FieldName): Checker {
     const { assert, format } = fields[name];
     function listener(event?: Checker.Argument): boolean | null {
-      const input = event instanceof HTMLElement ? event : event?.currentTarget;
-      const type = event instanceof HTMLElement ? null : event?.type;
+      const input = HTMLElement && (event instanceof HTMLElement ? event : event?.currentTarget);
+      const type = HTMLElement && (event instanceof HTMLElement ? null : event?.type);
       if (input) {
         const value = format(input.value);
         if (type !== 'input') {
@@ -93,7 +93,7 @@ export const Screen_ContactUs: React.FC = () => {
 
   function focusNextEmptyInput(event: React.ChangeEvent<HTMLInputElement>): void {
     const form = me.ref.form.current;
-    if (form && !(event.nativeEvent instanceof InputEvent)) {
+    if (form && InputEvent && HTMLInputElement && HTMLTextAreaElement && !(event.nativeEvent instanceof InputEvent)) {
       let nextInputs = false;
       for (const input of form.querySelectorAll('input,textarea')) {
         if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {

@@ -46,7 +46,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       props,
     },
   );
-  console.log('<Nav>', me.state);
+
   React.useImperativeHandle(ref, () => ({
     get height(): number | null {
       const navInnerHeight = getInner.height(me.nav.current);
@@ -59,9 +59,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   const openTimeoutPromiseManager = useTimeoutPromiseManager(16);
   const showTimeoutPromiseManager = useTimeoutPromiseManager(16);
 
-  if (typeof document !== 'undefined') {
-    onEvent(document, 'scroll', onScroll);
-  }
+  onEvent(document, 'scroll', onScroll);
   React.useEffect(didMount, []);
   React.useEffect(updateShowNav, [props.introPlaying]);
 
@@ -75,7 +73,8 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   function onScroll(): void {
     updateNavPadding();
 
-    const solid = window.scrollY > 0;
+    const scrollY = window?.scrollY ?? 0;
+    const solid = scrollY > 0;
     if (solid !== me.state.solid) {
       me.updateState({ solid });
     }
@@ -137,7 +136,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
 
   function updateNavPadding(): void {
     if (me.nav.current) {
-      const paddingTop = Math.max(60 - window.scrollY, 8);
+      const paddingTop = Math.max(60 - (scrollY ?? 0), 8);
       me.nav.current.style.paddingTop = `${paddingTop}px`;
     }
   }
@@ -184,7 +183,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
         classNames={[allStyles.scrollDownContainer, me.state.show && !me.state.open && allStyles.show]}
         style={{ display: introPlaying === null ? 'none' : 'block' }}
       >
-        <button className={allStyles.scrollDownButton} onClick={() => void scroll.to(window.innerHeight)}>
+        <button className={allStyles.scrollDownButton} onClick={() => void scroll.to(innerHeight)}>
           <div className={allStyles.downArrow} />
         </button>
       </div>
