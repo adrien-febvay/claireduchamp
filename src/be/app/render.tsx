@@ -80,9 +80,13 @@ export async function appRender(body: string, req: Request, res: Response) {
   const isResponsive = isMobile || req.cookies['__forceResponsive'] === 'true';
   const device = classUnion(isMobile ? 'mobile' : 'desktop', isResponsive ? 'responsive' : 'not-responsive');
 
+  const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
+  const forceResponsive = req.cookies['__forceResponsive'] === 'true';
+  const cacheEnabled = !(ssrOnly || forceResponsive);
+
   const pathname = req.originalUrl === '/' ? '' : req.originalUrl;
   const cacheFile = path.join(CACHE_PATH, `${device}${pathname}.html`);
-  const cachedRes = readFileSync(cacheFile);
+  const cachedRes = cacheEnabled && readFileSync(cacheFile);
 
   if (cachedRes) {
     return cachedRes;
@@ -92,7 +96,9 @@ export async function appRender(body: string, req: Request, res: Response) {
     const context = await staticHandler.query(fetchRequest);
 
     /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
-    const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
+    console.log("req.cookies['__ssrOnly']:", req.cookies['__ssrOnly']);
+    console.log('beSsrOnly:', beSsrOnly);
+    console.log('ssrOnly:', ssrOnly);
 
     // If we got a redirect response, short circuit and let our Express server handle that directly
     if (context instanceof Response) {
@@ -149,7 +155,7 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     const renderedRes = { content, status: headContext.status ?? 200 };
 
-    if (renderedRes.status === 200) {
+    if (cacheEnabled && renderedRes.status === 200) {
       writeFileSync(cacheFile, renderedRes);
     }
 
