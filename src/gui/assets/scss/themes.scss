@@ -157,7 +157,7 @@ $lite-brown: #895e34;
     @content;
   } @else if ($min == 0) {
     @media (max-width: ($max - 1px)) {
-      :global(#app.not-responsive) {
+      :global(#app.responsive) {
         @content;
       }
     }
