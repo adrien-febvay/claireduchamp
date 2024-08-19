@@ -1,0 +1,33 @@
+@import 'link';
+
+.root {
+  position: relative;
+  height: 100dvh;
+}
+
+.down-button-container {
+  position: absolute;
+  padding: 0 0 2px;
+  top: 100dvh;
+  width: 100%;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 750ms;
+
+  &.show {
+    transform: translateY(-100%);
+  }
+}
+
+.down-button {
+  @include link(1.1);
+}
+
+.down-arrow {
+  width: 26px;
+  height: 26px;
+  border: 3px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}

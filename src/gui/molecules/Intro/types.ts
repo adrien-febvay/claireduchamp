@@ -1,9 +1,8 @@
-import type { Carousel } from '@/gui/atoms/Carousel';
 import type { Intro as Component } from '.';
 
 declare module '.' {
   namespace Intro {
-    type Props = Carousel.Props & {
+    type Props = React.DivAttributes & {
       /** Play intro? */
       play?: boolean;
     };

@@ -6,7 +6,6 @@ import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Language } from '@/gui/molecules/Language';
-import { useScroll } from '@/gui/support/Layout/useScroll';
 
 import ownStyles from './styles.scss';
 
@@ -148,7 +147,6 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   // Render.
   const { introPlaying, styles } = me.props;
   const [translate] = useTranslation(namespace);
-  const scroll = useScroll();
 
   /** CSS styles merged. */
   const allStyles = React.extendStyles(ownStyles, styles);
@@ -178,66 +176,56 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   const language = <Language className={allStyles.language} />;
 
   return (
-    <>
-      <div
-        classNames={[allStyles.scrollDownContainer, me.state.show && !me.state.open && allStyles.show]}
-        style={{ display: introPlaying === null ? 'none' : 'block' }}
-      >
-        <button className={allStyles.scrollDownButton} onClick={() => void scroll.to(innerHeight)}>
-          <div className={allStyles.downArrow} />
-        </button>
-      </div>
-      <div classNames={[allStyles.root, menuState, solidity]}>
-        <div className={allStyles.smallNav} ref={me.smallNav}>
-          <div className={allStyles.menuContainer} ref={me.menuContainer}>
-            <div className={allStyles.menu}>
-              <Link to={screens.Home} className={allStyles.smallLogoText} onClick={() => void toggleMenu(false, true)}>
-                <Logo.Text />
-              </Link>
-              <div className={allStyles.menuEntries}>
-                {entry(screens.Projects, 'projects')}
-                {entry(screens.Services, 'services')}
-                {entry(screens.AboutUs, 'about-us')}
-                {entry(screens.ContactUs, 'contact-us')}
-              </div>
-              {language}
+    <div classNames={[allStyles.root, menuState, solidity]}>
+      <div className={allStyles.smallNav} ref={me.smallNav}>
+        <div className={allStyles.menuContainer} ref={me.menuContainer}>
+          <div className={allStyles.menu}>
+            <Link to={screens.Home} className={allStyles.smallLogoText} onClick={() => void toggleMenu(false, true)}>
+              <Logo.Text />
+            </Link>
+            <div className={allStyles.menuEntries}>
+              {entry(screens.Projects, 'projects')}
+              {entry(screens.Services, 'services')}
+              {entry(screens.AboutUs, 'about-us')}
+              {entry(screens.ContactUs, 'contact-us')}
             </div>
-          </div>
-          <div className={allStyles.smallNavBar} ref={me.smallNavBar}>
-            <div className={allStyles.home}>
-              <Link to={screens.Home} onClick={() => void toggleMenu(false)}>
-                <Logo.Image className={allStyles.smallLogo} />
-              </Link>
-            </div>
-            <div className={allStyles.more}>
-              <button onClick={() => void toggleMenu(void 0, false)} />
-            </div>
+            {language}
           </div>
         </div>
-        <div classNames={[allStyles.largeNav, me.state.show && allStyles.show]}>
-          <div ref={me.continueContainer} className={allStyles.continueContainer} onClick={stopIntro}>
-            <button className={allStyles.continue} onClick={stopIntro}>
-              <Logo color="white" className={allStyles.largeLogo} />
-            </button>
+        <div className={allStyles.smallNavBar} ref={me.smallNavBar}>
+          <div className={allStyles.home}>
+            <Link to={screens.Home} onClick={() => void toggleMenu(false)}>
+              <Logo.Image className={allStyles.smallLogo} />
+            </Link>
           </div>
-          <div className={allStyles.largeNavBar} onClick={stopIntro} ref={me.navSlide}>
-            <nav ref={me.nav}>
-              <div className={allStyles.group}>
-                {item(screens.Projects, 'projects')}
-                {item(screens.Services, 'services')}
-              </div>
-              <Link to={screens.Home} className={allStyles.item} onClick={startIntro}>
-                <Logo.Text className={allStyles.largeLogoText} />
-              </Link>
-              <div className={allStyles.group}>
-                {item(screens.AboutUs, 'about-us')}
-                {item(screens.ContactUs, 'contact-us', language)}
-              </div>
-            </nav>
+          <div className={allStyles.more}>
+            <button onClick={() => void toggleMenu(void 0, false)} />
           </div>
         </div>
       </div>
-    </>
+      <div classNames={[allStyles.largeNav, me.state.show && allStyles.show]}>
+        <div ref={me.continueContainer} className={allStyles.continueContainer} onClick={stopIntro}>
+          <button className={allStyles.continue} onClick={stopIntro}>
+            <Logo color="white" className={allStyles.largeLogo} />
+          </button>
+        </div>
+        <div className={allStyles.largeNavBar} onClick={stopIntro} ref={me.navSlide}>
+          <nav ref={me.nav}>
+            <div className={allStyles.group}>
+              {item(screens.Projects, 'projects')}
+              {item(screens.Services, 'services')}
+            </div>
+            <Link to={screens.Home} className={allStyles.item} onClick={startIntro}>
+              <Logo.Text className={allStyles.largeLogoText} />
+            </Link>
+            <div className={allStyles.group}>
+              {item(screens.AboutUs, 'about-us')}
+              {item(screens.ContactUs, 'contact-us', language)}
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
   );
 });
 
