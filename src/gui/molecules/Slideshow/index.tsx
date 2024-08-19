@@ -41,6 +41,9 @@ export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
   );
   React.useImperativeHandle(ref, () => me);
   me.didRender(() => {
+    // ESLint fails to get the proper type, TS knows it is `Element[]`, as intended.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    me.slides = [...(me.rootRef.current?.getElementsByClassName(ownStyles.slide) ?? [])];
     if (!me.slides.includes(me.currentSlide)) {
       me.setSlide(0, false);
     }
