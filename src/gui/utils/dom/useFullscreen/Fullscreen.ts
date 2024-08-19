@@ -17,10 +17,11 @@ export class Fullscreen {
    * @param enable Enter fullscreen? Otherwise exit it.
    * @returns A void promise.
    */
-  public async toggle(enable?: boolean): Promise<void> {
+  public async toggle(enable?: boolean, ignoreError = true): Promise<void> {
     if (enable == null || enable !== this.active) {
       if (enable ?? !this.active) {
-        await this.element.current?.requestFullscreen();
+        const req = this.element.current?.requestFullscreen();
+        await (ignoreError ? req?.catch(() => {}) : req);
       } else {
         await document?.exitFullscreen();
       }
