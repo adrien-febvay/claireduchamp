@@ -5,6 +5,7 @@ import path from 'path';
 import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
+import { encode } from 'html-entities';
 import { I18nextProvider } from 'react-i18next';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
 import { z } from 'zod';
@@ -139,7 +140,7 @@ export async function appRender(body: string, req: Request, res: Response) {
       .replace(/.*(?=<\/head>)/, '  $&\n  ')
       .replace(/<script defer src="(\/main(\.[a-z\d]+\.min)?.js)"><\/script>/, ssrOnly ? hydrateScript : '$&')
       .replace(/(?<=<div id="app">)(?=<\/div>)/, html)
-      .replace(/(?<=<div id="app")(?=>)/, ` class="${device}"`);
+      .replace(/(?<=<div id="app")(?=>)/, ` class="${encode(device)}"`);
 
     const renderedRes = { content, status: headContext.status ?? 200 };
 
