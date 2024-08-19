@@ -30,15 +30,17 @@ const cacheSchema = z.object({
   status: z.number(),
 });
 
-const hydrateScript =
-  "<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)}</script>";
-
 // Make GUI configuration available during SSR.
 Object.assign(global, { conf: conf.gui });
 
-const ssrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
-if (ssrOnly) {
-  console.log('SSR only: GUI main script on hold, type hydrate() in console to execute it');
+/** Script to allow manual GUI hydratation. */
+const HYDRATE_TIP = 'SSR only: GUI main script on hold, type hydrate() in console to execute it';
+const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)};console.log(${JSON.stringify(HYDRATE_TIP)})</script>`;
+
+/** SSR only mode through launcher option. */
+const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
+if (beSsrOnly) {
+  console.log(HYDRATE_TIP);
 }
 
 function readFileSync(file: string) {
@@ -88,6 +90,9 @@ export async function appRender(body: string, req: Request, res: Response) {
     const staticHandler = createStaticHandler(routes);
     const fetchRequest = createFetchRequest(req, res);
     const context = await staticHandler.query(fetchRequest);
+
+    /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
+    const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
 
     // If we got a redirect response, short circuit and let our Express server handle that directly
     if (context instanceof Response) {
