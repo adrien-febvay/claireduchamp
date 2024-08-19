@@ -204,11 +204,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
         </div>
       </div>
       <div classNames={[allStyles.largeNav, me.state.show && allStyles.show]}>
-        <div ref={me.continueContainer} className={allStyles.continueContainer} onClick={stopIntro}>
-          <button className={allStyles.continue} onClick={stopIntro}>
-            <Logo color="white" className={allStyles.largeLogo} />
-          </button>
-        </div>
+        <div ref={me.continueContainer} className={allStyles.continueContainer} onClick={stopIntro} />
         <div className={allStyles.largeNavBar} onClick={stopIntro} ref={me.navSlide}>
           <nav ref={me.nav}>
             <div className={allStyles.group}>

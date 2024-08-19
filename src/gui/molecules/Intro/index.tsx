@@ -1,5 +1,6 @@
 import useStyles from 'isomorphic-style-loader/useStyles';
 import { Carousel } from '@/gui/atoms/Carousel';
+import { Logo } from '@/gui/atoms/Logo';
 import { useScroll } from '@/gui/support/Layout/useScroll';
 import { Landscape, Portrait } from '@/gui/support/Orientation';
 
@@ -53,6 +54,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, play, ...divAttribu
           <div className={styles.downArrow} />
         </button>
       </div>
+      <Logo color="white" classNames={[styles.logo, play && styles.show]} />
     </div>
   );
 };

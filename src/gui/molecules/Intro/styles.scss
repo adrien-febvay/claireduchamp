@@ -1,8 +1,25 @@
 @import 'link';
+@import 'themes';
 
 .root {
   position: relative;
   height: 100dvh;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+  font-size: 22pt;
+  opacity: 0;
+  transition: opacity 750ms;
+  color: #ffffff;
+  fill: #ffffff;
+
+  &.show {
+    opacity: 1;
+  }
 }
 
 .down-button-container {
@@ -30,4 +47,11 @@
   border-top: none;
   border-left: none;
   transform: rotate(45deg);
+}
+
+
+@include device(not-desktop) {
+  .logo {
+    display: none;
+  }
 }
