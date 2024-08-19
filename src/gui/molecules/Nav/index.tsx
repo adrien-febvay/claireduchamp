@@ -192,7 +192,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
             {language}
           </div>
         </div>
-        <div className={allStyles.smallNavBar} ref={me.smallNavBar}>
+        <div className={allStyles.smallNavBar} ref={me.smallNavBar} onClick={stopIntro}>
           <div className={allStyles.home}>
             <Link to={screens.Home} onClick={() => void toggleMenu(false)}>
               <Logo.Image className={allStyles.smallLogo} />
