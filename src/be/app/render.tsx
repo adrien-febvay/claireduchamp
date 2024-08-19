@@ -5,13 +5,14 @@ import path from 'path';
 import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
+import { I18nextProvider } from 'react-i18next';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
 import { z } from 'zod';
+import { conf } from '@/conf';
+import { createFetchRequest } from '@/be/utils/misc/create-fetch-request';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
-import { I18nextProvider } from 'react-i18next';
-import { createFetchRequest } from '@/be/utils/misc/create-fetch-request';
-import { conf } from '@/conf';
+import { classUnion } from '@/utils/dom/classUnion';
 import { _ } from '@/utils/types';
 
 import type { Request, Response } from 'express';
@@ -72,8 +73,9 @@ export async function appRender(body: string, req: Request, res: Response) {
 
   /** Client device type. */
   const ua = req.headers['user-agent'];
-  const isMobile = req.cookies['__forceMobile'] === 'true' || !ua || detectMobile({ ua, tablet: true });
-  const device = isMobile ? 'mobile' : 'desktop';
+  const isMobile = !ua || detectMobile({ ua, tablet: true });
+  const isResponsive = isMobile || req.cookies['__forceResponsive'] === 'true';
+  const device = classUnion(isMobile ? 'mobile' : 'desktop', isResponsive ? 'responsive' : 'not-responsive');
 
   const pathname = req.originalUrl === '/' ? '' : req.originalUrl;
   const cacheFile = path.join(CACHE_PATH, `${device}${pathname}.html`);

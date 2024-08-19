@@ -14,14 +14,23 @@ import { I18nextProvider, i18nInit } from '@/utils/i18n';
 
 TagManager.initialize({ gtmId: conf.gtmId });
 
+/** Root <#app> element of the React app. */
 export const appElement = document?.getElementById('app');
-const isMobile = /(^|;)\s*__forceMobile=true(;|$)/.test(document?.cookie ?? '') || detectMobile({ tablet: true });
-if (appElement) {
-  appElement.className = isMobile ? 'mobile' : 'desktop';
-}
 
+/** Is device mobile? */
+const isMobile = detectMobile({ tablet: true });
+
+/**
+ * Is responsiveness enabled?
+ *
+ * Always `true` on mobile, can be forced on other devices with the `__forceResponsive=true` cookie.
+ */
+const isResponsive = isMobile || /(^|;)\s*__forceResponsive=true(;|$)/.test(document?.cookie ?? '');
+
+/** I18n module. */
 const i18n = i18nInit(LanguageDetector, { resources: locales });
 
+/** Root <App> component. */
 const App: React.FC = () => (
   <Head.Context.Provider value={{ location, isMobile }}>
     <StyleContext.Provider value={{ insertCss: () => {} }}>
@@ -33,9 +42,10 @@ const App: React.FC = () => (
 );
 
 if (!appElement) {
-  console.error('Could not start React: #app not found');
+  console.error('Could not start React: <#app> not found');
 } else if (appElement.children.length) {
   ReactDOM.hydrateRoot(appElement, <App />);
 } else {
+  React.addClass(appElement, isMobile ? 'mobile' : 'desktop', isResponsive ? 'responsive' : 'not-responsive');
   ReactDOM.createRoot(appElement).render(<App />);
 }

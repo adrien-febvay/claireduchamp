@@ -157,22 +157,22 @@ $lite-brown: #895e34;
     @content;
   } @else if ($min == 0) {
     @media (max-width: ($max - 1px)) {
-      :global(#app.mobile) {
+      :global(#app.not-responsive) {
         @content;
       }
     }
   } @else if ($max == 0) {
-    :global(#app.desktop) {
+    :global(#app.not-responsive) {
       @content;
     }
     @media (min-width: $min) {
-      :global(#app.mobile) {
+      :global(#app.responsive) {
         @content;
       }
     }
   } @else {
     @media (min-width: $min) and (max-width: ($max - 1px)) {
-      :global(#app.mobile) {
+      :global(#app.responsive) {
         @content;
       }
     }
