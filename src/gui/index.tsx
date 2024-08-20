@@ -32,7 +32,7 @@ const i18n = i18nInit(LanguageDetector, { resources: locales });
 
 /** Root <App> component. */
 const App: React.FC = () => (
-  <Head.Context.Provider value={{ location, isMobile }}>
+  <Head.Context.Provider value={Head.Context.create(location, isMobile, isResponsive)}>
     <StyleContext.Provider value={{ insertCss: () => {} }}>
       <I18nextProvider i18n={i18n}>
         <Router />

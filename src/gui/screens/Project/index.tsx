@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { CloseButton } from '@/gui/atoms/CloseButton';
 import { FullscreenButton } from '@/gui/atoms/FullscreenButton';
 import { Link } from '@/gui/atoms/Link';
-import { useMobileDetection } from '@/gui/hooks/useMobileDetection';
+import { useDevice } from '@/gui/hooks/useDevice';
 import { useParams } from '@/gui/hooks/useParams';
 import { usePathname } from '@/gui/hooks/usePathname';
 import { getCssValue } from '@/gui/utils/dom/getCssValue';
@@ -45,7 +45,7 @@ const ProjectScreen: React.FC = () => {
   const [translate, { lang }] = useTranslation(namespace);
   const fullscreen = useFullscreen(me.ref.root);
   const { id, photo } = useParams<Params>();
-  const isMobile = useMobileDetection();
+  const device = useDevice();
   const navigate = useNavigate();
 
   function getAvailableSize(): _.Size | null {
@@ -63,7 +63,7 @@ const ProjectScreen: React.FC = () => {
   }
 
   function autoFullscreen(): void {
-    if (!isMobile && localStorage.getItem(FULLSCREEN) !== 'false') {
+    if (device.desktop && localStorage.getItem(FULLSCREEN) !== 'false') {
       toggleFullscreen();
     }
   }

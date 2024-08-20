@@ -1,13 +1,15 @@
 import { onEvent } from '@/gui/hooks/onEvent';
-import { useMobileDetection } from '../useMobileDetection';
+import { useDevice } from '@/gui/hooks/useDevice';
 
 export function useOrientation(): Orientation {
-  const isMobile = useMobileDetection();
+  const device = useDevice();
   const [orientation, setOrientation] = React.useState(getOrientation);
-  onEvent(window, 'resize', updateOrientation);
+
+  onEvent(device.responsive && window, 'resize', updateOrientation);
 
   function getOrientation(): Orientation {
-    return (window ? window.innerWidth < window.innerHeight : isMobile) ? 'portrait' : 'landscape';
+    const portrait = device.responsive && (innerWidth && innerHeight ? innerWidth < innerHeight : device.mobile);
+    return portrait ? 'portrait' : 'landscape';
   }
 
   function updateOrientation(): void {

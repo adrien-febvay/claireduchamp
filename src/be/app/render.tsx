@@ -109,7 +109,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     const search = req.originalUrl.replace(/[^?]+/, '');
     const href = `${protocol}//${host}${pathname}${search}`;
     const location = { host, hostname, href, pathname, port, protocol, search };
-    const headContext = Head.Context.create(location, isMobile);
+    const headContext = Head.Context.create(location, isMobile, isResponsive);
 
     // Not the best, but at least the host will be available through a fake location object and should not change.
     Object.assign(global, { location });

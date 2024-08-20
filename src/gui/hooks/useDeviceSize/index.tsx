@@ -1,5 +1,5 @@
 import { onEvent } from '@/gui/hooks/onEvent';
-import { useMobileDetection } from '@/gui/hooks/useMobileDetection';
+import { useDevice } from '@/gui/hooks/useDevice';
 
 export const defaultSizes = [['large'], ['medium', 860], ['small', 320]] as const;
 
@@ -18,9 +18,7 @@ export function useDeviceSize(initializer: Initializer<Sizes> = defaultInitializ
   const [[defaultSize], ...sizes] = React.useMemo(initializer, deps ?? []);
   const [deviceSize, setDeviceSize] = React.useState(getDeviceSize);
 
-  if (useMobileDetection()) {
-    onEvent(window, 'resize', updateDeviceSize);
-  }
+  onEvent(useDevice().mobile && window, 'resize', updateDeviceSize);
 
   function getDeviceSize(): string {
     let sizeName = defaultSize;

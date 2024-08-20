@@ -1,5 +1,7 @@
 import { Context } from './Context';
 
+export * from './Context';
+
 /** Document header. */
 export const Support_Head: React.FC<Props> = ({ children, lang, status }) => {
   const context = React.useContext(Context);

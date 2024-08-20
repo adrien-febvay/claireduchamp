@@ -27,7 +27,11 @@ declare module '.' {
 
     /** Context value. */
     type Value = React.Children.Prop & {
-      isMobile: boolean;
+      device: {
+        desktop: boolean;
+        mobile: boolean;
+        responsive: boolean;
+      };
       lang?: string;
       location: Location;
       status?: number;

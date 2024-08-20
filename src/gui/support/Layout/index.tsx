@@ -3,7 +3,6 @@ import { getTop } from '@/gui/utils/dom/getTop';
 import { useLocation } from '@/gui/hooks/useLocation';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Logo } from '@/gui/atoms/Logo';
-import { useMobileDetectionFix } from '@/gui/hooks/useMobileDetection';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Footer } from '@/gui/molecules/Footer';
 import { Intro } from '@/gui/molecules/Intro';
@@ -17,7 +16,6 @@ import styles from './styles.scss';
 
 export const Support_Layout: React.FC<Props> = (props) => {
   useStyles(reset, appStyles, styles);
-  useMobileDetectionFix();
 
   const me = React.useComponent(
     () => {

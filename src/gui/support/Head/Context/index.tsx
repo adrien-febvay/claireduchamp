@@ -1,5 +1,8 @@
 /** Create <Head> context. */
-export const createHeadContext = (location: Location, isMobile: boolean): Value => ({ location, isMobile });
+export const createHeadContext = (location: Location, mobile: boolean, responsive: boolean): Value => ({
+  location,
+  device: { desktop: !mobile, mobile, responsive },
+});
 
 /** <Head> context. */
 export const Support_Head_Context = React.createContext({} as Value);
