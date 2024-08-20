@@ -2,7 +2,7 @@ import useStyles from 'isomorphic-style-loader/useStyles';
 import { Carousel } from '@/gui/atoms/Carousel';
 import { Logo } from '@/gui/atoms/Logo';
 import { useScroll } from '@/gui/support/Layout/useScroll';
-import { Landscape, Portrait } from '@/gui/support/Orientation';
+import { Orientation } from '@/gui/support/Orientation';
 
 import styles from './styles.scss';
 
@@ -16,7 +16,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, play, ...divAttribu
 
   return (
     <div classNames={[styles.root, className]} {...divAttributes}>
-      <Landscape>
+      <Orientation landscape>
         <Carousel autoPlay={play}>
           <img src={src('landscape-1')} />
           <div>
@@ -33,8 +33,8 @@ export const Molecule_Intro: React.FC<Props> = ({ className, play, ...divAttribu
           <img src={src('landscape-5')} />
           <img src={src('landscape-6')} />
         </Carousel>
-      </Landscape>
-      <Portrait>
+      </Orientation>
+      <Orientation portrait>
         <Carousel autoPlay={play}>
           <img src={src('portrait-01')} />
           <img src={src('portrait-02')} />
@@ -48,7 +48,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, play, ...divAttribu
           <img src={src('portrait-10')} />
           <img src={src('portrait-11')} />
         </Carousel>
-      </Portrait>
+      </Orientation>
       <div classNames={[styles.downButtonContainer, !play && styles.show]}>
         <button className={styles.downButton} onClick={() => void scroll.to(innerHeight)}>
           <div className={styles.downArrow} />
