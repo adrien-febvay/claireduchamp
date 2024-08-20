@@ -1,9 +1,13 @@
 import type { _ } from '@/utils/types';
 
+import EventEmitter from 'events';
+
 function voidFunction(): void {}
 type VoidFunction = () => void;
 
 export class TimeoutPromise extends Promise<void> {
+  private eventEnitter = new EventEmitter();
+
   public constructor(params: Argument);
 
   public constructor(params: Argument | typeof executor) {
@@ -36,6 +40,7 @@ export class TimeoutPromise extends Promise<void> {
     if (this.aborted === void 0) {
       void Object.defineProperty(this, 'aborted', { enumerable: false, value: true });
       clearTimeout(this.timeout);
+      this.eventEnitter.emit('abort');
       if ((this.throwOnAbort && reject !== false) || reject === true) {
         this.reject(`Aborted${reason && ': '}${reason}`);
       }
@@ -48,6 +53,11 @@ export class TimeoutPromise extends Promise<void> {
       clearTimeout(this.timeout);
       this.resolve();
     }
+  }
+
+  public onAbort(callback: () => void): this {
+    this.eventEnitter.on('abort', callback);
+    return this;
   }
 
   public static create(params: _.Optional<Partial<Argument>>): TimeoutPromise | null {

@@ -31,7 +31,10 @@ export class TimeoutPromiseManager {
     } else {
       const newParams = mergeSimilarObjects(this.params, TimeoutPromise.resolveParams(params));
       this.timeoutPromise = TimeoutPromise.create(newParams);
-      this.timeoutPromise?.finally(() => (this.timeoutPromise = null)).catch(voidFunction);
+      this.timeoutPromise
+        ?.onAbort(() => (this.timeoutPromise = null))
+        .finally(() => (this.timeoutPromise = null))
+        .catch(voidFunction);
       return this.timeoutPromise;
     }
   }
