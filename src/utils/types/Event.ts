@@ -36,10 +36,7 @@ declare module '.' {
       namespace Listener {
         type Generic = EventListenerOrEventListenerObject;
 
-        // type Generic<This extends Host.Generic = Host.Generic> = (
-        //   this: This,
-        //   event: globalThis.Event,
-        // ) => any;
+        // type Generic<This extends Host.Generic = Host.Generic> = (this: This, event: globalThis.Event) => any;
 
         type Options = EventListenerOptions;
 
@@ -48,7 +45,7 @@ declare module '.' {
         }
       }
 
-      type Map = {
+      interface Map {
         AbortSignal: [AbortSignal, AbortSignalEventMap];
         AbstractWorker: [AbstractWorker, AbstractWorkerEventMap];
         Animation: [Animation, AnimationEventMap];
@@ -121,7 +118,7 @@ declare module '.' {
         Worker: [Worker, WorkerEventMap];
         XMLHttpRequest: [XMLHttpRequest, XMLHttpRequestEventMap];
         XMLHttpRequestEventTarget: [XMLHttpRequestEventTarget, XMLHttpRequestEventTargetEventMap];
-      };
+      }
 
       type Type<Host extends Host.Generic = Host.Registered> = Values<{
         [Name in Host.Name]: If.Equals<Host, Map[Name][0], keyof Map[Name][1]>;
