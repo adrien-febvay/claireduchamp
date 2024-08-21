@@ -1,6 +1,6 @@
 import { Link as LegacyLink } from 'react-router-dom';
 import { useResolveUrl } from '@/gui/hooks/useResolveUrl';
-import { useScroll } from '@/gui/support/Layout/useScroll';
+import { useLayout } from '@/gui/hooks/useLayout';
 
 export { screens } from '@/gui/screens';
 
@@ -9,7 +9,7 @@ export function Atom_Link<To extends Link.Props.To>(props: Link.Props<To>): Reac
 export function Atom_Link(props: Link.Props): React.Node {
   const { onClick, params, to, ...linkProps } = props;
   const { url, noFollow } = useResolveUrl(to, params);
-  const scroll = useScroll();
+  const { scroll } = useLayout();
   const memo = React.useMemo(() => ({ url }), [url]);
 
   function maybeResetScroll(...args: OnClickParameters): void {

@@ -10,16 +10,21 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 1em;
+  padding: 1em;
   font-size: 22pt;
-  opacity: 0;
-  transition: opacity 750ms;
+  transition: transform 750ms;
   color: #ffffff;
   fill: #ffffff;
+}
 
-  &.show {
-    opacity: 1;
-  }
+.title {
+  position: absolute;
+  top: 12dvh;
+  left: 50%;
+  color: white;
+  font-size: 26pt;
+  transform: translateX(-50%);
+  transition: opacity 750ms;
 }
 
 .down-button-container {
@@ -28,12 +33,7 @@
   top: 100dvh;
   width: 100%;
   text-align: center;
-  transform: translateY(0);
   transition: transform 750ms;
-
-  &.show {
-    transform: translateY(-100%);
-  }
 }
 
 .down-button {
@@ -52,6 +52,12 @@
 
 @include device(not-desktop) {
   .logo {
+    display: none;
+  }
+}
+
+@include device(desktop) {
+  .title {
     display: none;
   }
 }

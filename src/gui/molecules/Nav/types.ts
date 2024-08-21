@@ -9,18 +9,15 @@ declare module '.' {
       React.Styles<typeof ownStyles> & {
         /** Top of the content to scroll to (navigation bar initially solid or not?). */
         goto?: string;
-
-        /** Is intro playing? `null` if not relevant. */
-        introPlaying: boolean | null;
-
-        /** Start/stop intro. */
-        toggleIntro: (play?: boolean) => void;
       };
 
     /** <Nav> reference. */
     type Ref = {
       /** Navigation bar height. */
       readonly height: number | null;
+      readonly hide: (this: void) => void;
+      readonly show: (this: void) => void;
+      readonly toggle: (this: void, state?: boolean) => void;
     };
   }
 

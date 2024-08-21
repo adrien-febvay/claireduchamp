@@ -1,4 +1,5 @@
 import type { Nav } from '@/gui/molecules/Nav';
+import type { Context as _Context } from './Context';
 import type { Layout as Component } from '.';
 
 declare module '.' {
@@ -18,6 +19,18 @@ declare module '.' {
         navStyles?: Nav.Props['styles'];
       };
     };
+
+    namespace Context {
+      type Value = _Context.Value;
+
+      type Scroll = _Context.Scroll;
+
+      namespace Scroll {
+        type EventMap = _Context.Scroll.EventMap;
+
+        type Target = _Context.Scroll.Target;
+      }
+    }
   }
 
   /** Internal component properties. */

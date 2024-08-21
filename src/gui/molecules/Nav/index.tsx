@@ -16,8 +16,6 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
 
   const me = React.useComponent(
     () => ({
-      /**  */
-      continueContainer: React.createRef<HTMLDivElement>(),
       /** Menu container element. */
       menuContainer: React.createRef<HTMLDivElement>(),
       /** Navigation element. */
@@ -34,8 +32,8 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       state: {
         /** Is menu open? */
         open: false,
-        /** Show navigation bar? */
-        show: !props.introPlaying,
+        /** Show navigation bar when at the top of the screen? */
+        show: true,
         /** Solid background? (or transparent?) */
         solid: false,
       },
@@ -46,26 +44,36 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     },
   );
 
-  React.useImperativeHandle(ref, () => ({
-    get height(): number | null {
-      const navInnerHeight = getInner.height(me.nav.current);
-      return navInnerHeight ?? getInner.height(me.smallNavBar.current);
-    },
-  }));
+  React.useImperativeHandle(ref, createRef, []);
 
   const menuTimeoutPromiseManager = useTimeoutPromiseManager(750);
-  const navTimeoutPromiseManager = useTimeoutPromiseManager(750);
   const openTimeoutPromiseManager = useTimeoutPromiseManager(16);
-  const showTimeoutPromiseManager = useTimeoutPromiseManager(16);
+
+  const [translate] = useTranslation(namespace);
 
   onEvent(document, 'scroll', onScroll);
   React.useEffect(didMount, []);
-  React.useEffect(updateShowNav, [props.introPlaying]);
+  // React.useEffect(show);
+
+  function createRef() {
+    return {
+      get height(): number | null {
+        const navInnerHeight = getInner.height(me.nav.current);
+        return navInnerHeight ?? getInner.height(me.smallNavBar.current);
+      },
+      hide,
+      show,
+      toggle,
+    };
+  }
 
   function didMount(): void {
     onScroll();
     toggleMenuElements(false);
-    toggleContinueContainer();
+  }
+
+  function hide() {
+    me.updateState({ show: false });
   }
 
   /** Document scroll listener. */
@@ -77,40 +85,22 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     if (solid !== me.state.solid) {
       me.updateState({ solid });
     }
-    if (me.props.introPlaying && scrollY > me.scrollY) {
-      me.props.toggleIntro(false);
-    }
     me.scrollY = Math.max(scrollY, 0);
     if (me.navSlide.current) {
       me.navSlide.current.style.left = `-${scrollX}px`;
     }
   }
 
-  function startIntro(event: React.SyntheticEvent<HTMLElement>): void {
-    event.stopPropagation();
-    me.props.toggleIntro(true);
+  function show() {
+    me.updateState({ show: true });
   }
 
-  function stopIntro(event: React.SyntheticEvent<HTMLElement>): void {
-    event.stopPropagation();
-    me.props.toggleIntro(false);
-  }
-
-  function toggleContinueContainer(): void {
-    const continueContainer = me.continueContainer.current;
-    if (continueContainer) {
-      continueContainer.style.display = me.props.introPlaying ? '' : 'none';
-    }
-  }
-
-  function toggleShowNav(state: boolean): void {
-    if (state) {
-      void navTimeoutPromiseManager.restart()?.then(toggleContinueContainer);
+  function toggle(state?: boolean) {
+    if (state ?? !me.state.show) {
+      show();
     } else {
-      navTimeoutPromiseManager.abort();
-      toggleContinueContainer();
+      hide();
     }
-    void showTimeoutPromiseManager.restart()?.then(() => me.updateState({ show: state }));
   }
 
   function toggleMenuElements(open: boolean): void {
@@ -122,7 +112,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     }
   }
 
-  function toggleMenu(state = !me.state.open, intro?: boolean): void {
+  function toggleMenu(state = !me.state.open): void {
     if (state) {
       menuTimeoutPromiseManager.abort();
       toggleMenuElements(true);
@@ -130,7 +120,6 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       void menuTimeoutPromiseManager.restart()?.then(() => toggleMenuElements(false));
     }
     void openTimeoutPromiseManager.restart()?.then(() => me.updateState({ open: state }));
-    me.props.toggleIntro(intro);
   }
 
   function updateNavPadding(): void {
@@ -140,16 +129,8 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     }
   }
 
-  function updateShowNav(): void {
-    toggleShowNav(!introPlaying);
-  }
-
-  // Render.
-  const { introPlaying, styles } = me.props;
-  const [translate] = useTranslation(namespace);
-
   /** CSS styles merged. */
-  const allStyles = React.extendStyles(ownStyles, styles);
+  const allStyles = React.extendStyles(ownStyles, me.props.styles);
 
   /** Navigation bar appearance: menu open? solid or transparent? */
   const menuState = me.state.open && allStyles.open;
@@ -174,13 +155,12 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   );
 
   const language = <Language className={allStyles.language} />;
-
   return (
     <div classNames={[allStyles.root, menuState, solidity]}>
       <div className={allStyles.smallNav} ref={me.smallNav}>
         <div className={allStyles.menuContainer} ref={me.menuContainer}>
           <div className={allStyles.menu}>
-            <Link to={screens.Home} className={allStyles.smallLogoText} onClick={() => void toggleMenu(false, true)}>
+            <Link to={screens.Home} className={allStyles.smallLogoText} onClick={() => void toggleMenu(false)}>
               <Logo.Text />
             </Link>
             <div className={allStyles.menuEntries}>
@@ -192,26 +172,25 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
             {language}
           </div>
         </div>
-        <div className={allStyles.smallNavBar} ref={me.smallNavBar} onClick={stopIntro}>
+        <div className={allStyles.smallNavBar} ref={me.smallNavBar}>
           <div className={allStyles.home}>
             <Link to={screens.Home} onClick={() => void toggleMenu(false)}>
               <Logo.Image className={allStyles.smallLogo} />
             </Link>
           </div>
           <div className={allStyles.more}>
-            <button onClick={() => void toggleMenu(void 0, false)} />
+            <button onClick={() => void toggleMenu()} />
           </div>
         </div>
       </div>
       <div classNames={[allStyles.largeNav, me.state.show && allStyles.show]}>
-        <div ref={me.continueContainer} className={allStyles.continueContainer} onClick={stopIntro} />
-        <div className={allStyles.largeNavBar} onClick={stopIntro} ref={me.navSlide}>
+        <div className={allStyles.largeNavBar} ref={me.navSlide}>
           <nav ref={me.nav}>
             <div className={allStyles.group}>
               {item(screens.Projects, 'projects')}
               {item(screens.Services, 'services')}
             </div>
-            <Link to={screens.Home} className={allStyles.item} onClick={startIntro}>
+            <Link to={screens.Home} className={allStyles.item}>
               <Logo.Text className={allStyles.largeLogoText} />
             </Link>
             <div className={allStyles.group}>
