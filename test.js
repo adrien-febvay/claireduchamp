@@ -1,1 +1,0 @@
-fetch('https://localhost/robots.txt', {}).then(console.log, console.error)

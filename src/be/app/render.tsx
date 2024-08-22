@@ -80,6 +80,7 @@ export async function appRender(body: string, req: Request, res: Response) {
   const isResponsive = isMobile || req.cookies['__forceResponsive'] === 'true';
   const device = classUnion(isMobile ? 'mobile' : 'desktop', isResponsive ? 'responsive' : 'not-responsive');
 
+  /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
   const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
   const forceResponsive = req.cookies['__forceResponsive'] === 'true';
   const cacheEnabled = !(ssrOnly || forceResponsive);
@@ -94,11 +95,6 @@ export async function appRender(body: string, req: Request, res: Response) {
     const staticHandler = createStaticHandler(routes);
     const fetchRequest = createFetchRequest(req, res);
     const context = await staticHandler.query(fetchRequest);
-
-    /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
-    console.log("req.cookies['__ssrOnly']:", req.cookies['__ssrOnly']);
-    console.log('beSsrOnly:', beSsrOnly);
-    console.log('ssrOnly:', ssrOnly);
 
     // If we got a redirect response, short circuit and let our Express server handle that directly
     if (context instanceof Response) {

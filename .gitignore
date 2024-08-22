@@ -9,6 +9,7 @@ node_modules/
 /.dist-tmp/
 /dist/
 /src/be/gui/
+/test*.js
 .DS_Store
 *.tgz
 *.scss.d.ts
