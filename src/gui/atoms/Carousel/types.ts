@@ -3,15 +3,12 @@ import type { Carousel as Component } from '.';
 
 declare module '.' {
   namespace Carousel {
-    type Props = {
+    type Props = React.classNames.Props & {
       /** Auto play? */
       autoPlay?: boolean;
 
       /** Children elements. */
       children?: LegacyCarouselProps['children'];
-
-      /** CSS class name(s). */
-      className?: string;
     };
   }
 
