@@ -15,17 +15,22 @@ declare module 'react' {
      * Helps managing element class names.
      */
     type Item = _.Optional<string> | Index | Item[];
+
+    interface Props {
+      /** CSS class name(s). */
+      className?: string;
+
+      /**
+       * - Optional class name (Optional<string>),
+       * - Object indexing optional class names ({ [x: string]: Optional<true> }),
+       * - Recursive array of the above.
+       * Helps managing element class names.
+       */
+      classNames?: classNames.Item;
+    }
   }
 
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    /**
-     * - Optional class name (Optional<string>),
-     * - Object indexing optional class names ({ [x: string]: Optional<true> }),
-     * - Recursive array of the above.
-     * Helps managing element class names.
-     */
-    classNames?: classNames.Item;
-  }
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T>, classNames.Props {}
 
   /** HTML Attributes. */
   interface SVGAttributes<T> extends AriaAttributes, DOMAttributes<T> {
