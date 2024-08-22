@@ -8,8 +8,8 @@
 
 .logo {
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   padding: 1em;
   font-size: 22pt;
   transition: transform 750ms;
@@ -48,7 +48,6 @@
   border-left: none;
   transform: rotate(45deg);
 }
-
 
 @include device(not-desktop) {
   .logo {

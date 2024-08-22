@@ -1,13 +1,16 @@
 import useStyles from 'isomorphic-style-loader/useStyles';
 import { Carousel } from '@/gui/atoms/Carousel';
+import { Image } from '@/gui/atoms/Image';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useLayout } from '@/gui/hooks/useLayout';
+import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Orientation } from '@/gui/support/Orientation';
 
 import styles from './styles.scss';
-import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
+import landscapeLowresStyles from './landscape-lowres.scss';
+import portraitLowresStyles from './portrait-lowres.scss';
 
 function url(no: string): string {
   return `/img/intro/claire-duchamp-villa-grandvaux-©JulieMasson-${no}.jpg`;
@@ -73,7 +76,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
     <div classNames={[styles.root, className]} {...divAttributes}>
       <Orientation landscape>
         <Carousel autoPlay={me.state.playing}>
-          <img src={url('landscape-1')} />
+          <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
           <div>
             <img src={url('landscape-2-1')} />
             <img src={url('landscape-2-2')} />
@@ -91,7 +94,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
       </Orientation>
       <Orientation portrait>
         <Carousel autoPlay={me.state.playing}>
-          <img src={url('portrait-01')} />
+          <Image src={url('portrait-01')} styles={portraitLowresStyles} />
           <img src={url('portrait-02')} />
           <img src={url('portrait-03')} />
           <img src={url('portrait-04')} />
