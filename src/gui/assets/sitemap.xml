@@ -15,6 +15,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/projects" />
   </url>
   <url>
+    <loc>https://www.claireduchamp.ch/lampe-alpine</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/lampe-alpine" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/alpine-lamp" />
+  </url>
+  <url>
+    <loc>https://www.claireduchamp.ch/appartement-chardonne-2024</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/appartement-chardonne-2024" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/chardonne-apartement-2024" />
+  </url>
+  <url>
     <loc>https://www.claireduchamp.ch/villa-grandvaux-2023</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/villa-grandvaux-2023" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/grandvaux-villa-2023" />
@@ -43,6 +53,16 @@
     <loc>https://www.claireduchamp.ch/projects</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/projets" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/projects" />
+  </url>
+  <url>
+    <loc>https://www.claireduchamp.ch/alpine-lamp</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/lampe-alpine" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/alpine-lamp" />
+  </url>
+  <url>
+    <loc>https://www.claireduchamp.ch/chardonne-apartement-2024</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.claireduchamp.ch/appartement-chardonne-2024" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.claireduchamp.ch/chardonne-apartement-2024" />
   </url>
   <url>
     <loc>https://www.claireduchamp.ch/grandvaux-villa-2023</loc>
