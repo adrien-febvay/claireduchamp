@@ -46,6 +46,11 @@
     "sending": "Envoi en cours...",
     "sent": "Envoi effectué"
   },
+  "Screens/Home": {
+    "pathname": "/architecte",
+    "title": "",
+    "description": ""
+  },
   "Screens/LegalNotice": {
     "pathname": "/mentions-legales",
     "title": "Mentions légales"

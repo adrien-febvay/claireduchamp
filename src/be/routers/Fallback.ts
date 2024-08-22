@@ -1,6 +1,6 @@
 import { ErrorRequestHandler, Request } from 'express';
 import { _ } from '@/utils/types';
-import { indexPath, sendIndex } from './Main';
+import { indexPath, sendIndex } from './Gui';
 import { stringify } from './utils';
 
 function log(label: string, { cookies, res }: Request, e?: unknown) {

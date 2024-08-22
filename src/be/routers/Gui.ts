@@ -14,7 +14,7 @@ export async function sendIndex(req: Request, res: Response) {
   res.send(content);
 }
 
-export const MainRouter = () =>
+export const GuiRouter = () =>
   Router((me) => {
     if (process.env.NODE_ENV === 'development') {
       console.log(`Use \x1b[32mrendering\x1b[0m based on \x1b[33m${indexPath}\x1b[0m`);

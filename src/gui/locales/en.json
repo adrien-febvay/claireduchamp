@@ -46,6 +46,11 @@
     "sending": "Sending...",
     "sent": "Sent"
   },
+  "Screens/Home": {
+    "pathname": "/architect",
+    "title": "",
+    "description": ""
+  },
   "Screens/LegalNotice": {
     "pathname": "/legal-notice",
     "title": "Legal Notice"
