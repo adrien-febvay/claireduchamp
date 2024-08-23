@@ -2313,7 +2313,7 @@ interface AbortController {
   abort(reason?: any): void;
 }
 
-declare var AbortController: undefined | { 
+declare var AbortController: { 
   prototype: AbortController;
   new(): AbortController; 
 };
@@ -2346,7 +2346,7 @@ interface AbortSignal extends EventTarget {
   removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var AbortSignal: undefined | { 
+declare var AbortSignal: { 
   prototype: AbortSignal;
   new(): AbortSignal;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
@@ -3146,7 +3146,7 @@ interface Blob {
   text(): Promise<string>;
 }
 
-declare var Blob: undefined | { 
+declare var Blob: { 
   prototype: Blob;
   new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob; 
 };
@@ -3216,7 +3216,7 @@ interface BroadcastChannel extends EventTarget {
   removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var BroadcastChannel: undefined | { 
+declare var BroadcastChannel: { 
   prototype: BroadcastChannel;
   new(name: string): BroadcastChannel; 
 };
@@ -3233,7 +3233,7 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
   readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
-declare var ByteLengthQueuingStrategy: undefined | { 
+declare var ByteLengthQueuingStrategy: { 
   prototype: ByteLengthQueuingStrategy;
   new(init: QueuingStrategyInit): ByteLengthQueuingStrategy; 
 };
@@ -5851,7 +5851,7 @@ declare var CompositionEvent: undefined | {
 interface CompressionStream extends GenericTransformStream {
 }
 
-declare var CompressionStream: undefined | { 
+declare var CompressionStream: { 
   prototype: CompressionStream;
   new(format: CompressionFormat): CompressionStream; 
 };
@@ -5911,7 +5911,7 @@ interface CountQueuingStrategy extends QueuingStrategy {
   readonly size: QueuingStrategySize;
 }
 
-declare var CountQueuingStrategy: undefined | { 
+declare var CountQueuingStrategy: { 
   prototype: CountQueuingStrategy;
   new(init: QueuingStrategyInit): CountQueuingStrategy; 
 };
@@ -5976,7 +5976,7 @@ interface Crypto {
   randomUUID(): `${string}-${string}-${string}-${string}-${string}`;
 }
 
-declare var Crypto: undefined | { 
+declare var Crypto: { 
   prototype: Crypto;
   new(): Crypto; 
 };
@@ -5998,7 +5998,7 @@ interface CryptoKey {
   readonly usages: KeyUsage[];
 }
 
-declare var CryptoKey: undefined | { 
+declare var CryptoKey: { 
   prototype: CryptoKey;
   new(): CryptoKey; 
 };
@@ -6038,7 +6038,7 @@ interface CustomEvent<T = any> extends Event {
   initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
 }
 
-declare var CustomEvent: undefined | { 
+declare var CustomEvent: { 
   prototype: CustomEvent;
   new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>; 
 };
@@ -6096,7 +6096,7 @@ interface DOMException extends Error {
   readonly DATA_CLONE_ERR: 25;
 }
 
-declare var DOMException: undefined | { 
+declare var DOMException: { 
   prototype: DOMException;
   new(message?: string, name?: string): DOMException;
   readonly INDEX_SIZE_ERR: 1;
@@ -6701,7 +6701,7 @@ declare var DataTransferItemList: undefined | {
 interface DecompressionStream extends GenericTransformStream {
 }
 
-declare var DecompressionStream: undefined | { 
+declare var DecompressionStream: { 
   prototype: DecompressionStream;
   new(format: CompressionFormat): DecompressionStream; 
 };
@@ -8180,7 +8180,7 @@ interface Event {
   readonly BUBBLING_PHASE: 3;
 }
 
-declare var Event: undefined | { 
+declare var Event: { 
   prototype: Event;
   new(type: string, eventInitDict?: EventInit): Event;
   readonly NONE: 0;
@@ -8302,7 +8302,7 @@ interface EventTarget {
   removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
-declare var EventTarget: undefined | { 
+declare var EventTarget: { 
   prototype: EventTarget;
   new(): EventTarget; 
 };
@@ -8336,7 +8336,7 @@ interface File extends Blob {
   readonly webkitRelativePath: string;
 }
 
-declare var File: undefined | { 
+declare var File: { 
   prototype: File;
   new(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File; 
 };
@@ -8697,7 +8697,7 @@ interface FormData {
   forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
 }
 
-declare var FormData: undefined | { 
+declare var FormData: { 
   prototype: FormData;
   new(form?: HTMLFormElement, submitter?: HTMLElement | null): FormData; 
 };
@@ -13167,7 +13167,7 @@ interface Headers {
   forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
 }
 
-declare var Headers: undefined | { 
+declare var Headers: { 
   prototype: Headers;
   new(init?: HeadersInit): Headers; 
 };
@@ -15174,7 +15174,7 @@ interface MessageChannel {
   readonly port2: MessagePort;
 }
 
-declare var MessageChannel: undefined | { 
+declare var MessageChannel: { 
   prototype: MessageChannel;
   new(): MessageChannel; 
 };
@@ -15219,7 +15219,7 @@ interface MessageEvent<T = any> extends Event {
   initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
 }
 
-declare var MessageEvent: undefined | { 
+declare var MessageEvent: { 
   prototype: MessageEvent;
   new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>; 
 };
@@ -15266,7 +15266,7 @@ interface MessagePort extends EventTarget {
   removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var MessagePort: undefined | { 
+declare var MessagePort: { 
   prototype: MessagePort;
   new(): MessagePort; 
 };
@@ -16753,7 +16753,7 @@ interface Performance extends EventTarget {
   removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Performance: undefined | { 
+declare var Performance: { 
   prototype: Performance;
   new(): Performance; 
 };
@@ -16776,7 +16776,7 @@ interface PerformanceEntry {
   toJSON(): any;
 }
 
-declare var PerformanceEntry: undefined | { 
+declare var PerformanceEntry: { 
   prototype: PerformanceEntry;
   new(): PerformanceEntry; 
 };
@@ -16810,7 +16810,7 @@ interface PerformanceMark extends PerformanceEntry {
   readonly detail: any;
 }
 
-declare var PerformanceMark: undefined | { 
+declare var PerformanceMark: { 
   prototype: PerformanceMark;
   new(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark; 
 };
@@ -16825,7 +16825,7 @@ interface PerformanceMeasure extends PerformanceEntry {
   readonly detail: any;
 }
 
-declare var PerformanceMeasure: undefined | { 
+declare var PerformanceMeasure: { 
   prototype: PerformanceMeasure;
   new(): PerformanceMeasure; 
 };
@@ -16917,7 +16917,7 @@ interface PerformanceObserver {
   takeRecords(): PerformanceEntryList;
 }
 
-declare var PerformanceObserver: undefined | { 
+declare var PerformanceObserver: { 
   prototype: PerformanceObserver;
   new(callback: PerformanceObserverCallback): PerformanceObserver;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes_static) */
@@ -16934,7 +16934,7 @@ interface PerformanceObserverEntryList {
   getEntriesByType(type: string): PerformanceEntryList;
 }
 
-declare var PerformanceObserverEntryList: undefined | { 
+declare var PerformanceObserverEntryList: { 
   prototype: PerformanceObserverEntryList;
   new(): PerformanceObserverEntryList; 
 };
@@ -16994,7 +16994,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
   toJSON(): any;
 }
 
-declare var PerformanceResourceTiming: undefined | { 
+declare var PerformanceResourceTiming: { 
   prototype: PerformanceResourceTiming;
   new(): PerformanceResourceTiming; 
 };
@@ -18242,7 +18242,7 @@ interface ReadableByteStreamController {
   error(e?: any): void;
 }
 
-declare var ReadableByteStreamController: undefined | { 
+declare var ReadableByteStreamController: { 
   prototype: ReadableByteStreamController;
   new(): ReadableByteStreamController; 
 };
@@ -18269,7 +18269,7 @@ interface ReadableStream<R = any> {
   tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
-declare var ReadableStream: undefined | { 
+declare var ReadableStream: { 
   prototype: ReadableStream;
   new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
   new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
@@ -18284,7 +18284,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
   releaseLock(): void;
 }
 
-declare var ReadableStreamBYOBReader: undefined | { 
+declare var ReadableStreamBYOBReader: { 
   prototype: ReadableStreamBYOBReader;
   new(stream: ReadableStream): ReadableStreamBYOBReader; 
 };
@@ -18299,7 +18299,7 @@ interface ReadableStreamBYOBRequest {
   respondWithNewView(view: ArrayBufferView): void;
 }
 
-declare var ReadableStreamBYOBRequest: undefined | { 
+declare var ReadableStreamBYOBRequest: { 
   prototype: ReadableStreamBYOBRequest;
   new(): ReadableStreamBYOBRequest; 
 };
@@ -18316,7 +18316,7 @@ interface ReadableStreamDefaultController<R = any> {
   error(e?: any): void;
 }
 
-declare var ReadableStreamDefaultController: undefined | { 
+declare var ReadableStreamDefaultController: { 
   prototype: ReadableStreamDefaultController;
   new(): ReadableStreamDefaultController; 
 };
@@ -18329,7 +18329,7 @@ interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericRead
   releaseLock(): void;
 }
 
-declare var ReadableStreamDefaultReader: undefined | { 
+declare var ReadableStreamDefaultReader: { 
   prototype: ReadableStreamDefaultReader;
   new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>; 
 };
@@ -21638,7 +21638,7 @@ interface SubtleCrypto {
   wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams): Promise<ArrayBuffer>;
 }
 
-declare var SubtleCrypto: undefined | { 
+declare var SubtleCrypto: { 
   prototype: SubtleCrypto;
   new(): SubtleCrypto; 
 };
@@ -21692,7 +21692,7 @@ interface TextDecoder extends TextDecoderCommon {
   decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
 }
 
-declare var TextDecoder: undefined | { 
+declare var TextDecoder: { 
   prototype: TextDecoder;
   new(label?: string, options?: TextDecoderOptions): TextDecoder; 
 };
@@ -21724,7 +21724,7 @@ interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
   readonly writable: WritableStream<BufferSource>;
 }
 
-declare var TextDecoderStream: undefined | { 
+declare var TextDecoderStream: { 
   prototype: TextDecoderStream;
   new(label?: string, options?: TextDecoderOptions): TextDecoderStream; 
 };
@@ -21749,7 +21749,7 @@ interface TextEncoder extends TextEncoderCommon {
   encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
 
-declare var TextEncoder: undefined | { 
+declare var TextEncoder: { 
   prototype: TextEncoder;
   new(): TextEncoder; 
 };
@@ -21769,7 +21769,7 @@ interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
   readonly writable: WritableStream<string>;
 }
 
-declare var TextEncoderStream: undefined | { 
+declare var TextEncoderStream: { 
   prototype: TextEncoderStream;
   new(): TextEncoderStream; 
 };
@@ -22233,7 +22233,7 @@ interface TransformStream<I = any, O = any> {
   readonly writable: WritableStream<I>;
 }
 
-declare var TransformStream: undefined | { 
+declare var TransformStream: { 
   prototype: TransformStream;
   new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>; 
 };
@@ -22250,7 +22250,7 @@ interface TransformStreamDefaultController<O = any> {
   terminate(): void;
 }
 
-declare var TransformStreamDefaultController: undefined | { 
+declare var TransformStreamDefaultController: { 
   prototype: TransformStreamDefaultController;
   new(): TransformStreamDefaultController; 
 };
@@ -22373,7 +22373,7 @@ interface URL {
   toJSON(): string;
 }
 
-declare var URL: undefined | { 
+declare var URL: { 
   prototype: URL;
   new(url: string | URL, base?: string | URL): URL;
   /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
@@ -22436,7 +22436,7 @@ interface URLSearchParams {
   forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
-declare var URLSearchParams: undefined | { 
+declare var URLSearchParams: { 
   prototype: URLSearchParams;
   new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams; 
 };
@@ -25878,7 +25878,7 @@ interface WritableStream<W = any> {
   getWriter(): WritableStreamDefaultWriter<W>;
 }
 
-declare var WritableStream: undefined | { 
+declare var WritableStream: { 
   prototype: WritableStream;
   new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>; 
 };
@@ -25895,7 +25895,7 @@ interface WritableStreamDefaultController {
   error(e?: any): void;
 }
 
-declare var WritableStreamDefaultController: undefined | { 
+declare var WritableStreamDefaultController: { 
   prototype: WritableStreamDefaultController;
   new(): WritableStreamDefaultController; 
 };
@@ -25922,7 +25922,7 @@ interface WritableStreamDefaultWriter<W = any> {
   write(chunk?: W): Promise<void>;
 }
 
-declare var WritableStreamDefaultWriter: undefined | { 
+declare var WritableStreamDefaultWriter: { 
   prototype: WritableStreamDefaultWriter;
   new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>; 
 };
@@ -27063,7 +27063,7 @@ declare var document: undefined | Document;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/event)
  */
-declare var event: undefined | Event | undefined;
+declare var event: Event | undefined;
 /**
  * @deprecated
  *
@@ -27299,7 +27299,7 @@ declare var scrollTo: undefined | ((x: number, y: number) => void);
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/stop)
  */
 declare var stop: undefined | (() => void);
-declare var toString: undefined | (() => string);
+declare function toString(): string;
 /**
  * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
  *
@@ -27799,7 +27799,7 @@ declare var caches: undefined | CacheStorage;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/crossOriginIsolated) */
 declare var crossOriginIsolated: undefined | boolean;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/crypto) */
-declare var crypto: undefined | Crypto;
+declare var crypto: Crypto;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/indexedDB) */
 declare var indexedDB: undefined | IDBFactory;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/isSecureContext) */
@@ -27807,32 +27807,32 @@ declare var isSecureContext: undefined | boolean;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/origin) */
 declare var origin: undefined | string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
-declare var performance: undefined | Performance;
+declare var performance: Performance;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
 interface globalThis {
   readonly atob: undefined | ((this: Window, data: string) => string);
 }
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
-declare var btoa: undefined | ((data: string) => string);
+declare function btoa(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearInterval) */
-declare var clearInterval: undefined | ((id: number | undefined) => void);
+declare function clearInterval(id: number | undefined): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearTimeout) */
-declare var clearTimeout: undefined | ((id: number | undefined) => void);
+declare function clearTimeout(id: number | undefined): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
 declare var createImageBitmap: undefined | ((image: ImageBitmapSource, options?: ImageBitmapOptions) => Promise<ImageBitmap>);
 declare var createImageBitmap: undefined | ((image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions) => Promise<ImageBitmap>);
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
-declare var fetch: undefined | ((input: RequestInfo | URL, init?: RequestInit) => Promise<Response>);
+declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
-declare var queueMicrotask: undefined | ((callback: VoidFunction) => void);
+declare function queueMicrotask(callback: VoidFunction): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/reportError) */
 declare var reportError: undefined | ((e: any) => void);
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
-declare var setInterval: undefined | ((handler: TimerHandler, timeout?: number, ...arguments: any[]) => number);
+declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
-declare var setTimeout: undefined | ((handler: TimerHandler, timeout?: number, ...arguments: any[]) => number);
+declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/structuredClone) */
-declare var structuredClone: undefined | (<T = any>(value: T, options?: StructuredSerializeOptions) => T);
+declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/sessionStorage) */
 declare var sessionStorage: undefined | Storage;
 declare var addEventListener: undefined | (<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | AddEventListenerOptions) => void);
@@ -28095,8 +28095,6 @@ type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
 
 type BrowserGlobals =
-  | 'AbortController'
-  | 'AbortSignal'
   | 'AbstractRange'
   | 'AnalyserNode'
   | 'Animation'
@@ -28125,10 +28123,7 @@ type BrowserGlobals =
   | 'BaseAudioContext'
   | 'BeforeUnloadEvent'
   | 'BiquadFilterNode'
-  | 'Blob'
   | 'BlobEvent'
-  | 'BroadcastChannel'
-  | 'ByteLengthQueuingStrategy'
   | 'CDATASection'
   | 'CSSAnimation'
   | 'CSSConditionRule'
@@ -28197,19 +28192,13 @@ type BrowserGlobals =
   | 'CloseEvent'
   | 'Comment'
   | 'CompositionEvent'
-  | 'CompressionStream'
   | 'ConstantSourceNode'
   | 'ContentVisibilityAutoStateChangeEvent'
   | 'ConvolverNode'
-  | 'CountQueuingStrategy'
   | 'Credential'
   | 'CredentialsContainer'
-  | 'Crypto'
-  | 'CryptoKey'
   | 'CustomElementRegistry'
-  | 'CustomEvent'
   | 'CustomStateSet'
-  | 'DOMException'
   | 'DOMImplementation'
   | 'DOMMatrix'
   | 'DOMMatrixReadOnly'
@@ -28226,7 +28215,6 @@ type BrowserGlobals =
   | 'DataTransfer'
   | 'DataTransferItem'
   | 'DataTransferItemList'
-  | 'DecompressionStream'
   | 'DelayNode'
   | 'DeviceMotionEvent'
   | 'DeviceOrientationEvent'
@@ -28240,12 +28228,9 @@ type BrowserGlobals =
   | 'ElementInternals'
   | 'EncodedVideoChunk'
   | 'ErrorEvent'
-  | 'Event'
   | 'EventCounts'
   | 'EventSource'
-  | 'EventTarget'
   | 'External'
-  | 'File'
   | 'FileList'
   | 'FileReader'
   | 'FileSystem'
@@ -28261,7 +28246,6 @@ type BrowserGlobals =
   | 'FontFace'
   | 'FontFaceSet'
   | 'FontFaceSetLoadEvent'
-  | 'FormData'
   | 'FormDataEvent'
   | 'GainNode'
   | 'Gamepad'
@@ -28349,7 +28333,6 @@ type BrowserGlobals =
   | 'HTMLUnknownElement'
   | 'HTMLVideoElement'
   | 'HashChangeEvent'
-  | 'Headers'
   | 'Highlight'
   | 'HighlightRegistry'
   | 'History'
@@ -28413,9 +28396,6 @@ type BrowserGlobals =
   | 'MediaStreamAudioSourceNode'
   | 'MediaStreamTrack'
   | 'MediaStreamTrackEvent'
-  | 'MessageChannel'
-  | 'MessageEvent'
-  | 'MessagePort'
   | 'MimeType'
   | 'MimeTypeArray'
   | 'MouseEvent'
@@ -28444,17 +28424,10 @@ type BrowserGlobals =
   | 'PaymentRequest'
   | 'PaymentRequestUpdateEvent'
   | 'PaymentResponse'
-  | 'Performance'
-  | 'PerformanceEntry'
   | 'PerformanceEventTiming'
-  | 'PerformanceMark'
-  | 'PerformanceMeasure'
   | 'PerformanceNavigation'
   | 'PerformanceNavigationTiming'
-  | 'PerformanceObserver'
-  | 'PerformanceObserverEntryList'
   | 'PerformancePaintTiming'
-  | 'PerformanceResourceTiming'
   | 'PerformanceServerTiming'
   | 'PerformanceTiming'
   | 'PeriodicWave'
@@ -28498,21 +28471,13 @@ type BrowserGlobals =
   | 'RTCTrackEvent'
   | 'RadioNodeList'
   | 'Range'
-  | 'ReadableByteStreamController'
-  | 'ReadableStream'
-  | 'ReadableStreamBYOBReader'
-  | 'ReadableStreamBYOBRequest'
-  | 'ReadableStreamDefaultController'
-  | 'ReadableStreamDefaultReader'
   | 'RemotePlayback'
   | 'Report'
   | 'ReportBody'
   | 'ReportingObserver'
-  | 'Request'
   | 'ResizeObserver'
   | 'ResizeObserverEntry'
   | 'ResizeObserverSize'
-  | 'Response'
   | 'SVGAElement'
   | 'SVGAngle'
   | 'SVGAnimateElement'
@@ -28640,12 +28605,7 @@ type BrowserGlobals =
   | 'StyleSheet'
   | 'StyleSheetList'
   | 'SubmitEvent'
-  | 'SubtleCrypto'
   | 'Text'
-  | 'TextDecoder'
-  | 'TextDecoderStream'
-  | 'TextEncoder'
-  | 'TextEncoderStream'
   | 'TextEvent'
   | 'TextMetrics'
   | 'TextTrack'
@@ -28658,13 +28618,9 @@ type BrowserGlobals =
   | 'TouchEvent'
   | 'TouchList'
   | 'TrackEvent'
-  | 'TransformStream'
-  | 'TransformStreamDefaultController'
   | 'TransitionEvent'
   | 'TreeWalker'
   | 'UIEvent'
-  | 'URL'
-  | 'URLSearchParams'
   | 'UserActivation'
   | 'VTTCue'
   | 'VTTRegion'
@@ -28706,9 +28662,6 @@ type BrowserGlobals =
   | 'Window'
   | 'Worker'
   | 'Worklet'
-  | 'WritableStream'
-  | 'WritableStreamDefaultController'
-  | 'WritableStreamDefaultWriter'
   | 'XMLDocument'
   | 'XMLHttpRequest'
   | 'XMLHttpRequestEventTarget'
@@ -28722,29 +28675,23 @@ type BrowserGlobals =
   | 'addEventListener'
   | 'alert'
   | 'blur'
-  | 'btoa'
   | 'caches'
   | 'cancelAnimationFrame'
   | 'cancelIdleCallback'
   | 'captureEvents'
-  | 'clearInterval'
-  | 'clearTimeout'
   | 'clientInformation'
   | 'close'
   | 'closed'
   | 'confirm'
-  | 'console'
   | 'createImageBitmap'
   | 'createImageBitmap'
   | 'crossOriginIsolated'
-  | 'crypto'
   | 'customElements'
   | 'devicePixelRatio'
   | 'dispatchEvent'
   | 'document'
   | 'event'
   | 'external'
-  | 'fetch'
   | 'focus'
   | 'frameElement'
   | 'frames'
@@ -28893,13 +28840,11 @@ type BrowserGlobals =
   | 'pageXOffset'
   | 'pageYOffset'
   | 'parent'
-  | 'performance'
   | 'personalbar'
   | 'postMessage'
   | 'postMessage'
   | 'print'
   | 'prompt'
-  | 'queueMicrotask'
   | 'releaseEvents'
   | 'removeEventListener'
   | 'removeEventListener'
@@ -28924,14 +28869,10 @@ type BrowserGlobals =
   | 'scrollbars'
   | 'self'
   | 'sessionStorage'
-  | 'setInterval'
-  | 'setTimeout'
   | 'speechSynthesis'
   | 'status'
   | 'statusbar'
   | 'stop'
-  | 'structuredClone'
-  | 'toString'
   | 'toolbar'
   | 'top'
   | 'visualViewport'
