@@ -12,11 +12,11 @@ export function appMain(port: number) {
   app.use(Cookies());
   app.use(i18nMiddleware());
   Debug(app);
+  app.use(Routers.IndexRedirection());
   app.use(Routers.Home());
   if (process.env.GUI_MODE === 'serve') {
     app.use(Routers.Proxy(port, conf.devGuiPort));
   } else {
-    app.get(/^\/index(\.html?)?$/, (_req, res) => res.redirect(301, '/'));
     app.use(Routers.Static());
     app.use(Routers.Gui());
     app.use(Routers.Fallback());
