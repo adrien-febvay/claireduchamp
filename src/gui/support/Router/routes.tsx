@@ -1,6 +1,7 @@
 import { ScrollRestoration, Outlet } from 'react-router-dom';
 import { _ } from '@/utils/types';
 import { screens } from '@/gui/screens';
+import { safeConsole } from '@/utils/safeConsole';
 import { Route } from './Route';
 
 const languages = ['mul', 'en', 'fr'] as const;
@@ -48,6 +49,6 @@ export const routes = [{ path: '/', element, children }];
 // Checks each pathname usage count (should always be exactly 1)
 for (const [path, count] of Object.entries(paths)) {
   if (!count || count > 1) {
-    console.warn('Registered', count, 'times:', path);
+    safeConsole.warn('Registered', count, 'times:', path);
   }
 }

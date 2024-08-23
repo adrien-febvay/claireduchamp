@@ -2,6 +2,7 @@ import type { Project } from '.';
 
 import { _ } from '@/utils/types';
 import { route } from '@/gui/screens/route';
+import { safeConsole } from '@/utils/safeConsole';
 import { projects } from './projects';
 
 function meta<Id extends Project.Id>(locales: Project.Data, id: Id): Project.Data[Id];
@@ -28,13 +29,13 @@ for (const id of ids) {
   const fr = meta(projects.fr, id);
   const mul = en || fr;
   if (!/[a-z][a-z0-9]*([A-Z][a-z0-9]*|[0-9]+)*/.test(id)) {
-    console.warn('Bad project name:', JSON.stringify(id), { en, fr });
+    safeConsole.warn('Bad project name:', JSON.stringify(id), { en, fr });
   }
   if (mul) {
     const route = en && fr ? { en, fr } : { mul };
     (routes as _.Dict<Route>)[id] = route;
     if (route.mul) {
-      console.warn('Partial project:', JSON.stringify(id), { en, fr });
+      safeConsole.warn('Partial project:', JSON.stringify(id), { en, fr });
     }
   }
 }

@@ -1,13 +1,11 @@
 import TagManager from 'react-gtm-module';
-import { isProduction } from '@/gui/utils/misc/isProduction';
 import { i18n } from '@/utils/i18n';
+import { devConsole } from '@/utils/safeConsole';
 
 export function push<Data extends gtm.Data>(data: Data): void {
   TagManager.dataLayer({ dataLayer: data });
-  if (isProduction === false) {
-    const { event, ...rest } = data;
-    console.log('[dev] dataLayer:', event, rest);
-  }
+  const { event, ...rest } = data;
+  devConsole.log('[dev] dataLayer:', event, rest);
 }
 
 export function contactFormOutcome(status: 'Succès' | 'Echec', label: string): void {

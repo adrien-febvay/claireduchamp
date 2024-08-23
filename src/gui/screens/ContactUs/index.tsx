@@ -7,6 +7,7 @@ import { useSingleFetch } from '@/gui/hooks/useSingleFetch';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { route } from '@/gui/screens/route';
 import { useTranslation } from '@/utils/i18n';
+import { safeConsole } from '@/utils/safeConsole';
 import { _ } from '@/utils/types';
 import { fields } from './fields';
 
@@ -181,7 +182,7 @@ export const Screen_ContactUs: React.FC = () => {
         contactFormOutcome('Echec', `Web3Forms a signalé une erreur de type ${response.status}`);
         me.updateState({ formPrompt: 'generic-error', formStatus: 'ready' });
         const content: unknown = (await response.json()) || (await response.text());
-        console.warn(`Contact form error ${response.status}:`, content);
+        safeConsole.warn(`Contact form error ${response.status}:`, content);
       }
     } catch (error) {
       if (error === isAbort.TIMEOUT) {
@@ -191,7 +192,7 @@ export const Screen_ContactUs: React.FC = () => {
         contactFormOutcome('Echec', message);
       }
       me.updateState({ formPrompt: 'generic-error', formStatus: 'ready' });
-      console.warn(`Contact form error:`, error);
+      safeConsole.warn(`Contact form error:`, error);
     } finally {
       sendFormTimeoutManager.abort();
     }

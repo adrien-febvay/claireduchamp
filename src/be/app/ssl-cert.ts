@@ -2,6 +2,7 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { App } from '@/be/app';
+import { safeConsole } from '@/utils/safeConsole';
 
 export type SslCert = Exclude<ReturnType<typeof appSslCert>, null>;
 
@@ -13,7 +14,7 @@ export function appSslCert(basename = App.conf.sslCert) {
   try {
     return basename ? { key: read(basename, 'key'), cert: read(basename, 'crt') } : null;
   } catch (e) {
-    console.error('SSL certification failure');
+    safeConsole.error('SSL certification failure');
     throw e;
   }
 }

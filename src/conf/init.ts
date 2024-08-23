@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { safeConsole } from '@/utils/safeConsole';
 
 const resolve = (filename: string) => path.resolve(__dirname, '..', '..', 'conf', filename);
 
@@ -8,13 +9,13 @@ const isErrorWithCode = (val: unknown): val is Error & { code: unknown } => val 
 function copy(source: string, target: string, strict = false) {
   try {
     fs.copyFileSync(resolve(source), resolve(target));
-    console.log(`conf/${source}`, '=>', `conf/${target}`);
+    safeConsole.log(`conf/${source}`, '=>', `conf/${target}`);
   } catch (error) {
     if (!isErrorWithCode(error)) {
       throw error;
     } else if (strict || error.code !== 'ENOENT') {
-      console.error(`conf/${source}`, '=>', `conf/${target}`);
-      console.error(error.message);
+      safeConsole.error(`conf/${source}`, '=>', `conf/${target}`);
+      safeConsole.error(error.message);
       process.exit(2);
     }
   }

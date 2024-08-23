@@ -11,6 +11,7 @@ import { locales } from '@/gui/locales';
 import { Head } from '@/gui/support/Head';
 import { Router } from '@/gui/support/Router';
 import { I18nextProvider, i18nInit } from '@/utils/i18n';
+import { safeConsole } from '@/utils/safeConsole';
 
 TagManager.initialize({ gtmId: conf.gtmId });
 
@@ -42,7 +43,7 @@ const App: React.FC = () => (
 );
 
 if (!appElement) {
-  console.error('Could not start React: <#app> not found');
+  safeConsole.error('Could not start React: <#app> not found');
 } else if (appElement.children.length) {
   ReactDOM.hydrateRoot(appElement, <App />);
 } else {

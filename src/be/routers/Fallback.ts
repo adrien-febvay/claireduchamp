@@ -1,4 +1,5 @@
 import { ErrorRequestHandler, Request } from 'express';
+import { safeConsole } from '@/utils/safeConsole';
 import { _ } from '@/utils/types';
 import { indexPath, sendIndex } from './Gui';
 import { stringify } from './utils';
@@ -11,7 +12,7 @@ function log(label: string, { cookies, res }: Request, e?: unknown) {
     const str = `${title} ${stringify(e)}`;
     const escaped = str.replace(/-(?=\\*->)/g, '-\\');
     res?.write?.(`<!--\n${escaped}\n-->`);
-    console.error(title, _.object(e)?.message || e);
+    safeConsole.error(title, _.object(e)?.message || e);
   }
   return debug;
 }

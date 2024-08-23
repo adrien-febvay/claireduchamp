@@ -14,6 +14,7 @@ import { createFetchRequest } from '@/be/utils/misc/create-fetch-request';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
 import { classUnion } from '@/utils/dom/classUnion';
+import { safeConsole } from '@/utils/safeConsole';
 import { _ } from '@/utils/types';
 
 import type { Request, Response } from 'express';
@@ -22,7 +23,7 @@ const CACHE_PATH = path.resolve(path.dirname(process.argv[1] as string), 'cache'
 try {
   fs.rmSync(CACHE_PATH, { recursive: true, force: true });
 } catch (error) {
-  console.error(error);
+  safeConsole.error(error);
 }
 
 const cacheSchema = z.object({
@@ -40,7 +41,7 @@ const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('scr
 /** SSR only mode through launcher option. */
 const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
 if (beSsrOnly) {
-  console.log(HYDRATE_TIP);
+  safeConsole.log(HYDRATE_TIP);
 }
 
 function readFileSync(file: string) {
@@ -50,7 +51,7 @@ function readFileSync(file: string) {
     return cacheSchema.parse(data);
   } catch (error) {
     if (_.object(error)?.code !== 'ENOENT') {
-      console.error(error);
+      safeConsole.error(error);
     }
     return null;
   }
@@ -61,7 +62,7 @@ function writeFileSync(file: string, data: z.infer<typeof cacheSchema>) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, JSON.stringify(data), { encoding: 'utf-8' });
   } catch (error) {
-    console.error(error);
+    safeConsole.error(error);
   }
 }
 

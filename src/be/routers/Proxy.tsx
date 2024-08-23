@@ -1,9 +1,10 @@
 // Proxy to UI dev server
 import proxy from 'express-http-proxy';
 import { appRender } from '@/be/app/render';
+import { safeConsole } from '@/utils/safeConsole';
 
 export function ProxyRouter(source: number, target: number) {
-  console.log(`Use \x1b[32mproxy\x1b[0m from port \x1b[33m${source}\x1b[0m to port \x1b[33m${target}\x1b[0m`);
+  safeConsole.log(`Use \x1b[32mproxy\x1b[0m from port \x1b[33m${source}\x1b[0m to port \x1b[33m${target}\x1b[0m`);
   return proxy(`localhost:${target}`, {
     // Must accept self-signed SSL certificates
     proxyReqOptDecorator: (opts) => ({ ...opts, rejectUnauthorized: false }),

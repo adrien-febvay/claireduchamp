@@ -47,6 +47,7 @@
     "indent": [2, 2, { "SwitchCase": 1}],
     "max-params": ["error", 5],
     "max-depth": ["error", 5],
+    "no-console": "error",
     "no-use-before-define": "off",
     "promise/always-return": "off",
     "promise/catch-or-return": "error",

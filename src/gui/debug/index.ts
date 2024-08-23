@@ -1,3 +1,5 @@
+import { safeConsole } from '@/utils/safeConsole';
+
 const devMove = process.env.NODE_ENV === 'development';
 
 const logParameters = {
@@ -18,13 +20,13 @@ function jsonReplacer(_key: string, value: unknown): unknown {
 export function log(message: string, data?: unknown): void {
   if (devMove) {
     try {
-      console.log('[debug]', message, data);
+      safeConsole.log('[debug]', message, data);
       const body = JSON.stringify({ message, data }, jsonReplacer);
       fetch('/debug/log', { ...logParameters, body }).catch((cause: unknown) => {
-        console.error('[debug] Failure\n', cause);
+        safeConsole.error('[debug] Failure\n', cause);
       });
     } catch (cause) {
-      console.error('[debug] Invalid data:', data, '\n', cause);
+      safeConsole.error('[debug] Invalid data:', data, '\n', cause);
     }
   }
 }
@@ -33,4 +35,4 @@ const debug = { log };
 if (window) {
   Object.assign(window, { debug });
 }
-console.log('Custom debug tools available:', debug);
+safeConsole.log('Custom debug tools available:', debug);

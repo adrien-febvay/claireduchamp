@@ -2,6 +2,7 @@ import type { _ } from '@/utils/types';
 
 import { Response, static as ExpressStaticRouter } from 'express';
 import { Router, resolve } from '@/be/routers/utils';
+import { safeConsole } from '@/utils/safeConsole';
 
 const PATH = resolve('gui');
 
@@ -34,7 +35,7 @@ function setHeaders(res: Response, path: string): void {
 }
 
 export const StaticRouter = () => {
-  console.log(`Use \x1b[32mstatic\x1b[0m files from \x1b[33m${PATH}\x1b[0m`);
+  safeConsole.log(`Use \x1b[32mstatic\x1b[0m files from \x1b[33m${PATH}\x1b[0m`);
   return Router((me) => {
     me.use(ExpressStaticRouter(PATH, { index: false, setHeaders }));
   });

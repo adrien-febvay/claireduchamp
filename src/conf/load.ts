@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import { z } from 'zod';
+import { safeConsole } from '@/utils/safeConsole';
 import { stringifyIssues } from '@/utils/zod/stringifyIssues';
 
 const accessKeyRe = /^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/;
@@ -79,14 +80,14 @@ export function loadSafeConf(silent = false) {
     if (!silent) {
       // console.log('Configuration:', loadedConf.file, loadedConf.data);
       if (loadedConf.error) {
-        console.error(loadedConf.error.message);
+        safeConsole.error(loadedConf.error.message);
       }
     }
     return loadedConf.data;
   } else {
-    console.error(loadedConf.error.message);
+    safeConsole.error(loadedConf.error.message);
     if (loadedConf.error.cause) {
-      console.error(loadedConf.error.cause);
+      safeConsole.error(loadedConf.error.cause);
     }
     process.exit(loadedConf.error.code);
   }
