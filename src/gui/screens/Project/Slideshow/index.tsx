@@ -42,8 +42,8 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
   );
 
   const navigate = useNavigate();
-  onEvent(window, 'resize', resizeViewer);
-  onEvent(document, 'keyup', handleKeyup);
+  onEvent(window, 'resize', resizeViewer, []);
+  onEvent(document, 'keyup', handleKeyup, []);
 
   React.useEffect(() => {
     const slideIndex = Math.floor((me.props.photoIndex - 1) / 3);

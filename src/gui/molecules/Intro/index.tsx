@@ -29,11 +29,11 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
 
   const delayToggle = useTimeoutPromiseManager(16);
   const layout = useLayout();
-  React.useEffect(listenToScrollReset, []);
   React.useEffect(handleNav, [playing]);
 
-  onEvent(playing && document, 'scroll', stop);
-  onEvent(playing && document, 'click', stop);
+  onEvent(playing && document, 'scroll', stop, []);
+  onEvent(playing && document, 'click', stop, []);
+  onEvent(layout.scroll, 'reset', play, []);
 
   React.useEffect(play, []);
 
@@ -44,11 +44,6 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   function handleNav() {
     layout.nav?.toggle(!me.state.playing);
     return restoreNavOnUnmount;
-  }
-
-  function listenToScrollReset() {
-    layout.scroll.on('reset', play);
-    return () => void layout.scroll.off('reset', play);
   }
 
   function scrollDown() {

@@ -51,7 +51,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
 
   const [translate] = useTranslation(namespace);
 
-  onEvent(document, 'scroll', onScroll);
+  onEvent(document, 'scroll', onScroll, []);
   React.useEffect(didMount, []);
   // React.useEffect(show);
 

@@ -5,7 +5,7 @@ export function useOrientation(): Orientation {
   const device = useDevice();
   const [orientation, setOrientation] = React.useState(getOrientation);
 
-  onEvent(device.responsive && window, 'resize', updateOrientation);
+  onEvent(device.responsive && window, 'resize', updateOrientation, []);
 
   function getOrientation(): Orientation {
     const portrait = device.responsive && (innerWidth && innerHeight ? innerWidth < innerHeight : device.mobile);

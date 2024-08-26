@@ -1,5 +1,15 @@
 import type { _ } from '@/utils/types';
 
+const optionKeys = ['capture', 'passive', 'once', 'signal', 'wantsUntrusted'] as const;
+
+const defaultOptions = {
+  capture: false,
+  passive: false,
+  once: false,
+  signal: void 0 as AbortSignal | undefined,
+  wantsUntrusted: void 0 as boolean | undefined,
+};
+
 /**
  * Appends an event listener on the specified element, keeps it updated and automatically dismiss it upon unmount.
  * @param el Element to append the event listener onto.
@@ -26,32 +36,82 @@ import type { _ } from '@/utils/types';
 export function onEvent<Emitter extends _.Event.Custom.Emitter.Generic, Type extends string>(
   emitter: Emitter.Or.Ref<Emitter>,
   type: Type,
-  listener: _.Event.Listener<Emitter, Extract<Type, string>>,
+  listener: _.Event.Listener<Emitter, Type>,
+  options: Pick<_.Event.Listener.Options, 'once'>,
+  deps?: unknown[],
 ): Toggler;
 
 export function onEvent<Emitter extends _.Event.Native.Emitter.Generic, Type extends string>(
   emitter: Emitter.Or.Ref<Emitter>,
   type: Type,
-  listener: _.Event.Listener<Emitter, Extract<Type, string>>,
-  options?: _.Event.Listener.Options,
+  listener: _.Event.Listener<Emitter, Type>,
+  options: _.Event.Listener.Options | boolean,
+  deps?: unknown[],
+): Toggler;
+
+export function onEvent<Emitter extends _.Event.Emitter.Generic, Type extends string>(
+  emitter: Emitter.Or.Ref<Emitter>,
+  type: Type,
+  listener: _.Event.Listener<Emitter, Type>,
+  deps?: unknown[],
 ): Toggler;
 
 export function onEvent(
   emitter: Emitter.Or.Ref,
   type: string,
   listener: _.Event.Listener.Generic,
-  options?: _.Event.Listener.Options,
+  arg3?: _.Event.Listener.Options | boolean | unknown[],
+  arg4?: unknown[],
 ): Toggler {
   const memo = React.useMemo(makeMemo, []);
+  const options = arg3 instanceof Array ? void 0 : arg3;
+  const deps = arg4 ?? (arg3 instanceof Array ? arg3 : void 0);
 
   React.useEffect(updateListener);
+
+  function depChange() {
+    if (!(deps instanceof Array && memo.deps instanceof Array && deps.length === memo.deps.length)) {
+      return true;
+    } else {
+      for (let index = deps.length - 1; index >= 0; index -= 1) {
+        if (deps[index] !== memo.deps[index]) {
+          return true;
+        }
+      }
+      return false;
+    }
+  }
 
   function isRefObject(emitter: Emitter.Or.Ref): emitter is Emitter.Ref {
     return emitter ? 'current' in emitter && !('addEventListener' in emitter) : false;
   }
 
   function makeMemo() {
-    return { emitter: { current: null } as Emitter.Ref, type, listener, options, active: false };
+    const emitter: Emitter.Ref = { current: null };
+    const options = {} as _.Event.Listener.Options;
+    return { emitter, type, listener, options, active: false, deps: void 0 as unknown[] | undefined };
+  }
+
+  function onceListener(...args: unknown[]) {
+    removeListener();
+    if (memo.emitter.current) {
+      memo.listener.call(memo.emitter.current, ...args);
+    }
+  }
+
+  function resolveOptions() {
+    const inputOptions = typeof options === 'object' ? options : { capture: options ?? false };
+    const resolvedOptions = {} as _.Event.Listener.Options;
+    let change = false;
+    for (const name of optionKeys) {
+      const value = inputOptions[name] ?? defaultOptions[name];
+      if (value !== resolvedOptions[name]) {
+        // @ts-expect-error 2322 TS cannot match `resolvedOptions` and `options` properties based on `name`.
+        resolvedOptions[name] = value;
+        change = true;
+      }
+    }
+    return change ? resolvedOptions : null;
   }
 
   function removeListener() {
@@ -61,24 +121,31 @@ export function onEvent(
   function toggleListener(active = !memo.active): boolean {
     const emitter = memo.emitter.current;
     if (emitter) {
+      // Allow unbound method since we use it properly on the next call anyway.
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       const fn = active ? (emitter.addEventListener ?? emitter.on) : (emitter.removeEventListener ?? emitter.off);
-      fn?.call(emitter, memo.type, memo.listener, memo.options);
-      memo.active = true;
+      const listener = !emitter.addEventListener && memo.options.once ? onceListener : memo.listener;
+      fn?.call(emitter, memo.type, listener, memo.options);
+      memo.active = active;
     }
     return memo.active;
   }
 
   function updateListener(): typeof removeListener {
+    const update = depChange();
     const resolvedEmitter = isRefObject(emitter) ? emitter : { current: emitter || null };
-    const resolvedOptions = typeof options === 'object' ? options.capture : (options ?? false);
-    const diff = resolvedEmitter.current !== memo.emitter.current || type !== memo.type || listener !== memo.listener;
-    if (diff || resolvedOptions !== memo.options) {
-      toggleListener(false);
-      memo.emitter = resolvedEmitter;
-      memo.type = type;
-      memo.listener = listener;
-      memo.options = resolvedOptions;
-      toggleListener(true);
+    const emitterChange = resolvedEmitter.current !== memo.emitter.current;
+    if (update || emitterChange) {
+      const resolvedOptions = resolveOptions();
+      if (emitterChange || type !== memo.type || listener !== memo.listener || resolvedOptions) {
+        toggleListener(false);
+        memo.emitter = resolvedEmitter;
+        memo.type = type;
+        memo.listener = listener;
+        memo.options = resolvedOptions ?? memo.options;
+        memo.deps = deps && [...deps];
+        toggleListener(true);
+      }
     }
     return removeListener;
   }

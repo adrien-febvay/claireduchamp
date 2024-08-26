@@ -20,7 +20,31 @@ declare module '.' {
       namespace Listener {
         type Generic = (this: Emitter.Generic, ...args: any[]) => void;
 
-        type Options = EventListenerOptions | boolean;
+        type Options = {
+          /**
+           * Sets when the listener will be invoked depdending on the event's `eventPhase` attribute value:
+           * - If `true`, the listener will not be invoked when `{ eventPhase: 'BUBBLING_PHASE' }`
+           * - If `false` or omitted, the listener will not be invoked when `{ eventPhase: 'CAPTURING_PHASE' }`
+           * - Either way, the listener will be invoked when `{ eventPhase: 'AT_TARGET' }`
+           */
+          capture?: boolean;
+
+          /**
+           * When `true`, the listener will not cancel the event by invoking preventDefault().
+           *
+           * This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+           */
+          passive?: boolean;
+
+          /** When `true`, the listener will only be invoked once after which the event listener will be removed. */
+          once?: boolean;
+
+          /** If an `AbortSignal` is passed, then the event listener will be removed when signal is aborted. */
+          signal?: AbortSignal;
+
+          /** Setting specific to Firefox (Gecko). If true, the listener receives synthetic events distributed by web content. */
+          wantsUntrusted?: boolean;
+        };
       }
 
       type Type<Emitter> = _.Resolve<

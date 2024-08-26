@@ -4,9 +4,9 @@ import { DataHandler } from './Data';
 export function useSwipe(host: MaybeHostOrRef, handler: Handler): Toggler {
   const memo = React.useMemo(() => new DataHandler(), []);
 
-  onEvent(host, 'touchstart', touchStart);
-  onEvent(host, 'touchmove', touchMove);
-  onEvent(host, 'touchend', touchEnd);
+  onEvent(host, 'touchstart', touchStart, []);
+  onEvent(host, 'touchmove', touchMove, []);
+  onEvent(host, 'touchend', touchEnd, []);
 
   function touchStart(this: Host, event: TouchEvent): void {
     event.preventDefault();

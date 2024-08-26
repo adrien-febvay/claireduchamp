@@ -35,7 +35,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
 
   React.useEffect(reset);
 
-  onEvent(window, 'resize', onResize);
+  onEvent(window, 'resize', onResize, []);
 
   const toggleSwiping = useSwipe(me.ref.slider, handleSwipe);
   const swipeTimeoutPromiseManager = useTimeoutPromiseManager();
