@@ -1,20 +1,33 @@
 import type { _ } from '@/utils/types';
-import type { onEvent as ns } from '.';
 
 declare module '.' {
   namespace onEvent {
-    type MaybeHostOrRef<Host extends AnyHost = AnyHost> = _.Optional<Host | React.RefObject<Host>>;
+    type Emitter = _.Event.Emitter.Generic;
+
+    namespace Emitter {
+      type Maybe<Emitter extends onEvent.Emitter = onEvent.Emitter> = _.Optional<Emitter>;
+
+      namespace Or {
+        type Ref<Emitter extends onEvent.Emitter = onEvent.Emitter> = _.Optional<Emitter | Emitter.Ref<Emitter>>;
+      }
+
+      type Ref<Emitter extends onEvent.Emitter = onEvent.Emitter> = React.RefObject<Emitter>;
+    }
 
     type Toggler = (active?: boolean) => boolean;
   }
 
-  type AnyHost = _.Event.Host.Generic;
+  type Emitter = _.Event.Emitter.Generic;
 
-  type HostRef = React.RefObject<_.Event.Host.Generic>;
+  namespace Emitter {
+    type Maybe<Emitter extends onEvent.Emitter = onEvent.Emitter> = onEvent.Emitter.Maybe<Emitter>;
 
-  type MaybeHost<Host extends AnyHost = AnyHost> = _.Optional<Host>;
+    namespace Or {
+      type Ref<Emitter extends onEvent.Emitter = onEvent.Emitter> = onEvent.Emitter.Or.Ref<Emitter>;
+    }
 
-  type MaybeHostOrRef<Host extends AnyHost = AnyHost> = ns.MaybeHostOrRef<Host>;
+    type Ref<Emitter extends onEvent.Emitter = onEvent.Emitter> = onEvent.Emitter.Ref<Emitter>;
+  }
 
-  type Toggler = ns.Toggler;
+  type Toggler = onEvent.Toggler;
 }

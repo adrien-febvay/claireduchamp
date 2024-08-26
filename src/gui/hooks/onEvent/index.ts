@@ -23,58 +23,63 @@ import type { _ } from '@/utils/types';
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
  */
-
-export function onEvent<Host extends AnyHost, Type extends _.Event.Type<Host>>(
-  host: MaybeHostOrRef<Host>,
+export function onEvent<Emitter extends _.Event.Custom.Emitter.Generic, Type extends string>(
+  emitter: Emitter.Or.Ref<Emitter>,
   type: Type,
-  listener: _.Event.Listener<Host, Type>,
-  options?: _.Event.Listener.Options.Argument,
+  listener: _.Event.Listener<Emitter, Extract<Type, string>>,
+): Toggler;
+
+export function onEvent<Emitter extends _.Event.Native.Emitter.Generic, Type extends string>(
+  emitter: Emitter.Or.Ref<Emitter>,
+  type: Type,
+  listener: _.Event.Listener<Emitter, Extract<Type, string>>,
+  options?: _.Event.Listener.Options,
 ): Toggler;
 
 export function onEvent(
-  host: MaybeHostOrRef,
+  emitter: Emitter.Or.Ref,
   type: string,
   listener: _.Event.Listener.Generic,
-  options?: _.Event.Listener.Options.Argument,
-): Toggler;
-
-export function onEvent(host: MaybeHostOrRef, ...params: Parameters<AnyHost['addEventListener']>): Toggler {
-  const memo = React.useMemo(() => ({ host: null as MaybeHost, params, active: false }), []);
+  options?: _.Event.Listener.Options,
+): Toggler {
+  const memo = React.useMemo(makeMemo, []);
 
   React.useEffect(updateListener);
 
-  function addListener(): void {
-    if (memo.host) {
-      memo.host.addEventListener(...memo.params);
-      memo.active = true;
-    }
+  function isRefObject(emitter: Emitter.Or.Ref): emitter is Emitter.Ref {
+    return emitter ? 'current' in emitter && !('addEventListener' in emitter) : false;
   }
 
-  function isRefObject(host: MaybeHostOrRef): host is HostRef {
-    return host ? 'current' in host && !('addEventListener' in host) : false;
+  function makeMemo() {
+    return { emitter: { current: null } as Emitter.Ref, type, listener, options, active: false };
   }
 
-  function removeListener(): void {
-    if (memo.host) {
-      memo.host.removeEventListener(...memo.params);
-      memo.active = false;
-    }
+  function removeListener() {
+    toggleListener(false);
   }
 
   function toggleListener(active = !memo.active): boolean {
-    if (active) {
-      addListener();
-    } else {
-      removeListener();
+    const emitter = memo.emitter.current;
+    if (emitter) {
+      const fn = active ? (emitter.addEventListener ?? emitter.on) : (emitter.removeEventListener ?? emitter.off);
+      fn?.call(emitter, memo.type, memo.listener, memo.options);
+      memo.active = true;
     }
     return memo.active;
   }
 
   function updateListener(): typeof removeListener {
-    removeListener();
-    memo.host = isRefObject(host) ? host.current : host;
-    memo.params = params;
-    addListener();
+    const resolvedEmitter = isRefObject(emitter) ? emitter : { current: emitter || null };
+    const resolvedOptions = typeof options === 'object' ? options.capture : (options ?? false);
+    const diff = resolvedEmitter.current !== memo.emitter.current || type !== memo.type || listener !== memo.listener;
+    if (diff || resolvedOptions !== memo.options) {
+      toggleListener(false);
+      memo.emitter = resolvedEmitter;
+      memo.type = type;
+      memo.listener = listener;
+      memo.options = resolvedOptions;
+      toggleListener(true);
+    }
     return removeListener;
   }
 
