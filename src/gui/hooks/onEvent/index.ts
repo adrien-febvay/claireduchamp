@@ -89,7 +89,8 @@ export function onEvent(
   function makeMemo() {
     const emitter: Emitter.Ref = { current: null };
     const options = {} as _.Event.Listener.Options;
-    return { emitter, type, listener, options, active: false, deps: void 0 as unknown[] | undefined };
+    const types = [] as ReturnType<typeof resolveTypes>;
+    return { emitter, types, listener, options, active: false, deps: void 0 as unknown[] | undefined };
   }
 
   function onceListener(...args: unknown[]) {
@@ -97,6 +98,10 @@ export function onEvent(
     if (memo.emitter.current) {
       memo.listener.call(memo.emitter.current, ...args);
     }
+  }
+
+  function removeListener() {
+    toggleListener(false);
   }
 
   function resolveOptions() {
@@ -114,8 +119,13 @@ export function onEvent(
     return change ? resolvedOptions : null;
   }
 
-  function removeListener() {
-    toggleListener(false);
+  function resolveTypes(): string[] & { str?: string } {
+    const resolvedtypes = type
+      .split(',')
+      .map((type) => type.trim())
+      .filter((type) => type)
+      .sort();
+    return Object.assign(resolvedtypes, { str: resolvedtypes.join(',') });
   }
 
   function toggleListener(active = !memo.active): boolean {
@@ -125,7 +135,9 @@ export function onEvent(
       // eslint-disable-next-line @typescript-eslint/unbound-method
       const fn = active ? (emitter.addEventListener ?? emitter.on) : (emitter.removeEventListener ?? emitter.off);
       const listener = !emitter.addEventListener && memo.options.once ? onceListener : memo.listener;
-      fn?.call(emitter, memo.type, listener, memo.options);
+      for (const type of memo.types) {
+        fn?.call(emitter, type, listener, memo.options);
+      }
       memo.active = active;
     }
     return memo.active;
@@ -137,10 +149,11 @@ export function onEvent(
     const emitterChange = resolvedEmitter.current !== memo.emitter.current;
     if (update || emitterChange) {
       const resolvedOptions = resolveOptions();
-      if (emitterChange || type !== memo.type || listener !== memo.listener || resolvedOptions) {
+      const resolvedtypes = resolveTypes();
+      if (emitterChange || resolvedtypes.str !== memo.types.str || listener !== memo.listener || resolvedOptions) {
         toggleListener(false);
         memo.emitter = resolvedEmitter;
-        memo.type = type;
+        memo.types = resolvedtypes;
         memo.listener = listener;
         memo.options = resolvedOptions ?? memo.options;
         memo.deps = deps && [...deps];

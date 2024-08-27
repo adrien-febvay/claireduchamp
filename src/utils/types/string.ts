@@ -32,6 +32,80 @@ declare module '.' {
       }
     }
 
+    /** Trims the left side of `Input` string type. */
+    type LTrim<Input> = Input extends `${SpaceLike}${infer Trimmed}` ? LTrim<Trimmed> | Exclude<Input, string> : Input;
+
+    /** Trims the left side of properties of an `Input` type. */
+    namespace LTrim {
+      /** Trims the left side of properties of an `Input` type. */
+      namespace Map {
+        /** Deep trims the left side of properties of an `Input` type. */
+        type Deep<Input> = { [Key in keyof Input]: _.Resolve<LTrim<Deep<Input[Key]>>> } | Exclude<Input, object>;
+
+        /** Shallow trims the left side of properties of an `Input` type. */
+        type Shallow<Input> = { [Key in keyof Input]: _.Resolve<LTrim<Input[Key]>> } | Exclude<Input, object>;
+      }
+    }
+
+    /** Trims the right side of `Input` string type. */
+    type RTrim<Input> = Input extends `${infer Trimmed}${SpaceLike}` ? RTrim<Trimmed> | Exclude<Input, string> : Input;
+
+    /** Trims the right side of properties of an `Input` type. */
+    namespace RTrim {
+      /** Trims the right side of properties of an `Input` type. */
+      namespace Map {
+        /** Deep trims the right side of properties of an `Input` type. */
+        type Deep<Input> = { [Key in keyof Input]: _.Resolve<RTrim<Deep<Input[Key]>>> } | Exclude<Input, object>;
+
+        /** Shallow trims the right side of properties of an `Input` type. */
+        type Shallow<Input> = { [Key in keyof Input]: _.Resolve<RTrim<Input[Key]>> } | Exclude<Input, object>;
+      }
+    }
+
+    /** Space-like characters. */
+    type SpaceLike = ' ' | '\t' | '\r' | '\n';
+
+    /** Trims the `Input` string type. */
+    type Trim<Input> = LTrim<RTrim<Input>>;
+
+    /** Trims the side of properties of an `Input` type. */
+    namespace Trim {
+      /** Trims the side of properties of an `Input` type. */
+      namespace Map {
+        /** Deep trims the properties of an `Input` type. */
+        type Deep<Input> = { [Key in keyof Input]: _.Resolve<Trim<Deep<Input[Key]>>> } | Exclude<Input, object>;
+
+        /** Shallow trims the properties of an `Input` type. */
+        type Shallow<Input> = { [Key in keyof Input]: _.Resolve<Trim<Input[Key]>> } | Exclude<Input, object>;
+      }
+    }
+
+    /** Splits an `Input` string using a `Separator`.  */
+    namespace Split {
+      /** Splits an `Input` string using a `Separator`.  */
+      namespace Into {
+        /** Splits an `Input`string into an array  using a `Separator`.  */
+        type Array<Input, Separator extends string, Output extends string[] = []> =
+          | Exclude<Input, string>
+          | (string extends Input
+              ? [...Output, string]
+              : Extract<Input, string> extends never
+                ? Output
+                : Input extends `${infer Chunk}${Separator}${infer Rest}`
+                  ? Array<Rest, Separator, [...Output, Chunk]>
+                  : Exclude<[...Output, Extract<Input, string>], [never]>); // Exclude [never] to avoid weird TS behaviour
+
+        /** Splits an `Input` into an union string using a `Separator`.  */
+        type Union<Input, Separator extends string, Output extends string = never> =
+          | Exclude<Input, string>
+          | (string extends Input
+              ? string
+              : Extract<Input, string> extends `${infer Chunk}${Separator}${infer Rest}`
+                ? _.Resolve<Union<Rest, Separator, Output | Chunk>>
+                : Output | Extract<Input, string>);
+      }
+    }
+
     type Word = Letter | Digit | '_';
 
     namespace Word {

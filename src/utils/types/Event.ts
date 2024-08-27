@@ -51,6 +51,11 @@ declare module '.' {
         Is.Custom.Emitter<Emitter, Custom.Type<Emitter>, Is.Native.Emitter<Emitter, Native.Type<Emitter>, string>>
       >;
 
+      namespace Types {
+        // Splits event types.
+        type Split<Input extends string> = _.Trim.Map.Shallow<_.Split.Into.Array<Input, ','>>;
+      }
+
       namespace Is {
         namespace Custom {
           type Emitter<Emitter, Then, Else = never> = Emitter extends Event.Custom.Emitter
@@ -87,10 +92,12 @@ declare module '.' {
           }
         }
 
-        type Listener<Emitter, Type extends string> = (
-          this: Emitter,
-          ...args: Listener.Arguments<Emitter, Type>
-        ) => void;
+        type Listener<Emitter, Type extends string> = {
+          [Index in keyof Types.Split<Type>]: (
+            this: Emitter,
+            ...args: Listener.Arguments<Emitter, Types.Split<Type>[Index] & string>
+          ) => void;
+        }[number];
 
         namespace Listener {
           type Arguments<Emitter, Type extends string> = string extends Type
@@ -129,7 +136,12 @@ declare module '.' {
           }
         }
 
-        type Listener<Emitter, Type extends string> = (this: Emitter, event: Listener.Argument<Emitter, Type>) => void;
+        type Listener<Emitter, Type extends string> = {
+          [Index in keyof Types.Split<Type>]: (
+            this: Emitter,
+            event: Listener.Argument<Emitter, Types.Split<Type>[Index] & string>,
+          ) => void;
+        }[number];
 
         namespace Listener {
           type Argument<Emitter, Type extends string> = string extends Type

@@ -31,8 +31,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   const layout = useLayout();
   React.useEffect(handleNav, [playing]);
 
-  onEvent(playing && document, 'scroll', stop, []);
-  onEvent(playing && document, 'click', stop, []);
+  onEvent(playing && document, 'click, scroll', stop, []);
   onEvent(layout.scroll, 'reset', play, []);
 
   React.useEffect(play, []);
