@@ -68,6 +68,7 @@ export function onEvent(
   const deps = arg4 ?? (arg3 instanceof Array ? arg3 : void 0);
 
   React.useEffect(updateListener);
+  React.useEffect(discard, []);
 
   function depChange() {
     if (!(deps instanceof Array && memo.deps instanceof Array && deps.length === memo.deps.length)) {
@@ -80,6 +81,10 @@ export function onEvent(
       }
       return false;
     }
+  }
+
+  function discard() {
+    return removeListener;
   }
 
   function isRefObject(emitter: Emitter.Or.Ref): emitter is Emitter.Ref {
@@ -128,7 +133,7 @@ export function onEvent(
     return Object.assign(resolvedtypes, { str: resolvedtypes.join(',') });
   }
 
-  function toggleListener(active = !memo.active): boolean {
+  function toggleListener(active = !memo.active) {
     const emitter = memo.emitter.current;
     if (emitter) {
       // Allow unbound method since we use it properly on the next call anyway.
@@ -143,7 +148,7 @@ export function onEvent(
     return memo.active;
   }
 
-  function updateListener(): typeof removeListener {
+  function updateListener() {
     const update = depChange();
     const resolvedEmitter = isRefObject(emitter) ? emitter : { current: emitter || null };
     const emitterChange = resolvedEmitter.current !== memo.emitter.current;
@@ -160,7 +165,6 @@ export function onEvent(
         toggleListener(true);
       }
     }
-    return removeListener;
   }
 
   return toggleListener;
