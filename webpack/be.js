@@ -32,13 +32,13 @@ class Launcher {
       if (serve) {
         const npx = /^win\d+$/.test(process.platform) ? 'npx.cmd' : 'npx';
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
-        cp.spawn(npx, ['nodemon', '.dist-tmp/be', '--quiet', '--watch', '.dist-tmp/be'], { stdio: 'inherit' });
+        run.spawn(npx, ['nodemon', '.dist-tmp/be', '--quiet', '--watch', '.dist-tmp/be']);
         process.stdout.write('Type \x1b[32;1mrs\x1b[0m and hit enter to manually restart BE\n');
         compiler.hooks.watchRun.tap('Launcher.update', () => process.stdout.write('\n>> \x1b[32mChange detected!\x1b[0m Updating BE...\n'))
         compiler.hooks.afterEmit.tap('Launcher.emitAgain', () => process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, restarting...\n'));
       } else if (dev) {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
-        cp.spawnSync('node', ['.dist-tmp/be'], { stdio: 'inherit' });
+        run.spawnSync('node', ['.dist-tmp/be']);
       } else {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully\n');
       }
