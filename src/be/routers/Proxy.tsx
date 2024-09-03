@@ -10,11 +10,12 @@ export function ProxyRouter(source: number, target: number) {
     proxyReqOptDecorator: (opts) => ({ ...opts, rejectUnauthorized: false }),
     userResDecorator: async ({ headers }, proxyResData: Buffer, req, res) => {
       if (req.method === 'GET' && headers['content-type'] === 'text/html; charset=utf-8') {
-        const { content, status } = await appRender(proxyResData.toString('utf-8'), req, res);
+        const { status, content } = await appRender(proxyResData.toString('utf-8'), req, res);
         res.status(status);
         return content;
+      } else {
+        return proxyResData;
       }
-      return proxyResData;
     },
   });
 }

@@ -7,10 +7,10 @@ import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
 import { encode } from 'html-entities';
 import { I18nextProvider } from 'react-i18next';
+import { createFetchRequest } from 'express-create-fetch-request';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
 import { z } from 'zod';
 import { conf } from '@/conf';
-import { createFetchRequest } from '@/be/utils/misc/create-fetch-request';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
 import { classUnion } from '@/utils/dom/classUnion';
@@ -99,6 +99,7 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     // If we got a redirect response, short circuit and let our Express server handle that directly
     if (context instanceof Response) {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
       throw context;
     }
 
