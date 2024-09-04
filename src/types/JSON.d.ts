@@ -1,3 +1,3 @@
 interface JSON {
-  parse(): unknown;
+  parse(json: string): unknown;
 }
