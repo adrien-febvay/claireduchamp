@@ -1,35 +1,23 @@
 import '@/be/utils/misc/dom-globals';
 
-import fs from 'fs';
-import path from 'path';
 import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
 import { encode } from 'html-entities';
+import { dirname, resolve } from 'path';
 import { I18nextProvider } from 'react-i18next';
 import { createFetchRequest } from 'express-create-fetch-request';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
-import { z } from 'zod';
 import { conf } from '@/conf';
+import { CacheManager } from '@/be/utils/cache';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
 import { classUnion } from '@/utils/dom/classUnion';
 import { safeConsole } from '@/utils/safeConsole';
-import { _ } from '@/utils/types';
 
 import type { Request, Response } from 'express';
 
-const CACHE_PATH = path.resolve(path.dirname(process.argv[1] as string), 'cache');
-try {
-  fs.rmSync(CACHE_PATH, { recursive: true, force: true });
-} catch (error) {
-  safeConsole.error(error);
-}
-
-const cacheSchema = z.object({
-  content: z.string(),
-  status: z.number(),
-});
+const cache = new CacheManager(resolve(dirname(process.argv[1] as string), 'cache'));
 
 // Make GUI configuration available during SSR.
 Object.assign(global, { conf: conf.gui });
@@ -42,28 +30,6 @@ const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('scr
 const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
 if (beSsrOnly) {
   safeConsole.log(HYDRATE_TIP);
-}
-
-function readFileSync(file: string) {
-  try {
-    const raw = fs.readFileSync(file, { encoding: 'utf-8' });
-    const data = JSON.parse(raw) as unknown;
-    return cacheSchema.parse(data);
-  } catch (error) {
-    if (_.object(error)?.code !== 'ENOENT') {
-      safeConsole.error(error);
-    }
-    return null;
-  }
-}
-
-function writeFileSync(file: string, data: z.infer<typeof cacheSchema>) {
-  try {
-    fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, JSON.stringify(data), { encoding: 'utf-8' });
-  } catch (error) {
-    safeConsole.error(error);
-  }
 }
 
 export async function appRender(body: string, req: Request, res: Response) {
@@ -86,12 +52,11 @@ export async function appRender(body: string, req: Request, res: Response) {
   const forceResponsive = req.cookies['__forceResponsive'] === 'true';
   const cacheEnabled = !(ssrOnly || forceResponsive);
 
-  const pathname = req.originalUrl === '/' ? '' : req.originalUrl;
-  const cacheFile = path.join(CACHE_PATH, `${device}${pathname}.html`);
-  const cachedRes = cacheEnabled && readFileSync(cacheFile);
+  const cacheEntry = cacheEnabled ? cache.entry(`${device}${req.originalUrl === '/' ? '' : req.originalUrl}`) : null;
+  const cacheRes = cacheEntry?.get();
 
-  if (cachedRes) {
-    return cachedRes;
+  if (cacheRes) {
+    return cacheRes;
   } else {
     const staticHandler = createStaticHandler(routes);
     const fetchRequest = createFetchRequest(req, res);
@@ -153,8 +118,8 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     const renderedRes = { content, status: headContext.status ?? 200 };
 
-    if (cacheEnabled && renderedRes.status === 200) {
-      writeFileSync(cacheFile, renderedRes);
+    if (renderedRes.status === 200) {
+      cacheEntry?.set(renderedRes);
     }
 
     return renderedRes;
