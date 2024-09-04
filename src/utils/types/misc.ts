@@ -120,7 +120,7 @@ export function isLikeWritableObject(val: unknown): val is _.Object {
  */
 export function object<Type>(
   val: Type,
-): _.Coalesce.Never<[Exclude<Extract<Type, object>, _.Executable.Any>], _.Object> | null;
+): _.Coalesce.Never<[_.Object & Exclude<Extract<Type, object>, _.Executable.Any>], _.Object> | null;
 
 export function object<Type>(val: Type): object | null {
   return val && typeof val === 'object' ? val : null;
