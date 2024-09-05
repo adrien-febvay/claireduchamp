@@ -8,6 +8,8 @@ import { safeConsole } from '@/utils/safeConsole';
 
 export function prerender(cache: CacheManager) {
   async function prerender() {
+    let count = 0;
+    let time = Number(new Date());
     for (const { cache, lang, mobile, pathname } of routes) {
       const headers = { 'cookie': `lang=${lang};`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
@@ -17,6 +19,13 @@ export function prerender(cache: CacheManager) {
         }
       } catch (error) {
         safeConsole.error('Prerendering failure:', cache.key, error);
+      } finally {
+        count += 1;
+        const newtime = Number(new Date());
+        if (newtime >= time + 3e3) {
+          time = newtime;
+          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m files out of ${routes.length}`);
+        }
       }
     }
   }
