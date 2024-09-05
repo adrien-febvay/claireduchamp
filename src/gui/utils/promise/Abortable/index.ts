@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
 import type { _ } from '@/utils/types';
 
 import { OpenPromise } from '../Open';

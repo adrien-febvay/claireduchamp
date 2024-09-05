@@ -22,7 +22,7 @@ export const DebugLogRouter = Router((me) => {
       const body = logSchema.parse(req.body);
       safeConsole.log('Message:', body.message);
       safeConsole.log('Data:', JSON.stringify(body.data, null, 2));
-    } catch (cause) {
+    } catch (_error) {
       safeConsole.log('Body:', JSON.stringify(req.body, null, 2));
     }
     res.send();

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
 import type { _ } from '@/utils/types';
 
 import EventEmitter from 'events';

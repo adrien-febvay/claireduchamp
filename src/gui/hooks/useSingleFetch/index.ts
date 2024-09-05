@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
 import { AbortablePromise } from '@/gui/utils/promise/Abortable';
 import { mergeSimilarObjects } from '@/gui/utils/object/mergeSimilar';
 import { isAbort as isFetchAbort, useFetch } from '@/gui/hooks/useFetch';
