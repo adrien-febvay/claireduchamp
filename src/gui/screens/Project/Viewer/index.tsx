@@ -131,7 +131,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     const { pathname, pathnameFr, pictures } = me.props.project;
     const urlPhotoIndex = photoIndex && (photoIndex + me.currSlideIndex - 1) % pictures.count;
     const url = urlPhotoIndex ? `${pathname}/${urlPhotoIndex}` : pathname;
-    if (url !== location.pathname) {
+    if (url !== location?.pathname) {
       window?.history?.replaceState(null, document?.title ?? '', url);
       if (urlPhotoIndex || me.prev) {
         gtm.pageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathname);

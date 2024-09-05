@@ -24,16 +24,16 @@ declare module '.' {
 
     type Handler = (event: TouchEvent, data: Event.Data) => void;
 
-    type Host = _.Event.Host.Using<Event.Type>;
+    type Emitter = _.Event.Emitter.Using<Event.Type>;
 
     type Toggler = onEvent.Toggler;
   }
 
   type Handler = useSwipe.Handler;
 
-  type Host = useSwipe.Host;
+  type Emitter = useSwipe.Emitter;
 
-  type MaybeHostOrRef = onEvent.MaybeHostOrRef<Host>;
+  type MaybeHostOrRef = onEvent.Emitter.Or.Ref<Emitter>;
 
   type Toggler = useSwipe.Toggler;
 }

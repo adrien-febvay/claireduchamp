@@ -15,7 +15,7 @@ export function Atom_Link(props: Link.Props): React.Node {
   function maybeResetScroll(...args: OnClickParameters): void {
     if (!args[0].isDefaultPrevented()) {
       onClick?.(...args);
-      if (!args[0].isDefaultPrevented() && memo.url === location.pathname) {
+      if (!args[0].isDefaultPrevented() && memo.url === location?.pathname) {
         args[0].preventDefault();
         scroll.reset();
       }

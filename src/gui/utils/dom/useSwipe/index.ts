@@ -8,7 +8,7 @@ export function useSwipe(host: MaybeHostOrRef, handler: Handler): Toggler {
   onEvent(host, 'touchmove', touchMove, []);
   onEvent(host, 'touchend', touchEnd, []);
 
-  function touchStart(this: Host, event: TouchEvent): void {
+  function touchStart(this: Emitter, event: TouchEvent): void {
     event.preventDefault();
     const data = memo.restart(event.targetTouches[0]);
     if (data) {

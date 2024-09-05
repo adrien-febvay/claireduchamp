@@ -9,6 +9,18 @@ declare module '.' {
         type Generic =
           | (Native.Emitter.Generic & Partial<Custom.Emitter.Generic>)
           | (Partial<Native.Emitter.Generic> & Custom.Emitter.Generic);
+
+        type Using<Type extends string> =
+          | {
+              [Name in keyof Native.Maps]: Type extends keyof Native.Maps[Name][1] ? Native.Maps[Name][0] : never;
+            }[keyof Native.Maps]
+          | {
+              [Name in keyof Custom.Maps]: Type extends keyof Custom.Maps[Name][1]
+                ? Name extends 'EventEmitter'
+                  ? never
+                  : Custom.Maps[Name][0]
+                : never;
+            }[keyof Custom.Maps];
       }
 
       type Listener<Emitter, Type extends string> = Is.Custom.Emitter<
@@ -90,6 +102,14 @@ declare module '.' {
             on(type: string, listener: Listener.Generic, options?: Event.Listener.Options): void;
             off(type: string, listener: Listener.Generic, options?: Event.Listener.Options): void;
           }
+
+          type Using<Type extends string> = {
+            [Name in keyof Maps]: Type extends keyof Maps[Name][1]
+              ? Name extends 'EventEmitter'
+                ? never
+                : Maps[Name][0]
+              : never;
+          }[keyof Maps];
         }
 
         type Listener<Emitter, Type extends string> = {
@@ -134,6 +154,10 @@ declare module '.' {
             addEventListener(type: string, listener: Listener.Generic, options?: Event.Listener.Options): void;
             removeEventListener(type: string, listener: Listener.Generic, options?: Event.Listener.Options): void;
           }
+
+          type Using<Type extends string> = {
+            [Name in keyof Maps]: Type extends keyof Maps[Name][1] ? Maps[Name][0] : never;
+          }[keyof Maps];
         }
 
         type Listener<Emitter, Type extends string> = {
