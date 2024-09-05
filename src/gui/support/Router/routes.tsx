@@ -44,7 +44,8 @@ const children = screens
 export type RouteDesc = (typeof children)[number]['desc'];
 
 /** App routes, intended to be used by `react-router-dom`. */
-export const routes = [{ path: '/', element, children }];
+export const root = { path: '/', element, children };
+export const routes = [root];
 
 // Checks each pathname usage count (should always be exactly 1)
 for (const [path, count] of Object.entries(paths)) {

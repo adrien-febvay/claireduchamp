@@ -9,6 +9,7 @@ import { I18nextProvider } from 'react-i18next';
 import { createFetchRequest } from 'express-create-fetch-request';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
 import { conf } from '@/conf';
+import { prerender } from '@/be/app/prerender';
 import { CacheManager } from '@/be/utils/cache';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
@@ -17,8 +18,6 @@ import { safeConsole } from '@/utils/safeConsole';
 
 import type { Request, Response } from 'express';
 
-const cache = new CacheManager(resolve(dirname(process.argv[1] as string), 'cache'));
-
 // Make GUI configuration available during SSR.
 Object.assign(global, { conf: conf.gui });
 
@@ -26,10 +25,16 @@ Object.assign(global, { conf: conf.gui });
 const HYDRATE_TIP = 'SSR only: GUI main script on hold, type hydrate() in console to execute it';
 const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)};console.log(${JSON.stringify(HYDRATE_TIP)})</script>`;
 
+/** Cache manager. */
+export const cache = new CacheManager(resolve(dirname(process.argv[1] as string), 'cache'));
+
 /** SSR only mode through launcher option. */
 const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
 if (beSsrOnly) {
+  safeConsole.log('Prerender off');
   safeConsole.log(HYDRATE_TIP);
+} else {
+  prerender(cache);
 }
 
 export async function appRender(body: string, req: Request, res: Response) {
@@ -45,16 +50,16 @@ export async function appRender(body: string, req: Request, res: Response) {
   const ua = req.headers['user-agent'];
   const isMobile = !ua || detectMobile({ ua, tablet: true });
   const isResponsive = isMobile || req.cookies['__forceResponsive'] === 'true';
-  const device = classUnion(isMobile ? 'mobile' : 'desktop', isResponsive ? 'responsive' : 'not-responsive');
+  const device = isMobile ? 'mobile' : 'desktop';
+  const appClassName = classUnion(device, isResponsive ? 'responsive' : 'not-responsive');
 
   /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
   const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
   const forceResponsive = req.cookies['__forceResponsive'] === 'true';
   const cacheEnabled = !(ssrOnly || forceResponsive);
 
-  const cacheEntry = cacheEnabled ? cache.entry(`${device}${req.originalUrl === '/' ? '' : req.originalUrl}`) : null;
+  const cacheEntry = cacheEnabled ? cache.entry(device, req.i18n.lang, req.originalUrl) : null;
   const cacheRes = cacheEntry?.get();
-
   if (cacheRes) {
     return cacheRes;
   } else {
@@ -114,12 +119,14 @@ export async function appRender(body: string, req: Request, res: Response) {
       .replace(/.*(?=<\/head>)/, '  $&\n  ')
       .replace(/<script defer src="(\/main(\.[a-z\d]+\.min)?.js)"><\/script>/, ssrOnly ? hydrateScript : '$&')
       .replace(/(?<=<div id="app">)(?=<\/div>)/, html)
-      .replace(/(?<=<div id="app")(?=>)/, ` class="${encode(device)}"`);
+      .replace(/(?<=<div id="app")(?=>)/, ` class="${encode(appClassName)}"`);
 
     const renderedRes = { content, status: headContext.status ?? 200 };
 
     if (renderedRes.status === 200) {
       cacheEntry?.set(renderedRes);
+    } else if (cacheEnabled && renderedRes.status === 404) {
+      cache.entry(device, req.i18n.lang, '404').set(renderedRes);
     }
 
     return renderedRes;

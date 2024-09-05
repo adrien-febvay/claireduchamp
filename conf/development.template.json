@@ -2,6 +2,7 @@
   "devGuiPort": 3000,
   "http": 80,
   "https": 443,
+  "localPort": 8888,
   "sslCert": "localhost",
   "gui": {
     "gtmId": "GTM-N5DPW5JQ",

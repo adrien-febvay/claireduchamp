@@ -17,6 +17,7 @@ const confSchema = z.object({
   devGuiPort: portSchema.default(3000),
   http: portSchema.nullable(),
   https: portSchema.nullable(),
+  localPort: z.number().min(0).max(65535).default(0),
   sslCert: z.string().min(1).nullable().optional(),
   gui: guiSchema,
 });

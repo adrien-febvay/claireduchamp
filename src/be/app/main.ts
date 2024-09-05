@@ -1,16 +1,16 @@
 // HTTP listener
 import express from 'express';
-import Cookies from 'cookie-parser';
 import { conf } from '@/conf';
+import { Middlewares } from '@/be/middlewares';
 import { Routers } from '@/be/routers';
-import { i18nMiddleware } from '@/utils/i18n/middleware';
 import { Debug } from './debug';
 
 // Create app
 export function appMain(port: number) {
   const app = express();
-  app.use(Cookies());
-  app.use(i18nMiddleware());
+  app.use(Middlewares.RestrictLocal());
+  app.use(Middlewares.Cookies());
+  app.use(Middlewares.i18n());
   Debug(app);
   app.use(Routers.IndexRedirection());
   app.use(Routers.Home());
