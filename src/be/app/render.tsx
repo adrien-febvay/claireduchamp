@@ -31,8 +31,11 @@ export const cache = new CacheManager(resolve(dirname(process.argv[1] as string)
 /** SSR only mode through launcher option. */
 const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');
 if (beSsrOnly) {
-  safeConsole.log('Prerender off');
   safeConsole.log(HYDRATE_TIP);
+}
+
+if (beSsrOnly || process.env.GUI_MODE === 'serve') {
+  safeConsole.log('Prerendering off');
 } else {
   prerender(cache);
 }
