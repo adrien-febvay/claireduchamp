@@ -10,10 +10,10 @@ export function prerender(cache: CacheManager) {
   async function prerender() {
     let count = 0;
     let time = Number(new Date());
-    for (const { cache, lang, mobile, pathname } of routes) {
+    for (const { cache, lang, mobile, path } of routes) {
       const headers = { 'cookie': `lang=${lang};`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
-        await fetch(`http://localhost:${be.local.port}${pathname}`, { headers });
+        await fetch(`http://localhost:${be.local.port}${path}`, { headers });
         if (!cache.exists) {
           throw 'not saved in cache';
         }
@@ -31,13 +31,12 @@ export function prerender(cache: CacheManager) {
   }
 
   const routes = root.children
-    .map(({ desc }) => i18n.supportedLngs.map((lang) => ({ lang, pathname: desc.locales[lang]?.pathname ?? '' })))
-    .flat(1)
-    .filter((route) => (route.pathname ? !route.pathname.includes(':') : false))
-    .concat(i18n.supportedLngs.map((lang) => ({ lang, pathname: '/404' })))
+    .map(({ path, desc }) => ({ path, lang: desc.language }))
+    .filter(({ path, lang }) => path && !path.includes(':') && lang !== 'mul')
+    .concat(i18n.supportedLngs.map((lang) => ({ path: '/404', lang })))
     .map((route) => ['desktop', 'mobile'].map((device, mobile) => ({ ...route, device, mobile })))
     .flat(1)
-    .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.pathname) }))
+    .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }))
     .filter((route) => !route.cache.exists);
 
   setTimeout(() => {
