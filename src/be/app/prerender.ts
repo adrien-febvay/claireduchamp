@@ -31,8 +31,8 @@ export function prerender(cache: CacheManager) {
   }
 
   const routes = root.children
-    .map(({ path, desc }) => ({ path, lang: desc.language }))
-    .filter(({ path, lang }) => path && !path.includes(':') && lang !== 'mul')
+    .map(({ path, desc }) => ({ path: path.replace(/\/:\w+\?/g, ''), lang: desc.language }))
+    .filter(({ path, lang }) => !/:/.test(path) && lang !== 'mul')
     .concat(i18n.supportedLngs.map((lang) => ({ path: '/404', lang })))
     .map((route) => ['desktop', 'mobile'].map((device, mobile) => ({ ...route, device, mobile })))
     .flat(1)
