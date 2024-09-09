@@ -10,7 +10,7 @@ export function prerender(cache: CacheManager) {
   async function prerender() {
     let count = 0;
     let time = Number(new Date());
-    for (const { cache, lang, mobile, path } of routes) {
+    for (const { cache, lang, mobile, path } of routesToPrerender) {
       const headers = { 'cookie': `lang=${lang};`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
         await fetch(`http://localhost:${be.http.port}${path}`, { headers });
@@ -25,22 +25,24 @@ export function prerender(cache: CacheManager) {
         if (newtime >= time + 3e3) {
           time = newtime;
           const plural = count > 1 ? 's' : '';
-          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m route${plural} out of \x1b[33m${routes.length}\x1b[0m`);
+          const total = routesToPrerender.length;
+          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m route${plural} out of \x1b[33m${total}\x1b[0m`);
         }
       }
     }
   }
 
-  const routes = root.children
+  const allRoutes = root.children
     .map(({ path, desc }) => ({ path: path.replace(/\/:\w+\?/g, ''), lang: desc.language }))
     .filter(({ path, lang }) => !/:/.test(path) && lang !== 'mul')
     .concat(i18n.supportedLngs.map((lang) => ({ path: '/404', lang })))
     .map((route) => ['desktop', 'mobile'].map((device, mobile) => ({ ...route, device, mobile })))
     .flat(1)
-    .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }))
-    .filter((route) => !route.cache.exists);
+    .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }));
 
-  const keys = new Set(routes.map(({ cache }) => cache.key));
+  const routesToPrerender = allRoutes.filter((route) => !route.cache.exists);
+
+  const keys = new Set(routesToPrerender.map(({ cache }) => cache.key));
   function cached(key: string) {
     keys.delete(key);
     if (!keys.size) {
@@ -53,14 +55,18 @@ export function prerender(cache: CacheManager) {
   }
   cache.on('set', cached);
 
-  setTimeout(() => {
-    safeConsole.log(`Prerendering \x1b[33m${routes.length}\x1b[0m routes...`);
-    prerender().catch((error) => {
-      safeConsole.error('Prerendering failure:', error);
-      cache.off('set', cached);
-      if (process.env.PRERENDER === 'true') {
-        process.exit(500);
-      }
-    });
-  }, 16);
+  if (routesToPrerender.length) {
+    setTimeout(() => {
+      safeConsole.log(`Prerendering \x1b[33m${routesToPrerender.length}\x1b[0m routes...`);
+      prerender().catch((error) => {
+        safeConsole.error('Prerendering failure:', error);
+        cache.off('set', cached);
+        if (process.env.PRERENDER === 'true') {
+          process.exit(500);
+        }
+      });
+    }, 16);
+  } else {
+    safeConsole.log(`All \x1b[33m${allRoutes.length}\x1b[0m routes already in cache, nothing to prerender...`);
+  }
 }
