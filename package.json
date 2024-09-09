@@ -13,6 +13,7 @@
     "stylelint": "stylelint src/**/*.{css,scss}",
     "stylelint-fix": "npm run stylelint -- --fix",
     "test": "npm run tsc && npm run eslint && npm run stylelint",
+    "prebuild": "rimraf -g dist-prod/**/*",
     "build": "node webpack build",
     "preversion": "npm run test -- --silent && npm run build",
     "start": "node dist-prod/be",

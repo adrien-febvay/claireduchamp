@@ -35,7 +35,7 @@ function setHeaders(res: Response, path: string): void {
 }
 
 export const StaticRouter = () => {
-  safeConsole.log(`Use \x1b[32mstatic\x1b[0m files from \x1b[33m${PATH}\x1b[0m`);
+  safeConsole.log(`Serve \x1b[32mstatic\x1b[0m files from \x1b[33m${PATH}\x1b[0m`);
   return Router((me) => {
     me.use(ExpressStaticRouter(PATH, { index: false, setHeaders }));
   });
