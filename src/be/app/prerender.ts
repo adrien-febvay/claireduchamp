@@ -40,20 +40,27 @@ export function prerender(cache: CacheManager) {
     .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }))
     .filter((route) => !route.cache.exists);
 
+  const keys = new Set(routes.map(({ cache }) => cache.key));
+  function cached(key: string) {
+    keys.delete(key);
+    if (!keys.size) {
+      safeConsole.log('Prerendering complete');
+      cache.off('set', cached);
+      if (process.env.PRERENDER === 'true') {
+        process.exit(0);
+      }
+    }
+  }
+  cache.on('set', cached);
+
   setTimeout(() => {
     safeConsole.log(`Prerendering \x1b[33m${routes.length}\x1b[0m routes...`);
-    prerender()
-      .then(() => {
-        safeConsole.log('Prerendering complete');
-        if (process.env.PRERENDER === 'true') {
-          process.exit(0);
-        }
-      })
-      .catch((error) => {
-        safeConsole.error('Prerendering failure:', error);
-        if (process.env.PRERENDER === 'true') {
-          process.exit(500);
-        }
-      });
+    prerender().catch((error) => {
+      safeConsole.error('Prerendering failure:', error);
+      cache.off('set', cached);
+      if (process.env.PRERENDER === 'true') {
+        process.exit(500);
+      }
+    });
   }, 16);
 }

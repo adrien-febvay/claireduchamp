@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events';
 import { mkdirSync, readdirSync, readFileSync } from 'fs';
 import { mkdir, rm, writeFile } from 'fs/promises';
 import { dirname, join, sep } from 'path';
@@ -13,11 +14,12 @@ function getDetails(error: unknown) {
   return { code, details };
 }
 
-export class CacheManager {
+export class CacheManager extends EventEmitter {
   public readonly path: string;
   public readonly data: _.Dict<Data> = {};
 
   public constructor(path: string, options?: Options) {
+    super();
     this.path = path;
     mkdirSync(path, { recursive: true });
     const reset = options?.reset ?? process.env.NODE_ENV === 'development';
@@ -103,7 +105,9 @@ export class CacheManager {
       .catch((error) => {
         const { details } = getDetails(error);
         safeConsole.error(`Cannot write ${path} (${details})`);
-      });
+      })
+      .finally(() => this.emit('set', key))
+      .catch((error) => safeConsole.error(error));
   }
 
   public static readonly schema = z.object({
