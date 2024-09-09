@@ -2,7 +2,7 @@
 const { EnvironmentPlugin } = require('webpack');
 const ShellPlugin = require('webpack-shell-plugin-next');
 const resolve = require('./resolve');
-const { spawn, spawnSync, webpack } = require('./run');
+const { npx, spawn, webpack } = require('./run');
 
 const { NODE_ENV, BE_MODE, GUI_MODE } = process.env;
 const env = { NODE_ENV, BE_MODE, GUI_MODE };
@@ -39,7 +39,9 @@ class Launcher {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
         spawn.sync('node', ['dist-dev/be']);
       } else {
-        process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully\n');
+        process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, prerendering pages...\n');
+        npx.spawn.sync({ ...env, PRERENDER: 'true'}, ['node', 'dist-prod/be']);
+        process.stdout.write('>> \x1b[32mDone!\x1b[0m Build complete\n');
       }
     }));
   });

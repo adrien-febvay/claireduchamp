@@ -11,13 +11,12 @@ const guiSchema = z.object({
   web3formsAccessKey: z.string().regex(accessKeyRe).default(''),
 });
 
-const portSchema = z.number().min(1).max(65535).optional();
+const portSchema = z.number().min(1).max(65535);
 
 const confSchema = z.object({
   devGuiPort: portSchema.default(3000),
-  http: portSchema.nullable(),
-  https: portSchema.nullable(),
-  localPort: z.number().min(0).max(65535).default(0),
+  http: portSchema.default(80),
+  https: portSchema.nullable().default(443),
   sslCert: z.string().min(1).nullable().optional(),
   gui: guiSchema,
 });

@@ -1,7 +1,6 @@
 {
   "http": 80,
   "https": 443,
-  "localPort": 8888,
   "sslCert": "ssl-claireduchamp-ch",
   "gui": {
     "gtmId": "GTM-K74M8N5V",

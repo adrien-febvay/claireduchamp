@@ -13,7 +13,7 @@ export function prerender(cache: CacheManager) {
     for (const { cache, lang, mobile, path } of routes) {
       const headers = { 'cookie': `lang=${lang};`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
-        await fetch(`http://localhost:${be.local.port}${path}`, { headers });
+        await fetch(`http://localhost:${be.http.port}${path}`, { headers });
         if (!cache.exists) {
           throw 'not saved in cache';
         }
@@ -24,7 +24,8 @@ export function prerender(cache: CacheManager) {
         const newtime = Number(new Date());
         if (newtime >= time + 3e3) {
           time = newtime;
-          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m files out of ${routes.length}`);
+          const plural = count > 1 ? 's' : '';
+          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m route${plural} out of \x1b[33m${routes.length}\x1b[0m`);
         }
       }
     }
@@ -42,7 +43,17 @@ export function prerender(cache: CacheManager) {
   setTimeout(() => {
     safeConsole.log(`Prerendering \x1b[33m${routes.length}\x1b[0m routes...`);
     prerender()
-      .then(() => safeConsole.log('Prerendering complete'))
-      .catch((error) => safeConsole.error('Prerendering failure:', error));
+      .then(() => {
+        safeConsole.log('Prerendering complete');
+        if (process.env.PRERENDER === 'true') {
+          process.exit(0);
+        }
+      })
+      .catch((error) => {
+        safeConsole.error('Prerendering failure:', error);
+        if (process.env.PRERENDER === 'true') {
+          process.exit(500);
+        }
+      });
   }, 16);
 }
