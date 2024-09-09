@@ -1,5 +1,4 @@
-import { execSync } from 'child_process';
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'fs';
+import { mkdirSync, readdirSync, readFileSync } from 'fs';
 import { mkdir, rm, writeFile } from 'fs/promises';
 import { dirname, join, sep } from 'path';
 import { z } from 'zod';
@@ -22,10 +21,10 @@ export class CacheManager {
     this.path = path;
     mkdirSync(path, { recursive: true });
     const reset = options?.reset ?? process.env.NODE_ENV === 'development';
-    if (this.hasCommitChanged() || reset) {
+    if (reset) {
       safeConsole.log('Cache reset');
       this.reset();
-    } else {
+    } else if (process.env.PRERENDER !== 'true') {
       safeConsole.log('Cache reload');
       this.reload();
     }
@@ -45,32 +44,6 @@ export class CacheManager {
 
   public has(key: string) {
     return key in this.data;
-  }
-
-  private hasCommitChanged() {
-    function readCommit(path: string) {
-      try {
-        return readFileSync(join(path, 'hash'), 'utf-8');
-      } catch (error) {
-        const { code, details } = getDetails(error);
-        if (code !== 'ENOENT') {
-          safeConsole.error(`Cannot read hash (${details})`);
-        }
-        return null;
-      }
-    }
-    const prev = readCommit(this.path);
-    const curr = execSync('git rev-parse --short HEAD').toString().trim();
-    const diff = prev === null || prev !== curr;
-    if (diff) {
-      try {
-        return writeFileSync(join(this.path, 'hash'), curr, 'utf-8');
-      } catch (error) {
-        const { details } = getDetails(error);
-        safeConsole.error(`Cannot write hash (${details})`);
-      }
-    }
-    return diff;
   }
 
   private reload() {
