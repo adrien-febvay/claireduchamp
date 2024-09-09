@@ -1,4 +1,5 @@
 /* global process */
+const { EnvironmentPlugin } = require('webpack');
 const ShellPlugin = require('webpack-shell-plugin-next');
 const resolve = require('./resolve');
 const { spawn, spawnSync, webpack } = require('./run');
@@ -66,6 +67,7 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    new EnvironmentPlugin(env),
     new Launcher(),
     new Gui(),
   ],
