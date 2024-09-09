@@ -28,7 +28,7 @@ module.exports = {
   node: { __dirname: true },
   optimization: { minimize: false },
   output: {
-    path: resolve('.dist-tmp/conf'),
+    path: resolve.outDir('conf'),
     filename: '[name].js',
     library: {
       type: "commonjs",

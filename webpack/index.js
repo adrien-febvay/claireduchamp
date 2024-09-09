@@ -92,7 +92,7 @@ if (args.includes('help')) {
   console.log(`NODE_ENV=${env.NODE_ENV}`);
   run.build('conf', env, env.NODE_ENV === 'production' ? 'Check' : 'Load');
   if (env.NODE_ENV === 'production') {
-    require('../.dist-tmp/conf');
+    require('../dist-prod/conf');
   }
   run.build('be', env, env.BE_MODE === 'build' ? 'Build' : 'Serve');
 }

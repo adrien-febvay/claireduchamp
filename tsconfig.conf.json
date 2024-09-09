@@ -2,9 +2,9 @@
   "extends": "./tsconfig",
 
   "compilerOptions": {
-    "outDir": "./.tsc"
+    "outDir": "./dist-tsc"
   },
 
   "include": ["src/conf"],
-  "exclude": ["**/node_modules", ".tsc", ".tmp-dist", "dist", "src/be", "src/gui"]
+  "exclude": ["**/node_modules", "dist-tsc", ".tmp-dist", "dist", "src/be", "src/gui"]
 }

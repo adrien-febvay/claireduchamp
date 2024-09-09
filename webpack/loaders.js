@@ -4,7 +4,7 @@ module.exports = function webpackLoaders(cssLoaders = ['style-loader'], cssOptio
   return [
     {
       test: /\.[jt]sx?$/,
-      exclude: /node_modules|\.tsc|\.dist-tmp|dist/,
+      exclude: /node_modules|dist-*/,
       use: 'babel-loader',
     },
     {

@@ -27,7 +27,7 @@ module.exports = {
       ...filename('css/*.min.css'),
     }),
     new SourceMapDevToolPlugin({
-      exclude: /node_modules|\.tsc|\.dist-tmp|dist/,
+      exclude: /node_modules|dist-*/,
       columns: true,
       test: /\.[jt]sx?$/,
       ...filename('js/*.min.map'),

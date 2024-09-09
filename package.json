@@ -7,17 +7,16 @@
     "help": "node webpack help",
     "init": "ts-node -r tsconfig-paths/register src/conf/init",
     "dev": "node webpack dev",
-    "tsc": "tsc && rimraf .tsc",
+    "tsc": "tsc && rimraf dist-tsc",
     "eslint": "eslint src/**/*.{ts,tsx}",
     "eslint-fix": "eslint **/*/*.{ts,tsx} --fix",
     "stylelint": "stylelint src/**/*.{css,scss}",
     "stylelint-fix": "npm run stylelint -- --fix",
     "test": "npm run tsc && npm run eslint && npm run stylelint",
     "build": "node webpack build",
-    "postbuild": "rimraf dist && npx cpy-cli \"./.dist-tmp/**\" dist/ && rimraf .dist-tmp",
     "preversion": "npm run test -- --silent && npm run build",
-    "start": "node dist/be",
-    "clean": "rimraf .dist-tmp && rimraf .tsc"
+    "start": "node dist-prod/be",
+    "clean": "rimraf dist-dev && rimraf dist-tsc"
   },
   "repository": {
     "type": "git",
@@ -86,7 +85,6 @@
     "browserslist": "^4.23.2",
     "copy-webpack-plugin": "^12.0.2",
     "core-js": "^3.37.1",
-    "cpy-cli": "^5.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "css-modules-typescript-loader": "^4.0.1",

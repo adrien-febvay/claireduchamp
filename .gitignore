@@ -5,10 +5,8 @@
 .VSCodeCounter/
 node_modules/
 /.changelog
-/.tsc/
-/.dist-tmp/
-/dist/
-/src/be/gui/
+/dist-*/
+!/dist-prod/
 /test*.js
 .DS_Store
 *.tgz

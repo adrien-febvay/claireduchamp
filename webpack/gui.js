@@ -11,7 +11,7 @@ module.exports = require('webpack-merge').merge({
     moduleIds: 'named'
   },
   output: {
-    path: resolve('.dist-tmp/gui'),
+    path: resolve.outDir('gui'),
     publicPath: '/',
     clean: true,
   },

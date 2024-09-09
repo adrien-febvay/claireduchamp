@@ -1,4 +1,4 @@
-const { conf } = require('../.dist-tmp/conf/silent');
+const { conf } = require('../dist-dev/conf/silent');
 
 function runOnce(fn) {
   return (...args) => {
@@ -41,6 +41,6 @@ module.exports = {
   watchOptions: {
     poll: 1000,
     aggregateTimeout: 500,
-    ignored: ['node_modules', 'dist'],
+    ignored: ['node_modules'],
   },
 };
