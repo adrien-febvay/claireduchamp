@@ -40,7 +40,7 @@ class Launcher {
         spawn.sync('node', ['dist-dev/be']);
       } else {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, prerendering pages...\n');
-        npx.spawn.sync({ ...env, PRERENDER: 'true'}, ['node', 'dist-prod/be']);
+        npx.spawn.sync({ ...env, PRERENDER: 'true'}, ['node', 'dist-prod-tmp/be']);
         process.stdout.write('>> \x1b[32mDone!\x1b[0m Build complete\n');
       }
     }));

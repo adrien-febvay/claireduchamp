@@ -92,7 +92,7 @@ if (args.includes('help')) {
   console.log(`NODE_ENV=${env.NODE_ENV}`);
   webpack.build('conf', env, env.NODE_ENV === 'production' ? 'Check' : 'Load');
   if (env.NODE_ENV === 'production') {
-    require('../dist-prod/conf');
+    require('../dist-prod-tmp/conf');
   }
   webpack.build('be', env, env.BE_MODE === 'build' ? 'Build' : 'Serve');
 }

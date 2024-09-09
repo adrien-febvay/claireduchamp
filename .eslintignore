@@ -1,4 +1,5 @@
 node_modules
 dist-tsc
 dist-dev
+dist-prod-tmp
 dist-prod
