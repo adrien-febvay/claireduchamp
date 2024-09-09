@@ -52,7 +52,7 @@ module.exports = {
   externals: [require('webpack-node-externals')({
     allowlist: [/\.css$/],
   })],
-  mode: NODE_ENV,
+  mode: 'development',
   module: {
     rules: require('./loaders')(['isomorphic-style-loader'], {
       esModule: false,
