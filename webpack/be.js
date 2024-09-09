@@ -1,8 +1,7 @@
 /* global process */
-const cp = require('child_process');
 const ShellPlugin = require('webpack-shell-plugin-next');
 const resolve = require('./resolve');
-const run = require('./run');
+const { spawn, spawnSync, webpack } = require('./run');
 
 const { NODE_ENV, BE_MODE, GUI_MODE } = process.env;
 const env = { NODE_ENV, BE_MODE, GUI_MODE };
@@ -19,9 +18,9 @@ function runOnce(fn) {
 class Gui {
   apply = runOnce((compiler) => {
       if (GUI_MODE === 'build') {
-        run.build('gui', env);
+        webpack.build('gui', env);
       } else {
-        compiler.hooks.afterEmit.tap('Gui.emit', runOnce(() => void run.serve('gui', env)));
+        compiler.hooks.afterEmit.tap('Gui.emit', runOnce(() => void webpack.serve('gui', env)));
       }
   });
 }
@@ -30,15 +29,14 @@ class Launcher {
   apply = runOnce((compiler) => {
     compiler.hooks.afterEmit.tap('Launcher.emitOnce', runOnce(() => {
       if (serve) {
-        const npx = /^win\d+$/.test(process.platform) ? 'npx.cmd' : 'npx';
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
-        run.spawn(npx, ['nodemon', 'dist-dev/be', '--quiet', '--watch', 'dist-dev/be']);
+        spawn('nodemon', ['dist-dev/be', '--quiet', '--watch', 'dist-dev/be']);
         process.stdout.write('Type \x1b[32;1mrs\x1b[0m and hit enter to manually restart BE\n');
         compiler.hooks.watchRun.tap('Launcher.update', () => process.stdout.write('\n>> \x1b[32mChange detected!\x1b[0m Updating BE...\n'))
         compiler.hooks.afterEmit.tap('Launcher.emitAgain', () => process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, restarting...\n'));
       } else if (dev) {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully, starting...\n');
-        run.spawnSync('node', ['dist-dev/be']);
+        spawn.sync('node', ['dist-dev/be']);
       } else {
         process.stdout.write('>> \x1b[32mDone!\x1b[0m BE compiled successfully\n');
       }

@@ -1,4 +1,4 @@
-const run = require('./run');
+const { webpack } = require('./run');
 
 const syntax = `
   npm run [mode] [option]
@@ -90,9 +90,9 @@ if (args.includes('help')) {
   env = { ...envs[''], ...env };
   process.env.NODE_ENV = env.NODE_ENV;
   console.log(`NODE_ENV=${env.NODE_ENV}`);
-  run.build('conf', env, env.NODE_ENV === 'production' ? 'Check' : 'Load');
+  webpack.build('conf', env, env.NODE_ENV === 'production' ? 'Check' : 'Load');
   if (env.NODE_ENV === 'production') {
     require('../dist-prod/conf');
   }
-  run.build('be', env, env.BE_MODE === 'build' ? 'Build' : 'Serve');
+  webpack.build('be', env, env.BE_MODE === 'build' ? 'Build' : 'Serve');
 }
