@@ -27,13 +27,18 @@ export class CacheManager extends EventEmitter {
       safeConsole.log('Cache reset');
       this.reset();
     } else if (process.env.PRERENDER !== 'true') {
-      safeConsole.log('Cache reload');
+      safeConsole.log('Reload cache from files');
       this.reload();
+      safeConsole.log(`Loaded \x1b[33m${this.size}\x1b[0m routes from cache files`);
     }
   }
 
   public get keys() {
     return Object.keys(this.data);
+  }
+
+  public get size() {
+    return this.keys.length;
   }
 
   public entry(...key: string[]) {
@@ -51,19 +56,21 @@ export class CacheManager extends EventEmitter {
   private reload() {
     for (const entry of readdirSync(this.path, { recursive: true, withFileTypes: true })) {
       if (entry.isFile() && /\.json$/.test(entry.name)) {
-        const key = entry.name.slice(0, -5).split(sep).join('/');
+        const absPath = join(entry.parentPath, entry.name);
+        const relPath = absPath.slice(this.path.length + 1, -5);
+        const key = relPath.split(sep).join('/');
         try {
-          const bytes = readFileSync(join(this.path, entry.name), 'utf-8');
+          const bytes = readFileSync(absPath, 'utf-8');
           try {
             const data = JSON.parse(bytes);
             this.data[key] = CacheManager.schema.parse(data);
           } catch (error) {
             const details = error instanceof z.ZodError ? 'wrong data structure' : 'invalid JSON';
-            safeConsole.error(`Cannot parse ${entry.name} (${details})`);
+            safeConsole.error(`Cannot parse ${key} (${details})`);
           }
         } catch (error) {
           const { details } = getDetails(error);
-          safeConsole.error(`Cannot read ${entry.name} (${details})`);
+          safeConsole.error(`Cannot read ${key} (${details})`);
         }
       }
     }
