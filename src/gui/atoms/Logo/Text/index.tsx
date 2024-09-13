@@ -11,10 +11,10 @@ export const Atom_Logo_Text: React.FC<Props> = (props) => {
   const allStyles = React.extendStyles(ownStyles, styles);
 
   return (
-    <div classNames={allStyles.text} {...divAttrs}>
+    <h1 classNames={allStyles.text} {...divAttrs}>
       <div classNames={allStyles.title}>Claire Duchamp</div>
       <div classNames={allStyles.subtitle}>{translate('architect')}</div>
-    </div>
+    </h1>
   );
 };
 
