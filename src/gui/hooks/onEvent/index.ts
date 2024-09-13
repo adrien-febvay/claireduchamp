@@ -92,7 +92,7 @@ export function onEvent(
   }
 
   function makeMemo() {
-    const emitter: Emitter.Ref = { current: null };
+    const emitter = null as Emitter | null;
     const options = {} as _.Event.Listener.Options;
     const types = [] as ReturnType<typeof resolveTypes>;
     return { emitter, types, listener, options, active: false, deps: void 0 as unknown[] | undefined };
@@ -100,8 +100,8 @@ export function onEvent(
 
   function onceListener(...args: unknown[]) {
     removeListener();
-    if (memo.emitter.current) {
-      memo.listener.call(memo.emitter.current, ...args);
+    if (memo.emitter) {
+      memo.listener.call(memo.emitter, ...args);
     }
   }
 
@@ -134,7 +134,7 @@ export function onEvent(
   }
 
   function toggleListener(active = !memo.active) {
-    const emitter = memo.emitter.current;
+    const emitter = memo.emitter;
     if (emitter) {
       // Allow unbound method since we use it properly on the next call anyway.
       // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -150,8 +150,8 @@ export function onEvent(
 
   function updateListener() {
     const update = depChange();
-    const resolvedEmitter = isRefObject(emitter) ? emitter : { current: emitter || null };
-    const emitterChange = resolvedEmitter.current !== memo.emitter.current;
+    const resolvedEmitter = isRefObject(emitter) ? emitter.current : emitter || null;
+    const emitterChange = resolvedEmitter !== memo.emitter;
     if (update || emitterChange) {
       const resolvedOptions = resolveOptions();
       const resolvedtypes = resolveTypes();

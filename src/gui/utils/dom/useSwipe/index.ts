@@ -1,12 +1,12 @@
 import { onEvent } from '@/gui/hooks/onEvent';
 import { DataHandler } from './Data';
 
-export function useSwipe(host: MaybeHostOrRef, handler: Handler): Toggler {
+export function useSwipe(host: MaybeHostOrRef, handler: Handler, deps: unknown[] = []): Toggler {
   const memo = React.useMemo(() => new DataHandler(), []);
 
-  onEvent(host, 'touchstart', touchStart, []);
-  onEvent(host, 'touchmove', touchMove, []);
-  onEvent(host, 'touchend', touchEnd, []);
+  onEvent(host, 'touchstart', touchStart, deps);
+  onEvent(host, 'touchmove', touchMove, deps);
+  onEvent(host, 'touchend', touchEnd, deps);
 
   function touchStart(this: Emitter, event: TouchEvent): void {
     event.preventDefault();
