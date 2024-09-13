@@ -25,6 +25,21 @@ export const Screen_Services: React.FC = () => {
       <Intro />
       <article classNames={[appStyles.lightTheme, styles.article]}>
         <div className={styles.content}>
+          <h1 id="services" className={styles.servicesTitle}>
+            {translate('our-services')}
+          </h1>
+          <h2 className={styles.servicesCaption}>{translate('our-services-caption')}</h2>
+          <ul className={styles.services}>
+            <Map content={translate('our-services-items')} separator={/\s*;\s*/} children={<li />} />
+          </ul>
+          <Text content={translate('explanation')} />
+          <Link to={screens.ContactUs} classNames={[appStyles.scaledButton, styles.button]}>
+            <Trans t={translate} i18nKey="use-our-services">
+              <span className={styles.noWrap} />
+            </Trans>
+          </Link>
+          <Project.Preview projectId="villaGrandvaux2023" tryptics={[[2, 17, 3]]} className={styles.project} />
+          <Project.Preview projectId="villaGrandvaux2023" tryptics={[[15, 30, 6]]} className={styles.project} credits />
           <h1 className={styles.catchphrase}>{translate('catchphrase')}</h1>
           <div classNames={[appStyles.caption, styles.introduction]}>{parse(translate('introduction'))}</div>
           <div className={styles.values}>
@@ -35,29 +50,6 @@ export const Screen_Services: React.FC = () => {
               </div>
             ))}
           </div>
-          <Project.Preview projectId="villaGrandvaux2023" tryptics={[[2, 17, 3]]} className={styles.project} />
-          <Project.Preview
-            id="services"
-            projectId="villaGrandvaux2023"
-            tryptics={[[15, 30, 6]]}
-            className={styles.project}
-            credits
-          />
-          <h1 className={styles.servicesTitle}>{translate('our-services')}</h1>
-          <h2 className={styles.servicesCaption}>
-            <Map content={translate('our-services-caption')} glue={<> –&nbsp;</>} separator=" – ">
-              <span className={styles.servicesCaptionItem} />
-            </Map>
-          </h2>
-          <ul className={styles.services}>
-            <Map content={translate('our-services-items')} separator={/\s*;\s*/} children={<li />} />
-          </ul>
-          <Text content={translate('explanation')} />
-          <Link to={screens.ContactUs} classNames={[appStyles.scaledButton, styles.button]}>
-            <Trans t={translate} i18nKey="use-our-services">
-              <span className={styles.noWrap} />
-            </Trans>
-          </Link>
         </div>
       </article>
     </>

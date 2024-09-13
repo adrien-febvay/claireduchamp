@@ -26,7 +26,7 @@
   "Screens/ContactUs": {
     "pathname": "/contact-us",
     "title": "Contact us",
-    "description": "Our contact details and form for any information and initial contact",
+    "description": "SIA architect and interior designer. Contact details and contact form, for any information and initial contact",
     "email": "Email",
     "phone": "Phone",
     "address": "Postal address",
@@ -79,8 +79,13 @@
   "Screens/Services": {
     "pathname": "/services",
     "title": "Services",
-    "description": "Construction, renovation, advice, building permit, feasibility study/sketch, calls for tenders, work monitoring, furniture design, decoration",
+    "description": "SIA architect / Interior designer @Vevey: construction, renovation, advice, building permit, feasibility study, calls for tenders, work monitoring, decoration",
     "goto": "#services",
+    "our-services": "Our services",
+    "our-services-caption": "SIA architect and interior designer based in Vevey",
+    "our-services-items": "New construction ; Advice before purchase ; Building permit ; Renovation ; Feasibility study/outline ; Call for tender ; Interior architecture ; Project ; Work monitoring ; Furniture design",
+    "explanation": "The agency works on various project scales for individuals, entrepreneurs and municipalities.\nIt relies on the architect-client dynamic as a design process.\nWe are concerned with an aesthetic highlighting the singularities of the site, the program and the client.",
+    "use-our-services": "Need our services? <0>Contact us</0>",
     "catchphrase": "Singularity as norm",
     "introduction": "Convinced that architecture has its source in specificities, Claire Duchamp defends projects designed in relation to the singularities of contexts and project owners.",
     "listening-caption": "Listening",
@@ -88,16 +93,11 @@
     "reactivity-caption": "Reactivity",
     "reactivity-text": "We strive to demonstrate flexibility and open-mindedness to adapt as quickly as possible to challenges, unforeseen events and changes during the process.",
     "singularity-caption": "Singularity",
-    "singularity-text": "From detail to the whole, our transversal vision of the project allows us to think from the gesture to the typology through the atmospheres.\nThis process highlights your singularity.",
-    "our-services": "Our services",
-    "our-services-caption": "Architecture – Interior architecture – Decoration",
-    "our-services-items": "New construction ; Advice before purchase ; Building permit ; Renovation ; Feasibility study/outline ; Call for tender ; Interior architecture ; Project ; Work monitoring ; Furniture design",
-    "explanation": "The agency works on various project scales for individuals, entrepreneurs and municipalities.\nIt relies on the architect-client dynamic as a design process.\nWe are concerned with an aesthetic highlighting the singularities of the site, the program and the client.",
-    "use-our-services": "Need our services? <0>Contact us</0>"
+    "singularity-text": "From detail to the whole, our transversal vision of the project allows us to think from the gesture to the typology through the atmospheres.\nThis process highlights your singularity."
   },
   "support/Router/Meta": {
     "title": "Claire Duchamp Architect",
-    "description": "SIA architect based in Vevey for individuals, entrepreneurs and municipalities — Singularity as standard — Listening and responsiveness as values",
+    "description": "SIA architect and interior designer based in Vevey for individuals, entrepreneurs and municipalities",
     "keywords": "Architecture, Construction, Renovation, Interior, Decoration, Vevey, Vaud, Switzerland, Swiss, Riviera, Geneva, Lausanne, Montreux"
   }
 }

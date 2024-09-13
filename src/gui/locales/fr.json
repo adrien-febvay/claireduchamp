@@ -79,8 +79,13 @@
   "Screens/Services": {
     "pathname": "/prestations",
     "title": "Prestations",
-    "description": "Construction, rénovation, conseil, permis de construire, étude de faisabilité/esquisse, appels d'offre, suivi de travaux, design de mobilier, décoration",
+    "description": "Architecte SIA et d'intérieur : Construction, rénovation, conseil, permis de construire, étude de faisabilité, appels d'offre, suivi de travaux, décoration",
     "goto": "#services",
+    "our-services": "Nos prestations",
+    "our-services-caption": "Architecte SIA / Architecte d'intérieur basée à Vevey",
+    "our-services-items": "Construction neuve ; Conseil avant achat ; Permis de construire ; Rénovation ; Etude de faisabilité/esquisse ; Appels d'offre ; Architecture d'intérieur ; Projet ; Suivi de travaux ; Design de mobilier",
+    "explanation": "L'agence travaille sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes.\nElle s'appuie sur la dynamique architecte-client comme processus de conception.\nNous portons le souci d'une esthétique soulignant les singularités du site, du programme et du maître d'ouvrage.",
+    "use-our-services": "Besoin d'une prestation ? <0>Contactez-nous</0>",
     "catchphrase": "La singularité pour norme",
     "introduction": "Convaincue que l'architecture prend sa source dans les spécificités, Claire Duchamp défend des projets pensés par rapport aux singularités des contextes et des maîtres d'ouvrage.",
     "listening-caption": "Ecoute",
@@ -88,16 +93,11 @@
     "reactivity-caption": "Réactivité",
     "reactivity-text": "Nous nous efforçons de faire preuve de flexibilité et d'ouverture d'esprit pour nous adapter au plus vite face aux remises en question, imprévus et changements en cours de processus.",
     "singularity-caption": "Singularité",
-    "singularity-text": "Du détail à l'ensemble, notre vision transversale du projet permet de raisonner du geste à la typologie en passant par les ambiances.\nCe processus met en avant votre singularité.",
-    "our-services": "Nos prestations",
-    "our-services-caption": "Architecture – Architecture d'intérieur – Décoration",
-    "our-services-items": "Construction neuve ; Conseil avant achat ; Permis de construire ; Rénovation ; Etude de faisabilité/esquisse ; Appels d'offre ; Architecture d'intérieur ; Projet ; Suivi de travaux ; Design de mobilier",
-    "explanation": "L'agence travaille sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes.\nElle s'appuie sur la dynamique architecte-client comme processus de conception.\nNous portons le souci d'une esthétique soulignant les singularités du site, du programme et du maître d'ouvrage.",
-    "use-our-services": "Besoin d'une prestation ? <0>Contactez-nous</0>"
+    "singularity-text": "Du détail à l'ensemble, notre vision transversale du projet permet de raisonner du geste à la typologie en passant par les ambiances.\nCe processus met en avant votre singularité."
   },
   "support/Router/Meta": {
     "title": "Claire Duchamp Architecte",
-    "description": "Architecte SIA basée à Vevey pour particuliers, entrepreneurs et communes — La singularité pour norme — L'écoute et la réactivité comme valeurs",
+    "description": "Architecte SIA et architecte d'intérieur basée à Vevey pour particuliers, entrepreneurs et communes",
     "keywords": "Architecture, Construction, Rénovation, Intérieur, Décoration, Vevey, Vaud, Suisse, Riviera, Genève, Lausanne, Montreux"
   }
 }
