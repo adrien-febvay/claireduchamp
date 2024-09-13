@@ -24,10 +24,8 @@ export const Screen_Services: React.FC = () => {
     <>
       <Intro />
       <article classNames={[appStyles.lightTheme, styles.article]}>
-        <div className={styles.content}>
-          <h2 id="services" className={styles.servicesTitle}>
-            {translate('our-services')}
-          </h2>
+        <div id="services" className={styles.content}>
+          <h2 className={styles.servicesTitle}>{translate('our-services')}</h2>
           <h3 className={styles.servicesCaption}>{translate('our-services-caption')}</h3>
           <ul className={styles.services}>
             <Map content={translate('our-services-items')} separator={/\s*;\s*/} children={<li />} />
