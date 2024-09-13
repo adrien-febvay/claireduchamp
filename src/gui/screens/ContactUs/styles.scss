@@ -23,7 +23,7 @@
   font-size: 14pt;
   animation: fade-in 1500ms;
 
-  > h2 {
+  > h3 {
     text-transform: lowercase;
   }
 }
@@ -169,7 +169,7 @@
     align-items: baseline;
     column-gap: 20px;
 
-    > h2 {
+    > h3 {
       font-size: 16pt;
     }
   }
@@ -200,7 +200,7 @@
     align-items: baseline;
     column-gap: 20px;
 
-    > h2 {
+    > h3 {
       font-size: 18pt;
     }
   }
@@ -233,7 +233,7 @@
     text-align: center;
     gap: 3px;
 
-    > h2 {
+    > h3 {
       font-size: 22pt;
 
       &:not(:first-child) {

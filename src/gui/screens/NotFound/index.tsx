@@ -18,11 +18,11 @@ export const Screen_NotFound: React.FC = () => {
   return (
     <div classNames={classNames}>
       <div className={styles.content}>
-        <h1>
+        <h2>
           <Trans t={translate} i18nKey="not-found">
             <span className={styles.noWrap} />
           </Trans>
-        </h1>
+        </h2>
         <Link to={screens.Home}>
           <Trans t={translate} i18nKey="return-home">
             <span className={styles.noWrap} />

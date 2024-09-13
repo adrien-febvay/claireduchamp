@@ -1,6 +1,6 @@
-### References
+#### References
 
-#### Housing
+##### Housing
 
 Villa, Grandvaux, VD<br>
 2022-2023
@@ -24,7 +24,7 @@ Semi-detached villas, Choëx, VS<br>
 Cottage les Giettes, Monthey, VS<br>
 2020, on behalf of <small>a|</small>alberti
 
-#### Terciary Sector
+##### Terciary Sector
 
 *Vaudoise Aréna*, Lausanne<br>
 Restaurant cover<br>
@@ -38,7 +38,7 @@ Shops, Monthey<br>
 Senior residence<br>
 2020, on behalf of <small>a|</small>alberti
 
-#### Public Sector
+##### Public Sector
 
 *Les Goilles*, Monthey<br>
 Neighborhood plan<br>

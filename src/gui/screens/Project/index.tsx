@@ -83,8 +83,8 @@ const ProjectScreen: React.FC = () => {
       <div ref={me.ref.content} className={styles.content}>
         <div className={styles.header} ref={me.ref.header}>
           <div className={styles.properties}>
-            <h5>{project.caption}</h5>
-            <h1>{project.title}</h1>
+            <h6>{project.caption}</h6>
+            <h2>{project.title}</h2>
             {project.info && <p>{project.info}</p>}
           </div>
           <FullscreenButton classNames={styles.button} onClick={toggleFullscreen} revoke={fullscreen.active} />

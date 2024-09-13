@@ -129,23 +129,23 @@ $lite-brown: #895e34;
     @include underlined-link($secondary-color);
   }
 
-  h1 {
+  h1, h2 {
     @include bodoni-big-title($secondary-color);
   }
 
-  button, h2, input[type=submit], th {
+  button, h3, input[type=submit], th {
     @include bodoni-title($secondary-color);
   }
 
-  h3 {
+  h4 {
     @include bodoni-light-title($secondary-color);
   }
 
-  h4 {
+  h5 {
     @include calibri-title($secondary-color);
   }
 
-  h5, h6 {
+  h6 {
     @include calibri-light-title($secondary-color);
   }
 

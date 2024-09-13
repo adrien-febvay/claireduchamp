@@ -1,6 +1,6 @@
-### Références
+#### Références
 
-#### Logements
+##### Logements
 
 Villa, Grandvaux, VD<br>
 2022-2023
@@ -24,7 +24,7 @@ Villas jumelées, Choëx, VS<br>
 Chalet les Giettes, Monthey, VS<br>
 2020, pour le compte de <small>a|</small>alberti
 
-#### Tertiaire
+##### Tertiaire
 
 *Vaudoise Aréna*, Lausanne<br>
 Couvert restaurant<br>
@@ -38,7 +38,7 @@ Commerces, Monthey<br>
 Résidence senior<br>
 2020, pour le compte de <small>a|</small>alberti
 
-#### Public
+##### Public
 
 *Les Goilles*, Monthey<br>
 Plan de quartier<br>

@@ -206,11 +206,11 @@ export const Screen_ContactUs: React.FC = () => {
     <article classNames={[appStyles.darkTheme, styles.article]}>
       <div className={styles.content}>
         <div className={styles.info}>
-          <h2>{translate('email')}</h2>
+          <h3>{translate('email')}</h3>
           <Mail address="contact@claireduchamp.ch" />
-          <h2>{translate('phone')}</h2>
+          <h3>{translate('phone')}</h3>
           <Phone number="+41 78 926 94 64" />
-          <h2>{translate('address')}</h2>
+          <h3>{translate('address')}</h3>
           <p>
             <span className={styles.address}>Claire Duchamp Architecte</span>
             <span className={styles.address}>Quai Perdonnet 18</span>

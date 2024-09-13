@@ -1,10 +1,10 @@
-# Privacy policy
-## Personal data and cookies
+## Privacy policy
+### Personal data and cookies
 
-#### Personal data that you transmit directly to us
+##### Personal data that you transmit directly to us
 We only use your personal data if you provide it to us through the contact form. This data is only used to communicate with you and will never be passed on to third parties.
 
-#### Anonymous data that we collect automatically
+##### Anonymous data that we collect automatically
 During each of your visits to our site, we collect anonymous information relating to your connection and your navigation.
 
 We thus measure the audience of the site, its different pages as well as the frequency of use of its features.
@@ -17,7 +17,7 @@ Here is the data we may collect:
 - Address of the Internet page of origin (“referrer”),
 - Navigation data on our services, content viewed, features used, etc.
 
-#### The cookies we issue
+##### The cookies we issue
 A cookie is a text file placed when viewing a site, a mobile application or an online advertisement and stored in a specific space on the hard drive of your computer or mobile device. Cookies are managed by your Internet browser or the mobile application you use, and only the issuer of a cookie can decide whether to read or modify the information contained therein. It has a limited validity period.
 
 Here are the uses we make of cookies:
