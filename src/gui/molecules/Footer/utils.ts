@@ -10,4 +10,4 @@ export const instagram = (username: string): `https://${string}` => `https://www
  * @param username Username.
  * @returns A LinkedIn URL.
  */
-export const linkedin = (username: string): `https://${string}` => `https://ch.linkedin.com/in/${username}`;
+export const linkedin = (username: string): `https://${string}` => `https://www.linkedin.com/in/${username}`;
