@@ -1,3 +1,0 @@
-interface JSON {
-  parse(): unknown;
-}
