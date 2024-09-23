@@ -117,7 +117,7 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     /** Response content. */
     const content = body
-      .replace(/(?<=<html[^>])(?=>)/, langAttrs)
+      .replace(/(?<=<html) ?/, langAttrs)
       .replace(/(?<=<head>)\n?/, `\n    ${head.replace(/(?<=>)(?=<[^/])/g, '\n    ')}\n`)
       .replace(/.*(?=<\/head>)/, '  $&\n  ')
       .replace(/<script defer src="(\/main(\.[a-z\d]+\.min)?.js)"><\/script>/, ssrOnly ? hydrateScript : '$&')
