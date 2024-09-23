@@ -21,6 +21,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
 
   const me = React.useComponent(() => ({
     state: {
+      init: true,
       playing: false,
     },
   }));
@@ -34,15 +35,20 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   onEvent(playing && document, 'click, scroll', stop, []);
   onEvent(layout.scroll, 'reset', play, []);
 
-  React.useEffect(play, []);
+  React.useEffect(init, []);
 
-  function play() {
-    toggle(true);
+  function init() {
+    me.updateState({ init: false });
+    play();
   }
 
   function handleNav() {
     layout.nav?.toggle(!me.state.playing);
     return restoreNavOnUnmount;
+  }
+
+  function play() {
+    toggle(true);
   }
 
   function scrollDown() {
@@ -69,37 +75,51 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   return (
     <div classNames={[styles.root, className]} {...divAttributes}>
       <Orientation landscape>
-        <Carousel autoPlay={me.state.playing}>
-          <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
-          <div>
-            <img src={url('landscape-2-1')} />
-            <img src={url('landscape-2-2')} />
-            <img src={url('landscape-2-3')} />
-          </div>
-          <div>
-            <img src={url('landscape-3-1')} />
-            <img src={url('landscape-3-2')} />
-            <img src={url('landscape-3-3')} />
-          </div>
-          <img src={url('landscape-4')} />
-          <img src={url('landscape-5')} />
-          <img src={url('landscape-6')} />
-        </Carousel>
+        {me.state.init ? (
+          <Carousel>
+            <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
+            <div />
+          </Carousel>
+        ) : (
+          <Carousel autoPlay={me.state.playing}>
+            <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
+            <div>
+              <img src={url('landscape-2-1')} />
+              <img src={url('landscape-2-2')} />
+              <img src={url('landscape-2-3')} />
+            </div>
+            <div>
+              <img src={url('landscape-3-1')} />
+              <img src={url('landscape-3-2')} />
+              <img src={url('landscape-3-3')} />
+            </div>
+            <img src={url('landscape-4')} />
+            <img src={url('landscape-5')} />
+            <img src={url('landscape-6')} />
+          </Carousel>
+        )}
       </Orientation>
       <Orientation portrait>
-        <Carousel autoPlay={me.state.playing}>
-          <Image src={url('portrait-01')} styles={portraitLowresStyles} />
-          <img src={url('portrait-02')} />
-          <img src={url('portrait-03')} />
-          <img src={url('portrait-04')} />
-          <img src={url('portrait-05')} />
-          <img src={url('portrait-06')} />
-          <img src={url('portrait-07')} />
-          <img src={url('portrait-08')} />
-          <img src={url('portrait-09')} />
-          <img src={url('portrait-10')} />
-          <img src={url('portrait-11')} />
-        </Carousel>
+        {me.state.init ? (
+          <Carousel>
+            <Image src={url('portrait-01')} styles={portraitLowresStyles} />
+            <div />
+          </Carousel>
+        ) : (
+          <Carousel autoPlay={me.state.playing}>
+            <Image src={url('portrait-01')} styles={portraitLowresStyles} />
+            <img src={url('portrait-02')} />
+            <img src={url('portrait-03')} />
+            <img src={url('portrait-04')} />
+            <img src={url('portrait-05')} />
+            <img src={url('portrait-06')} />
+            <img src={url('portrait-07')} />
+            <img src={url('portrait-08')} />
+            <img src={url('portrait-09')} />
+            <img src={url('portrait-10')} />
+            <img src={url('portrait-11')} />
+          </Carousel>
+        )}
       </Orientation>
       <Link to={screens.Home} className={styles.title} onClick={play} style={{ opacity: playing ? 0 : 1 }}>
         <Logo.Text />
