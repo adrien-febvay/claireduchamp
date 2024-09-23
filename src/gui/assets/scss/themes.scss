@@ -129,7 +129,7 @@ $lite-brown: #895e34;
     @include underlined-link($secondary-color);
   }
 
-  h1, h2 {
+  h2 {
     @include bodoni-big-title($secondary-color);
   }
 

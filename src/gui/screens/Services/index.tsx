@@ -39,7 +39,7 @@ export const Screen_Services: React.FC = () => {
           <Project.Preview projectId="villaGrandvaux2023" tryptics={[[2, 17, 3]]} className={styles.project} />
           <Project.Preview projectId="villaGrandvaux2023" tryptics={[[15, 30, 6]]} className={styles.project} credits />
           <h2 className={styles.catchphrase}>{translate('catchphrase')}</h2>
-          <div classNames={[appStyles.caption, styles.introduction]}>{parse(translate('introduction'))}</div>
+          <div className={styles.introduction}>{parse(translate('introduction'))}</div>
           <div className={styles.values}>
             {VALUES.map((value, index) => (
               <div key={index} className={styles.value}>

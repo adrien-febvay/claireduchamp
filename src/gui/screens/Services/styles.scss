@@ -5,6 +5,10 @@
 }
 
 .content {
+  > h3 {
+    font-style: normal;
+  }
+
   > .button {
     background: #ffffffa0;
     background: linear-gradient(90deg, transparent 0%, #ffffff80 20%, #ffffff80 80%, transparent 100%);
@@ -45,6 +49,8 @@
 
 .introduction {
   margin: 40px 0;
+  font-size: 16pt;
+  line-height: 1.2em;
 }
 
 .values {
