@@ -29,13 +29,14 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   const { playing } = me.state;
 
   const delayToggle = useTimeoutPromiseManager(16);
+  const delayInit = useTimeoutPromiseManager(16);
   const layout = useLayout();
   React.useEffect(handleNav, [playing]);
 
   onEvent(playing && document, 'click, scroll', stop, []);
   onEvent(layout.scroll, 'reset', play, []);
 
-  React.useEffect(init, []);
+  React.useEffect(preinit, []);
 
   function init() {
     me.updateState({ init: false });
@@ -49,6 +50,10 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
 
   function play() {
     toggle(true);
+  }
+
+  function preinit() {
+    void delayInit.start()?.then(init);
   }
 
   function scrollDown() {
