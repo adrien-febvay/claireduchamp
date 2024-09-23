@@ -8,11 +8,11 @@ import { Debug } from './debug';
 // Create app
 export function appMain(http: number, https?: number) {
   const app = express();
+  app.use(Middlewares.Cookies());
+  app.use(Middlewares.i18n());
   if (https) {
     app.use(Middlewares.RedirectToHttps(http, https));
   }
-  app.use(Middlewares.Cookies());
-  app.use(Middlewares.i18n());
   Debug(app);
   app.use(Routers.IndexRedirection());
   app.use(Routers.Home());

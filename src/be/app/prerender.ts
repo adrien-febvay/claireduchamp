@@ -11,7 +11,7 @@ export function prerender(cache: CacheManager) {
     let count = 0;
     let time = Number(new Date());
     for (const { cache, lang, mobile, path } of routesToPrerender) {
-      const headers = { 'cookie': `lang=${lang};`, 'user-agent': mobile ? 'android' : 'desktop' };
+      const headers = { 'cookie': `lang=${lang}; __forceHttp=true;`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
         await fetch(`http://localhost:${be.http.port}${path}`, { headers });
         if (!cache.exists) {
