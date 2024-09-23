@@ -191,7 +191,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
               {item(screens.Services, 'services')}
             </div>
             <Link to={screens.Home} className={allStyles.item}>
-              <Logo.Text className={allStyles.largeLogoText} />
+              <Logo.Text h1 className={allStyles.largeLogoText} />
             </Link>
             <div className={allStyles.group}>
               {item(screens.AboutUs, 'about-us')}
