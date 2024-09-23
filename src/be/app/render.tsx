@@ -1,4 +1,4 @@
-import '@/be/utils/misc/dom-globals';
+import '@typescript/lib-dom/globals';
 
 import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';

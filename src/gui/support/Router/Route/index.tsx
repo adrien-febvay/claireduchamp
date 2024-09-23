@@ -63,7 +63,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
           <Link rel="alternate" hrefLang="en" href={buildUrl(locales.en?.pathname)} />
           <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.fr?.pathname)} />
           <Link rel="alternate" hrefLang="fr" href={buildUrl(locales.mul?.pathname)} />
-          <link rel="cannonical" hrefLang="fr" href={buildUrl(locales.mul?.pathname ?? pathnameFr)} />
+          <link rel="canonical" hrefLang="fr" href={buildUrl(locales.mul?.pathname ?? pathnameFr)} />
           <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
       )}
