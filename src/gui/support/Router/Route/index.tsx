@@ -15,10 +15,15 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   const appTitle = translate('title', '');
   const description = meta.description || translate('description', '');
   const keywords = `${translate('keywords', '')}${meta.keywords ? `, ${meta.keywords}` : ''}`;
-  const title = meta.title ? `${meta.title} • ${appTitle}` : appTitle;
+  let title = meta.title ? `${meta.title} • ${appTitle}` : appTitle;
 
   if (document) {
     document.title = title;
+  }
+
+  title = `⭐️ ${title}`;
+  while (title.length > 60 && /[•&]/.test(title)) {
+    title = title.replace(/ [•&][^•&]*$/, '');
   }
 
   const params = { ...desc.meta.params, ...useParams() };
