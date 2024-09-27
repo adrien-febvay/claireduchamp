@@ -2,5 +2,4 @@ User-agent: *
 Disallow: /css/
 Disallow: /fonts/
 Disallow: /js/
-Disallow: /*.xml$
 Sitemap: https://www.claireduchamp.ch/sitemap.xml
