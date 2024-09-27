@@ -23,14 +23,9 @@ const contentTypes: _.Dict<string> = {
 
 function setHeaders(res: Response, path: string): void {
   const pathExt = path.replace(/.*\./, '');
-  for (const ext in contentTypes) {
-    if (pathExt === ext) {
-      const contentType = contentTypes[ext];
-      if (contentType) {
-        res.setHeader('Content-Type', contentType);
-      }
-      return;
-    }
+  const contentType = contentTypes[pathExt];
+  if (contentType) {
+    res.setHeader('Content-Type', contentType);
   }
 }
 
