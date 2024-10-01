@@ -25,9 +25,7 @@ const contentTypes: _.Dict<string> = {
 function setHeaders(res: Response, path: string): void {
   const pathExt = path.replace(/.*\./, '');
   const contentType = contentTypes[pathExt];
-  if (contentType) {
-    res.setHeader('Content-Type', contentType);
-  }
+  res.setHeader('Content-Type', contentType ?? 'text/html');
 }
 
 export const StaticRouter = () => {
