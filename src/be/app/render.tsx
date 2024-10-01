@@ -4,7 +4,6 @@ import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
 import { encode } from 'html-entities';
-import { dirname, resolve } from 'path';
 import { I18nextProvider } from 'react-i18next';
 import { createFetchRequest } from 'express-create-fetch-request';
 import { createStaticHandler, createStaticRouter, StaticRouterProvider } from 'react-router-dom/server';
@@ -14,6 +13,7 @@ import { CacheManager } from '@/be/utils/cache';
 import { Head } from '@/gui/support/Head';
 import { routes } from '@/gui/support/Router/routes';
 import { classUnion } from '@/utils/dom/classUnion';
+import { resolve } from '@/utils/path';
 import { safeConsole } from '@/utils/safeConsole';
 
 import type { Request, Response } from 'express';
@@ -26,7 +26,7 @@ const HYDRATE_TIP = 'SSR only: GUI main script on hold, type hydrate() in consol
 const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)};console.log(${JSON.stringify(HYDRATE_TIP)})</script>`;
 
 /** Cache manager. */
-export const cache = new CacheManager(resolve(dirname(process.argv[1] as string), 'cache'));
+export const cache = new CacheManager(resolve('cache'));
 
 /** SSR only mode through launcher option. */
 const beSsrOnly = /\bssr-only\b/.test(process.env.BE_MODE ?? '');

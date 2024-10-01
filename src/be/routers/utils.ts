@@ -1,14 +1,13 @@
 import { Router as ExpressRouter } from 'express';
-import * as path from 'path';
 import { RouterBody } from './types';
+
+export { resolve } from '@/utils/path';
 
 export function Router(body: RouterBody) {
   const router = ExpressRouter({ strict: true });
   body(router);
   return router;
 }
-
-export const resolve = path.resolve.bind(path, path.dirname(process.argv[1] as string));
 
 export function stringify(val: unknown) {
   const objects: object[] = [];

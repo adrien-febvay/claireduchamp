@@ -1,14 +1,14 @@
 import fs from 'fs';
-import path from 'path';
+import { resolve } from '@/utils/path';
 import { safeConsole } from '@/utils/safeConsole';
 
-const resolve = (filename: string) => path.resolve(__dirname, '..', '..', 'conf', filename);
+const resolveConfFile = (filename: string) => resolve('..', 'conf', filename);
 
 const isErrorWithCode = (val: unknown): val is Error & { code: unknown } => val instanceof Error && 'code' in val;
 
 function copy(source: string, target: string, strict = false) {
   try {
-    fs.copyFileSync(resolve(source), resolve(target));
+    fs.copyFileSync(resolveConfFile(source), resolveConfFile(target));
     safeConsole.log(`conf/${source}`, '=>', `conf/${target}`);
   } catch (error) {
     if (!isErrorWithCode(error)) {
