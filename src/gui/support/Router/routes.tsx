@@ -9,7 +9,7 @@ const languages = ['mul', 'en', 'fr'] as const;
 /** Main router element. */
 const element = (
   <>
-    {!window && <ScrollRestoration />}
+    {window && <ScrollRestoration />}
     <Outlet />
   </>
 );
