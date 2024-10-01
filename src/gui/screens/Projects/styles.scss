@@ -1,6 +1,11 @@
 @import 'link';
 @import 'themes';
 
+.article {
+  padding: 100px 0 60px;
+  background:white;
+}
+
 .content {
   display: grid;
   gap: 20px;
@@ -88,8 +93,6 @@ div.project {
 @include media-width(0, 860px) {
   .article {
     padding: 100px 0 60px;
-    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
-    background-size: 100%;
   }
 }
 
@@ -110,8 +113,6 @@ div.project {
 @include device(desktop) {
   .article {
     padding: 180px 0 60px;
-    background: url(/img/backgrounds/white-wall.jpg) white;
-    background-size: 100%;
   }
 
   .content {

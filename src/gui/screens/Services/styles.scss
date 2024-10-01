@@ -76,11 +76,6 @@
 }
 
 @include media-width(0, 600px) {
-  .article {
-    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
-    background-size: 100%;
-  }
-
   .content {
     padding: 60px 20px;
     text-align: justify;
@@ -104,11 +99,6 @@
 }
 
 @include media-width(600px, 860px) {
-  .article {
-    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
-    background-size: 100%;
-  }
-
   .content {
     padding: 60px 20px;
     text-align: center;
@@ -120,11 +110,6 @@
 }
 
 @include device(desktop) {
-  .article {
-    background: url(/img/backgrounds/white-wall.jpg) white;
-    background-size: 100%;
-  }
-
   .content {
     width: 820px;
     margin: 0 auto;

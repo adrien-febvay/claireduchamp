@@ -28,16 +28,3 @@
 .no-wrap {
   white-space: nowrap;
 }
-
-@include device(not-desktop) {
-  .container {
-    background: url(/img/backgrounds/white-wall-mobile.jpg) white;
-    background-size: 100%;
-  }
-}
-@include device(desktop) {
-  .container {
-    background: url(/img/backgrounds/white-wall.jpg) white;
-    background-size: 100%;
-  }
-}
