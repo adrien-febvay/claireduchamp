@@ -1,6 +1,5 @@
 import '@typescript/lib-dom/globals';
 
-import StyleContext, { Style } from 'isomorphic-style-loader/StyleContext';
 import ReactDOMServer from 'react-dom/server';
 import detectMobile from 'is-mobile';
 import { encode } from 'html-entities';
@@ -22,6 +21,23 @@ import type { Request, Response } from 'express';
 // Make GUI configuration available during SSR.
 Object.assign(global, { conf: conf.gui });
 
+// Delay page painting until <style> tags are inserted.
+const delayPaintScript =
+  process.env.GUI_MODE === 'serve' &&
+  `
+      (() => {
+        style = document.createElement('style');
+        style.innerText = 'body { display: none; }';
+        document.head.appendChild(style);
+        const timer = setInterval(() => {
+          if (document.querySelectorAll('head > style').length > 1) {
+            document.head.removeChild(style);
+            clearInterval(timer);
+          }
+        }, 100);
+      })();
+    `;
+
 /** Script to allow manual GUI hydratation. */
 const HYDRATE_TIP = 'SSR only: GUI main script on hold, type hydrate() in console to execute it';
 const hydrateScript = `<script>hydrate=(d,s)=>{d=document;s=d.createElement('script');s.src='$1';d.head.append(s)};console.log(${JSON.stringify(HYDRATE_TIP)})</script>`;
@@ -42,14 +58,6 @@ if (beSsrOnly || process.env.GUI_MODE === 'serve') {
 }
 
 export async function appRender(body: string, req: Request, res: Response) {
-  /** CSS stylesheet to add to the document <head>. */
-  const styleSet = new Set<Style>();
-  function insertCss(...styles: Style[]) {
-    for (const style of styles) {
-      styleSet.add(style);
-    }
-  }
-
   /** Client device type. */
   const ua = req.headers['user-agent'];
   const isMobile = !ua || detectMobile({ ua, tablet: true });
@@ -97,11 +105,9 @@ export async function appRender(body: string, req: Request, res: Response) {
     const html = ReactDOMServer.renderToString(
       <React.StrictMode>
         <Head.Context.Provider value={headContext}>
-          <StyleContext.Provider value={{ insertCss }}>
-            <I18nextProvider i18n={req.i18n}>
-              <StaticRouterProvider router={createStaticRouter(staticHandler.dataRoutes, context)} context={context} />
-            </I18nextProvider>
-          </StyleContext.Provider>
+          <I18nextProvider i18n={req.i18n}>
+            <StaticRouterProvider router={createStaticRouter(staticHandler.dataRoutes, context)} context={context} />
+          </I18nextProvider>
         </Head.Context.Provider>
       </React.StrictMode>,
     );
@@ -112,7 +118,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     /** Document head HTML. */
     const head = ReactDOMServer.renderToStaticMarkup([
       headContext.children,
-      // <style dangerouslySetInnerHTML={{ __html: [...styleSet].map((style) => style._getCss()).join('') }} />,
+      process.env.GUI_MODE === 'serve' && <script dangerouslySetInnerHTML={{ __html: delayPaintScript }} />,
       <script dangerouslySetInnerHTML={{ __html: guiConf }} />,
     ]);
 

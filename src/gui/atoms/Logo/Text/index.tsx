@@ -1,11 +1,8 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useTranslation } from 'react-i18next';
 
 import ownStyles from './styles.scss';
 
 export const Atom_Logo_Text: React.FC<Props> = (props) => {
-  useStyles(ownStyles);
-
   const { h1, styles, ...tagAttrs } = props;
   const [translate] = useTranslation('atoms/Logo/Text');
   const allStyles = React.extendStyles(ownStyles, styles);

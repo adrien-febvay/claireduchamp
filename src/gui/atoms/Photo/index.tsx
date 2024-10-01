@@ -1,10 +1,6 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
-
 import styles from './styles.scss';
 
 export const Atom_Photo: React.FC<Props> = (props) => {
-  useStyles(styles);
-
   const { className, credit, href, src, ...imgAttrs } = props;
 
   return (

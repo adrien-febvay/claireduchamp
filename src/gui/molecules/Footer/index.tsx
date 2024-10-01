@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { Link, screens } from '@/gui/atoms/Link';
 import { useTranslation, Resources } from '@/utils/i18n';
 import { instagram, linkedin } from './utils';
@@ -6,8 +5,6 @@ import { instagram, linkedin } from './utils';
 import ownStyles from './styles.scss';
 
 export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
-  useStyles(ownStyles);
-
   const [translate] = useTranslation('molecules/Footer');
   const allStyles = React.extendStyles(ownStyles, styles);
 

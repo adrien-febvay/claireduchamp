@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { Carousel } from '@/gui/atoms/Carousel';
 import { Image } from '@/gui/atoms/Image';
 import { Link, screens } from '@/gui/atoms/Link';
@@ -17,8 +16,6 @@ function url(no: string): string {
 }
 
 export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes }) => {
-  useStyles(styles);
-
   const me = React.useComponent(() => ({
     state: {
       init: true,

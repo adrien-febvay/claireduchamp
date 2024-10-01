@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { getTop } from '@/gui/utils/dom/getTop';
 import { useLocation } from '@/gui/hooks/useLocation';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
@@ -6,14 +5,12 @@ import { Footer } from '@/gui/molecules/Footer';
 import { Nav } from '@/gui/molecules/Nav';
 import { Context } from './Context';
 
-import reset from '@/gui/assets/scss/reset.scss';
-import appStyles from '@/gui/styles.scss';
+import '@/gui/assets/scss/reset.scss';
+import '@/gui/styles.scss';
 
 export { Context } from './Context';
 
 export const Support_Layout: React.FC<Props> = (props) => {
-  useStyles(reset, appStyles);
-
   const me = React.useComponent(() => ({ nav: React.createRef<Nav.Ref>() }), { goto: props.goto });
 
   const context = React.useMemo(makeContext, []);

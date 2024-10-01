@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useTranslation, Trans } from 'react-i18next';
 import { Link, screens } from '@/gui/atoms/Link';
 
@@ -10,8 +9,6 @@ import styles from './styles.scss';
 const namespace = 'Screens/NotFound';
 
 export const Screen_NotFound: React.FC = () => {
-  useStyles(styles, navStyles, footerStyles);
-
   const [translate] = useTranslation(namespace);
   const classNames = [appStyles.lightTheme, styles.container];
 

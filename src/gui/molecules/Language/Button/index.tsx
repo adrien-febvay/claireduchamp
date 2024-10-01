@@ -1,11 +1,8 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useChangeLanguage } from '@/gui/hooks/useChangeLanguage';
 
 import styles from './styles.scss';
 
 export const Molecule_Language_Button: React.FC<Props> = ({ code, name }) => {
-  useStyles(styles);
-
   const [changeLanguage, i18n] = useChangeLanguage(code);
 
   return (

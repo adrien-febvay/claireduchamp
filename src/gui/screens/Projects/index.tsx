@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useTranslation } from 'react-i18next';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Project } from '@/gui/screens/Project';
@@ -25,8 +24,6 @@ function onAnimationEnd(event: React.AnimationEvent<HTMLElement>): void {
 }
 
 export const Screen_Projects: React.FC = () => {
-  useStyles(styles, navStyles);
-
   const [translate, { lang }] = useTranslation(namespace);
 
   return (

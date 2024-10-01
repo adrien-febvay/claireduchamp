@@ -1,12 +1,9 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { Atom_CloseButton } from '@/gui/atoms/CloseButton';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 
 import styles from './styles.scss';
 
 export const Screen_Project_Viewer_CloseButton = React.forwardRef<Handle, Props>((props, ref) => {
-  useStyles(styles);
-
   const me = React.useComponent(() => ({
     state: {
       show: true,

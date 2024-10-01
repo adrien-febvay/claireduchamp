@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useTranslation } from 'react-i18next';
 import { Link } from '@/gui/atoms/Link';
 import { Project } from '@/gui/screens/Project';
@@ -11,8 +10,6 @@ import ownStyles from './styles.scss';
 const name = 'Screens/Project/Preview';
 
 export const Screen_Project_Preview: React.FC<Props> = (props) => {
-  useStyles(ownStyles);
-
   const { credits, projectId, tryptics = [[0, 1, 2]], ...moreProps } = props;
   const { styles, ...divAttrs } = moreProps;
   const { pictures } = projects[projectId];

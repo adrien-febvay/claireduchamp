@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { getInner } from '@/gui/utils/dom/getInnerSize';
 import { useTranslation, Resources } from '@/utils/i18n';
 import { Link, screens } from '@/gui/atoms/Link';
@@ -12,8 +11,6 @@ import ownStyles from './styles.scss';
 const namespace = 'molecules/Nav';
 
 export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
-  useStyles(ownStyles);
-
   const me = React.useComponent(
     () => ({
       /** Menu container element. */

@@ -3,7 +3,6 @@ import '@/utils/react';
 import '@/gui/debug';
 import 'core-js/stable';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ReactDOM from 'react-dom/client';
 import TagManager from 'react-gtm-module';
 import detectMobile from 'is-mobile';
@@ -36,11 +35,9 @@ onBrowserOrThrow(({ document }) => {
   /** Root <App> component. */
   const App: React.FC = () => (
     <Head.Context.Provider value={Head.Context.create(document.location, isMobile, isResponsive)}>
-      <StyleContext.Provider value={{ insertCss: () => {} }}>
-        <I18nextProvider i18n={i18n}>
-          <Router />
-        </I18nextProvider>
-      </StyleContext.Provider>
+      <I18nextProvider i18n={i18n}>
+        <Router />
+      </I18nextProvider>
     </Head.Context.Provider>
   );
 

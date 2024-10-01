@@ -54,8 +54,7 @@ module.exports = {
   })],
   mode: 'development',
   module: {
-    rules: require('./loaders')(['isomorphic-style-loader'], {
-      esModule: false,
+    rules: require('./loaders')(['style-loader'], {
       modules: {
         localIdentContext: resolve('src/gui'),
       },

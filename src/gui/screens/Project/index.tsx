@@ -1,6 +1,5 @@
 import type { _ } from '@/utils/types';
 
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useNavigate } from 'react-router-dom';
 import { useFullscreen } from '@/gui/utils/dom/useFullscreen';
 import { useTranslation } from 'react-i18next';
@@ -30,8 +29,6 @@ const namespace = 'Screens/Project';
 const FULLSCREEN = 'ProjectFullscreen';
 
 const ProjectScreen: React.FC = () => {
-  useStyles(styles, navStyles, footerStyles);
-
   const me = React.useComponent(() => ({
     ref: {
       content: React.createRef<HTMLDivElement>(),

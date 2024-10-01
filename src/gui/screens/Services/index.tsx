@@ -1,5 +1,4 @@
 import parse from 'html-react-parser';
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { Trans, useTranslation } from 'react-i18next';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Map } from '@/gui/atoms/Map';
@@ -17,7 +16,6 @@ const namespace = 'Screens/Services';
 const VALUES = ['listening', 'reactivity', 'singularity'] as const;
 
 export const Screen_Services: React.FC = () => {
-  useStyles(styles);
   const [translate] = useTranslation(namespace);
 
   return (

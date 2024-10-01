@@ -8,8 +8,6 @@ It is a React/Express application using Webpack, Babel, Typescript and SASS.
 
 Before it can be built and/or launched, it needs to be installed with `npm install` or `npm ci`.
 
-**Important note:** At the moment, the project uses a version of `isomorphic-style-loader` that is not compatible with the version of React. You may have to use the option `--force` to install the dependencies.
-
 ## Configuration
 
 The configuration files are located in the `conf` directory. There is one for the `development` mode, and one for the `production` mode.

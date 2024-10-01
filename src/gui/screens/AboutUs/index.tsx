@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import Markdown from 'markdown-to-jsx';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Text } from '@/gui/atoms/Text';
@@ -12,8 +11,6 @@ import styles from './styles.scss';
 const namespace = 'Screens/AboutUs';
 
 export const Screen_AboutUs: React.FC = () => {
-  useStyles(styles);
-
   const [translate] = useTranslation(namespace);
 
   return (

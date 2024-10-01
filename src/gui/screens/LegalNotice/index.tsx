@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'react-i18next';
 import { Link } from '@/gui/atoms/Link';
@@ -15,8 +14,6 @@ const namespace = 'Screens/LegalNotice';
 const markdownOptions = { wrapper: Fragment, overrides: { Link, Mail, Phone } };
 
 export const Screen_LegalNotice: React.FC = () => {
-  useStyles(styles, navStyles);
-
   const [translate] = useTranslation(namespace);
 
   return (

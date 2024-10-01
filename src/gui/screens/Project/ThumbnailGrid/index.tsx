@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { arrayGen } from '@/gui/utils/array/gen';
 import { pad as padNumber } from '@/gui/utils/number/pad';
 import { Link } from '@/gui/atoms/Link';
@@ -10,8 +9,6 @@ import styles from './styles.scss';
 const BASEPATH = '/img/projects/claire-duchamp';
 
 export const Screen_Project_ThumbnailGrid: React.FC<Props> = (props) => {
-  useStyles(styles);
-
   const { photoIndex, project, ...divAttrs } = props;
   const { id, pictures } = project;
   const copyrights: Dict<string> | null = pictures.copyrights;

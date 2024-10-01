@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { useNavigate } from 'react-router-dom';
 import { LeftArrowButton as PrevButton } from '@/gui/atoms/LeftArrowButton';
 import { RightArrowButton as NextButton } from '@/gui/atoms/RightArrowButton';
@@ -26,8 +25,6 @@ const KEYS = {
 type Key = keyof typeof KEYS;
 
 export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
-  useStyles(styles);
-
   const me = React.useComponent(
     () => ({
       ref: {

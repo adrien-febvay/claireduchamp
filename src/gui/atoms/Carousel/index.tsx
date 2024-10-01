@@ -1,7 +1,6 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { Carousel as LegacyCarousel } from 'react-responsive-carousel';
 
-import legacyStyles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './styles.scss';
 
 const options = {
@@ -17,8 +16,6 @@ const options = {
 };
 
 export const Atom_Carousel: React.FC<Props> = (props) => {
-  useStyles(legacyStyles, styles);
-
   const me = React.useComponent(() => ({ ref: { legacyCarousel: React.createRef<LegacyCarousel>() } }), { props });
 
   me.didUpdate(() => {

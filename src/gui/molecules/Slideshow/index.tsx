@@ -1,10 +1,6 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
-
 import ownStyles from './styles.scss';
 
 export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
-  useStyles(ownStyles);
-
   const { children, className, loop, onSlideChange, styles, ...divAttributes } = props;
   const me = React.useComponent(
     () => ({

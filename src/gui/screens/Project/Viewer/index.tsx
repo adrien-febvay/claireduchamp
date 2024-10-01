@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { arrayGen } from '@/gui/utils/array/gen';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useSwipe } from '@/gui/utils/dom/useSwipe';
@@ -12,8 +11,6 @@ import styles from './styles.scss';
 const BASEPATH = '/img/projects/claire-duchamp';
 
 export const Screen_Project_Viewer: React.FC<Props> = (props) => {
-  useStyles(styles);
-
   const me = React.useComponent(
     () => ({
       ref: {

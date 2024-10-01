@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { contactFormOutcome } from '@/gui/utils/gtm';
 import { localStorage, duration } from '@/gui/utils/misc/localStorage';
 import { Mail } from '@/gui/atoms/Mail';
@@ -19,8 +18,6 @@ const namespace = 'Screens/ContactUs';
 const formStorage = new localStorage.Item(namespace, duration.day);
 
 export const Screen_ContactUs: React.FC = () => {
-  useStyles(styles);
-
   const me = React.useComponent(() => ({
     ref: {
       form: React.createRef<HTMLFormElement>(),

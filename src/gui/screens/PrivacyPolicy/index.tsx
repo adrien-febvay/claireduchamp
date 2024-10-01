@@ -1,4 +1,3 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import Markdown from 'markdown-to-jsx';
 import { useTranslation } from 'react-i18next';
 import { route } from '@/gui/screens/route';
@@ -10,8 +9,6 @@ import styles from './styles.scss';
 const namespace = 'Screens/PrivacyPolicy';
 
 export const Screen_PrivacyPolicy: React.FC = () => {
-  useStyles(styles, navStyles);
-
   const [translate] = useTranslation(namespace);
 
   return (

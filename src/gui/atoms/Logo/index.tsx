@@ -1,12 +1,9 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { LogoImage } from './Image';
 import { LogoText } from './Text';
 
 import ownStyles from './styles.scss';
 
 export const Atom_Logo: React.FC<Props> = (props) => {
-  useStyles(ownStyles);
-
   const { imageProps, styles, textProps, ...divAttrs } = props;
   const allStyles = React.extendStyles(ownStyles, styles);
 

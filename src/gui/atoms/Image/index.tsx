@@ -1,11 +1,7 @@
-import useStyles from 'isomorphic-style-loader/useStyles';
-
 import ownStyles from './styles.scss';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 
 export const Atom_Image: React.FC<Props> = (props) => {
-  useStyles(ownStyles);
-
   const me = React.useComponent(
     () => ({
       emit: null as (() => void) | null,
