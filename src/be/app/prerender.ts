@@ -2,6 +2,7 @@
 import type { CacheManager } from '@/be/utils/cache';
 
 import { be } from '@/be';
+import { sitemapEmitter } from '@/be/app/sitemap';
 import { root } from '@/gui/support/Router/routes';
 import { i18n } from '@/utils/i18n';
 import { safeConsole } from '@/utils/safeConsole';
@@ -11,14 +12,15 @@ export function prerender(cache: CacheManager) {
     let count = 0;
     let time = Number(new Date());
     for (const { cache, lang, mobile, path } of routesToPrerender) {
-      const headers = { 'cookie': `lang=${lang}; __forceHttp=true;`, 'user-agent': mobile ? 'android' : 'desktop' };
+      const langCookie = lang ? `lang=${lang}; ` : '';
+      const headers = { 'cookie': `${langCookie}__forceHttp=true;`, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
         await fetch(`http://localhost:${be.http.port}${path}`, { headers });
-        if (!cache.exists) {
+        if (cache && !cache.exists) {
           throw 'not saved in cache';
         }
       } catch (error) {
-        safeConsole.error('Prerendering failure:', cache.key, error);
+        safeConsole.error('Prerendering failure:', cache?.key ?? path, error);
       } finally {
         count += 1;
         const newtime = Number(new Date());
@@ -40,20 +42,25 @@ export function prerender(cache: CacheManager) {
     .flat(1)
     .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }));
 
-  const routesToPrerender = allRoutes.filter((route) => !route.cache.exists);
+  const routesToPrerender = [
+    { cache: null, lang: null, mobile: null, path: '/sitemap.xml' },
+    ...allRoutes.filter((route) => !route.cache.exists),
+  ];
 
-  const keys = new Set(routesToPrerender.map(({ cache }) => cache.key));
+  const keys = new Set(routesToPrerender.map(({ cache, path }) => cache?.key ?? path));
   function cached(key: string) {
     keys.delete(key);
     if (!keys.size) {
       safeConsole.log('Prerendering complete');
       cache.off('set', cached);
+      sitemapEmitter.off('set', cached);
       if (process.env.PRERENDER === 'true') {
         process.exit(0);
       }
     }
   }
   cache.on('set', cached);
+  sitemapEmitter.on('set', cached);
 
   if (routesToPrerender.length) {
     setTimeout(() => {
