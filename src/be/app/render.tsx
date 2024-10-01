@@ -112,7 +112,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     /** Document head HTML. */
     const head = ReactDOMServer.renderToStaticMarkup([
       headContext.children,
-      <style dangerouslySetInnerHTML={{ __html: [...styleSet].map((style) => style._getCss()).join('') }} />,
+      // <style dangerouslySetInnerHTML={{ __html: [...styleSet].map((style) => style._getCss()).join('') }} />,
       <script dangerouslySetInnerHTML={{ __html: guiConf }} />,
     ]);
 

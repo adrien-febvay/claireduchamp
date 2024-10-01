@@ -7,6 +7,7 @@ import { safeConsole } from '@/utils/safeConsole';
 const PATH = resolve('gui');
 
 const contentTypes: _.Dict<string> = {
+  css: 'text/css',
   eot: 'application/vnd.ms-fontobject',
   ico: 'image/vnd.microsoft.icon',
   jpg: 'image/jpeg',
