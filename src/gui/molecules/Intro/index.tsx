@@ -80,12 +80,12 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
               <img src={url('landscape-2-2')} />
               <img src={url('landscape-2-3')} />
             </div>
+            <img src={url('landscape-4')} />
             <div>
               <img src={url('landscape-3-1')} />
               <img src={url('landscape-3-2')} />
               <img src={url('landscape-3-3')} />
             </div>
-            <img src={url('landscape-4')} />
             <img src={url('landscape-5')} />
             <img src={url('landscape-6')} />
           </Carousel>
