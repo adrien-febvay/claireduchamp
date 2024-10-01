@@ -19,14 +19,14 @@
   "Screens/AboutUs": {
     "pathname": "/about-us",
     "title": "About",
-    "description": "SIA architect and interior designer on various project scales for individuals, entrepreneurs and municipalities. Background and references.",
+    "description": "SIA Architect and Interior Designer on various project scales for individuals, entrepreneurs and municipalities. Background and references.",
     "introduction": "Claire Duchamp works on various project scales for individuals, entrepreneurs and municipalities.\nOriginally from the Lyon region, she grew up in an agricultural and industrial area. Large natural spaces mark his aesthetic and his taste for contemplation and freedom.\nShe did the first part of her studies in Lyon, then a second in Paris where she graduated from the Paris Malaquais school as an architect.\nShe then worked in renovation in Paris, then in the development of new constructions in architectural offices in Valais and Vaud.\nToday based in Vevey, in the center of the Vaud Riviera, she enjoys developing projects in a territory for which she feels desire and wonder.",
     "hire-cd": "Entrust your project to Claire Duchamp"
   },
   "Screens/ContactUs": {
     "pathname": "/contact-us",
     "title": "Contact us",
-    "description": "SIA architect and interior designer. Contact details and contact form, for any information and initial contact",
+    "description": "SIA Architect and Interior Designer. Contact details and contact form, for any information and initial contact",
     "email": "Email",
     "phone": "Phone",
     "address": "Postal address",
@@ -79,10 +79,10 @@
   "Screens/Services": {
     "pathname": "/services",
     "title": "Services",
-    "description": "SIA architect / Interior designer @Vevey: construction, renovation, advice, building permit, feasibility study, calls for tenders, work monitoring, decoration",
+    "description": "SIA Architect / Interior Designer @Vevey: construction, renovation, advice, building permit, feasibility study, calls for tenders, work monitoring, decoration",
     "goto": "#services",
     "our-services": "Our services",
-    "our-services-caption": "SIA architect and interior designer based in Vevey",
+    "our-services-caption": "SIA Architect and Interior Designer based in Vevey",
     "our-services-items": "New construction ; Advice before purchase ; Building permit ; Renovation ; Feasibility study/outline ; Call for tender ; Interior architecture ; Project ; Work monitoring ; Furniture design",
     "explanation": "The agency works on various project scales for individuals, entrepreneurs and municipalities.\nIt relies on the architect-client dynamic as a design process.\nWe are concerned with an aesthetic highlighting the singularities of the site, the program and the client.",
     "use-our-services": "Need our services? <0>Contact us</0>",
