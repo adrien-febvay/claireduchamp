@@ -1,6 +1,7 @@
 /* global process */
 const { EnvironmentPlugin } = require('webpack');
 const ShellPlugin = require('webpack-shell-plugin-next');
+const { getLocalIdent, loadLocalIdent } = require('./css-ident');
 const resolve = require('./resolve');
 const { npx, spawn, webpack } = require('./run');
 
@@ -20,6 +21,7 @@ class Gui {
   apply = runOnce((compiler) => {
       if (GUI_MODE === 'build') {
         webpack.build('gui', env);
+        loadLocalIdent(resolve.outDir('css-ident-map.json'));
       } else {
         compiler.hooks.afterEmit.tap('Gui.emit', runOnce(() => void webpack.serve('gui', env)));
       }
@@ -56,6 +58,7 @@ module.exports = {
   module: {
     rules: require('./loaders')(['style-loader'], {
       modules: {
+        getLocalIdent: GUI_MODE === 'build' ? getLocalIdent : void 0,
         localIdentContext: resolve('src/gui'),
       },
     }),
