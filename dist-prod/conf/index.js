@@ -22,6 +22,7 @@ const guiSchema = zod_1.z.object({
 const portSchema = zod_1.z.number().min(1).max(65535);
 const confSchema = zod_1.z.object({
     devGuiPort: portSchema.default(3000),
+    host: zod_1.z.string().min(1),
     http: portSchema.default(80),
     https: portSchema.nullable().default(443),
     sslCert: zod_1.z.string().min(1).nullable().optional(),
