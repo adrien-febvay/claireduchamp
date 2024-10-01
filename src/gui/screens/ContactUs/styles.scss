@@ -43,7 +43,7 @@
   animation-fill-mode: forwards;
 
   input, input[type=submit], textarea {
-    background: linear-gradient(90deg, #00000066, #00000066, #00000033) transparent;
+    background: linear-gradient(90deg, #504745ee, #504745ee, #50474599) transparent;
     border: 1px solid #ffffffcc;
     outline: 2px solid transparent;
     outline-offset: -3px;
@@ -98,11 +98,11 @@
   }
 
   .form-error {
-    background: linear-gradient(90deg, #91000057, #91000057, #91000033) transparent;
+    background: linear-gradient(90deg, #8a4343ee, #8a4343ee, #8a434399) transparent;
 
     &:-webkit-autofill {
       &, &:hover {
-        -webkit-box-shadow: 0 0 0px 1000px #91000057 inset;
+        -webkit-box-shadow: 0 0 0px 1000px #8a4343cc inset;
       }
     }
   }
@@ -112,7 +112,7 @@
   padding: 6px 11px;
   font-size: 12pt;
   line-height: normal;
-  background: linear-gradient(90deg, #00000066, #00000066, #00000033) transparent;
+  background: linear-gradient(90deg, #504745ee, #504745ee, #50474599) transparent;
 }
 
 .submit-container {
