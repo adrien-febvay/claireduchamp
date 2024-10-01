@@ -53,13 +53,13 @@ export async function appRender(body: string, req: Request, res: Response) {
   /** Client device type. */
   const ua = req.headers['user-agent'];
   const isMobile = !ua || detectMobile({ ua, tablet: true });
-  const isResponsive = isMobile || req.cookies['__forceResponsive'] === 'true';
+  const isResponsive = isMobile || req.cookies.__forceResponsive === 'true';
   const device = isMobile ? 'mobile' : 'desktop';
   const appClassName = classUnion(device, isResponsive ? 'responsive' : 'not-responsive');
 
   /** SSR only mode through launcher option or `__ssrOnly=true` cookie option. */
-  const ssrOnly = req.cookies['__ssrOnly'] === 'false' ? false : beSsrOnly || req.cookies['__ssrOnly'] === 'true';
-  const forceResponsive = req.cookies['__forceResponsive'] === 'true';
+  const ssrOnly = req.cookies.__ssrOnly === 'false' ? false : beSsrOnly || req.cookies.__ssrOnly === 'true';
+  const forceResponsive = req.cookies.__forceResponsive === 'true';
   const cacheEnabled = !(ssrOnly || forceResponsive);
 
   const cacheEntry = cacheEnabled ? cache.entry(device, req.i18n.lang, req.originalUrl) : null;
