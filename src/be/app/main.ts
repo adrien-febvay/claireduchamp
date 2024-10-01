@@ -20,9 +20,11 @@ export function appMain(http: number, https?: number) {
   );
   Debug(app);
   if (process.env.GUI_MODE === 'serve') {
+    app.use(Routers.Sitemap());
     app.use(Routers.Proxy(https ?? http, conf.devGuiPort));
   } else {
     app.use(Routers.Static());
+    app.use(Routers.Sitemap());
     app.use(Routers.Gui());
     app.use(Routers.Fallback());
   }

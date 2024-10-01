@@ -17,6 +17,7 @@ const contentTypes: _.Dict<string> = {
   ttf: 'font/ttf',
   txt: 'text/plain',
   xml: 'application/xhtml+xml',
+  xsl: 'application/xml',
   woff: 'font/woff',
   woff2: 'font/woff2',
 };

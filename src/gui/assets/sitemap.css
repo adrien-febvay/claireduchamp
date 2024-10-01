@@ -1,0 +1,36 @@
+body {
+  color: #203764;
+}
+
+table, th, td {
+  padding: 0.2em 0.5em;
+  border: 1px solid #203764;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table {
+  border-width: 2px;
+}
+
+th {
+  border-color: #fff;
+  border-bottom: 2px solid #203764;
+}
+
+th {
+  background: #2d5496;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background: #e3e9f5;
+}
+
+a, a:visited, a:hover {
+  color: #2f75b5;
+}
+
+footer {
+  margin: 1em 0 0;
+}
