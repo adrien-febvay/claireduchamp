@@ -29,8 +29,6 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       state: {
         /** Is menu open? */
         open: false,
-        /** Show navigation bar when at the top of the screen? */
-        show: true,
         /** Solid background? (or transparent?) */
         solid: false,
       },
@@ -58,19 +56,12 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
         const navInnerHeight = getInner.height(me.nav.current);
         return navInnerHeight ?? getInner.height(me.smallNavBar.current);
       },
-      hide,
-      show,
-      toggle,
     };
   }
 
   function didMount(): void {
     onScroll();
     toggleMenuElements(false);
-  }
-
-  function hide() {
-    me.updateState({ show: false });
   }
 
   /** Document scroll listener. */
@@ -85,18 +76,6 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     me.scrollY = Math.max(scrollY, 0);
     if (me.navSlide.current) {
       me.navSlide.current.style.left = `-${scrollX}px`;
-    }
-  }
-
-  function show() {
-    me.updateState({ show: true });
-  }
-
-  function toggle(state?: boolean) {
-    if (state ?? !me.state.show) {
-      show();
-    } else {
-      hide();
     }
   }
 
@@ -180,7 +159,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
           </div>
         </div>
       </div>
-      <div classNames={[allStyles.largeNav, me.state.show && allStyles.show]}>
+      <div className={allStyles.largeNav}>
         <div className={allStyles.largeNavBar} ref={me.navSlide}>
           <nav ref={me.nav}>
             <div className={allStyles.group}>

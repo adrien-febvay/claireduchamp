@@ -15,9 +15,6 @@ declare module '.' {
     type Ref = {
       /** Navigation bar height. */
       readonly height: number | null;
-      readonly hide: (this: void) => void;
-      readonly show: (this: void) => void;
-      readonly toggle: (this: void, state?: boolean) => void;
     };
   }
 

@@ -28,7 +28,6 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   const delayToggle = useTimeoutPromiseManager(16);
   const delayInit = useTimeoutPromiseManager(16);
   const layout = useLayout();
-  React.useEffect(handleNav, [playing]);
 
   onEvent(playing && document, 'click, scroll', stop, []);
   onEvent(layout.scroll, 'reset', play, []);
@@ -38,11 +37,6 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   function init() {
     me.updateState({ init: false });
     play();
-  }
-
-  function handleNav() {
-    layout.nav?.toggle(!me.state.playing);
-    return restoreNavOnUnmount;
   }
 
   function play() {
@@ -55,10 +49,6 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
 
   function scrollDown() {
     layout.scroll.to(innerHeight);
-  }
-
-  function restoreNavOnUnmount() {
-    layout.nav?.show();
   }
 
   function stop() {
@@ -126,8 +116,10 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
       <Link to={screens.Home} className={styles.title} onClick={play} style={{ opacity: playing ? 0 : 1 }}>
         <Logo.Text />
       </Link>
-      <Logo color="white" className={styles.logo} style={{ transform: `translateY(${playing ? 0 : 100}%)` }} />
-      <div className={styles.downButtonContainer} style={{ transform: `translateY(${playing ? 0 : -100}%)` }}>
+      <button className={styles.logo} onClick={scrollDown} style={{ transform: `translateY(${playing ? 0 : 100}%)` }}>
+        <Logo.Image className={styles.logoImage} />
+      </button>
+      <div className={styles.downButtonContainer}>
         <button className={styles.downButton} onClick={scrollDown}>
           <div className={styles.downArrow} />
         </button>
