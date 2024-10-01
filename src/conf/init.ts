@@ -2,7 +2,7 @@ import fs from 'fs';
 import { resolve } from '@/utils/path';
 import { safeConsole } from '@/utils/safeConsole';
 
-const resolveConfFile = (filename: string) => resolve('..', 'conf', filename);
+const resolveConfFile = (filename: string) => resolve('..', '..', 'conf', filename);
 
 const isErrorWithCode = (val: unknown): val is Error & { code: unknown } => val instanceof Error && 'code' in val;
 
