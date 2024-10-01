@@ -1,5 +1,6 @@
 {
   "devGuiPort": 3000,
+  "host": "localhost",
   "http": 80,
   "https": 443,
   "sslCert": "localhost",

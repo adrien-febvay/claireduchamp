@@ -2,10 +2,15 @@
 import type { CacheManager } from '@/be/utils/cache';
 
 import { be } from '@/be';
+import { conf } from '@/conf';
 import { sitemapEmitter } from '@/be/app/sitemap';
 import { root } from '@/gui/support/Router/routes';
 import { i18n } from '@/utils/i18n';
 import { safeConsole } from '@/utils/safeConsole';
+
+function bold(text: number | string) {
+  return `\x1b[33m${text}\x1b[0m`;
+}
 
 export function prerender(cache: CacheManager) {
   async function prerender() {
@@ -13,7 +18,8 @@ export function prerender(cache: CacheManager) {
     let time = Number(new Date());
     for (const { cache, lang, mobile, path } of routesToPrerender) {
       const langCookie = lang ? `lang=${lang}; ` : '';
-      const headers = { 'cookie': `${langCookie}__forceHttp=true;`, 'user-agent': mobile ? 'android' : 'desktop' };
+      const cookie = `${langCookie}__forceHttp=true;__forceHost=${conf.host}`;
+      const headers = { cookie, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
         await fetch(`http://localhost:${be.http.port}${path}`, { headers });
         if (cache && !cache.exists) {
@@ -28,7 +34,7 @@ export function prerender(cache: CacheManager) {
           time = newtime;
           const plural = count > 1 ? 's' : '';
           const total = routesToPrerender.length;
-          safeConsole.log(`Prerendered \x1b[33m${count}\x1b[0m route${plural} out of \x1b[33m${total}\x1b[0m`);
+          safeConsole.log(`Prerendered ${bold(count)} route${plural} out of ${bold(total)}`);
         }
       }
     }
@@ -64,7 +70,7 @@ export function prerender(cache: CacheManager) {
 
   if (routesToPrerender.length) {
     setTimeout(() => {
-      safeConsole.log(`Prerendering \x1b[33m${routesToPrerender.length}\x1b[0m routes...`);
+      safeConsole.log(`Prerendering ${bold(routesToPrerender.length)} routes for ${bold(conf.host)}...`);
       prerender().catch((error) => {
         safeConsole.error('Prerendering failure:', error);
         cache.off('set', cached);
@@ -74,6 +80,6 @@ export function prerender(cache: CacheManager) {
       });
     }, 16);
   } else {
-    safeConsole.log(`All \x1b[33m${allRoutes.length}\x1b[0m routes already in cache, nothing to prerender...`);
+    safeConsole.log(`All ${bold(allRoutes.length)} routes already in cache, nothing to prerender...`);
   }
 }

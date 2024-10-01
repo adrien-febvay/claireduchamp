@@ -1,4 +1,5 @@
 {
+  "host": "claireduchamp.ch",
   "http": 80,
   "https": 443,
   "sslCert": "ssl-claireduchamp-ch",

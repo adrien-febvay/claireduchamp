@@ -38,7 +38,7 @@ function getDetails(error: unknown) {
 }
 
 export function appSitemap(req: Request) {
-  const host = req.get('host') ?? req.hostname;
+  const host = (req.cookies.__forceHost as _.Nullish<string>) ?? req.get('host') ?? req.hostname;
   const protocol = `${req.protocol}:`;
   const content = ReactDOMServer.renderToStaticMarkup(<Sitemap baseurl={`${protocol}//${host}`} />);
   const body = [xml, xsl, pretty(content)].join('\n');

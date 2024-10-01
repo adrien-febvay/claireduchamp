@@ -15,6 +15,7 @@ import { routes } from '@/gui/support/Router/routes';
 import { classUnion } from '@/utils/dom/classUnion';
 import { resolve } from '@/utils/path';
 import { safeConsole } from '@/utils/safeConsole';
+import { _ } from '@/utils/types';
 
 import type { Request, Response } from 'express';
 
@@ -77,7 +78,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     }
 
     /** Document head context. */
-    const host = req.get('host') ?? req.hostname;
+    const host = (req.cookies.__forceHost as _.Nullish<string>) ?? req.get('host') ?? req.hostname;
     const protocol = `${req.protocol}:`;
     const [hostname = host, port = protocol === 'https:' ? '443' : '80'] = host.split(':', 2);
     const pathname = req.originalUrl.replace(/\?.*/, '');
