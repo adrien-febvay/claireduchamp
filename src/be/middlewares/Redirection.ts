@@ -1,26 +1,39 @@
 import type { Request, Response, NextFunction } from 'express';
 import type { _ } from '@/utils/types';
 
+function toUrl({ protocol, host, pathname, query }: Redirection.Location) {
+  return `${protocol}://${host}${pathname}${query === '?' ? '' : query}`;
+}
+
 export function RedirectionMiddleware(...handlers: Redirection.Handler[]) {
   return (req: Request, res: Response, next: NextFunction) => {
     const queryIndex = req.originalUrl.indexOf('?');
     const pathnameLength = queryIndex < 0 ? req.originalUrl.length : queryIndex;
-    const location = {
-      redirection: null,
+    let location = {
+      redirection: 301,
       protocol: req.protocol,
       host: req.headers.host ?? '',
       pathname: req.originalUrl.slice(0, pathnameLength),
       query: req.originalUrl.slice(pathnameLength),
     };
+    const originalUrl = toUrl(location);
     for (const handler of handlers) {
       const output = handler?.(location, req);
       if (output) {
-        Object.assign(location, output, { redirection: output.redirection || 301 });
+        location = {
+          redirection: output.redirection || location.redirection,
+          protocol: output.protocol || location.protocol,
+          host: output.host || location.host,
+          pathname: output.pathname || location.pathname,
+          query: output.query || location.query,
+        };
       }
     }
-    const { redirection, protocol, host, pathname, query } = location;
-    if (redirection) {
-      res.redirect(redirection, `${protocol}://${host}${pathname}${query}`);
+
+    const { redirection } = location;
+    const newUrl = redirection ? toUrl(location) : '';
+    if (redirection && newUrl !== originalUrl) {
+      res.redirect(redirection, newUrl);
     } else {
       next();
     }
@@ -29,7 +42,7 @@ export function RedirectionMiddleware(...handlers: Redirection.Handler[]) {
 
 export namespace Redirection {
   export interface Location {
-    redirection: number | null;
+    redirection: number;
     protocol: string;
     host: string;
     pathname: string;

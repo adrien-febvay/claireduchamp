@@ -16,6 +16,7 @@ export function appMain(http: number, https?: number) {
       https ? Redirections.ToHttps(http, https) : null,
       Redirections.FromIndex(),
       Redirections.ToHome(),
+      Redirections.Updates(),
     ),
   );
   Debug(app);
