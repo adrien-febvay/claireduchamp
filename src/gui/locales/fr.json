@@ -13,7 +13,7 @@
   "molecules/Nav": {
     "about-us": "A propos de",
     "contact-us": "Contact",
-    "projects": "Projets",
+    "projects": "Réalisations",
     "services": "Prestations"
   },
   "Screens/AboutUs": {
@@ -70,10 +70,10 @@
     "photography": "Photographie"
   },
   "Screens/Projects": {
-    "pathname": "/projets",
-    "title": "Projets",
+    "pathname": "/realisations",
+    "title": "Réalisations",
     "description": "Transformation de villa à Grandvaux — Luminaire bronze/verre soufflé: collaboration avec Ludivine Loursel — Transformation d'appartement à Chardonne...",
-    "keywords": "Réalisations",
+    "keywords": "Projets",
     "in-progress": "En cours"
   },
   "Screens/Services": {
