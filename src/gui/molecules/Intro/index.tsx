@@ -113,7 +113,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
           </Carousel>
         )}
       </Orientation>
-      <Link to={screens.Home} className={styles.title} onClick={play} style={{ opacity: playing ? 0 : 1 }}>
+      <Link to={screens.Home} className={styles.title} onClick={play}>
         <Logo.Text />
       </Link>
       <button className={styles.logo} onClick={scrollDown} style={{ transform: `translateY(${playing ? 0 : 100}%)` }}>
