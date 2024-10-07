@@ -20,10 +20,6 @@ export function Sitemap({ baseurl }: Props) {
   return (
     <LocationContext.Provider value={{ baseurl }}>
       <UrlSet>
-        <Url>
-          <Loc>/</Loc>
-          <Link hrefLang="x-default" href="/" />
-        </Url>
         {routes.map(({ path, locales }) => (
           <Url key={path}>
             <Loc>{path}</Loc>

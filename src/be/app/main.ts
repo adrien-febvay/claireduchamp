@@ -15,7 +15,6 @@ export function appMain(http: number, https?: number) {
     Middlewares.Redirection(
       https ? Redirections.ToHttps(http, https) : null,
       Redirections.FromIndex(),
-      Redirections.ToHome(),
       Redirections.Updates(),
     ),
   );

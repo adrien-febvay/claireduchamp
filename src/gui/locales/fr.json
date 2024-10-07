@@ -47,7 +47,7 @@
     "sent": "Envoi effectué"
   },
   "Screens/Home": {
-    "pathname": "/architecte",
+    "pathname": "/",
     "title": "",
     "description": ""
   },
