@@ -210,7 +210,7 @@ export const Screen_ContactUs: React.FC = () => {
           <h3>{translate('address')}</h3>
           <p>
             <span className={styles.address}>Claire Duchamp Architecte</span>
-            <span className={styles.address}>Quai Perdonnet 18</span>
+            <span className={styles.address}>Rue de la Clergère 2</span>
             <span className={styles.town}>CH-1800 Vevey</span>
           </p>
         </div>
