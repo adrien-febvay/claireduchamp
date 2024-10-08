@@ -23,8 +23,8 @@ export function Sitemap({ baseurl }: Props) {
         {routes.map(({ path, locales }) => (
           <Url key={path}>
             <Loc>{path}</Loc>
-            {locales.fr && <Link hrefLang="fr" href={locales.fr.pathname} />}
-            {locales.en && <Link hrefLang="en" href={locales.en.pathname} />}
+            {locales.fr && <Link hrefLang="fr" href={locales.fr.pathname.replace(/\/:\w+\?/g, '')} />}
+            {locales.en && <Link hrefLang="en" href={locales.en.pathname.replace(/\/:\w+\?/g, '')} />}
           </Url>
         ))}
       </UrlSet>
