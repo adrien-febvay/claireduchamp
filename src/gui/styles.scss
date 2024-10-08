@@ -42,7 +42,14 @@ html > body {
 }
 
 :global(#app) {
+  display: flex;
+  flex-direction: column;
   min-width: 100%;
+  min-height: 100dvh;
+
+  &>:nth-child(2) {
+    flex-grow: 1;
+  }
 }
 
 main, section, article {
