@@ -26,7 +26,15 @@
             <tbody>
               <xsl:for-each select="sm:urlset/sm:url">
                 <tr>
-                  <td><a href="{sm:loc}"><xsl:value-of select="sm:loc"/></a></td>
+                  <td>
+                    <a href="{sm:loc}"><xsl:value-of select="sm:loc"/></a>
+                    <xsl:for-each select="xhtml:link">
+                      <div>
+                        <xsl:value-of select="@hrefLang"/>:
+                        <a href="{@href}"><xsl:value-of select="@href"/></a>
+                      </div>
+                    </xsl:for-each>
+                  </td>
                   <td><xsl:value-of select="sm:lastmod"/></td>
                   <td><xsl:value-of select="sm:changefreq"/></td>
                   <td><xsl:value-of select="sm:priority"/></td>
