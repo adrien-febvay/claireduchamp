@@ -1,5 +1,6 @@
 import { contactFormOutcome } from '@/gui/utils/gtm';
 import { localStorage, duration } from '@/gui/utils/misc/localStorage';
+import { Link } from '@/gui/atoms/Link';
 import { Mail } from '@/gui/atoms/Mail';
 import { Phone } from '@/gui/atoms/Phone';
 import { useSingleFetch } from '@/gui/hooks/useSingleFetch';
@@ -202,17 +203,22 @@ export const Screen_ContactUs: React.FC = () => {
   return (
     <article classNames={[appStyles.darkTheme, styles.article]}>
       <div className={styles.content}>
-        <div className={styles.info}>
-          <h3>{translate('email')}</h3>
-          <Mail address="contact@claireduchamp.ch" />
-          <h3>{translate('phone')}</h3>
-          <Phone number="+41 78 926 94 64" />
-          <h3>{translate('address')}</h3>
-          <p>
-            <span className={styles.address}>Claire Duchamp Architecte</span>
-            <span className={styles.address}>Rue de la Clergère 2</span>
-            <span className={styles.town}>CH-1800 Vevey</span>
-          </p>
+        <div className={styles.infoContainer}>
+          <div className={styles.info}>
+            <div className={styles.email}>
+              <Mail address="contact@claireduchamp.ch" />
+            </div>
+            <div className={styles.phone}>
+              <Phone number="+41 78 926 94 64" />
+            </div>
+            <div className={styles.address}>
+              <Link className={styles.addressLink} to="https://maps.app.goo.gl/b26oyumKkiTRXwmQA">
+                <span className={styles.addressLine}>Claire Duchamp Architecte</span>
+                <span className={styles.addressLine}>Rue de la Clergère 2</span>
+                <span className={styles.addressLine}>CH-1800 Vevey</span>
+              </Link>
+            </div>
+          </div>
         </div>
         <form ref={me.ref.form} className={styles.form} onSubmit={checkForm}>
           {renderInput('firstname', 'given-name')}
