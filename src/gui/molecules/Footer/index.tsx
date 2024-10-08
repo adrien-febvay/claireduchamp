@@ -30,9 +30,18 @@ export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
           {link('instagram', instagram('claire_duchamp_architecte'))}
           {link('linkedin', linkedin('claire-duchamp-4904b6a5'))}
         </div>
-        <div className={allStyles.legalInformation}>
-          {link('legal-notice', screens.LegalNotice)}
-          {link('privacy-policy', screens.PrivacyPolicy)}
+        <div className={allStyles.legalInformationContainer}>
+          <div className={allStyles.legalInformation}>
+            {link('legal-notice', screens.LegalNotice)}
+            {link('privacy-policy', screens.PrivacyPolicy)}
+          </div>
+          <div className={allStyles.address}>
+            <Link className={allStyles.addressLink} to="https://maps.app.goo.gl/b26oyumKkiTRXwmQA">
+              <span className={allStyles.addressLine}>Claire Duchamp Architecte</span>
+              <span className={allStyles.addressLine}>Rue de la Clergère 2</span>
+              <span className={allStyles.addressLine}>CH-1800 Vevey</span>
+            </Link>
+          </div>
         </div>
         <div className={allStyles.credits}>
           {link('photography', 'http://www.juliemasson.ch/', 'Julie Masson')}
