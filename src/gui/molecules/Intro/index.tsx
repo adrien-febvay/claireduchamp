@@ -11,8 +11,11 @@ import styles from './styles.scss';
 import landscapeLowresStyles from './landscape-lowres.scss';
 import portraitLowresStyles from './portrait-lowres.scss';
 
-function url(no: string): string {
-  return `/img/intro/claire-duchamp-villa-grandvaux-©JulieMasson-${no}.jpg`;
+const NEST = 'appartement-chardonne';
+const VILLA = 'villa-grandvaux';
+
+function url(project: string, no: string): string {
+  return `/img/intro/claire-duchamp-${project}-©JulieMasson-${no}.jpg`;
 }
 
 export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes }) => {
@@ -69,47 +72,52 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
       <Orientation landscape>
         {me.state.init ? (
           <Carousel>
-            <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
+            <Image src={url(VILLA, 'landscape-1')} styles={landscapeLowresStyles} />
             <div />
           </Carousel>
         ) : (
           <Carousel autoPlay={me.state.playing}>
-            <Image src={url('landscape-1')} styles={landscapeLowresStyles} />
+            <Image src={url(VILLA, 'landscape-1')} styles={landscapeLowresStyles} />
             <div>
-              <img src={url('landscape-2-1')} />
-              <img src={url('landscape-2-2')} />
-              <img src={url('landscape-2-3')} />
+              <img src={url(NEST, 'landscape-7-1')} />
+              <img src={url(NEST, 'landscape-7-2')} />
+              <img src={url(NEST, 'landscape-7-3')} />
             </div>
-            <img src={url('landscape-4')} />
+            <img src={url(VILLA, 'landscape-4')} />
             <div>
-              <img src={url('landscape-3-1')} />
-              <img src={url('landscape-3-2')} />
-              <img src={url('landscape-3-3')} />
+              <img src={url(VILLA, 'landscape-2-1')} />
+              <img src={url(VILLA, 'landscape-2-2')} />
+              <img src={url(VILLA, 'landscape-2-3')} />
             </div>
-            <img src={url('landscape-5')} />
-            <img src={url('landscape-6')} />
+            <img src={url(VILLA, 'landscape-5')} />
+            <div>
+              <img src={url(VILLA, 'landscape-3-1')} />
+              <img src={url(VILLA, 'landscape-3-2')} />
+              <img src={url(VILLA, 'landscape-3-3')} />
+            </div>
+            <img src={url(VILLA, 'landscape-6')} />
           </Carousel>
         )}
       </Orientation>
       <Orientation portrait>
         {me.state.init ? (
           <Carousel>
-            <Image src={url('portrait-01')} styles={portraitLowresStyles} />
+            <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
             <div />
           </Carousel>
         ) : (
           <Carousel autoPlay={me.state.playing}>
-            <Image src={url('portrait-01')} styles={portraitLowresStyles} />
-            <img src={url('portrait-02')} />
-            <img src={url('portrait-03')} />
-            <img src={url('portrait-04')} />
-            <img src={url('portrait-05')} />
-            <img src={url('portrait-06')} />
-            <img src={url('portrait-07')} />
-            <img src={url('portrait-08')} />
-            <img src={url('portrait-09')} />
-            <img src={url('portrait-10')} />
-            <img src={url('portrait-11')} />
+            <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
+            <img src={url(VILLA, 'portrait-02')} />
+            <img src={url(VILLA, 'portrait-03')} />
+            <img src={url(VILLA, 'portrait-04')} />
+            <img src={url(VILLA, 'portrait-05')} />
+            <img src={url(VILLA, 'portrait-06')} />
+            <img src={url(VILLA, 'portrait-07')} />
+            <img src={url(VILLA, 'portrait-08')} />
+            <img src={url(VILLA, 'portrait-09')} />
+            <img src={url(VILLA, 'portrait-10')} />
+            <img src={url(VILLA, 'portrait-11')} />
           </Carousel>
         )}
       </Orientation>
