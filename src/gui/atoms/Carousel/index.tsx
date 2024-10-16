@@ -5,7 +5,7 @@ import styles from './styles.scss';
 
 const options = {
   infiniteLoop: true,
-  interval: 1500,
+  interval: 2000,
   showArrows: false,
   showIndicators: false,
   showStatus: false,

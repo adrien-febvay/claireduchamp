@@ -10,10 +10,10 @@
 
   :global(.slider) {
     transform: none !important;
-  
+
     > :global(.slide) {
       opacity: 0;
-      transition: opacity 350ms, transform 4s;
+      transition: opacity 700ms, transform 6s linear;
 
       &:global(.selected) {
         opacity: 1;
@@ -41,6 +41,8 @@
   }
 }
 
-.zoomIn :global(.selected) {
-  transform: scale(1.04);
+.zoomIn {
+  :global(.selected), :global(.previous) {
+    transform: scale(1.2);
+  }
 }
