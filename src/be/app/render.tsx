@@ -113,7 +113,7 @@ export async function appRender(body: string, req: Request, res: Response) {
     );
 
     /** Document language attributes. */
-    const langAttrs = headContext.lang ? ` lang=${headContext.lang} xml:lang=${headContext.lang}` : '';
+    const langAttrs = headContext.lang ? ` lang="${headContext.lang}" xml:lang="${headContext.lang}"` : '';
 
     /** Document head HTML. */
     const head = ReactDOMServer.renderToStaticMarkup([
@@ -124,7 +124,7 @@ export async function appRender(body: string, req: Request, res: Response) {
 
     /** Response content. */
     const content = body
-      .replace(/(?<=<html) ?/, langAttrs)
+      .replace(/(?<=<html)/, langAttrs)
       .replace(/(?<=<head>)\n?/, `\n    ${head.replace(/(?<=>)(?=<[^/])/g, '\n    ')}\n`)
       .replace(/.*(?=<\/head>)/, '  $&\n  ')
       .replace(/<script defer src="(\/main(\.[a-z\d]+\.min)?.js)"><\/script>/, ssrOnly ? hydrateScript : '$&')
