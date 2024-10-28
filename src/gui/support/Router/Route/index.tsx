@@ -15,7 +15,8 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   const appTitle = translate('title', '');
   const description = meta.description || translate('description', '');
   const keywords = `${translate('keywords', '')}${meta.keywords ? `, ${meta.keywords}` : ''}`;
-  let title = meta.title ? `${meta.title} • ${appTitle}` : appTitle;
+  const [metaTitle, altSeparator] = meta.title?.split('$') ?? [];
+  let title = metaTitle ? `${metaTitle}${altSeparator ?? ' • '}${appTitle}` : appTitle;
 
   if (document) {
     document.title = title;
