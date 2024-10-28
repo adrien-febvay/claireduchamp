@@ -1,4 +1,6 @@
 import { AboutUs } from './AboutUs';
+import { Article } from './Article';
+import { Blog } from './Blog';
 import { ContactUs } from './ContactUs';
 import { Home } from './Home';
 import { LegalNotice } from './LegalNotice';
@@ -10,6 +12,8 @@ import { Services } from './Services';
 
 const lexicon = {
   AboutUs,
+  Article,
+  Blog,
   ContactUs,
   Home,
   LegalNotice,

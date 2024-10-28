@@ -15,11 +15,12 @@
     "portrait": "Portrait"
   },
   "molecules/Nav": {
-    "order": "projects, services ; about-us, contact-us",
+    "order": "projects, services, blog ; about-us, contact-us",
     "projects": "Projects",
     "services": "Services",
     "about-us": "About us",
-    "contact-us": "Contact us"
+    "contact-us": "Contact us",
+    "blog": "Blog"
   },
   "Screens/AboutUs": {
     "pathname": "/about-us",
@@ -27,6 +28,17 @@
     "description": "SIA Architect and Interior Designer on various project scales for individuals, entrepreneurs and municipalities. Background and references.",
     "introduction": "Claire Duchamp works on various project scales for individuals, entrepreneurs and municipalities.\nOriginally from the Lyon region, she grew up in an agricultural and industrial area. Large natural spaces mark his aesthetic and his taste for contemplation and freedom.\nShe did the first part of her studies in Lyon, then a second in Paris where she graduated from the Paris Malaquais school as an architect.\nShe then worked in renovation in Paris, then in the development of new constructions in architectural offices in Valais and Vaud.\nToday based in Vevey, in the center of the Vaud Riviera, she enjoys developing projects in a territory for which she feels desire and wonder.",
     "hire-cd": "Entrust your project to Claire Duchamp"
+  },
+  "Screens/Article": {
+    "back-to-blog": "Blog"
+  },
+  "Screens/Article/Link": {
+    "next-article": "Article suivant",
+    "previous-article": "Article précédent",
+    "read-more": "Lire l'article"
+  },
+  "Screens/Blog": {
+    "pathname": ""
   },
   "Screens/ContactUs": {
     "pathname": "/contact-us",

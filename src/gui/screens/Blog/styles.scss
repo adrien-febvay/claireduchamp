@@ -1,0 +1,37 @@
+@import 'themes';
+
+.root {
+  background: white;
+}
+
+.content {
+  padding: 0 20px;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+.article:not(:first-child) {
+  margin: 1em 0 0;
+}
+
+.separator {
+  border-top: 0.05em dotted #895e34;
+  background-color: transparent;
+}
+
+@include device(not-desktop) {
+  .root {
+    padding: 120px 0 60px;
+  }
+}
+
+@include device(desktop) {
+  .root {
+    padding: 180px 0 60px;
+  }
+
+  .content {
+    width: 860px;
+    margin: 0 auto;
+  } 
+}
