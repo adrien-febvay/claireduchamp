@@ -27,7 +27,9 @@ declare module '.' {
       }[Key];
     }
 
-    type Route = (Locales<Screen.Meta> & { mul?: undefined }) | (Partial<Locales<undefined>> & { mul: Screen.Meta });
+    type Route =
+      | (Partial<Locales<undefined>> & { mul: Screen.Meta })
+      | (Partial<Locales<Screen.Meta>> & { fr: Screen.Meta; mul?: undefined });
 
     namespace Route {
       type Props =

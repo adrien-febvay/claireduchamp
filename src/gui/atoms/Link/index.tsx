@@ -8,14 +8,15 @@ export function Atom_Link<To extends Link.Props.To>(props: Link.Props<To>): Reac
 
 export function Atom_Link(props: Link.Props): React.Node {
   const { onClick, params, to, ...linkProps } = props;
-  const { url, noFollow } = useResolveUrl(to, params);
+  const [url, noFollow] = useResolveUrl(to, params);
   const { scroll } = useLayout();
-  const memo = React.useMemo(() => ({ url }), [url]);
+  const urlRef = React.useRef(url);
+  urlRef.current = url;
 
   function maybeResetScroll(...args: OnClickParameters): void {
     if (!args[0].isDefaultPrevented()) {
       onClick?.(...args);
-      if (!args[0].isDefaultPrevented() && memo.url === location?.pathname) {
+      if (!args[0].isDefaultPrevented() && urlRef.current === location?.pathname) {
         args[0].preventDefault();
         scroll.reset();
       }
@@ -31,7 +32,7 @@ export function Atom_Link(props: Link.Props): React.Node {
       linkProps.rel = 'nofollow';
     }
     const clickHandler = props.preventScrollReset ? void 0 : maybeResetScroll;
-    return <LegacyLink to={url} onClick={clickHandler} {...linkProps} />;
+    return <LegacyLink to={url ?? ''} onClick={clickHandler} {...linkProps} />;
   }
 }
 

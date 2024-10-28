@@ -27,7 +27,7 @@ const namespace = 'Screens/Project';
 
 const FULLSCREEN = 'ProjectFullscreen';
 
-const ProjectScreen: React.FC = () => {
+const Screen_Project: React.FC = () => {
   const me = React.useComponent(() => ({
     ref: {
       content: React.createRef<HTMLDivElement>(),
@@ -108,7 +108,7 @@ const ProjectScreen: React.FC = () => {
   );
 };
 
-export const Project = Object.assign(ProjectScreen, {
+export const Project = Object.assign(Screen_Project, {
   footerStyles,
   namespace,
   navStyles,

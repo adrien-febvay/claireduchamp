@@ -25,8 +25,9 @@ const children = screens
         const meta = locales?.[language];
         if (meta) {
           const pathnameFr = locales?.fr?.pathname ?? locales?.mul?.pathname ?? meta.pathname;
+          const pathnameEn = locales?.en?.pathname;
           const status = pathnameFr === '*' ? 404 : 200;
-          const desc = { Screen, language, locales, meta, pathnameFr, status };
+          const desc = { Screen, language, locales, meta, pathnameFr, pathnameEn, status };
           const path = meta.pathname;
           const element = <Route desc={desc} />;
           paths[path] = (paths[path] ?? 0) + 1;

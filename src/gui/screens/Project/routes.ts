@@ -29,7 +29,7 @@ for (const id of ids) {
   const fr = meta(projects.fr, id);
   const mul = en || fr;
   if (!/[a-z][a-z0-9]*([A-Z][a-z0-9]*|[0-9]+)*/.test(id)) {
-    safeConsole.warn('Bad project name:', JSON.stringify(id), { en, fr });
+    safeConsole.warn('Bad project ID:', JSON.stringify(id), { en, fr });
   }
   if (mul) {
     const route = en && fr ? { en, fr } : { mul };
