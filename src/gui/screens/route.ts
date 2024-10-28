@@ -21,7 +21,7 @@ const mulRouteSchema = z.object({
 
 const localizedRouteSchema = z.object({
   mul: z.undefined().optional(),
-  en: metaSchema,
+  en: metaSchema.optional(),
   fr: metaSchema,
 });
 
@@ -29,7 +29,7 @@ const routeSchema = z.union([mulRouteSchema, localizedRouteSchema]);
 
 export namespace route {
   export function fromLocales(namespace: Screen.Meta.Namespace, meta?: Partial<Screen.Meta>): Screen.Route {
-    const en = metaSchema.parse({ ...locales.en[namespace], ...meta });
+    const en = metaSchema.safeParse({ ...locales.en[namespace], ...meta }).data;
     const fr = metaSchema.parse({ ...locales.fr[namespace], ...meta });
     return { en, fr };
   }
