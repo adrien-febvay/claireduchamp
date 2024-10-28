@@ -1,7 +1,7 @@
 import Markdown from 'markdown-to-jsx';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Text } from '@/gui/atoms/Text';
-import { JulieMasson } from '@/gui/atoms/Photo/JulieMasson';
+import { Photo } from '@/gui/atoms/Photo';
 import { route } from '@/gui/screens/route';
 import { useTranslation } from '@/utils/i18n';
 
@@ -18,7 +18,7 @@ export const Screen_AboutUs: React.FC = () => {
       <div classNames={[appStyles.darkTheme, styles.introductionContainer]}>
         <div className={styles.content}>
           <div className={styles.introductionGrid}>
-            <JulieMasson className={styles.introductionPhoto} src="/about/claire-duchamp.jpg" />
+            <Photo className={styles.introductionPhoto} src="/about/claire-duchamp.jpg" />
             <div className={styles.introductionText}>
               <Text content={translate('introduction')} />
             </div>

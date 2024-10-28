@@ -28,7 +28,7 @@
 }
 
 .introduction-photo {
-  aspect-ratio: 422 / 585;
+  aspect-ratio: 452 / 562;
   vertical-align: top;
 }
 
@@ -95,8 +95,7 @@
 
   .introduction-container {
     padding: 0 0 30px;
-    background: url(/img/backgrounds/pretty-blur-mobile.jpg) #6e5a4a;
-    background-size: 100%;
+    background: url(/img/backgrounds/pretty-blur-mobile.jpg) no-repeat center / cover #6e5a4a;
   }
 
   .introduction-text {
@@ -120,8 +119,7 @@
 
   .introduction-container {
     padding: 20px 0 30px;
-    background: url(/img/backgrounds/pretty-blur-mobile.jpg) #6e5a4a;
-    background-size: 100%;
+    background: url(/img/backgrounds/pretty-blur-mobile.jpg) no-repeat center / cover #6e5a4a;
   }
   
   .introduction-grid {
@@ -150,8 +148,7 @@
 
   .introduction-container {
     padding: 180px 0 30px;
-    background: url(/img/backgrounds/pretty-blur.jpg) no-repeat #6e5a4a;
-    background-size: 100%;
+    background: url(/img/backgrounds/pretty-blur.jpg) no-repeat center / cover #6e5a4a;
   }
   
   .introduction-grid {
