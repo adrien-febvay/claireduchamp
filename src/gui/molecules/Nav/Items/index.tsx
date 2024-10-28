@@ -6,12 +6,14 @@ import { _ } from '@/utils/types';
 
 const namespace = 'molecules/Nav';
 
-const itemKeys = ['projects', 'services', 'about-us', 'contact-us'] as const;
+// Do not forget to change fr translation molecules/Nav:about-us from "A propos de" to "A propos".
+const itemKeys = ['projects', 'services', 'about-us', 'contact-us' /* , 'blog' */] as const;
 const itemScreens = {
   'projects': 'Projects',
   'services': 'Services',
   'about-us': 'AboutUs',
   'contact-us': 'ContactUs',
+  'blog': 'Blog',
 } as const;
 
 export function Molecule_Nav_Items(props: Props) {
