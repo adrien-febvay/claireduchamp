@@ -8,7 +8,7 @@ import { Context, pathname } from '../Context';
 import { useLocation } from '@/gui/hooks/useLocation';
 
 const Support_Router_Route: React.FC<Props> = ({ desc }) => {
-  const { Screen, language, locales, meta, pathnameFr, status } = desc;
+  const { Screen, language, locales, meta, pathnameFr, pathnameEn, status } = desc;
   const [translate, i18n] = useTranslation('support/Router/Meta');
   const location = useLocation();
 
@@ -32,7 +32,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   pathname.prev = pathname.curr;
   pathname.curr = location.pathname;
 
-  if (language !== 'mul' && language !== i18n.language) {
+  if (language !== 'mul' && pathnameEn && language !== i18n.language) {
     void i18n.changeLanguage(language);
   }
 

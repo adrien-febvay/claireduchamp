@@ -3,10 +3,7 @@ import type { Screen } from '@/gui/screens';
 
 declare module '.' {
   namespace useResolveUrl {
-    type LinkAttrs = {
-      url: string;
-      noFollow?: boolean;
-    };
+    type LinkAttrs = [url?: string, noFollow?: boolean];
 
     type Params<Target extends useResolveUrl.Target> = _.Url.To.Params<Target.Pathname<Target>>;
 
