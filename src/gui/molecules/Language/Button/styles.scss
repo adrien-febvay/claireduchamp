@@ -1,10 +1,22 @@
-@import 'link';
+.parent {
+  margin: 0 0 4pt;
 
-.el {
-  text-transform: uppercase;
-  @include link(1.2);
-  &:disabled {
-    font-weight: 800;
-    cursor: default;
-  }  
+  .el {
+    padding: 2pt 1pt 2pt 3.5pt;
+    border: 1pt solid transparent;
+    text-transform: uppercase;
+
+    &:disabled {
+      border-color: currentColor;
+      cursor: default;
+    }
+
+    &:hover {
+      border-color: currentColor;
+    }
+  }
+
+  &:hover > .el:disabled:not(:hover) {
+    border-color: transparent;
+  }
 }

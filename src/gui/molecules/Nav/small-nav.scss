@@ -76,6 +76,10 @@
   > .language {
     font-size: 16pt;
     font-weight: 600;
+
+    & > button {
+      padding: 4pt 1pt 3pt 3.5pt;
+    }
   }
 }
 
