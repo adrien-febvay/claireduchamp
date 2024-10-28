@@ -11,11 +11,12 @@
     "website": "Site web :"
   },
   "molecules/Nav": {
-    "order": "projects, services ; about-us, contact-us",
+    "order": "projects, services ; about-us, contact-us, blog",
     "projects": "Réalisations",
     "services": "Prestations",
-    "about-us": "A propos",
-    "contact-us": "Contact"
+    "about-us": "A propos de",
+    "contact-us": "Contact",
+    "blog": "Blog"
   },
   "Screens/AboutUs": {
     "pathname": "/a-propos",
@@ -23,6 +24,18 @@
     "description": "Architecte SIA et architecte d'intérieur sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes. Parcours et références.",
     "introduction": "Claire Duchamp travaille sur diverses échelles de projet pour les particuliers, les entrepreneurs et les communes.\nOriginaire de la région lyonnaise, elle grandit dans un territoire agricole et industriel. Les grands espaces naturels marquent son esthétique et son goût pour la contemplation et la liberté.\nElle fait une première partie de ses études à Lyon, puis une seconde à Paris où elle est diplômée à l'école de Paris Malaquais en tant qu'architecte.\nElle travaille ensuite dans la rénovation à Paris, puis dans le développement de constructions neuves dans des bureaux d'architecture en Valais et en Vaud.\nAujourd'hui basée à Vevey, au centre de la riviera vaudoise, elle a plaisir à développer des projets sur un territoire pour lequel elle éprouve du désir et de l'émerveillement.",
     "hire-cd": "Confiez votre projet à Claire Duchamp"
+  },
+  "Screens/Article": {
+    "back-to-blog": "Blog"
+  },
+  "Screens/Article/Link": {
+    "next-article": "Article suivant",
+    "previous-article": "Article précédent",
+    "read-more": "Lire l'article"
+  },
+  "Screens/Blog": {
+    "pathname": "/blog",
+    "title": "Blog de$ "
   },
   "Screens/ContactUs": {
     "pathname": "/nous-contacter",
