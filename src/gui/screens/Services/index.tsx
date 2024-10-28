@@ -34,8 +34,22 @@ export const Screen_Services: React.FC = () => {
               <span className={styles.noWrap} />
             </Trans>
           </Link>
-          <Project.Preview projectId="villaGrandvaux2023" tryptics={[[2, 17, 3]]} className={styles.project} />
-          <Project.Preview projectId="villaGrandvaux2023" tryptics={[[15, 30, 6]]} className={styles.project} credits />
+          <Project.Preview
+            className={styles.project}
+            tryptics={[
+              [
+                ['chardonneApartment2024', 17],
+                ['chardonneApartment2024', 26],
+                ['villaGrandvaux2023', 30],
+              ],
+              [
+                ['chardonneApartment2024', 35],
+                ['alpineLamp', 11],
+                ['villaGrandvaux2023', 17],
+              ],
+            ]}
+            credits
+          />
           <h2 className={styles.catchphrase}>{translate('catchphrase')}</h2>
           <h3 className={styles.introduction}>{parse(translate('introduction'))}</h3>
           <div className={styles.values}>

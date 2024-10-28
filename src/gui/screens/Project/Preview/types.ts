@@ -11,14 +11,13 @@ declare module '.' {
         /** Show credits? */
         credits?: boolean;
 
-        /** Id of a project with pictures. */
-        projectId: Project.Id;
-
         /** Number of picture rows to show. */
-        tryptics?: Tryptic[];
+        tryptics: Tryptic[];
       };
 
-    type Tryptic = [number, number, number];
+    type Picture = [projectId: Project.Id, imageIndex: number];
+
+    type Tryptic = [Picture, Picture, Picture];
   }
 
   /** Internal component properties. */
