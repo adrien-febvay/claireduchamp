@@ -75,12 +75,13 @@
 
   > .language {
     font-size: 16pt;
+    font-weight: 600;
   }
 }
 
 .small-logo-text {
   flex-shrink: 0;
-  font-size: 26pt;
+  font-size: 28pt;
 }
 
 .menu-entries {
@@ -93,6 +94,7 @@
 
 .entry {
   font-size: 16pt;
+  font-weight: 600;
   text-align: center;
   text-transform: uppercase;
 
