@@ -6,6 +6,8 @@ import { onEvent } from '@/gui/hooks/onEvent';
 import { useLayout } from '@/gui/hooks/useLayout';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Orientation } from '@/gui/support/Orientation';
+import { Triptych } from './Triptych';
+import { url } from './utils';
 
 import styles from './styles.scss';
 import landscapeLowresStyles from './landscape-lowres.scss';
@@ -13,10 +15,6 @@ import portraitLowresStyles from './portrait-lowres.scss';
 
 const NEST = 'appartement-chardonne';
 const VILLA = 'villa-grandvaux';
-
-function url(project: string, no: string): string {
-  return `/img/intro/claire-duchamp-${project}-©JulieMasson-${no}.jpg`;
-}
 
 export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes }) => {
   const me = React.useComponent(() => ({
@@ -78,23 +76,15 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
         ) : (
           <Carousel autoPlay={me.state.playing}>
             <Image src={url(VILLA, 'landscape-1')} styles={landscapeLowresStyles} />
-            <div>
-              <img src={url(NEST, 'landscape-7-1')} />
-              <img src={url(NEST, 'landscape-7-2')} />
-              <img src={url(NEST, 'landscape-7-3')} />
-            </div>
-            <img src={url(VILLA, 'landscape-4')} />
-            <div>
-              <img src={url(VILLA, 'landscape-2-1')} />
-              <img src={url(VILLA, 'landscape-2-2')} />
-              <img src={url(VILLA, 'landscape-2-3')} />
-            </div>
+            <Triptych project={NEST} index={8} />
+            <Triptych project={NEST} index={7} />
+            <Triptych project={NEST} index={9} />
+            <Triptych project={NEST} index={2} />
+            <Triptych project={NEST} index={10} />
             <img src={url(VILLA, 'landscape-5')} />
-            <div>
-              <img src={url(VILLA, 'landscape-3-1')} />
-              <img src={url(VILLA, 'landscape-3-2')} />
-              <img src={url(VILLA, 'landscape-3-3')} />
-            </div>
+            <Triptych project={NEST} index={11} />
+            <Triptych project={NEST} index={3} />
+            <Triptych project={NEST} index={12} />
             <img src={url(VILLA, 'landscape-6')} />
           </Carousel>
         )}
@@ -108,16 +98,19 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
         ) : (
           <Carousel autoPlay={me.state.playing}>
             <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
-            <img src={url(VILLA, 'portrait-02')} />
-            <img src={url(VILLA, 'portrait-03')} />
-            <img src={url(VILLA, 'portrait-04')} />
             <img src={url(VILLA, 'portrait-05')} />
             <img src={url(VILLA, 'portrait-06')} />
             <img src={url(VILLA, 'portrait-07')} />
             <img src={url(VILLA, 'portrait-08')} />
             <img src={url(VILLA, 'portrait-09')} />
-            <img src={url(VILLA, 'portrait-10')} />
-            <img src={url(VILLA, 'portrait-11')} />
+            <img src={url(NEST, 'portrait-12')} />
+            <img src={url(NEST, 'portrait-13')} />
+            <img src={url(NEST, 'portrait-14')} />
+            <img src={url(NEST, 'portrait-15')} />
+            <img src={url(NEST, 'portrait-16')} />
+            <img src={url(NEST, 'portrait-17')} />
+            <img src={url(NEST, 'portrait-18')} />
+            <img src={url(NEST, 'portrait-19')} />
           </Carousel>
         )}
       </Orientation>
