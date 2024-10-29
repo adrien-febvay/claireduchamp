@@ -1,6 +1,7 @@
 import { Link as LegacyLink } from 'react-router-dom';
 import { useResolveUrl } from '@/gui/hooks/useResolveUrl';
 import { useLayout } from '@/gui/hooks/useLayout';
+import { isExternalUrl } from '@/utils/misc/isExternalUrl';
 
 export { screens } from '@/gui/screens';
 
@@ -23,10 +24,10 @@ export function Atom_Link(props: Link.Props): React.Node {
     }
   }
 
-  if (typeof to === 'string') {
+  if (typeof to === 'string' && isExternalUrl(to)) {
     const { preventScrollReset, relative, reloadDocument, ...moreLinkProps } = linkProps;
-    const { replace, state, target, ...anchorAttrs } = moreLinkProps;
-    return <a href={url} target={target ?? '_blank'} {...anchorAttrs} />;
+    const { replace, state, ...anchorAttrs } = moreLinkProps;
+    return <a href={url} {...anchorAttrs} />;
   } else {
     if (noFollow && !linkProps.rel) {
       linkProps.rel = 'nofollow';

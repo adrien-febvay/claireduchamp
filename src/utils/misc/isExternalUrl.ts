@@ -10,5 +10,5 @@ export const externalUrl = /^(?:(?:https?|ftp):|\/\/)\/*([^:/\s]+)/;
  */
 export function isExternalUrl(url: _.Optional<string>): boolean {
   const host = url && externalUrl.exec(url);
-  return host && typeof location !== 'undefined' ? host[1] !== location.host : false;
+  return host ? host[1] !== location?.host : false;
 }
