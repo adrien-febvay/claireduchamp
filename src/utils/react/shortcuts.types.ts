@@ -109,6 +109,9 @@ declare module 'react' {
   /** React node (shortcut). */
   type Node = ReactNode;
 
+  /** React portal, an object with a React node `children` property (shortcut). */
+  type Portal = ReactPortal;
+
   namespace Ref {
     /**
      * Component reference.
