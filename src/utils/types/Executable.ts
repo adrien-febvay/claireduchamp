@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export {};
+import type { _ } from '.';
 
 declare module '.' {
   namespace _ {
@@ -31,4 +31,14 @@ declare module '.' {
       | ReturnType<Extract<Executable, Function.Any>>
       | InstanceType<Extract<Executable, Constructor.Any>>;
   }
+}
+
+export function isContructor<Value>(val: Value): val is Extract<Value, _.Constructor.Any> {
+  const prototype = typeof val === 'function' ? Object.getOwnPropertyDescriptor(val, 'prototype') : null;
+  return prototype?.writable === false;
+}
+
+export function isFunction<Value>(val: Value): val is Extract<Value, _.Constructor.Any> {
+  const prototype = typeof val === 'function' ? Object.getOwnPropertyDescriptor(val, 'prototype') : null;
+  return prototype?.writable !== false;
 }
