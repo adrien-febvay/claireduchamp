@@ -11,10 +11,11 @@
     "website": "Site web :"
   },
   "molecules/Nav": {
-    "about-us": "A propos de",
-    "contact-us": "Contact",
+    "order": "projects, services ; about-us, contact-us",
     "projects": "Réalisations",
-    "services": "Prestations"
+    "services": "Prestations",
+    "about-us": "A propos",
+    "contact-us": "Contact"
   },
   "Screens/AboutUs": {
     "pathname": "/a-propos",

@@ -1,10 +1,11 @@
 import { getInner } from '@/gui/utils/dom/getInnerSize';
-import { useTranslation, Resources } from '@/utils/i18n';
+import { useTranslation } from '@/utils/i18n';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Language } from '@/gui/molecules/Language';
+import { Items } from './Items';
 
 import ownStyles from './styles.scss';
 
@@ -112,25 +113,9 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
   const menuState = me.state.open && allStyles.open;
   const solidity = me.state.solid ? allStyles.solid : allStyles.transparent;
 
-  type To = Link.Props['to'];
-  type Label = keyof Resources[typeof namespace];
-
-  const entry = (to: To, label: Label): React.Node => (
-    <div className={allStyles.entry}>
-      <Link to={to} onClick={() => void toggleMenu(false)}>
-        {translate(label)}
-      </Link>
-    </div>
-  );
-
-  const item = (to: To, label: Label, extra?: React.Node): React.Node => (
-    <div className={allStyles.item}>
-      <Link to={to}>{translate(label)}</Link>
-      {extra}
-    </div>
-  );
-
   const language = <Language className={allStyles.language} />;
+  const groups = translate('order').split(/\s*;\s*/);
+  const [leftItems, rightItems] = groups.map((itemKeys) => itemKeys.split(/\s*,\s*/));
   return (
     <div classNames={[allStyles.root, menuState, solidity]}>
       <div className={allStyles.smallNav} ref={me.smallNav}>
@@ -139,12 +124,9 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
             <Link to={screens.Home} className={allStyles.smallLogoText} onClick={() => void toggleMenu(false)}>
               <Logo.Text />
             </Link>
-            <div className={allStyles.menuEntries}>
-              {entry(screens.Projects, 'projects')}
-              {entry(screens.Services, 'services')}
-              {entry(screens.AboutUs, 'about-us')}
-              {entry(screens.ContactUs, 'contact-us')}
-            </div>
+            <Items className={allStyles.menuEntries}>
+              <Items.Template className={allStyles.entry} onClick={() => void toggleMenu(false)} />
+            </Items>
             {language}
           </div>
         </div>
@@ -162,17 +144,16 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       <div className={allStyles.largeNav}>
         <div className={allStyles.largeNavBar} ref={me.navSlide}>
           <nav ref={me.nav}>
-            <div className={allStyles.group}>
-              {item(screens.Projects, 'projects')}
-              {item(screens.Services, 'services')}
-            </div>
-            <Link to={screens.Home} className={allStyles.item}>
+            <Items className={allStyles.group} keys={leftItems}>
+              <Items.Template className={allStyles.item} />
+            </Items>
+            <Link to={screens.Home} className={allStyles.largeLogoItem}>
               <Logo.Text h1 className={allStyles.largeLogoText} />
             </Link>
-            <div className={allStyles.group}>
-              {item(screens.AboutUs, 'about-us')}
-              {item(screens.ContactUs, 'contact-us', language)}
-            </div>
+            <Items className={allStyles.group} keys={rightItems}>
+              <Items.Template className={allStyles.item} />
+              {language}
+            </Items>
           </nav>
         </div>
       </div>
