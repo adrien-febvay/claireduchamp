@@ -38,17 +38,9 @@
 
 .group {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: baseline;
-  align-content: stretch;
+
   &:nth-child(3) {
     text-align: right;
-  }
-  > .item {
-    padding: 4px 0 0;
-    line-height: 19pt;
   }
 }
 
@@ -56,8 +48,11 @@
   display: inline-block;
   flex-grow: 1;
   flex-shrink: 0;
+  padding: 4px 0 0;
+  font-family: 'Calibri Light', arial, sans-serif;
   font-size: 13pt;
   font-weight: 600;
+  line-height: 19pt;
   letter-spacing: 3px;
   text-transform: uppercase;
   & > a {
@@ -65,7 +60,9 @@
   }
 }
 
-nav > .item {
+.large-logo-item {
+  flex-grow: 1;
+  flex-shrink: 0;
   margin: 0 0 8px;
   text-align: center;
 }
