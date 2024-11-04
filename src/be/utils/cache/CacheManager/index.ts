@@ -58,7 +58,8 @@ export class CacheManager extends EventEmitter {
       if (entry.isFile() && /\.json$/.test(entry.name)) {
         const absPath = join(entry.parentPath, entry.name);
         const relPath = absPath.slice(this.path.length + 1, -5);
-        const key = relPath.split(sep).join('/');
+        const rawKey = relPath.split(sep).join('/');
+        const key = rawKey.replace(/\/?index$/, '');
         try {
           const bytes = readFileSync(absPath, 'utf-8');
           try {
@@ -106,7 +107,8 @@ export class CacheManager extends EventEmitter {
 
   public set(key: string, data: Data) {
     this.data[key] = data;
-    const path = join(this.path, `${key.split('/').join(sep)}.json`);
+    const basename = key.replace(/\/$/, '/index').split('/').join(sep);
+    const path = join(this.path, `${basename}.json`);
     mkdir(dirname(path), { recursive: true })
       .then(() => writeFile(path, JSON.stringify(data), 'utf-8'))
       .catch((error) => {
