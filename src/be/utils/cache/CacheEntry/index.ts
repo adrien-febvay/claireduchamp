@@ -6,7 +6,10 @@ export class CacheEntry {
 
   public constructor(manager: CacheManager, ...key: string[]) {
     this.manager = manager;
-    this.key = key.map((chunk) => chunk.replace(/^\/|\/$/g, '')).join('/');
+    this.key = key
+      .map((chunk) => chunk.replace(/^\/|\/$/g, ''))
+      .join('/')
+      .replace(/\?.*/, '');
   }
 
   public get exists() {
