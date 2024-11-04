@@ -1,6 +1,6 @@
 {
   "name": "claireduchamp",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "Profesional website for Claire Duchamp, Architect",
   "main": "dist/index.js",
   "scripts": {
