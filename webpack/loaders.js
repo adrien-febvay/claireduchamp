@@ -1,6 +1,6 @@
 const resolve = require('./resolve');
 
-module.exports = function webpackLoaders(cssLoaders = ['style-loader'], cssOptions = {}, limit) {
+module.exports = function webpackLoaders(cssLoaders = ['style-loader'], cssOptions = {}) {
   return [
     {
       test: /\.[jt]sx?$/,
