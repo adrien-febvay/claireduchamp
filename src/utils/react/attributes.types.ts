@@ -14,8 +14,14 @@ declare module 'react' {
   /** `<dl>` attributes (shortcut). */
   type DListAttributes = HTMLAttributes<HTMLDListElement>;
 
+  /** `<form>` attributes (shortcut). */
+  type FormAttributes = FormHTMLAttributes<HTMLFormElement>;
+
   /** `<img>` attributes (shortcut). */
   type ImageAttributes = ImgHTMLAttributes<HTMLImageElement>;
+
+  /** `<select>` attributes (shortcut). */
+  type SelectAttributes = SelectHTMLAttributes<HTMLSelectElement>;
 
   /** `<span>` attributes (shortcut). */
   type SpanAttributes = HTMLAttributes<HTMLSpanElement>;
