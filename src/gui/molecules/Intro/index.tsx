@@ -98,16 +98,16 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
         ) : (
           <Carousel autoPlay={me.state.playing}>
             <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
-            <img src={url(VILLA, 'portrait-05')} />
-            <img src={url(VILLA, 'portrait-06')} />
-            <img src={url(VILLA, 'portrait-07')} />
-            <img src={url(VILLA, 'portrait-08')} />
-            <img src={url(VILLA, 'portrait-09')} />
             <img src={url(NEST, 'portrait-12')} />
+            <img src={url(VILLA, 'portrait-05')} />
             <img src={url(NEST, 'portrait-13')} />
+            <img src={url(VILLA, 'portrait-06')} />
             <img src={url(NEST, 'portrait-14')} />
+            <img src={url(VILLA, 'portrait-07')} />
             <img src={url(NEST, 'portrait-15')} />
+            <img src={url(VILLA, 'portrait-08')} />
             <img src={url(NEST, 'portrait-16')} />
+            <img src={url(VILLA, 'portrait-09')} />
             <img src={url(NEST, 'portrait-17')} />
             <img src={url(NEST, 'portrait-18')} />
             <img src={url(NEST, 'portrait-19')} />
