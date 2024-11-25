@@ -48,10 +48,9 @@ export function prerender(cache: CacheManager) {
     .flat(1)
     .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }));
 
-  const routesToPrerender = [
-    { cache: null, lang: null, mobile: null, path: '/sitemap.xml' },
-    ...allRoutes.filter((route) => !route.cache.exists),
-  ];
+  const allRoutesAndSitemap = [{ cache: null, lang: null, mobile: null, path: '/sitemap.xml' }, ...allRoutes];
+
+  const routesToPrerender = allRoutesAndSitemap.filter((route) => !route.cache?.exists);
 
   const keys = new Set(routesToPrerender.map(({ cache, path }) => cache?.key ?? path));
   function cached(key: string) {
@@ -71,6 +70,15 @@ export function prerender(cache: CacheManager) {
   if (routesToPrerender.length) {
     setTimeout(() => {
       safeConsole.log(`Prerendering ${bold(routesToPrerender.length)} routes for ${bold(conf.host)}...`);
+      if (routesToPrerender.length !== allRoutesAndSitemap.length) {
+        const routes = routesToPrerender.map((route) => {
+          const lang = route.lang ? `/${route.lang}` : '';
+          const device = route.mobile ? '/mobile' : route.mobile === 0 ? '/desktop' : '';
+          const dir = route.cache ? `cache${lang}${device}` : 'gui';
+          return `  ${dir}${bold(route.path)}`;
+        });
+        safeConsole.log(routes.join('\n'));
+      }
       prerender().catch((error) => {
         safeConsole.error('Prerendering failure:', error);
         cache.off('set', cached);
