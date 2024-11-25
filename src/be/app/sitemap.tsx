@@ -2,7 +2,7 @@ import type { Request } from 'express';
 
 import pretty from 'pretty';
 import ReactDOMServer from 'react-dom/server';
-import { rmSync } from 'fs';
+import { rmSync, statSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import { Sitemap } from '@/be/sitemap';
 import { resolve } from '@/utils/path';
@@ -59,3 +59,12 @@ export function appSitemap(req: Request) {
 }
 
 export const sitemapEmitter = new EventEmitter<{ set: [string] }>();
+
+export function sitemapExists() {
+  try {
+    statSync(file);
+    return true;
+  } catch (_error) {
+    return false;
+  }
+}

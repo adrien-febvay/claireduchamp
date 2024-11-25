@@ -3,7 +3,7 @@ import type { CacheManager } from '@/be/utils/cache';
 
 import { be } from '@/be';
 import { conf } from '@/conf';
-import { sitemapEmitter } from '@/be/app/sitemap';
+import { sitemapEmitter, sitemapExists } from '@/be/app/sitemap';
 import { root } from '@/gui/support/Router/routes';
 import { i18n } from '@/utils/i18n';
 import { safeConsole } from '@/utils/safeConsole';
@@ -12,7 +12,7 @@ function bold(text: number | string) {
   return `\x1b[33m${text}\x1b[0m`;
 }
 
-export function prerender(cache: CacheManager) {
+export function prerender(cacheManager: CacheManager) {
   async function prerender() {
     let count = 0;
     let time = Number(new Date());
@@ -22,7 +22,7 @@ export function prerender(cache: CacheManager) {
       const headers = { cookie, 'user-agent': mobile ? 'android' : 'desktop' };
       try {
         await fetch(`http://localhost:${be.http.port}${path}`, { headers });
-        if (cache && !cache.exists) {
+        if (!cache.exists) {
           throw 'not saved in cache';
         }
       } catch (error) {
@@ -46,25 +46,32 @@ export function prerender(cache: CacheManager) {
     .concat(i18n.supportedLngs.map((lang) => ({ path: '/404', lang })))
     .map((route) => ['desktop', 'mobile'].map((device, mobile) => ({ ...route, device, mobile })))
     .flat(1)
-    .map((route) => ({ ...route, cache: cache.entry(route.device, route.lang, route.path) }));
+    .map((route) => ({ ...route, cache: cacheManager.entry(route.device, route.lang, route.path) }));
 
-  const allRoutesAndSitemap = [{ cache: null, lang: null, mobile: null, path: '/sitemap.xml' }, ...allRoutes];
+  const sitemapCache = {
+    get exists() {
+      return sitemapExists();
+    },
+    key: '/sitemap.xml',
+  };
 
-  const routesToPrerender = allRoutesAndSitemap.filter((route) => !route.cache?.exists);
+  const allRoutesAndSitemap = [{ cache: sitemapCache, lang: null, mobile: null, path: '/sitemap.xml' }, ...allRoutes];
 
-  const keys = new Set(routesToPrerender.map(({ cache, path }) => cache?.key ?? path));
+  const routesToPrerender = allRoutesAndSitemap.filter((route) => !route.cache.exists);
+
+  const keys = new Set(routesToPrerender.map(({ cache }) => cache?.key));
   function cached(key: string) {
     keys.delete(key);
     if (!keys.size) {
       safeConsole.log('Prerendering complete');
-      cache.off('set', cached);
+      cacheManager.off('set', cached);
       sitemapEmitter.off('set', cached);
       if (process.env.PRERENDER === 'true') {
         process.exit(0);
       }
     }
   }
-  cache.on('set', cached);
+  cacheManager.on('set', cached);
   sitemapEmitter.on('set', cached);
 
   if (routesToPrerender.length) {
@@ -81,13 +88,13 @@ export function prerender(cache: CacheManager) {
       }
       prerender().catch((error) => {
         safeConsole.error('Prerendering failure:', error);
-        cache.off('set', cached);
+        cacheManager.off('set', cached);
         if (process.env.PRERENDER === 'true') {
           process.exit(500);
         }
       });
     }, 16);
   } else {
-    safeConsole.log(`All ${bold(allRoutes.length)} routes already in cache, nothing to prerender...`);
+    safeConsole.log(`All ${bold(allRoutesAndSitemap.length)} routes already available, nothing to prerender...`);
   }
 }
