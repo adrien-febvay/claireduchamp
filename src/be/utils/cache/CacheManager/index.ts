@@ -59,7 +59,7 @@ export class CacheManager extends EventEmitter {
         const absPath = join(entry.parentPath, entry.name);
         const relPath = absPath.slice(this.path.length + 1, -5);
         const rawKey = relPath.split(sep).join('/');
-        const key = rawKey.replace(/\/?index$/, '');
+        const key = rawKey.replace(/\/?index$/, '/');
         try {
           const bytes = readFileSync(absPath, 'utf-8');
           try {
