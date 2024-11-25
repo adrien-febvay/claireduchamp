@@ -109,6 +109,7 @@
     "html-webpack-plugin": "^5.6.0",
     "markdown-to-jsx": "^7.4.7",
     "mini-css-extract-plugin": "^2.9.0",
+    "minify-css-idents": "^1.1.1",
     "nodemon": "^3.1.4",
     "postcss": "^8.4.39",
     "postcss-html": "^1.7.0",

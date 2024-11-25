@@ -1,5 +1,6 @@
 const { EnvironmentPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MinifyCssIdentsPlugin = require("minify-css-idents");
 const InlineSourcePlugin = require('@effortlessmotion/html-webpack-inline-source-plugin');
 const CopyAssetsPlugin = require('./gui-copy-assets');
 const resolve = require('./resolve');
@@ -28,6 +29,9 @@ module.exports = require('webpack-merge').merge({
     }),
     new InlineSourcePlugin(),
     new CopyAssetsPlugin(),
+    new MinifyCssIdentsPlugin({
+      outputMap: 'css/ident-map.json',
+    }),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],

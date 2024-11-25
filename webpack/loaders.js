@@ -1,4 +1,5 @@
 const resolve = require('./resolve');
+const MinifyCssIdentsPlugin = require("minify-css-idents");
 
 module.exports = function webpackLoaders(cssLoaders = ['style-loader'], cssOptions = {}) {
   return [
@@ -8,39 +9,23 @@ module.exports = function webpackLoaders(cssLoaders = ['style-loader'], cssOptio
       use: 'babel-loader',
     },
     {
-      test: /\.css$/,
-      use: [
-        cssLoaders[0],
-        {
-          loader: 'css-loader',
-          options: {
-            ...cssOptions,
-            modules: {
-              namedExport: false,
-              ...cssOptions.modules,
-            },
-          },
-        },
-        'postcss-loader',
-      ],
-    },
-    {
       test: /\.md$/,
       use: ['raw-loader'],
     },
     {
-      test: /\.scss$/,
+      test: /\.s?css$/,
       use: [
         ...cssLoaders,
         {
-          loader: 'css-loader',
+          loader: 'minify-css-idents/css-loader',
           options: {
             importLoaders: 2,
             url: false,
             ...cssOptions,
             modules: {
+              auto: /\.scss$/,
               exportLocalsConvention: 'camelCase',
-              localIdentName: 'src-[path]___[name]__[local]',
+              localIdentName: '[path]___[name]__[local]',
               namedExport: false,
               ...cssOptions.modules,
             },
