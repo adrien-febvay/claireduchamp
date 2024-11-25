@@ -7,7 +7,7 @@ node_modules/
 /.changelog
 /dist-*/
 !/dist-prod/
-/test*.js
+/test*.*
 .DS_Store
 *.tgz
 *.scss.d.ts
