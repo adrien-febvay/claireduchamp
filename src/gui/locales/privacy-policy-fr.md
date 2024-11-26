@@ -1,10 +1,11 @@
 # Politique de confidentialité
-### Données personnelles et cookies
 
-##### Les données personnelles que vous nous transmettez directement
+## Données personnelles et cookies
+
+### Les données personnelles que vous nous transmettez directement
 Nous n’utilisons vos données personnelles que dans le cas où vous nous les fournissez à travers du formulaire de contact. Ces données ne sont utiliées que pour communiquer avec vous et ne seront jamais retransmises à des tiers.
 
-##### Les données anonymes que nous recueillons automatiquement
+### Les données anonymes que nous recueillons automatiquement
 Lors de chacune de vos visites sur notre site, nous recueillons des informations anonymes relatives à votre connexion et à votre navigation.
 
 Nous mesurons ainsi l'audience du site, de ses différentes pages ainsi que la fréquence d'utilisation de ses fonctionalités.
@@ -17,7 +18,7 @@ Voici les données que nous sommes susceptible de collecter:
 - Adresse de la page Internet de provenance (« referrer »),
 - Données de navigation sur nos services, contenus visionnés, fonctionalités utilisées, etc.
 
-##### Les cookies que nous émettons
+### Les cookies que nous émettons
 Un cookie est un fichier texte déposé lors de la consultation d’un site, d’une application mobile ou d’une publicité en ligne et stocké dans un espace spécifique du disque dur de votre ordinateur ou de votre appareil mobile. Les cookies sont gérés par votre navigateur Internet ou l’application mobile que vous utilisez, et seul l’émetteur d’un cookie peut décider de la lecture ou de la modification des informations qui y sont contenues. Il a une durée de validité limitée.
 
 Voici les utilisations que nous faisons des cookies:

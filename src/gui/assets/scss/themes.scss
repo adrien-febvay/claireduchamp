@@ -7,7 +7,7 @@ $lite-brown: #895e34;
   font-family: 'Calibri Light', arial, sans-serif;
 }
 
-@mixin title($color, $size, $style, $weight: inherit, $height: inherit, $spacing: inherit, $transform: inherit) {
+@mixin title($color, $size, $style, $weight: inherit, $height: 1.15, $spacing: inherit, $transform: inherit) {
   @if $color != none {
     color: $color;
   }
@@ -22,7 +22,7 @@ $lite-brown: #895e34;
 
 @mixin calibri-title($color: none, $size: 15pt, $weight: 600, $spacing: inherit) {
   @include calibri;
-  @include title($color, $size, normal, $weight, inherit, $spacing, uppercase);
+  @include title($color, $size, normal, $weight, 1.15, $spacing, uppercase);
   @content;
 }
 
@@ -36,7 +36,7 @@ $lite-brown: #895e34;
   @content;
 }
 
-@mixin bodoni-title($color: none, $size: 20pt, $style: italic, $height: inherit) {
+@mixin bodoni-title($color: none, $size: 20pt, $style: italic, $height: 1.15) {
   @include bodoni;
   @include title($color, $size, $style, inherit, $height);
   @content;

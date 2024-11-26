@@ -9,9 +9,13 @@
   padding: 0 20px;
   white-space: pre-wrap;
 
-  > h5 {
+  > h2 {
+    @include title-level-3;
+  }
+
+  > h3 {
+    @include title-level-5;
     margin: 58px 0 20px;
-    text-transform: uppercase;
 
     + p {
       margin: 0;
