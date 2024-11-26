@@ -22,12 +22,11 @@ export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
       </div>
     );
   }
-
   return (
     <footer className={allStyles.root}>
       <div classNames={allStyles.container}>
         <div className={allStyles.socialMedias}>
-          {link('instagram', instagram('claire_duchamp_architecte'))}
+          {link('instagram', instagram('claire_duchamp_architect'))}
           {link('linkedin', linkedin('claire-duchamp-4904b6a5'))}
         </div>
         <div className={allStyles.legalInformationContainer}>
