@@ -22,7 +22,7 @@ export const Screen_Project_ThumbnailGrid: React.FC<Props> = (props) => {
   const imgs = arrayGen(pictures.count, (index) => {
     const copyright = copyrights[index + 1] ?? pictures.copyrights[0];
     const suffix = copyright ? `--${copyright}` : '';
-    const src = `${path}--${pad(index + 1)}${suffix}.jpg`;
+    const src = `${path}--${pad(index + 1)}-thumbnail${suffix}.jpg`;
     const alt = `${title} - ${caption} - ${thumbnail} ${index + 1}`;
     return { src, alt };
   });
