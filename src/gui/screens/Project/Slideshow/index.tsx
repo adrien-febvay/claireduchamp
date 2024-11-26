@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { LeftArrowButton as PrevButton } from '@/gui/atoms/LeftArrowButton';
 import { RightArrowButton as NextButton } from '@/gui/atoms/RightArrowButton';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { Slideshow } from '@/gui/molecules/Slideshow';
+import { Project } from '@/gui/screens/Project';
 import { gridGen } from '@/gui/utils/grid/gen';
 import { getOuter } from '@/gui/utils/dom/getOuterSize';
 import { between } from '@/gui/utils/number/between';
@@ -39,6 +41,7 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
   );
 
   const navigate = useNavigate();
+  const [translate] = useTranslation(Project.namespace);
   onEvent(window, 'resize', resizeViewer, []);
   onEvent(document, 'keyup', handleKeyup, []);
 
@@ -111,14 +114,17 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
     navigate(url, { replace: true });
   }
 
-  const { pictures } = me.props.project;
+  const { caption, pictures, title } = me.props.project;
   const copyrights: Dict<string> | null = pictures.copyrights;
   const path = `/img/projects/claire-duchamp-${pictures.basename}`;
   const pad = padNumber.accordingTo(pictures.count);
+  const picture = translate('picture');
   const slides = gridGen(pictures.count, 3, (index) => {
     const copyright = copyrights[index + 1] ?? pictures.copyrights[0];
     const suffix = copyright ? `--${copyright}` : '';
-    return `${path}--${pad(index + 1)}${suffix}.jpg`;
+    const src = `${path}--${pad(index + 1)}${suffix}.jpg`;
+    const alt = `${title} - ${caption} - ${picture} ${index + 1}`;
+    return { src, alt };
   });
 
   return (
@@ -129,8 +135,8 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
       <Slideshow className={styles.slideshow} loop ref={me.ref.slideshow} onSlideChange={updatePathname}>
         {slides.map((photos, slideIndex) => (
           <div key={slideIndex} className={styles.slide}>
-            {photos.map((src, photoIndex) => (
-              <img key={photoIndex} className={styles.photo} src={src} />
+            {photos.map((imgProps, photoIndex) => (
+              <img key={photoIndex} className={styles.photo} {...imgProps} />
             ))}
           </div>
         ))}
