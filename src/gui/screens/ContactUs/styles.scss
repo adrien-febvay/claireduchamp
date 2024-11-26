@@ -91,7 +91,7 @@
 
     &:focus, &[type=submit]:hover:not(:disabled) {
       background-image: linear-gradient(90deg, unquote($lite-brown + '66'), unquote($lite-brown + '22'));
-      outline: 2px solid $lite-brown + '88';
+      outline: 2px solid unquote($lite-brown + '88');
     }
 
     &:-webkit-autofill {
