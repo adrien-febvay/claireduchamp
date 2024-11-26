@@ -198,7 +198,7 @@ export const Screen_ContactUs: React.FC = () => {
 
   const formError = /-error$/.test(me.state.formPrompt);
   const submitLabel = me.state.formStatus === 'ready' ? 'send' : me.state.formStatus;
-  const disabled = formError || me.state.formStatus !== 'ready';
+  const disabled = me.state.formStatus !== 'ready';
 
   return (
     <article classNames={[appStyles.darkTheme, styles.article]}>
