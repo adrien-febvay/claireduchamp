@@ -7,27 +7,29 @@ import projects from '@/gui/locales/projects-fr';
 
 import ownStyles from './styles.scss';
 
-const name = 'Screens/Project/Preview';
-
 export const Screen_Project_Preview: React.FC<Props> = (props) => {
   const { credits, tryptics, ...moreProps } = props;
   const { styles, ...divAttrs } = moreProps;
-  const [translate] = useTranslation(name);
+  const [translate] = useTranslation(Project.namespace);
   const allStyles = React.extendStyles(ownStyles, styles);
   return (
     <div classNames={allStyles.root} {...divAttrs}>
       {tryptics.map((trypticPictures, trypticIndex) => (
         <div key={trypticIndex} className={allStyles.triptych}>
-          {trypticPictures.map(([projectId, picture]) => {
-            const { pictures } = projects[projectId];
+          {trypticPictures.map(([projectId, pictureNo]) => {
+            const { caption, pictures, title } = projects[projectId];
             const copyrights: Dict<string> | null = pictures.copyrights;
-            const copyright = copyrights[picture] ?? pictures.copyrights[0];
+            const copyright = copyrights[pictureNo] ?? pictures.copyrights[0];
             const path = `/img/projects/claire-duchamp-${pictures.basename}`;
             const suffix = copyright ? `--${copyright}` : '';
             const pad = padFor(pictures.count);
+            const thumbnail = translate('thumbnail');
             return (
-              <Link key={picture} to={Project[projectId]} params={{ photo: String(picture) }}>
-                <img src={`${path}--${pad(picture)}-thumbnail${suffix}.jpg`} />
+              <Link key={pictureNo} to={Project[projectId]} params={{ photo: String(pictureNo) }}>
+                <img
+                  src={`${path}--${pad(pictureNo)}-thumbnail${suffix}.jpg`}
+                  alt={`${title} - ${caption} - ${thumbnail} ${pictureNo}`}
+                />
               </Link>
             );
           })}

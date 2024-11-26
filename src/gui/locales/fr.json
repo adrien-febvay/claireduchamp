@@ -64,10 +64,8 @@
     "title": "Politique de confidentialité"
   },
   "Screens/Project": {
-    "photography": "Photographie"
-  },
-  "Screens/Project/Preview": {
-    "photography": "Photographie"
+    "photography": "Photographie",
+    "thumbnail": "Miniature"
   },
   "Screens/Projects": {
     "pathname": "/realisations",

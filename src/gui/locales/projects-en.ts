@@ -1,7 +1,7 @@
 const projects = {
   villaGrandvaux2023: {
     pathname: '/grandvaux-villa-2023',
-    title: 'Sequence game',
+    title: 'Sequence Game',
     caption: 'Grandvaux Villa',
     description: 'Transformation of an existing villa with annex',
     year: '2023',
@@ -15,7 +15,7 @@ const projects = {
   },
   chardonneApartment2024: {
     pathname: '/chardonne-apartement-2024',
-    title: 'The nest',
+    title: 'The Nest',
     caption: 'Chardonne Apartement',
     description: 'Apartement transformation',
     year: '2024',
@@ -29,7 +29,7 @@ const projects = {
   },
   alpineLamp: {
     pathname: '/alpine-lamp',
-    title: 'Alpine lamp',
+    title: 'Alpine Lamp',
     caption: 'Lighting Design',
     description: 'Bronze and blown glass',
     year: null,

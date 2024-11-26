@@ -64,10 +64,8 @@
     "title": "Privacy Policy"
   },
   "Screens/Project": {
-    "photography": "Photography"
-  },
-  "Screens/Project/Preview": {
-    "photography": "Photography"
+    "photography": "Photography",
+    "thumbnail": "Thumbnail"
   },
   "Screens/Projects": {
     "pathname": "/projects",
