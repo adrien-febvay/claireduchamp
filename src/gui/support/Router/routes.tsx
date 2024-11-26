@@ -23,9 +23,10 @@ const children = screens
     [Screen.route, ...(Screen.subroutes ?? [])].map((locales) =>
       languages.map((language) => {
         const meta = locales?.[language];
-        if (meta) {
-          const pathnameFr = locales?.fr?.pathname ?? locales?.mul?.pathname ?? meta.pathname;
-          const pathnameEn = locales?.en?.pathname;
+        const fallbackPathname = meta && (locales.mul?.pathname ?? meta.pathname);
+        if (fallbackPathname) {
+          const pathnameFr = locales.fr?.pathname ?? fallbackPathname;
+          const pathnameEn = locales.en?.pathname;
           const status = pathnameFr === '*' ? 404 : 200;
           const desc = { Screen, language, locales, meta, pathnameFr, pathnameEn, status };
           const path = meta.pathname;
