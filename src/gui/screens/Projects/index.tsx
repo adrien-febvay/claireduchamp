@@ -43,10 +43,10 @@ export const Screen_Projects: React.FC = () => {
               <>
                 <div className={styles.thumbnail} style={{ backgroundImage }} />
                 <div className={styles.text}>
-                  <h3>{project.title ?? translate('in-progress')}</h3>
-                  <h6>{project.caption}</h6>
-                  <p>{project.description}</p>
-                  <p>{project.surface}</p>
+                  <h2>{project.title ?? translate('in-progress')}</h2>
+                  <h3>{project.caption}</h3>
+                  {project.description && <h4>{project.description}</h4>}
+                  {project.surface && <p>{project.surface}</p>}
                 </div>
               </>
             ),

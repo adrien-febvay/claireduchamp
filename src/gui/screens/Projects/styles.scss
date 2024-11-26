@@ -72,15 +72,17 @@ div.project {
   background-image: linear-gradient(#ffffffff, #ffffffc0 40%, transparent);
   overflow: hidden;
 
-  > h3 {
-    text-transform: lowercase;
+  > h2 {
+    @include title-level-3($transform: lowercase);
   }
 
-  > h4 {
-    margin: 0.5em 0 0;
-    font-size: 13pt;
-    letter-spacing: normal;
-    text-transform: uppercase;
+  > h3 {
+    @include title-level-6;
+  }
+
+  > h4, p {
+    @include calibri-title(none, 11pt, 300, normal, $transform: inherit);
+    margin: 0.2em 0 0;
   }
 
   > p {

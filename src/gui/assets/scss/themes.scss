@@ -20,14 +20,14 @@ $lite-brown: #895e34;
   @content;
 }
 
-@mixin calibri-title($color: none, $size: 15pt, $weight: 600, $spacing: inherit, $transform: uppercase) {
+@mixin calibri-title($color: none, $size: 15pt, $weight: 600, $height: 1.15, $spacing: inherit, $transform: uppercase) {
   @include calibri;
-  @include title($color, $size, normal, $weight, 1.15, $spacing, $transform);
+  @include title($color, $size, normal, $weight, $height, $spacing, $transform);
   @content;
 }
 
 @mixin calibri-light-title($color: none) {
-  @include calibri-title($color, 14pt, 300, .15em);
+  @include calibri-title($color, 14pt, 300, $spacing: 0.15em);
   @content;
 }
 
@@ -65,8 +65,8 @@ $lite-brown: #895e34;
   @include bodoni-big-title($color);
 }
 
-@mixin title-level-3($color: none) {
-  @include bodoni-title($color);
+@mixin title-level-3($color: none, $transform: inherit) {
+  @include bodoni-title($color, $transform: $transform);
 }
 
 @mixin title-level-4($color: none, $transform: inherit) {
