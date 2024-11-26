@@ -20,9 +20,9 @@ $lite-brown: #895e34;
   @content;
 }
 
-@mixin calibri-title($color: none, $size: 15pt, $weight: 600, $spacing: inherit) {
+@mixin calibri-title($color: none, $size: 15pt, $weight: 600, $spacing: inherit, $transform: uppercase) {
   @include calibri;
-  @include title($color, $size, normal, $weight, 1.15, $spacing, uppercase);
+  @include title($color, $size, normal, $weight, 1.15, $spacing, $transform);
   @content;
 }
 

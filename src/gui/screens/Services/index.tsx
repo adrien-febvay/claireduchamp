@@ -16,6 +16,12 @@ const namespace = 'Screens/Services';
 /** Business values to display. */
 const VALUES = ['listening', 'reactivity', 'singularity'] as const;
 
+const ServiceItem = ({ children }: React.Children.Prop) => (
+  <li>
+    <h3>{children}</h3>
+  </li>
+);
+
 export const Screen_Services: React.FC = () => {
   const { Screen } = useRouterContext();
   const [translate] = useTranslation(namespace);
@@ -30,7 +36,7 @@ export const Screen_Services: React.FC = () => {
           {React.createElement(titleTag, titleProps, translate('our-services-caption'))}
           <h2 className={styles.servicesTitle}>{translate('our-services')}</h2>
           <ul className={styles.services}>
-            <Map content={translate('our-services-items')} separator={/\s*;\s*/} children={<li />} />
+            <Map content={translate('our-services-items')} separator={/\s*;\s*/} Component={ServiceItem} />
           </ul>
           <Text content={translate('explanation')} />
           <Link to={screens.ContactUs} classNames={[appStyles.scaledButton, styles.button]}>
@@ -55,7 +61,7 @@ export const Screen_Services: React.FC = () => {
             credits
           />
           <h2 className={styles.catchphrase}>{translate('catchphrase')}</h2>
-          <h3 className={styles.introduction}>{parse(translate('introduction'))}</h3>
+          <p className={styles.introduction}>{parse(translate('introduction'))}</p>
           <div className={styles.values}>
             {VALUES.map((value, index) => (
               <div key={index} className={styles.value}>

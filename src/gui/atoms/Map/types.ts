@@ -7,7 +7,7 @@ declare module '.' {
       Component?: React.ComponentType<React.Children.Prop>;
 
       /** Element template. */
-      children: React.Element<React.Children.Prop>;
+      children?: React.Element<React.Children.Prop>;
 
       /** Content. */
       content: string;

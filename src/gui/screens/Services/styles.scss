@@ -30,7 +30,11 @@ h2.services-title {
   white-space: nowrap;
   list-style-type: disc;
   list-style-position: inside;
-  
+
+  > li > h3 {
+    display: inline-block;
+    @include calibri-title(none, inherit, 300, $transform: inherit);
+  }
 }
 
 .project {
@@ -42,10 +46,9 @@ h2.services-title {
   margin: 32px 0;
 }
 
-h3.introduction {
+.introduction {
+  @include bodoni-title($lite-brown, 16pt, normal, $height: 1.2em);
   margin: 40px 0;
-  font-size: 16pt;
-  line-height: 1.2em;
 }
 
 .values {
