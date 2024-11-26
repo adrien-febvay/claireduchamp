@@ -36,9 +36,9 @@ $lite-brown: #895e34;
   @content;
 }
 
-@mixin bodoni-title($color: none, $size: 20pt, $style: italic, $height: 1.15) {
+@mixin bodoni-title($color: none, $size: 20pt, $style: italic, $height: 1.15, $transform: inherit) {
   @include bodoni;
-  @include title($color, $size, $style, inherit, $height);
+  @include title($color, $size, $style, inherit, $height, $transform: $transform);
   @content;
 }
 
@@ -47,8 +47,8 @@ $lite-brown: #895e34;
   @content;
 }
 
-@mixin bodoni-light-title($color: none) {
-  @include bodoni-title($color, 20pt, normal);
+@mixin bodoni-light-title($color: none, $transform: inherit) {
+  @include bodoni-title($color, 20pt, normal, $transform: $transform);
   @content;
 }
 
@@ -69,8 +69,8 @@ $lite-brown: #895e34;
   @include bodoni-title($color);
 }
 
-@mixin title-level-4($color: none) {
-  @include bodoni-light-title($color);
+@mixin title-level-4($color: none, $transform: inherit) {
+  @include bodoni-light-title($color, $transform);
 }
 
 @mixin title-level-5($color: none) {

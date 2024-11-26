@@ -53,9 +53,13 @@
   background: #ffffffa0;
   background: linear-gradient(90deg, #ffffff 0%, #ffffff 80%, transparent 100%);
   text-align: left;
-  > h4 {
+  > h2 {
+    @include title-level-4(none, uppercase);
     margin: 0 0 19px;
     text-transform: uppercase;
+  }
+  > h3 {
+    @include title-level-5;
   }
   > p:not(:last-child) {
     margin: 0 0 16px;
