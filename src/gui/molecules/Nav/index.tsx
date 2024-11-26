@@ -3,6 +3,7 @@ import { useTranslation, Resources } from '@/utils/i18n';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
+import { useRouterContext } from '@/gui/hooks/useRouterContext';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Language } from '@/gui/molecules/Language';
 
@@ -43,7 +44,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
 
   const menuTimeoutPromiseManager = useTimeoutPromiseManager(750);
   const openTimeoutPromiseManager = useTimeoutPromiseManager(16);
-
+  const routerContext = useRouterContext();
   const [translate] = useTranslation(namespace);
 
   onEvent(document, 'scroll', onScroll, []);
@@ -125,7 +126,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
 
   const item = (to: To, label: Label, extra?: React.Node): React.Node => (
     <div className={allStyles.item}>
-      <Link to={to}>{translate(label)}</Link>
+      <Link to={to}>{routerContext.Screen === to ? <h1>{translate(label)}</h1> : translate(label)}</Link>
       {extra}
     </div>
   );

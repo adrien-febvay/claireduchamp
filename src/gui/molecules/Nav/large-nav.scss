@@ -48,12 +48,11 @@
   }
   > .item {
     padding: 4px 0 0;
-    font-family: 'Calibri Light', arial, sans-serif;
     line-height: 19pt;
   }
 }
 
-.item {
+.item, .item h1 {
   display: inline-block;
   flex-grow: 1;
   flex-shrink: 0;

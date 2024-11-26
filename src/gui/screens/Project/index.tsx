@@ -7,8 +7,7 @@ import { CloseButton } from '@/gui/atoms/CloseButton';
 import { FullscreenButton } from '@/gui/atoms/FullscreenButton';
 import { Link } from '@/gui/atoms/Link';
 import { useDevice } from '@/gui/hooks/useDevice';
-import { useParams } from '@/gui/hooks/useParams';
-import { usePathname } from '@/gui/hooks/usePathname';
+import { useRouterContext } from '@/gui/hooks/useRouterContext';
 import { getCssValue } from '@/gui/utils/dom/getCssValue';
 import { getOuter } from '@/gui/utils/dom/getOuterSize';
 import { getPadding } from '@/gui/utils/dom/getPadding';
@@ -38,12 +37,14 @@ const ProjectScreen: React.FC = () => {
     },
   }));
 
-  const prevPathname = usePathname().prev;
-  const [translate, { lang }] = useTranslation(namespace);
-  const fullscreen = useFullscreen(me.ref.root);
-  const { id, photo } = useParams<Params>();
   const device = useDevice();
+  const fullscreen = useFullscreen(me.ref.root);
   const navigate = useNavigate();
+  const { pathname, params } = useRouterContext<Params>();
+  const [translate, { lang }] = useTranslation(namespace);
+
+  const prevPathname = pathname.prev;
+  const { id, photo } = params;
 
   function getAvailableSize(): _.Size | null {
     const credsHeight = getOuter.height(me.ref.credits.current) ?? 0;

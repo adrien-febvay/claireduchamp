@@ -51,7 +51,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   }
 
   return (
-    <Context.Provider value={{ locales, params, pathname: { ...pathname } }}>
+    <Context.Provider value={{ Screen, locales, params, pathname: { ...pathname } }}>
       {!document && (
         <Head lang={language === 'mul' ? 'x-default' : language} status={status}>
           <title>{title}</title>

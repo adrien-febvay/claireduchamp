@@ -3,6 +3,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Map } from '@/gui/atoms/Map';
 import { Text } from '@/gui/atoms/Text';
+import { useRouterContext } from '@/gui/hooks/useRouterContext';
 import { Intro } from '@/gui/molecules/Intro';
 import { Project } from '@/gui/screens/Project';
 import { route } from '@/gui/screens/route';
@@ -16,14 +17,17 @@ const namespace = 'Screens/Services';
 const VALUES = ['listening', 'reactivity', 'singularity'] as const;
 
 export const Screen_Services: React.FC = () => {
+  const { Screen } = useRouterContext();
   const [translate] = useTranslation(namespace);
+  const titleTag = Screen === Services ? 'div' : 'h1';
+  const titleProps = { classNames: [styles.servicesCaption, appStyles.h1] };
 
   return (
     <>
       <Intro />
       <article classNames={[appStyles.lightTheme, styles.article]}>
         <div id="services" className={styles.content}>
-          <h1 className={styles.servicesCaption}>{translate('our-services-caption')}</h1>
+          {React.createElement(titleTag, titleProps, translate('our-services-caption'))}
           <h2 className={styles.servicesTitle}>{translate('our-services')}</h2>
           <ul className={styles.services}>
             <Map content={translate('our-services-items')} separator={/\s*;\s*/} children={<li />} />
