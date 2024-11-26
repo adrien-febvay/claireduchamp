@@ -65,6 +65,7 @@
   },
   "Screens/Project": {
     "photography": "Photography",
+    "picture": "Picture",
     "thumbnail": "Thumbnail"
   },
   "Screens/Projects": {
