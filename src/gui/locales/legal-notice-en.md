@@ -1,6 +1,6 @@
 # Legal Notice
 
-### Legal Information
+## Legal Information
 
 Claire Duchamp Architecte<br>
 Limited liability company<br>
@@ -11,7 +11,7 @@ Head office: <span>Quai Perdonnet 18</span>, <span>1800 Vevey</span>, Switzerlan
 <Mail address="contact@claireduchamp.ch" /><br>
 <Phone number="+41 78 926 97 67" />
 
-##### Host
+### Host
 
 Kamatera Performance Cloud<br>
 <span>315 Madison Avenue</span><br>
@@ -22,7 +22,7 @@ Kamatera Performance Cloud<br>
 <Phone number="+1 212 738 9657" /><br>
 <Link to="https://www.kamatera.com/" />
 
-### Intellectual Property
+## Intellectual Property
 
 Claire Duchamp Architecte is the exclusive owner of all intellectual property rights relating to both the structure and the content of the site www.claireduchamp.ch, with the excepstion of photographs on which the copyright of a third party is affixed or juxtaposed, or mentionned on the concerned page.
 
