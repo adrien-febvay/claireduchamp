@@ -30,6 +30,10 @@
     text-transform: lowercase;
   }
 
+  > h2 {
+    @include title-level-6;
+  }
+
   > p {
     line-height: 1em;
     margin: .6em 0 0;

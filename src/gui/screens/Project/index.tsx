@@ -81,7 +81,7 @@ const ProjectScreen: React.FC = () => {
       <div ref={me.ref.content} className={styles.content}>
         <div className={styles.header} ref={me.ref.header}>
           <div className={styles.properties}>
-            <h6>{project.caption}</h6>
+            <h2>{project.caption}</h2>
             <h1>{project.title}</h1>
             {project.info && <p>{project.info}</p>}
           </div>
