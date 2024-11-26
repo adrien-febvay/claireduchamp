@@ -1,5 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { arrayGen } from '@/gui/utils/array/gen';
 import { onEvent } from '@/gui/hooks/onEvent';
+import { Project } from '@/gui/screens/Project';
 import { useSwipe } from '@/gui/utils/dom/useSwipe';
 import { gtm } from '@/gui/utils/gtm';
 import { pad } from '@/gui/utils/number/pad';
@@ -32,6 +34,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
 
   React.useEffect(reset);
 
+  const [translate] = useTranslation(Project.namespace);
   onEvent(window, 'resize', onResize, []);
 
   const toggleSwiping = useSwipe(me.ref.slider, handleSwipe);
@@ -137,13 +140,17 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
   }
 
   const { photoIndex, project, ...divAttrs } = props;
-  const { basename, count } = project.pictures;
+  const { caption, pictures, title } = project;
+  const { basename, count } = pictures;
   const copyrights: Dict<string> | null = project.pictures.copyrights;
+  const picture = translate('picture');
   const photos = arrayGen(count + 2, (index) => {
     const finalIndex = ((me.state.photoIndex + index + count - 2) % count) + 1;
     const copyright = copyrights[finalIndex] ?? project.pictures.copyrights[0];
     const suffix = copyright ? `--${copyright}` : '';
-    return `${BASEPATH}-${basename}--${pad.accordingTo(count)(finalIndex)}${suffix}.jpg`;
+    const src = `${BASEPATH}-${basename}--${pad.accordingTo(count)(finalIndex)}${suffix}.jpg`;
+    const alt = `${title} - ${caption} - ${picture} ${finalIndex}`;
+    return { src, alt };
   });
 
   if (me.state.photoIndex !== photoIndex) {
@@ -156,8 +163,8 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
         <div ref={me.ref.frame} classNames={styles.frame}>
           <div ref={me.ref.slider} className={styles.slider} style={{ left: calcSliderLeft() }}>
             <div className={styles.pictures}>
-              {photos.map((src, index) => (
-                <img key={index} src={src} className={styles.photo} />
+              {photos.map((imgAttrs, index) => (
+                <img key={index} className={styles.photo} {...imgAttrs} />
               ))}
             </div>
           </div>
