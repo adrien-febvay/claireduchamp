@@ -148,12 +148,11 @@
 }
 
 .submit-container {
-  @include bodoni-title(transparent);
+  @include input(transparent, 15pt);
   position: relative;
   margin: 13px 0 0;
   padding: .16em;
   overflow: hidden;
-  font-size: 15pt;
   font-style: italic;
   text-align: center;
 }

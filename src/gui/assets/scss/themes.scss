@@ -81,6 +81,10 @@ $lite-brown: #895e34;
   @include calibri-light-title($color);
 }
 
+@mixin input($color: none, $size: 20pt, $style: italic, $height: inherit) {
+  @include bodoni-title($color, $size, $style, $height);
+}
+
 @mixin scaled-button($color) {
   display: block;
   margin: 60px auto;
@@ -172,7 +176,7 @@ $lite-brown: #895e34;
     @include title-level-2($secondary-color);
   }
 
-  button, h3, input[type=submit], th {
+  h3, th {
     @include title-level-3($secondary-color);
   }
 
@@ -186,6 +190,10 @@ $lite-brown: #895e34;
 
   h6 {
     @include title-level-6($secondary-color);
+  }
+
+  button, input[type=submit] {
+    @include input($secondary-color);
   }
 
   @content;
