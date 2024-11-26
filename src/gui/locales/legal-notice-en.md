@@ -1,4 +1,4 @@
-## Legal Notice
+# Legal Notice
 
 ### Legal Information
 

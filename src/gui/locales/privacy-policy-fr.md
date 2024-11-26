@@ -1,4 +1,4 @@
-## Politique de confidentialité
+# Politique de confidentialité
 ### Données personnelles et cookies
 
 ##### Les données personnelles que vous nous transmettez directement

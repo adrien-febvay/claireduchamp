@@ -1,4 +1,4 @@
-## Privacy policy
+# Privacy policy
 ### Personal data and cookies
 
 ##### Personal data that you transmit directly to us

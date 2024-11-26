@@ -1,4 +1,4 @@
-## Mentions légales
+# Mentions légales
 
 ### Informations Légales
 

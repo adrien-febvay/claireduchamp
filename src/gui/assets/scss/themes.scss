@@ -32,8 +32,8 @@ $lite-brown: #895e34;
   font-weight: 300;
 }
 
-@mixin bodoni-big-title($color) {
-  @include bodoni-title($color, 24pt);
+@mixin bodoni-big-title($color, $style: italic) {
+  @include bodoni-title($color, 24pt, $style);
 }
 
 @mixin bodoni-light-title($color) {
@@ -127,6 +127,10 @@ $lite-brown: #895e34;
 
   .underlined-link {
     @include underlined-link($secondary-color);
+  }
+
+  h1 {
+    @include bodoni-big-title($secondary-color, normal);
   }
 
   h2 {
