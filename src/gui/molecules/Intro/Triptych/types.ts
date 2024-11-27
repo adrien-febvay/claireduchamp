@@ -1,12 +1,10 @@
-import { Triptych as Component } from '.';
+import type { Image } from '../Image';
+import type { Triptych as Component } from '.';
 
 declare module '.' {
   namespace Triptych {
-    interface Props {
-      project: string;
-      index: number;
-    }
+    type Props = Omit<Image.Props, keyof Image.Orientation>;
   }
 
-  interface Props extends Component.Props {}
+  type Props = Component.Props;
 }

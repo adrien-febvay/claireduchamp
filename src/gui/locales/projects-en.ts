@@ -58,6 +58,7 @@ const projects = {
     pictures: {
       basename: 'villa-chexbres-2024',
       copyrights: { 0: '©ClaireDuchamp' },
+      count: 0,
     },
   },
   contactUs: {
@@ -71,6 +72,7 @@ const projects = {
     pictures: {
       basename: 'nous-contacter',
       copyrights: { 0: null },
+      count: 0,
     },
   },
 } as const;

@@ -10,6 +10,10 @@
     "photography": "Photos :",
     "website": "Site web :"
   },
+  "molecules/Intro": {
+    "landscape": "Paysage",
+    "portrait": "Portrait"
+  },
   "molecules/Nav": {
     "about-us": "A propos de",
     "contact-us": "Contact",

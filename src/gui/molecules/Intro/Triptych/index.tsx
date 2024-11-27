@@ -1,10 +1,11 @@
-import { url } from '../utils';
+import { Image } from '../Image';
 
-export function Molecule_Intro_Triptych({ project, index }: { project: string; index: number }) {
+export function Molecule_Intro_Triptych(props: Props) {
+  const { pictureKey, ...imgProps } = props;
   return (
     <div>
       {[...Array<undefined>(3)].map((_na, subindex) => (
-        <img key={subindex} src={url(project, `landscape-${index}-${subindex + 1}`)} />
+        <Image key={subindex} landscape pictureKey={`${pictureKey}-${subindex + 1}`} {...imgProps} />
       ))}
     </div>
   );

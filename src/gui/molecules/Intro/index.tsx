@@ -1,20 +1,19 @@
 import { Carousel } from '@/gui/atoms/Carousel';
-import { Image } from '@/gui/atoms/Image';
 import { Link, screens } from '@/gui/atoms/Link';
 import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useLayout } from '@/gui/hooks/useLayout';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { Orientation } from '@/gui/support/Orientation';
+import { Image } from './Image';
 import { Triptych } from './Triptych';
-import { url } from './utils';
 
 import styles from './styles.scss';
 import landscapeLowresStyles from './landscape-lowres.scss';
 import portraitLowresStyles from './portrait-lowres.scss';
 
-const NEST = 'appartement-chardonne';
-const VILLA = 'villa-grandvaux';
+const NEST = 'chardonneApartment2024';
+const VILLA = 'villaGrandvaux2023';
 
 export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes }) => {
   const me = React.useComponent(() => ({
@@ -70,47 +69,47 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
       <Orientation landscape>
         {me.state.init ? (
           <Carousel>
-            <Image src={url(VILLA, 'landscape-1')} styles={landscapeLowresStyles} />
+            <Image projectId={VILLA} landscape pictureKey="1" styles={landscapeLowresStyles} />
             <div />
           </Carousel>
         ) : (
           <Carousel autoPlay={me.state.playing}>
-            <Image src={url(VILLA, 'landscape-1')} styles={landscapeLowresStyles} />
-            <Triptych project={NEST} index={8} />
-            <Triptych project={NEST} index={7} />
-            <Triptych project={NEST} index={9} />
-            <Triptych project={NEST} index={2} />
-            <Triptych project={NEST} index={10} />
-            <img src={url(VILLA, 'landscape-5')} />
-            <Triptych project={NEST} index={11} />
-            <Triptych project={NEST} index={3} />
-            <Triptych project={NEST} index={12} />
-            <img src={url(VILLA, 'landscape-6')} />
+            <Image projectId={VILLA} landscape pictureKey="1" styles={landscapeLowresStyles} />
+            <Triptych projectId={NEST} pictureKey="8" />
+            <Triptych projectId={NEST} pictureKey="7" />
+            <Triptych projectId={NEST} pictureKey="9" />
+            <Triptych projectId={NEST} pictureKey="2" />
+            <Triptych projectId={NEST} pictureKey="10" />
+            <Image projectId={VILLA} landscape pictureKey="5" />
+            <Triptych projectId={NEST} pictureKey="11" />
+            <Triptych projectId={NEST} pictureKey="3" />
+            <Triptych projectId={NEST} pictureKey="12" />
+            <Image projectId={VILLA} landscape pictureKey="6" />
           </Carousel>
         )}
       </Orientation>
       <Orientation portrait>
         {me.state.init ? (
           <Carousel>
-            <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
+            <Image projectId={VILLA} portrait pictureKey="01" styles={portraitLowresStyles} />
             <div />
           </Carousel>
         ) : (
           <Carousel autoPlay={me.state.playing}>
-            <Image src={url(VILLA, 'portrait-01')} styles={portraitLowresStyles} />
-            <img src={url(NEST, 'portrait-12')} />
-            <img src={url(VILLA, 'portrait-05')} />
-            <img src={url(NEST, 'portrait-13')} />
-            <img src={url(VILLA, 'portrait-06')} />
-            <img src={url(NEST, 'portrait-14')} />
-            <img src={url(VILLA, 'portrait-07')} />
-            <img src={url(NEST, 'portrait-15')} />
-            <img src={url(VILLA, 'portrait-08')} />
-            <img src={url(NEST, 'portrait-16')} />
-            <img src={url(VILLA, 'portrait-09')} />
-            <img src={url(NEST, 'portrait-17')} />
-            <img src={url(NEST, 'portrait-18')} />
-            <img src={url(NEST, 'portrait-19')} />
+            <Image projectId={VILLA} portrait pictureKey="01" styles={portraitLowresStyles} />
+            <Image projectId={NEST} portrait pictureKey="12" />
+            <Image projectId={VILLA} portrait pictureKey="05" />
+            <Image projectId={NEST} portrait pictureKey="13" />
+            <Image projectId={VILLA} portrait pictureKey="06" />
+            <Image projectId={NEST} portrait pictureKey="14" />
+            <Image projectId={VILLA} portrait pictureKey="07" />
+            <Image projectId={NEST} portrait pictureKey="15" />
+            <Image projectId={VILLA} portrait pictureKey="08" />
+            <Image projectId={NEST} portrait pictureKey="16" />
+            <Image projectId={VILLA} portrait pictureKey="09" />
+            <Image projectId={NEST} portrait pictureKey="17" />
+            <Image projectId={NEST} portrait pictureKey="18" />
+            <Image projectId={NEST} portrait pictureKey="19" />
           </Carousel>
         )}
       </Orientation>

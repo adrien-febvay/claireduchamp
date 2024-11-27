@@ -33,12 +33,12 @@ export const Atom_Image: React.FC<Props> = (props) => {
 
   function setError(event: Event | string | null) {
     me.updateState({ error: true, loading: false });
-    me.emit = () => me.props.onError?.(event);
+    me.emit = () => me.props.onLoadError?.(event);
   }
 
   function setLoaded(event: Event | null) {
     me.updateState({ loaded: true, loading: false });
-    me.emit = () => me.props.onLoad?.(event);
+    me.emit = () => me.props.onLoadSuccess?.(event);
     void fadeInTimer.restart()?.then(emitFadedIn);
   }
 
