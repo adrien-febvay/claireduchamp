@@ -1,10 +1,10 @@
-## Comment choisir le bon architecte à Vevey pour votre projet ?
+# Comment choisir le bon architecte à Vevey pour votre projet ?
 
 Le choix d'un **architecte** est une étape clé pour transformer un rêve en réalité, que ce soit pour une maison flambant neuve ou la rénovation d'une charmante bâtisse. À **Vevey**, où le paysage entre le Lac Léman et les montagnes offre des possibilités infinies, trouver le bon architecte, capable de sublimer votre vision tout en respectant les contraintes locales, est essentiel. Voici les éléments à considérer pour sélectionner celui qui saura magnifier votre projet.
 
 ---
 
-### Définissez vos besoins et trouvez un architecte à Vevey qui vous correspond
+## Définissez vos besoins et trouvez un architecte à Vevey qui vous correspond
 
 Avant toute chose, prenez le temps de clarifier vos attentes : quelle est l’ampleur du projet ? Quel est votre budget et quel délai vous fixez-vous pour voir ce projet se réaliser ? En ayant une idée claire de votre projet, vous serez mieux préparé pour échanger avec un architecte.
 
@@ -12,7 +12,7 @@ Avant toute chose, prenez le temps de clarifier vos attentes : quelle est l’am
 
 ---
 
-### Consultez le portfolio et explorez l’univers créatif de l'architecte
+## Consultez le portfolio et explorez l’univers créatif de l'architecte
 
 Chaque architecte a son propre style, son propre univers. Le **portfolio** est une fenêtre sur cet univers, et il est primordial de le consulter attentivement pour voir si sa vision correspond à la vôtre. Qu’il s’agisse de **constructions contemporaines**, de **rénovations de maisons anciennes**, ou d'extensions, un bon architecte doit pouvoir démontrer une certaine diversité tout en conservant une **signature esthétique** unique.
 
@@ -20,7 +20,7 @@ Chaque architecte a son propre style, son propre univers. Le **portfolio** est u
 
 ---
 
-### L’importance de la communication et de la transparence
+## L’importance de la communication et de la transparence
 
 Collaboration, transparence et écoute sont des éléments essentiels lors du choix d’un architecte. Dès le premier contact, assurez-vous que l'architecte prenne le temps de comprendre vos attentes, vos besoins et vos contraintes. Le succès d’un projet réside souvent dans une communication fluide et régulière, de la conception jusqu'à la finalisation. 
 
@@ -28,7 +28,7 @@ Un bon architecte, comme [Claire Duchamp](https://claireduchamp.ch/prestations/)
 
 ---
 
-### Le cachet unique et la touche esthétique de Claire Duchamp
+## Le cachet unique et la touche esthétique de Claire Duchamp
 
 Lorsqu’on choisit un **architecte à Vevey**, l’une des principales raisons est de trouver quelqu’un qui saura faire la différence, quelqu’un dont le style vous parle. Claire Duchamp se distingue par son **esthétique minimaliste et élégante**, combinant des matériaux bruts et naturels avec des lignes épurées, créant des espaces de vie chaleureux et contemporains. Son travail est un équilibre entre modernité et respect du patrimoine local, idéal pour une région aussi riche architecturalement que **Vevey**.
 
@@ -36,7 +36,7 @@ Que vous souhaitiez créer une **villa moderne** avec vue sur le lac, ou réamé
 
 ---
 
-### Pourquoi opter pour un architecte membre de la SIA ?
+## Pourquoi opter pour un architecte membre de la SIA ?
 
 En Suisse, travailler avec un architecte membre de la **Société suisse des ingénieurs et des architectes (SIA)** est un gage de qualité. Cet organisme veille au respect des normes techniques et éthiques dans le secteur de la construction. Les **architectes SIA** s'engagent à garantir un haut niveau de professionnalisme, à respecter les délais et à fournir une transparence complète sur les coûts. 
 
@@ -44,7 +44,7 @@ En Suisse, travailler avec un architecte membre de la **Société suisse des ing
 
 ---
 
-### Conclusion
+## Conclusion
 
 Le choix d'un **architecte à Vevey** pour réaliser votre projet est un processus qui demande réflexion et recherches. En vous concentrant sur l'expérience, le style, et l’approche de votre architecte, vous vous assurez une collaboration réussie et un projet qui reflétera pleinement votre vision.
 
