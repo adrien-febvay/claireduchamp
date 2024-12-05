@@ -31,10 +31,10 @@ const projects = {
     pathname: '/alpine-lamp',
     title: 'Alpine Lamp',
     caption: 'Lighting Design',
-    description: 'Bronze and blown glass',
+    description: 'Brass and blown glass',
     year: null,
     surface: null,
-    info: 'In collaboration with Ludivine Loursel, artist - craftswoman, glass blower and bronze maker',
+    info: 'In collaboration with Ludivine Loursel, artist - glass blower craftswoman',
     pictures: {
       basename: 'lampe-alpine',
       copyrights: {

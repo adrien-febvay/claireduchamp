@@ -31,10 +31,10 @@ const projects = {
     pathname: '/lampe-alpine',
     title: 'Lampe Alpine',
     caption: 'Design de luminaire',
-    description: 'Bronze et verre soufflé',
+    description: 'Laiton et verre soufflé',
     year: null,
     surface: null,
-    info: 'En collaboration avec Ludivine Loursel, artiste - artisane, souffleuse de verre et bronzière',
+    info: 'En collaboration avec Ludivine Loursel, artiste - artisane souffleuse de verre',
     pictures: {
       basename: 'lampe-alpine',
       copyrights: {
