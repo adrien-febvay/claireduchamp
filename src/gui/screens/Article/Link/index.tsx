@@ -17,9 +17,9 @@ export function Screen_Article_Link(props: Props) {
     const { title, description } = articles[articleId];
     return (
       <div classNames={[contentStyles.root]} {...divAttrs}>
-        <h2>
+        <h1>
           <Link to={screens.Article[articleId]}>{title}</Link>
-        </h2>
+        </h1>
         <p>
           <Markdown options={markdownOptions}>{description}</Markdown>
         </p>

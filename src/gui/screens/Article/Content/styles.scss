@@ -1,17 +1,17 @@
 @import 'link';
 
 .root {
-  > h2 {
+  > h1 {
     font-size: 1.4em;
     font-style: normal;
   }
 
   > hr {
-    border-top: 0.05em dotted #895e34;
+    border: none;
     background-color: transparent;
   }
 
-  > h3 {
+  > h2 {
     font-size: 1.3em;
     font-style: normal;
   }

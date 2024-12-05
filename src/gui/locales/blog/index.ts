@@ -4,7 +4,7 @@ import renovateHouse from './renovate-house-in-vevey.md';
 function makeMeta(id: keyof typeof articles) {
   const article = rawArticles[id];
   const content = article.content;
-  const title = content.replace(/^## |\n.*/gs, '');
+  const title = content.replace(/^# |\n.*/gs, '');
   const description = content.replace(/^[^\n]+\n\n|\n.*/gs, '');
   return { id, title, description, ...article, params: { id } };
 }
