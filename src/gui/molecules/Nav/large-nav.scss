@@ -44,11 +44,14 @@
   }
 }
 
+.item {
+  padding: 4px 0 0;
+}
+
 .item, .item h1 {
   display: inline-block;
   flex-grow: 1;
   flex-shrink: 0;
-  padding: 4px 0 0;
   font-family: 'Calibri Light', arial, sans-serif;
   font-size: 13pt;
   font-weight: 600;
