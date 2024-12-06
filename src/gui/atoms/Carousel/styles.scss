@@ -24,19 +24,6 @@
         height: 100%;
         object-fit: cover;
       }
-
-      > div {
-        width: 100%;
-        height: 100%;
-
-        > img {
-          width: 33%;
-
-          &:nth-child(2) {
-            margin: 0 0.5%;
-          }
-        }
-      }
     }
   }
 }
