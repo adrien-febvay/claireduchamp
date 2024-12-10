@@ -4,6 +4,7 @@ declare module '.' {
   namespace Items {
     interface Props extends React.DivAttributes {
       keys?: string[];
+      h1?: boolean;
     }
   }
 

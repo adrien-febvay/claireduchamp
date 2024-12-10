@@ -143,13 +143,13 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
       <div className={allStyles.largeNav}>
         <div className={allStyles.largeNavBar} ref={me.navSlide}>
           <nav ref={me.nav}>
-            <Items className={allStyles.group} keys={leftItems}>
+            <Items className={allStyles.group} keys={leftItems} h1>
               <Items.Template className={allStyles.item} />
             </Items>
             <Link to={screens.Home} className={allStyles.largeLogoItem}>
               <Logo.Text className={allStyles.largeLogoText} />
             </Link>
-            <Items className={allStyles.group} keys={rightItems}>
+            <Items className={allStyles.group} keys={rightItems} h1>
               <Items.Template className={allStyles.item} />
               {language}
             </Items>

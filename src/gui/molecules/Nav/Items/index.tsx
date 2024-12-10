@@ -17,7 +17,7 @@ const itemScreens = {
 } as const;
 
 export function Molecule_Nav_Items(props: Props) {
-  const { children, keys, ...divAttrs } = props;
+  const { children, keys, h1, ...divAttrs } = props;
   const routerContext = useRouterContext();
   const [translate] = useTranslation(namespace);
 
@@ -37,7 +37,7 @@ export function Molecule_Nav_Items(props: Props) {
         const to = screens[itemScreens[key]];
         return (
           <div key={key} {...itemAttrs}>
-            <Link to={to}>{routerContext.Screen === to ? <h1>{translate(key)}</h1> : translate(key)}</Link>
+            <Link to={to}>{h1 && routerContext.Screen === to ? <h1>{translate(key)}</h1> : translate(key)}</Link>
             {index === maxIndex && otherChildrens}
           </div>
         );
