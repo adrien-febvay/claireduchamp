@@ -2,9 +2,9 @@
 import type { _ } from '@/utils/types';
 
 declare module '.' {
-  namespace gtm {
+  namespace GTM {
     type Data = { event: string };
   }
 
-  type Data = gtm.Data;
+  type Data = GTM.Data;
 }

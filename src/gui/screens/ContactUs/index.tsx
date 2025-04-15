@@ -1,4 +1,4 @@
-import { contactFormOutcome } from '@/gui/utils/gtm';
+import { GTM } from '@/gui/hooks/gtm';
 import { localStorage, duration } from '@/gui/utils/misc/localStorage';
 import { Link } from '@/gui/atoms/Link';
 import { Mail } from '@/gui/atoms/Mail';
@@ -49,6 +49,7 @@ export const Screen_ContactUs: React.FC = () => {
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     timeout: 6e4,
   });
+  const pushContactFormOutcome = GTM.usePushContactFormOutcome();
   const sendFormTimeoutManager = useTimeoutPromiseManager(5e3);
   React.useEffect(loadForm, []);
 
@@ -173,21 +174,21 @@ export const Screen_ContactUs: React.FC = () => {
         body: JSON.stringify({ access_key, subject, name, phone, email, message }),
       });
       if (response.status === 200) {
-        contactFormOutcome('Succès', 'Web3Forms a confirmé le bon traitement du formulaire');
+        pushContactFormOutcome('Succès', 'Web3Forms a confirmé le bon traitement du formulaire');
         me.updateState({ formPrompt: 'send-success', formStatus: 'sent' });
         formStorage.remove();
       } else {
-        contactFormOutcome('Echec', `Web3Forms a signalé une erreur de type ${response.status}`);
+        pushContactFormOutcome('Echec', `Web3Forms a signalé une erreur de type ${response.status}`);
         me.updateState({ formPrompt: 'generic-error', formStatus: 'ready' });
         const content: unknown = (await response.json()) || (await response.text());
         safeConsole.warn(`Contact form error ${response.status}:`, content);
       }
     } catch (error) {
       if (error === isAbort.TIMEOUT) {
-        contactFormOutcome('Echec', "Le formulaire n'a pas pu être envoyé à temps");
+        pushContactFormOutcome('Echec', "Le formulaire n'a pas pu être envoyé à temps");
       } else {
         const message = "Une erreur inattendue s'est produite lors de l'envoi du formulaire";
-        contactFormOutcome('Echec', message);
+        pushContactFormOutcome('Echec', message);
       }
       me.updateState({ formPrompt: 'generic-error', formStatus: 'ready' });
       safeConsole.warn(`Contact form error:`, error);

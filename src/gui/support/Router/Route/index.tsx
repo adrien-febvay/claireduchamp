@@ -1,16 +1,17 @@
 import { useParams } from 'react-router-dom';
-import { useTranslation } from '@/utils/i18n';
-import { gtm } from '@/gui/utils/gtm';
+import { useLocation } from '@/gui/hooks/useLocation';
+import { GTM } from '@/gui/hooks/gtm';
 import { applyParamsToUrl } from '@/gui/utils/url/applyParams';
 import { Head } from '@/gui/support/Head';
 import { Layout } from '@/gui/support/Layout';
+import { useTranslation } from '@/utils/i18n';
 import { Context, pathname } from '../Context';
-import { useLocation } from '@/gui/hooks/useLocation';
 
 const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   const { Screen, language, locales, meta, pathnameFr, status } = desc;
   const [translate, i18n] = useTranslation('support/Router/Meta');
   const location = useLocation();
+  const pushPageView = GTM.usePushPageView();
 
   const appTitle = translate('title', '');
   const description = meta.description || translate('description', '');
@@ -39,7 +40,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
   React.useEffect(pageView, [desc.meta.pathname]);
 
   function pageView(): void {
-    gtm.pageView(applyParamsToUrl(pathnameFr, params));
+    pushPageView(applyParamsToUrl(pathnameFr, params));
   }
 
   function buildUrl(pathname?: string) {

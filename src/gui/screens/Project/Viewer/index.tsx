@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { arrayGen } from '@/gui/utils/array/gen';
+import { GTM } from '@/gui/hooks/gtm';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { Project } from '@/gui/screens/Project';
 import { useSwipe } from '@/gui/utils/dom/useSwipe';
-import { gtm } from '@/gui/utils/gtm';
 import { pad } from '@/gui/utils/number/pad';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
 import { CloseButton } from './CloseButton';
@@ -34,6 +34,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
 
   React.useEffect(reset);
 
+  const pushPageView = GTM.usePushPageView();
   const [translate] = useTranslation(Project.namespace);
   onEvent(window, 'resize', onResize, []);
 
@@ -134,7 +135,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     if (url !== location?.pathname) {
       window?.history?.replaceState(null, document?.title ?? '', url);
       if (urlPhotoIndex || me.prev) {
-        gtm.pageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathname);
+        pushPageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathname);
       }
     }
   }

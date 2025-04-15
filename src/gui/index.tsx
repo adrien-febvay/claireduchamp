@@ -4,7 +4,6 @@ import '@/gui/debug';
 import 'core-js/stable';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import ReactDOM from 'react-dom/client';
-import TagManager from 'react-gtm-module';
 import detectMobile from 'is-mobile';
 import { onBrowserOrThrow } from '@typescript/lib-dom/utils';
 import { locales } from '@/gui/locales';
@@ -17,8 +16,6 @@ import { safeConsole } from '@/utils/safeConsole';
 export const appElement = document?.getElementById('app');
 
 onBrowserOrThrow(({ document }) => {
-  TagManager.initialize({ gtmId: conf.gtmId });
-
   /** Is device mobile? */
   const isMobile = detectMobile({ tablet: true });
 
