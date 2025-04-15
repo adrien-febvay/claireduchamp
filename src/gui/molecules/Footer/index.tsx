@@ -1,3 +1,5 @@
+import type { _ } from '@/utils/types';
+
 import { Link, screens } from '@/gui/atoms/Link';
 import { useTranslation, Resources } from '@/utils/i18n';
 import { instagram, linkedin } from './utils';
@@ -12,13 +14,19 @@ export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
   type ClassName = keyof typeof ownStyles;
   type Key = Translation & ClassName;
 
-  function link(key: Key, to: Link.Props['to'], label?: string): React.Node {
+  function link(key: Key, to: Link.Props['to'] | _.Function<[], void>, label?: string): React.Node {
     return (
       <div classNames={[allStyles.item, allStyles[key]]}>
         {label && `${translate(key)} `}
-        <Link to={to} classNames={[allStyles.link, allStyles[key]]}>
-          {label ?? translate(key)}
-        </Link>
+        {to instanceof Function ? (
+          <button onClick={to} classNames={[allStyles.link, allStyles[key]]}>
+            {label ?? translate(key)}
+          </button>
+        ) : (
+          <Link to={to} classNames={[allStyles.link, allStyles[key]]}>
+            {label ?? translate(key)}
+          </Link>
+        )}
       </div>
     );
   }
@@ -33,6 +41,7 @@ export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
           <div className={allStyles.legalInformation}>
             {link('legal-notice', screens.LegalNotice)}
             {link('privacy-policy', screens.PrivacyPolicy)}
+            {link('cookies', () => {})}
           </div>
           <div className={allStyles.address}>
             <Link className={allStyles.addressLink} to="https://maps.app.goo.gl/b26oyumKkiTRXwmQA">

@@ -112,6 +112,10 @@
 }
 
 @include media-width(360px) {
+  .address-link {
+    margin: 0.4em 0 0;
+  }
+
   .address-line:not(:last-child):after {
     content: ' – ';
   }
@@ -134,6 +138,10 @@
 
   .credits {
     order: 2;
+  }
+
+  .address-link {
+    margin: 0.4em 0 0;
   }
 }
 
