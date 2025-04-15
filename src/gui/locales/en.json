@@ -2,6 +2,22 @@
   "atoms/Logo/Text": {
     "architect": "Architect"
   },
+  "molecules/CookieConsent": {
+    "banner-text": "This website uses cookies for its functionality and to measure audience.",
+    "more": "Learn more...",
+    "accept": "Accept",
+    "dialog-text": "This website only uses cookies for its features and to measure audience. It does not use any advertising cookies nor third-party cookies.",
+    "accept-all": "Accept all cookies",
+    "functional-label": "Functional cookies",
+    "functional-text": "Necessary for the proper functioning of the website.",
+    "required": "Always active",
+    "audience-label": "Audience measurement cookies",
+    "audience-text": "They allow us to have anonymous statistics on the use of the website.",
+    "active": "Active",
+    "inactive": "Inactive",
+    "save": "Save your preferences",
+    "essentials-only": "Essential cookies only"
+  },
   "molecules/Footer": {
     "legal-notice": "Legal notice",
     "privacy-policy": "Privacy policy",

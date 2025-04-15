@@ -1,0 +1,74 @@
+.plate {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  filter: grayscale(1);
+  cursor: pointer;
+
+  &:disabled {
+    &, .button {
+      cursor: not-allowed;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    .underneath, .left, .right, .button {
+      outline-color: currentColor;
+    }
+
+    .highlight-button {
+      opacity: 1;
+    }
+  }
+}
+
+.on {
+  &:not(:disabled) {
+    filter: grayscale(0);
+  }
+
+  .button, .highlight-button {
+    left: 50%;
+  }
+}
+
+.underneath, .left, .right, .slit, .button, .highlight-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid currentColor;
+  outline: 1px solid transparent;
+  border-width: 1px;
+  border-radius: 50%;
+  transition: left 350ms, opacity 350ms, outline 350ms;
+}
+
+.underneath, .slit {
+  right: 25%;
+  left: 25%;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+
+.left {
+  right: 50%;
+}
+
+.right {
+  left: 50%;
+}
+
+.button, .highlight-button {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: currentColor radial-gradient(circle at 25% 25%, #fffd, #fff4);
+}
+
+.highlight-button {
+  background: currentColor radial-gradient(circle at 25% 25%, #fffd, #fff0);
+  opacity: 0;
+}

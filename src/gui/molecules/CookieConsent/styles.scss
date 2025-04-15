@@ -1,0 +1,120 @@
+@import 'link';
+
+$discreetColor: #586d7c;
+$obviousColor: #5789ad;
+
+.banner-container, .dialog-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 65000;
+}
+
+.banner-container {
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px #0008;
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  margin: 0.5em auto;
+  padding: 0.3em 0.8em;
+}
+
+.discreet-button {
+  @include link-pseudo-classes {
+    color: $discreetColor;
+  }
+}
+
+.obvious-button {
+  padding: 0.1em 0.8em;
+  background-color: #fff;
+  border: 1px solid currentColor;
+  outline: 1px solid transparent;
+  border-radius: 0.3em;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: outline 350ms;
+
+  @include link-pseudo-classes {
+    color: $obviousColor;
+  }
+
+  &:hover {
+    outline: 1px solid currentColor;
+  }
+}
+
+.dialog-container {
+  display: flex;
+  top: 0;
+  background-color: #0008;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 640px;
+  margin: 0.5em;
+  padding: 1.2em;
+  background: #fff;
+  border-radius: .5em;
+  font-size: 0.9em;
+  line-height: 1em;
+
+  .obvious-button {
+    margin: 0 1em;
+    padding: 0.3em 0.1em;
+    font-size: 1em;
+  }
+}
+
+.dialog-grid {
+  display: grid;
+  grid-template-columns: auto min-content min-content;
+  gap: 0.2em 0.8em;
+}
+
+.dialog-label {
+  font-size: 1.2em;
+
+  &:not(:first-child) {
+    margin: 0.4em 0 0;
+  }
+}
+
+.dialog-switch {
+  width: 1.8em;
+  color: $obviousColor;
+}
+
+.dialog-status {
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.dialog-desc {
+  font-size: 0.9em;
+  grid-column: 1 / span 3;
+}
+
+.dialog-dual-line {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 0.8em;
+  padding: 0 0.8em 0 0;
+}
+
+.discreet-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

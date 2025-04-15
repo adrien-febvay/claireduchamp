@@ -1,6 +1,7 @@
 import { getTop } from '@/gui/utils/dom/getTop';
 import { useLocation } from '@/gui/hooks/useLocation';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
+import { CookieConsent } from '@/gui/molecules/CookieConsent';
 import { Footer } from '@/gui/molecules/Footer';
 import { Nav } from '@/gui/molecules/Nav';
 import { Context } from './Context';
@@ -50,6 +51,7 @@ export const Support_Layout: React.FC<Props> = (props) => {
       <Nav ref={me.nav} goto={goto} styles={Screen.navStyles} />
       <Screen />
       <Footer styles={Screen.footerStyles} />
+      <CookieConsent />
     </Context.Provider>
   );
 };

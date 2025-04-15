@@ -1,7 +1,7 @@
 import { ScrollRestoration, Outlet } from 'react-router-dom';
-import { _ } from '@/utils/types';
 import { screens } from '@/gui/screens';
 import { safeConsole } from '@/utils/safeConsole';
+import { _ } from '@/utils/types';
 import { Route } from './Route';
 
 const languages = ['mul', 'en', 'fr'] as const;
