@@ -19,6 +19,10 @@
   column-gap: 10px;
 }
 
+.legal-information {
+  justify-content: center;
+}
+
 .legal-information-container {
   display: flex;
   flex-direction: column;
@@ -45,7 +49,7 @@
   }
 }
 
-.legal-notice.item::before, .privacy-policy.item::before {
+.legal-notice.item::before, .privacy-policy.item::before, .cookies.item::before {
   content: '•';
   margin-right: 0.25em;
 }
@@ -103,10 +107,13 @@
     order: 2;
   }
 
-  .address-link {
-    margin: 0.4em 0 0;
+  .legal-information, .address-link {
     flex-direction: column;
     align-items: start;
+  }
+
+  .address-link {
+    margin: 0.4em 0 0;
     line-height: 1.2em;
   }
 }

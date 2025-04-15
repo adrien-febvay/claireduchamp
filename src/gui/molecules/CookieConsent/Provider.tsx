@@ -1,5 +1,4 @@
 import Cookies from 'js-cookie';
-import { useState } from 'react';
 import { CookieConsentContext as Context } from './Context';
 
 const COOKIE_CONSENT_KEY = 'cookie-consent';
@@ -11,17 +10,15 @@ function getUserChoice() {
 }
 
 export function CookieConsentProvider(props: Props) {
-  const [userChoice, setUserChoice] = useState<UserChoice | undefined>(getUserChoice());
+  const [handle, setHandle] = React.useState<Handle>();
+  const [userChoice, setUserChoice] = React.useState<UserChoice | undefined>(getUserChoice());
 
-  function accept() {
-    Cookies.set(COOKIE_CONSENT_KEY, 'accept');
-    setUserChoice('accept');
+  function setAndSaveUserChoice(value: UserChoice) {
+    Cookies.set(COOKIE_CONSENT_KEY, value);
+    setUserChoice(value);
   }
 
-  function deny() {
-    Cookies.set(COOKIE_CONSENT_KEY, 'deny');
-    setUserChoice('deny');
-  }
-
-  return <Context.Provider value={[userChoice, accept, deny]}>{props.children}</Context.Provider>;
+  return (
+    <Context.Provider value={[userChoice, setAndSaveUserChoice, setHandle, handle]}>{props.children}</Context.Provider>
+  );
 }

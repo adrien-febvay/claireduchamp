@@ -1,6 +1,7 @@
 import type { _ } from '@/utils/types';
 
 import { Link, screens } from '@/gui/atoms/Link';
+import { CookieConsent } from '@/gui/molecules/CookieConsent';
 import { useTranslation, Resources } from '@/utils/i18n';
 import { instagram, linkedin } from './utils';
 
@@ -9,16 +10,17 @@ import ownStyles from './styles.scss';
 export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
   const [translate] = useTranslation('molecules/Footer');
   const allStyles = React.extendStyles(ownStyles, styles);
+  const openCookieConsentDialog = CookieConsent.useOpenDialog();
 
   type Translation = keyof Resources['molecules/Footer'];
   type ClassName = keyof typeof ownStyles;
   type Key = Translation & ClassName;
 
-  function link(key: Key, to: Link.Props['to'] | _.Function<[], void>, label?: string): React.Node {
+  function link(key: Key, to: Link.Props['to'] | _.Function<[], void> | undefined, label?: string): React.Node {
     return (
       <div classNames={[allStyles.item, allStyles[key]]}>
         {label && `${translate(key)} `}
-        {to instanceof Function ? (
+        {to === void 0 || to instanceof Function ? (
           <button onClick={to} classNames={[allStyles.link, allStyles[key]]}>
             {label ?? translate(key)}
           </button>
@@ -39,9 +41,9 @@ export const Molecule_Footer: React.FC<Props> = ({ styles }) => {
         </div>
         <div className={allStyles.legalInformationContainer}>
           <div className={allStyles.legalInformation}>
+            {link('cookies', openCookieConsentDialog)}
             {link('legal-notice', screens.LegalNotice)}
             {link('privacy-policy', screens.PrivacyPolicy)}
-            {link('cookies', () => {})}
           </div>
           <div className={allStyles.address}>
             <Link className={allStyles.addressLink} to="https://maps.app.goo.gl/b26oyumKkiTRXwmQA">
