@@ -18,11 +18,11 @@ export function useFading(delay = 750, visible = false) {
     if (visible !== toVisible) {
       setToVisible(visible);
       if (visible) {
+        void timer.restart(16)?.then(_fadeIn);
         setDisplay(void 0);
-        void timer.restart(1)?.then(_fadeIn);
       } else {
-        setOpacity(0);
         void timer.restart(delay)?.then(_hide);
+        setOpacity(0);
       }
     }
   }

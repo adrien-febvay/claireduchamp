@@ -12,19 +12,18 @@ import styles from './styles.scss';
 const namespace = 'molecules/CookieConsent';
 
 export const Molecule_CookieConsent = () => {
-  const [userChoice, setAndSaveUserChoice, setHandle] = React.useContext(Context);
+  const [hidden, , , setOpenDialog, userChoice, setUserChoice] = React.useContext(Context);
 
   const [allowAudience, setAllowAudience] = React.useState(userChoice !== 'deny');
-  const [hidden, setHidden] = React.useState(false);
 
   const [bannerStyle, toggleBanner] = useFading();
   const [dialogStyle, toggleDialog] = useFading();
 
-  React.useEffect(createHandle, []);
-  React.useEffect(toggleDisplay, [hidden]);
+  React.useEffect(passOpenDialog, []);
+  React.useEffect(updateDisplay, [hidden]);
 
-  function createHandle() {
-    setHandle?.({ openDialog, setHidden });
+  function passOpenDialog() {
+    setOpenDialog?.(() => openDialog);
   }
 
   function accept() {
@@ -37,7 +36,7 @@ export const Molecule_CookieConsent = () => {
 
   function handleUserChoice(value: UserChoice) {
     setAllowAudience(value !== 'deny');
-    setAndSaveUserChoice?.(value);
+    setUserChoice?.(value);
     toggleBanner(false);
     toggleDialog(false);
   }
@@ -59,7 +58,7 @@ export const Molecule_CookieConsent = () => {
     }
   }
 
-  function toggleDisplay() {
+  function updateDisplay() {
     if (userChoice) {
       toggleBanner(false);
       toggleDialog(false);

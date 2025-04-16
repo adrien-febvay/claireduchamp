@@ -1,6 +1,8 @@
 import type { CookieConsent as Component } from '.';
 import type { CookieConsentProvider } from './Provider';
 
+type Set<Value> = (value: Value) => void;
+
 declare module '.' {
   namespace CookieConsent {
     /** <CookieConsent> properties. */
@@ -10,28 +12,20 @@ declare module '.' {
       /** <CookieConsent.Provider> properties. */
       interface Props extends CookieConsentProvider.Props {}
     }
-
-    /** <CookieConsent> handle. */
-    interface Handle {
-      /** Open cookie consent dialog box. */
-      openDialog: () => void;
-
-      /** Hide cookie consent features? */
-      setHidden: (value: boolean) => void;
-    }
   }
 
-  interface Handle extends Component.Handle {}
   interface Props extends Component.Props {}
   type UserChoice = CookieConsentProvider.UserChoice;
 }
 
 declare module './Context' {
   type CookieConsentContext = [
+    hidden?: boolean,
+    setHidden?: Set<boolean>,
+    openDialog?: () => void,
+    setOpenDialog?: Set<() => void>,
     userChoice?: UserChoice,
-    setAndSaveUserChoice?: (value: UserChoice) => void,
-    sethandle?: React.Dispatch<React.SetStateAction<Component.Handle | undefined>>,
-    handle?: Component.Handle,
+    setUserChoice?: Set<UserChoice>,
   ];
 
   type UserChoice = CookieConsentProvider.UserChoice;
@@ -46,7 +40,6 @@ declare module './Provider' {
     type UserChoice = 'accept' | 'deny';
   }
 
-  type Handle = Component.Handle;
   type Props = CookieConsentProvider.Props;
   type UserChoice = CookieConsentProvider.UserChoice;
 }

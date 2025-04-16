@@ -4,6 +4,7 @@ import { Logo } from '@/gui/atoms/Logo';
 import { onEvent } from '@/gui/hooks/onEvent';
 import { useLayout } from '@/gui/hooks/useLayout';
 import { useTimeoutPromiseManager } from '@/gui/hooks/useTimeoutPromiseManager';
+import { CookieConsent } from '@/gui/molecules/CookieConsent';
 import { Orientation } from '@/gui/support/Orientation';
 import { Image } from './Image';
 import { Triptych } from './Triptych';
@@ -28,6 +29,7 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
   const delayToggle = useTimeoutPromiseManager(16);
   const delayInit = useTimeoutPromiseManager(16);
   const layout = useLayout();
+  const setCookieConsentHidden = CookieConsent.useSetHidden();
 
   onEvent(playing && document, 'click, scroll', stop, []);
   onEvent(layout.scroll, 'reset', play, []);
@@ -55,10 +57,8 @@ export const Molecule_Intro: React.FC<Props> = ({ className, ...divAttributes })
     toggle(false);
   }
 
-  function toggle(): void;
-  function toggle(state: boolean): void;
-  function toggle(arg0?: unknown) {
-    const state = typeof arg0 === 'boolean' ? arg0 : !play;
+  function toggle(state: boolean) {
+    setCookieConsentHidden?.(state);
     void delayToggle.restart()?.then(() => {
       me.updateState({ playing: state && Number(scrollY) === 0 });
     });

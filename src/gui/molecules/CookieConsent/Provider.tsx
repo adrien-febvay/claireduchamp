@@ -10,7 +10,8 @@ function getUserChoice() {
 }
 
 export function CookieConsentProvider(props: Props) {
-  const [handle, setHandle] = React.useState<Handle>();
+  const [hidden, setHidden] = React.useState(false);
+  const [openDialog, setOpenDialog] = React.useState<() => void>();
   const [userChoice, setUserChoice] = React.useState<UserChoice | undefined>(getUserChoice());
 
   function setAndSaveUserChoice(value: UserChoice) {
@@ -19,6 +20,8 @@ export function CookieConsentProvider(props: Props) {
   }
 
   return (
-    <Context.Provider value={[userChoice, setAndSaveUserChoice, setHandle, handle]}>{props.children}</Context.Provider>
+    <Context.Provider value={[hidden, setHidden, openDialog, setOpenDialog, userChoice, setAndSaveUserChoice]}>
+      {props.children}
+    </Context.Provider>
   );
 }
