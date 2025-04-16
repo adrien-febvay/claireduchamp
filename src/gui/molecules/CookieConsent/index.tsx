@@ -92,13 +92,13 @@ export const Molecule_CookieConsent = () => {
           </button>
           <div className={styles.dialogGrid}>
             <div className={styles.dialogLabel}>{translate('functional-label')}</div>
-            <div>
+            <div className={styles.dialogSwitchContainer}>
               <Switch className={styles.dialogSwitch} checked disabled />
             </div>
             <div className={styles.dialogStatus}>{translate('required')}</div>
             <div className={styles.dialogDesc}>{translate('functional-text')}</div>
             <div className={styles.dialogLabel}>{translate('audience-label')}</div>
-            <div className={styles.dialogSwitch}>
+            <div className={styles.dialogSwitchContainer}>
               <Switch className={styles.dialogSwitch} checked={allowAudience} onToggle={setAllowAudience} />
             </div>
             <div className={styles.dialogStatus}>{translate(allowAudience ? 'active' : 'inactive')}</div>

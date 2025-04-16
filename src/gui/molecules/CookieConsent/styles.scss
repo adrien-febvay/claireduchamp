@@ -81,6 +81,7 @@ $obviousColor: #5789ad;
 .dialog-grid {
   display: grid;
   grid-template-columns: auto min-content min-content;
+  align-items: baseline;
   gap: 0.2em 0.8em;
 }
 
@@ -92,8 +93,15 @@ $obviousColor: #5789ad;
   }
 }
 
-.dialog-switch {
+.dialog-switch-container {
+  position: relative;
   width: 1.8em;
+}
+
+.dialog-switch {
+  position: absolute;
+  width: 100%;
+  bottom: -0.2em;
   color: $obviousColor;
 }
 
