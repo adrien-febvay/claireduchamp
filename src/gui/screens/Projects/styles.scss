@@ -73,7 +73,7 @@ div.project {
   overflow: hidden;
 
   > h2 {
-    @include title-level-3($transform: lowercase);
+    @include title-level-3();
   }
 
   > h3 {

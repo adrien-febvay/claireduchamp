@@ -26,10 +26,6 @@
 .properties {
   flex-grow: 1;
 
-  > h1 {
-    text-transform: lowercase;
-  }
-
   > h2 {
     @include title-level-6;
   }
