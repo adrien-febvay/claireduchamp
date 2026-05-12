@@ -29,12 +29,12 @@ const projects = {
   },
   alpineLamp: {
     pathname: '/lampe-alpine',
-    title: 'Lampe Alpine',
+    title: 'Lacustre',
     caption: 'Design de luminaire',
     description: 'Laiton et verre soufflé',
     year: null,
     surface: null,
-    info: 'En collaboration avec Ludivine Loursel, artiste - artisane souffleuse de verre',
+    info: null,
     pictures: {
       basename: 'lampe-alpine',
       copyrights: {

@@ -29,12 +29,12 @@ const projects = {
   },
   alpineLamp: {
     pathname: '/alpine-lamp',
-    title: 'Alpine Lamp',
+    title: 'Lacustre',
     caption: 'Lighting Design',
     description: 'Brass and blown glass',
     year: null,
     surface: null,
-    info: 'In collaboration with Ludivine Loursel, artist - glass blower craftswoman',
+    info: null,
     pictures: {
       basename: 'lampe-alpine',
       copyrights: {
