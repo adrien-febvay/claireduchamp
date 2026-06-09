@@ -29,7 +29,6 @@
 
 .introduction-photo {
   aspect-ratio: 572 / 762;
-  vertical-align: top;
 }
 
 .introduction-text {
@@ -105,7 +104,7 @@
   .introduction-text {
     margin: 0 20px;
   }
-    
+
   .resume-container {
     background: url(/img/backgrounds/white-paper-mobile.jpg) white;
     background-size: 100%;
@@ -154,11 +153,15 @@
     padding: 180px 0 30px;
     background: url(/img/backgrounds/pretty-blur.jpg) no-repeat center / cover #6e5a4a;
   }
-  
+
+  .introduction-photo {
+    margin: 7px 0 0;
+  }
+
   .introduction-grid {
     grid-template-columns: 422px 1fr;
   }
-    
+
   .resume-container {
     background: url(/img/backgrounds/white-paper.jpg) white;
     background-size: 100%;
