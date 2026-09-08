@@ -23,7 +23,7 @@ export const Screen_Press: React.FC = () => {
         {articles[lang].map((item, index) => (
           <div className={styles.item} key={index}>
             <a className={styles.link} href={item.link.href} target="_blank">
-              <h3>{item.mediaName}</h3>
+              <h3 className={styles.mediaName}>{item.mediaName}</h3>
               <div className={styles.thumbnails}>
                 {item.thumbnails.map((thumbnail, index) => (
                   <img

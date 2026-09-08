@@ -58,6 +58,16 @@
   100% { opacity: 1; }
 }
 
+@include media-width(0, 480px) {
+  .media-name {
+    margin: 0 0 8px;
+  }
+
+  .thumbnails {
+    padding: 0 24px;
+  }
+}
+
 @include device(desktop) {
   .article {
     padding: 180px 0 60px;
