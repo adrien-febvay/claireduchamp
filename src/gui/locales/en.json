@@ -33,9 +33,10 @@
   },
   "molecules/Nav": {
     "about-us": "About us",
-    "contact-us": "Contact us",
+    "contact-us": "Contact",
+    "press": "Press",
     "projects": "Projects",
-    "services": "Services"
+    "services": "Our Services"
   },
   "Screens/AboutUs": {
     "pathname": "/about-us",
@@ -79,6 +80,11 @@
   "Screens/NotFound": {
     "not-found": "<0>The requested page</0> <0>does not exist</0>",
     "return-home": "<0>Click here to</0> return <0>to the homepage.</0>"
+  },
+  "Screens/Press": {
+    "pathname": "/press",
+    "title": "Press",
+    "subtitle": "They are talking about us..."
   },
   "Screens/PrivacyPolicy": {
     "pathname": "/privacy-policy",

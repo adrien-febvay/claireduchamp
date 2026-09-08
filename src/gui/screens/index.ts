@@ -3,6 +3,7 @@ import { ContactUs } from './ContactUs';
 import { Home } from './Home';
 import { LegalNotice } from './LegalNotice';
 import { NotFound } from './NotFound';
+import { Press } from './Press';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { Project } from './Project';
 import { Projects } from './Projects';
@@ -13,6 +14,7 @@ const lexicon = {
   ContactUs,
   Home,
   LegalNotice,
+  Press,
   PrivacyPolicy,
   Project,
   Projects,

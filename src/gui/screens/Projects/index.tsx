@@ -11,7 +11,6 @@ import en from '@/gui/locales/projects-en';
 import fr from '@/gui/locales/projects-fr';
 
 const namespace = 'Screens/Projects';
-
 const baseImageUrl = '/img/projects/claire-duchamp';
 
 /** Projects translations. */

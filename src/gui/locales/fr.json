@@ -32,8 +32,9 @@
     "portrait": "Portrait"
   },
   "molecules/Nav": {
-    "about-us": "A propos de",
+    "about-us": "A propos",
     "contact-us": "Contact",
+    "press": "Presse",
     "projects": "Réalisations",
     "services": "Prestations"
   },
@@ -79,6 +80,11 @@
   "Screens/NotFound": {
     "not-found": "<0>La page demandée</0> <0>n'existe pas</0>",
     "return-home": "<0>Cliquez ici</0> pour revenir <0>à l'accueil.</0>"
+  },
+  "Screens/Press": {
+    "pathname": "/presse",
+    "title": "Presse",
+    "subtitle": "On parle de nous..."
   },
   "Screens/PrivacyPolicy": {
     "pathname": "/politique-de-confidentialite",

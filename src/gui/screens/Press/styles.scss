@@ -1,0 +1,70 @@
+@import 'themes';
+
+.article {
+  padding: 100px 0 60px;
+  background:white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+  font-size: 13pt;
+  animation: fade-in 1750ms;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &:not(:first-child)::before {
+    content: '';
+    width: 25%;
+    height: 1px;
+    margin: 16px 0;
+    background: $lite-brown;
+    opacity: 0.5;
+  }
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: transform 350ms;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.thumbnail {
+  max-width: 100%;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@include device(desktop) {
+  .article {
+    padding: 180px 0 60px;
+  }
+  
+  .thumbnails {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}

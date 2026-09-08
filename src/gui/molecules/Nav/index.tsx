@@ -144,6 +144,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
               {entry(screens.Projects, 'projects')}
               {entry(screens.Services, 'services')}
               {entry(screens.AboutUs, 'about-us')}
+              {entry(screens.Press, 'press')}
               {entry(screens.ContactUs, 'contact-us')}
             </div>
             {language}
@@ -172,6 +173,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
             </Link>
             <div className={allStyles.group}>
               {item(screens.AboutUs, 'about-us')}
+              {item(screens.Press, 'press')}
               {item(screens.ContactUs, 'contact-us', language)}
             </div>
           </nav>
