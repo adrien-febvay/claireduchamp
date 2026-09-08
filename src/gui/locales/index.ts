@@ -2,8 +2,6 @@ import { _ } from '@/utils/types';
 
 import aboutCareerFr from './about-career-fr.md';
 import aboutCareerEn from './about-career-en.md';
-import aboutReferencesFr from './about-references-fr.md';
-import aboutReferencesEn from './about-references-en.md';
 import legalNoticeFr from './legal-notice-fr.md';
 import legalNoticeEn from './legal-notice-en.md';
 import privacyPolicyFr from './privacy-policy-fr.md';
@@ -15,12 +13,12 @@ import en from './en.json';
 /** Markdown translations. */
 const md = {
   fr: {
-    'Screens/AboutUs': { career: aboutCareerFr, references: aboutReferencesFr },
+    'Screens/AboutUs': { career: aboutCareerFr },
     'Screens/LegalNotice': { content: legalNoticeFr },
     'Screens/PrivacyPolicy': { content: privacyPolicyFr },
   },
   en: {
-    'Screens/AboutUs': { career: aboutCareerEn, references: aboutReferencesEn },
+    'Screens/AboutUs': { career: aboutCareerEn },
     'Screens/LegalNotice': { content: legalNoticeEn },
     'Screens/PrivacyPolicy': { content: privacyPolicyEn },
   },

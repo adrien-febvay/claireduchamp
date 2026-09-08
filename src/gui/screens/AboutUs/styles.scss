@@ -47,7 +47,7 @@
   column-gap: 8px;
 }
 
-.career, .references {
+.career {
   padding: 12px 0 12px 12px;
   background: #ffffffa0;
   background: linear-gradient(90deg, #ffffff 0%, #ffffff 80%, transparent 100%);
@@ -68,22 +68,6 @@
 .career {
   > p:first-line {
     font-weight: 600;
-  }
-}
-
-.references {
-  > h5 {
-    margin: 19px 0 4px;
-    text-transform: uppercase;
-  }
-
-  small {
-    font-size: 1em;
-    letter-spacing: -0.12em;
-  }
-
-  em {
-    font-style: normal;
   }
 }
 
@@ -110,7 +94,7 @@
     background-size: 100%;
   }
 
-  .career, .references {
+  .career {
     margin: 0 8px;
   }
 }

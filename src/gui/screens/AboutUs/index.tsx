@@ -34,9 +34,6 @@ export const Screen_AboutUs: React.FC = () => {
             <div classNames={styles.career}>
               <Markdown options={{ wrapper: Fragment }}>{translate('career')}</Markdown>
             </div>
-            <div classNames={styles.references}>
-              <Markdown options={{ wrapper: Fragment }}>{translate('references')}</Markdown>
-            </div>
           </div>
         </div>
       </div>
