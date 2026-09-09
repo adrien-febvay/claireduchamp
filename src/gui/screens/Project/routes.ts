@@ -13,7 +13,13 @@ function meta(locales: Project.Data, id: Project.Data.Id): Meta | null {
   const meta = locales[id];
   const pathname = meta.pathname && `${meta.pathname}/:photo?`;
   const params = { id };
-  return pathname && route.isMeta(meta) ? { ...meta, pathname, params } : null;
+  if (pathname && route.isMeta(meta)) {
+    const { caption, description: stdDescription, seoDescription } = meta;
+    const description = seoDescription ?? ([caption, stdDescription].filter(Boolean).join(' – ') || undefined);
+    return { ...meta, description, pathname, params };
+  } else {
+    return null;
+  }
 }
 
 /** Project routes. */
