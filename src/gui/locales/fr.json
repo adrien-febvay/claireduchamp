@@ -84,8 +84,7 @@
   "Screens/Press": {
     "description": "On parle de Claire Duchamp dans le magazine Maisons & Ambiances, le journal Riviera Chablais et dans les Grands Reportages sur TF1.",
     "pathname": "/presse",
-    "title": "Presse",
-    "subtitle": "On parle de nous..."
+    "title": "Presse"
   },
   "Screens/PrivacyPolicy": {
     "pathname": "/politique-de-confidentialite",

@@ -84,8 +84,7 @@
   "Screens/Press": {
     "description": "Claire Duchamp is featured in Maisons & Ambiances magazine, the Riviera Chablais newspaper, and the Grands Reportages program on TF1.",
     "pathname": "/press",
-    "title": "Press",
-    "subtitle": "They are talking about us..."
+    "title": "Press"
   },
   "Screens/PrivacyPolicy": {
     "pathname": "/privacy-policy",
