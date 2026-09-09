@@ -1,6 +1,6 @@
 const projects = {
   villaGrandvaux2023: {
-    pathname: '/grandvaux-villa',
+    pathname: '/architect-grandvaux-villa-renovation',
     title: 'Sequence Game',
     caption: 'Grandvaux Villa',
     description: 'Transformation of an existing villa with annex',
@@ -16,7 +16,7 @@ const projects = {
     },
   },
   chardonneApartment2024: {
-    pathname: '/chardonne-apartement',
+    pathname: '/architect-chardonne-mont-pelerin',
     title: 'The Nest',
     caption: 'Chardonne Apartement',
     description: 'Apartement transformation',
@@ -32,7 +32,7 @@ const projects = {
     },
   },
   lacustreLamp: {
-    pathname: '/lacustre-lamp',
+    pathname: '/interior-designer-lamp-lacustre',
     title: 'Lacustre',
     caption: 'Lighting Design',
     description: 'Brass and blown glass',
@@ -54,7 +54,7 @@ const projects = {
     },
   },
   grandvauxMirrorPool: {
-    pathname: '/piscine-miroir-grandvaux',
+    pathname: '/architect-lavaux-grandvaux-mirror-pool',
     title: 'Grandvaux Pool',
     caption: 'Mirror Pool',
     description: 'Construction of an infinity pool',
@@ -70,7 +70,7 @@ const projects = {
     },
   },
   lausanneMedicalPractice: {
-    pathname: '/cabinet-medical-lausanne',
+    pathname: '/interior-architect-lausanne-medical-practice',
     title: 'Art in the service of care',
     caption: 'Lausanne Medical Practice',
     description: 'Transformation of a medical practice',
