@@ -54,7 +54,7 @@ export const Screen_Services: React.FC = () => {
               ],
               [
                 ['chardonneApartment2024', 35],
-                ['alpineLamp', 11],
+                ['lacustreLamp', 11],
                 ['villaGrandvaux2023', 17],
               ],
             ]}

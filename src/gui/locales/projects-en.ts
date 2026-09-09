@@ -1,6 +1,6 @@
 const projects = {
   villaGrandvaux2023: {
-    pathname: '/grandvaux-villa-2023',
+    pathname: '/grandvaux-villa',
     title: 'Sequence Game',
     caption: 'Grandvaux Villa',
     description: 'Transformation of an existing villa with annex',
@@ -8,13 +8,13 @@ const projects = {
     surface: '404m²',
     info: null,
     pictures: {
-      basename: 'villa-grandvaux-2023',
+      basename: 'villa-grandvaux',
       copyrights: { 0: '©JulieMasson' },
       count: 30,
     },
   },
   chardonneApartment2024: {
-    pathname: '/chardonne-apartement-2024',
+    pathname: '/chardonne-apartement',
     title: 'The Nest',
     caption: 'Chardonne Apartement',
     description: 'Apartement transformation',
@@ -22,13 +22,13 @@ const projects = {
     surface: '85m²',
     info: null,
     pictures: {
-      basename: 'appartement-chardonne-2024',
+      basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
       count: 42,
     },
   },
-  alpineLamp: {
-    pathname: '/alpine-lamp',
+  lacustreLamp: {
+    pathname: '/lacustre-lamp',
     title: 'Lacustre',
     caption: 'Lighting Design',
     description: 'Brass and blown glass',
@@ -36,7 +36,7 @@ const projects = {
     surface: null,
     info: null,
     pictures: {
-      basename: 'lampe-alpine',
+      basename: 'lampe-lacustre',
       copyrights: {
         0: '©JulieMasson',
         4: '©ClaireDuchamp',
@@ -56,7 +56,7 @@ const projects = {
     surface: null,
     info: null,
     pictures: {
-      basename: 'villa-chexbres-2024',
+      basename: 'villa-chexbres',
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },

@@ -8,13 +8,13 @@ const projects = {
     surface: '404m²',
     info: null,
     pictures: {
-      basename: 'villa-grandvaux-2023',
+      basename: 'villa-grandvaux',
       copyrights: { 0: '©JulieMasson' },
       count: 30,
     },
   },
   chardonneApartment2024: {
-    pathname: '/appartement-chardonne-2024',
+    pathname: '/appartement-chardonne',
     title: 'Le Nid',
     caption: 'Appt. Chardonne',
     description: "Transformation d'un appartement",
@@ -22,13 +22,13 @@ const projects = {
     surface: '85m²',
     info: null,
     pictures: {
-      basename: 'appartement-chardonne-2024',
+      basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
       count: 42,
     },
   },
-  alpineLamp: {
-    pathname: '/lampe-alpine',
+  lacustreLamp: {
+    pathname: '/lampe-lacustre',
     title: 'Lacustre',
     caption: 'Design de luminaire',
     description: 'Laiton et verre soufflé',
@@ -36,7 +36,7 @@ const projects = {
     surface: null,
     info: null,
     pictures: {
-      basename: 'lampe-alpine',
+      basename: 'lampe-lacustre',
       copyrights: {
         0: '©JulieMasson',
         4: '©ClaireDuchamp',
@@ -56,7 +56,7 @@ const projects = {
     surface: null,
     info: null,
     pictures: {
-      basename: 'villa-chexbres-2024',
+      basename: 'villa-chexbres',
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
