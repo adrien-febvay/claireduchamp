@@ -14,6 +14,7 @@ const contentTypes: _.Dict<string> = {
   js: 'text/javascript',
   map: 'application/json',
   otf: 'font/otf',
+  pdf: 'application/pdf',
   svg: 'image/svg+xml',
   ttf: 'font/ttf',
   txt: 'text/plain',
