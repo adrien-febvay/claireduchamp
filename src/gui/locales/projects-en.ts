@@ -54,7 +54,7 @@ const projects = {
     },
   },
   grandvauxMirrorPool: {
-    pathname: null,
+    pathname: '/piscine-miroir-grandvaux',
     title: 'Grandvaux Pool',
     caption: 'Mirror Pool',
     description: 'Construction of an infinity pool',
@@ -66,11 +66,11 @@ const projects = {
     pictures: {
       basename: 'piscine-miroir-grandvaux',
       copyrights: { 0: '©ClaireDuchamp' },
-      count: 0,
+      count: 6,
     },
   },
   lausanneMedicalPractice: {
-    pathname: null,
+    pathname: '/cabinet-medical-lausanne',
     title: 'Art in the service of care',
     caption: 'Lausanne Medical Practice',
     description: 'Transformation of a medical practice',
@@ -82,7 +82,7 @@ const projects = {
     pictures: {
       basename: 'cabinet-medical-lausanne',
       copyrights: { 0: '©ClaireDuchamp' },
-      count: 0,
+      count: 6,
     },
   },
   onexVilla: {

@@ -22,7 +22,7 @@ export const Screen_Project_Preview: React.FC<Props> = (props) => {
             const copyright = copyrights[pictureNo] ?? pictures.copyrights[0];
             const path = `/img/projects/claire-duchamp-${pictures.basename}`;
             const suffix = copyright ? `--${copyright}` : '';
-            const pad = padFor(pictures.count);
+            const pad = padFor(Math.max(pictures.count, 10));
             const thumbnail = translate('thumbnail');
             return (
               <Link key={pictureNo} to={Project[projectId]} params={{ photo: String(pictureNo) }}>

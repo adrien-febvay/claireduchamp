@@ -143,13 +143,14 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
   const { photoIndex, project, ...divAttrs } = props;
   const { caption, pictures, title } = project;
   const { basename, count } = pictures;
+  const countMin10 = Math.max(count, 10);
   const copyrights: Dict<string> | null = project.pictures.copyrights;
   const picture = translate('picture');
   const photos = arrayGen(count + 2, (index) => {
     const finalIndex = ((me.state.photoIndex + index + count - 2) % count) + 1;
     const copyright = copyrights[finalIndex] ?? project.pictures.copyrights[0];
     const suffix = copyright ? `--${copyright}` : '';
-    const src = `${BASEPATH}-${basename}--${pad.accordingTo(count)(finalIndex)}${suffix}.jpg`;
+    const src = `${BASEPATH}-${basename}--${pad.accordingTo(countMin10)(finalIndex)}${suffix}.jpg`;
     const alt = `${title} - ${caption} - ${picture} ${finalIndex}`;
     return { src, alt };
   });

@@ -54,7 +54,7 @@ const projects = {
     },
   },
   grandvauxMirrorPool: {
-    pathname: null,
+    pathname: '/piscine-miroir-grandvaux',
     title: 'Piscine Grandvaux',
     caption: 'Piscine en miroir',
     description: "Construction d'une piscine à débordement",
@@ -66,11 +66,11 @@ const projects = {
     pictures: {
       basename: 'piscine-miroir-grandvaux',
       copyrights: { 0: '©ClaireDuchamp' },
-      count: 0,
+      count: 6,
     },
   },
   lausanneMedicalPractice: {
-    pathname: null,
+    pathname: '/cabinet-medical-lausanne',
     title: "L'art au service du soin",
     caption: 'Cabinet Médical Lausanne',
     description: "Transformation d'un cabinet médical",
@@ -82,7 +82,7 @@ const projects = {
     pictures: {
       basename: 'cabinet-medical-lausanne',
       copyrights: { 0: '©ClaireDuchamp' },
-      count: 0,
+      count: 6,
     },
   },
   onexVilla: {

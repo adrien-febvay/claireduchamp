@@ -117,7 +117,7 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
   const { caption, pictures, title } = me.props.project;
   const copyrights: Dict<string> | null = pictures.copyrights;
   const path = `/img/projects/claire-duchamp-${pictures.basename}`;
-  const pad = padNumber.accordingTo(pictures.count);
+  const pad = padNumber.accordingTo(Math.max(pictures.count, 10));
   const picture = translate('picture');
   const slides = gridGen(pictures.count, 3, (index) => {
     const copyright = copyrights[index + 1] ?? pictures.copyrights[0];
