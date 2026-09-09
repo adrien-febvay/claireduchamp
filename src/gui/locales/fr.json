@@ -82,6 +82,7 @@
     "return-home": "<0>Cliquez ici</0> pour revenir <0>à l'accueil.</0>"
   },
   "Screens/Press": {
+    "description": "On parle de Claire Duchamp dans le magazine Maisons & Ambiances, le journal Riviera Chablais et dans les Grands Reportages sur TF1.",
     "pathname": "/presse",
     "title": "Presse",
     "subtitle": "On parle de nous..."
@@ -98,7 +99,7 @@
   "Screens/Projects": {
     "pathname": "/realisations",
     "title": "Réalisations de$ ",
-    "description": "Transformation de villa à Grandvaux — Luminaire laiton/verre soufflé: collaboration avec Ludivine Loursel — Transformation d'appartement à Chardonne...",
+    "description": "Transformation de villa à Grandvaux — Luminaire \"Lacustre\" en laiton et verre soufflé — Transformation d'appartement à Chardonne...",
     "keywords": "Projets",
     "in-progress": "en cours"
   },

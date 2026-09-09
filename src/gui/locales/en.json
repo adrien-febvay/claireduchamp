@@ -82,6 +82,7 @@
     "return-home": "<0>Click here to</0> return <0>to the homepage.</0>"
   },
   "Screens/Press": {
+    "description": "Claire Duchamp is featured in Maisons & Ambiances magazine, the Riviera Chablais newspaper, and the Grands Reportages program on TF1.",
     "pathname": "/press",
     "title": "Press",
     "subtitle": "They are talking about us..."
@@ -98,7 +99,7 @@
   "Screens/Projects": {
     "pathname": "/projects",
     "title": "Projects",
-    "description": "Villa transformation in Grandvaux — Brass/blown glass lighting: collaboration with Ludivine Loursel — Apartment transformation in Chardonne...",
+    "description": "Villa transformation in Grandvaux — Brass/blown glass lighting \"Lacustre\" — Apartment transformation in Chardonne...",
     "keywords": "Achievements, Accomplishments, Works",
     "in-progress": "in progress"
   },
