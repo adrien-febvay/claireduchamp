@@ -63,8 +63,8 @@ const projects = {
   },
   contactUs: {
     pathname: null,
-    title: 'your project',
-    caption: 'Contact Us',
+    title: 'Contact Us',
+    caption: 'your project',
     description: null,
     year: null,
     surface: null,

@@ -97,6 +97,7 @@
     "thumbnail": "Thumbnail"
   },
   "Screens/Projects": {
+    "coming-soon": "Content coming soon",
     "pathname": "/projects",
     "title": "Projects",
     "description": "Villa transformation in Grandvaux — Brass/blown glass lighting \"Lacustre\" — Apartment transformation in Chardonne...",

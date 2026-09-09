@@ -42,16 +42,15 @@ export const Screen_Projects: React.FC = () => {
               <>
                 <div className={styles.thumbnail} style={{ backgroundImage }} />
                 <div className={styles.text}>
-                  <h2>{project.title ?? translate('in-progress')}</h2>
-                  <h3>{project.caption}</h3>
+                  <h2>{project.caption}</h2>
+                  <h3>{project.title ?? translate('in-progress')}</h3>
                   {project.description && <h4>{project.description}</h4>}
-                  {project.surface && <p>{project.surface}</p>}
                 </div>
               </>
             ),
           };
           const route = id === 'contactUs' ? screens.ContactUs : Project[id as Project.Id];
-          return route ? <Link to={route} {...props} /> : <div {...props} />;
+          return route ? <Link to={route} {...props} /> : <div {...props} title={translate('coming-soon')} />;
         })}
       </div>
     </article>

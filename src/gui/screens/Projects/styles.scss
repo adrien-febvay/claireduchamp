@@ -64,31 +64,37 @@ div.project {
 
 .text {
   position: absolute;
-  top: 1em;
-  left: 1em;
-  bottom: 1em;
-  right: 1em;
-  padding: 10px 16px;
-  background-image: linear-gradient(#ffffffff, #ffffffc0 40%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  inset: 0.8em;
+  padding: 14px 10px 10px;
+  background-image: linear-gradient(#ffffffff, #ffffffc0 50%, transparent);
   overflow: hidden;
 
   > h2 {
-    @include title-level-3();
+    @include title-level-6;
+    color: $dark-brown;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transform: scaleY(1.2);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   > h3 {
-    @include title-level-6;
+    @include title-level-4();
+    color: $dark-brown;
+    font-size: 1.2em;
+    font-style: italic;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
-  > h4, p {
+  > h4 {
     @include calibri-title(none, 11pt, 300, normal, $transform: inherit);
-    margin: 0.2em 0 0;
-  }
-
-  > p {
-    margin: 0.2em 0 0;
-    font-size: 11pt;
-    line-height: normal;
   }
 }
 
