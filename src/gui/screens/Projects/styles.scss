@@ -66,34 +66,37 @@ div.project {
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5em;
   inset: 0.8em;
   padding: 14px 10px 10px;
-  background-image: linear-gradient(#ffffffff, #ffffffc0 50%, transparent);
+  background-image: linear-gradient(white, #ffffffcc 30%, #ffffffc0 70%, transparent);
   overflow: hidden;
-
+  
   > h2 {
     @include title-level-6;
-    color: $dark-brown;
     font-weight: 600;
     letter-spacing: 0.1em;
     transform: scaleY(1.2);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   > h3 {
     @include title-level-4();
-    color: $dark-brown;
-    font-size: 1.2em;
+    font-size: 1em;
     font-style: italic;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
-  > h4 {
+  > h2, h3 {
+    display: -webkit-box;
+    height: 2.4em;
+    color: $dark-brown;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  > p {
     @include calibri-title(none, 11pt, 300, normal, $transform: inherit);
   }
 }

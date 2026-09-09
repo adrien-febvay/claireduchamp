@@ -44,7 +44,7 @@ export const Screen_Projects: React.FC = () => {
                 <div className={styles.text}>
                   <h2>{project.caption}</h2>
                   <h3>{project.title ?? translate('in-progress')}</h3>
-                  {project.description && <h4>{project.description}</h4>}
+                  {project.description && project.description.split('\n').map((line) => <p>{line}</p>)}
                 </div>
               </>
             ),
