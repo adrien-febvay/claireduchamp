@@ -98,11 +98,19 @@ const ProjectScreen: React.FC = () => {
           photoIndex={photo ? Number.parseInt(photo) : 0}
           project={{ ...project, id, pathnameFr }}
         />
-        <div className={styles.credits} ref={me.ref.credits}>
-          {translate('photography')}
-          &nbsp;
-          <Link to="https://www.juliemasson.ch/">©JulieMasson</Link>
-        </div>
+        {project.credits && (
+          <div className={styles.credits} ref={me.ref.credits}>
+            {translate('photography')}
+            &nbsp;
+            {project.credits.href ? (
+              <Link to={project.credits.href} target="_blank" rel="noopener noreferrer">
+                {project.credits.label}
+              </Link>
+            ) : (
+              project.credits.label
+            )}
+          </div>
+        )}
       </div>
     </article>
   );
