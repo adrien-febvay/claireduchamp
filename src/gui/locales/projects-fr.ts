@@ -14,6 +14,10 @@ const projects = {
       copyrights: { 0: '©JulieMasson' },
       count: 30,
     },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
+    },
   },
   chardonneApartment2024: {
     pathname: '/architecte-chardonne-mont-pelerin',
@@ -29,6 +33,10 @@ const projects = {
       basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
       count: 42,
+    },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
     },
   },
   lacustreLamp: {
@@ -52,11 +60,15 @@ const projects = {
       },
       count: 15,
     },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
+    },
   },
   grandvauxMirrorPool: {
     pathname: '/architecte-lavaux-grandvaux-piscine-miroir',
-    title: 'Piscine Grandvaux',
-    caption: 'Piscine en miroir',
+    title: 'Le paysage en miroir',
+    caption: 'Piscine Grandvaux',
     description: "Construction d'une piscine à débordement",
     seoDescription:
       'Claire Duchamp, architecte SIA à Vevey, signe à Grandvaux une piscine miroir pensée en dialogue avec la pente, le lac et le paysage.',
@@ -68,6 +80,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 6,
     },
+    credits: null,
   },
   lausanneMedicalPractice: {
     pathname: '/architecte-interieur-lausanne-cabinet-medical',
@@ -84,6 +97,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 6,
     },
+    credits: null,
   },
   onexVilla: {
     pathname: null,
@@ -99,6 +113,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   chexbresvilla2024: {
     pathname: null,
@@ -114,12 +129,13 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   pestalozziFundation: {
     pathname: null,
     title: 'Densifier pour accompagner',
     caption: 'Fondation Pestalozzi',
-    description: 'Réorganisation la fondation Pestalozzi\nAnalyse et étude du site de la fondation à Echichens',
+    description: 'Réorganisation de la fondation Pestalozzi\nAnalyse et étude du site de la fondation à Echichens',
     seoDescription: null,
     year: null,
     surface: null,
@@ -129,6 +145,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   contactUs: {
     pathname: null,
@@ -144,6 +161,7 @@ const projects = {
       copyrights: { 0: null },
       count: 0,
     },
+    credits: null,
   },
 } as const;
 

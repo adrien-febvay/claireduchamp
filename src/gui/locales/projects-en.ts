@@ -14,6 +14,10 @@ const projects = {
       copyrights: { 0: '©JulieMasson' },
       count: 30,
     },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
+    },
   },
   chardonneApartment2024: {
     pathname: '/architect-chardonne-mont-pelerin',
@@ -29,6 +33,10 @@ const projects = {
       basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
       count: 42,
+    },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
     },
   },
   lacustreLamp: {
@@ -52,11 +60,15 @@ const projects = {
       },
       count: 15,
     },
+    credits: {
+      href: 'https://www.juliemasson.ch/',
+      label: '©JulieMasson',
+    },
   },
   grandvauxMirrorPool: {
     pathname: '/architect-lavaux-grandvaux-mirror-pool',
-    title: 'Grandvaux Pool',
-    caption: 'Mirror Pool',
+    title: 'The mirrored landscape',
+    caption: 'Grandvaux Pool',
     description: 'Construction of an infinity pool',
     seoDescription:
       'Claire Duchamp, an SIA architect based in Vevey, has designed a vanishing-edge pool in Grandvaux conceived in dialogue with the slope, the lake, and the landscape.',
@@ -68,6 +80,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 6,
     },
+    credits: null,
   },
   lausanneMedicalPractice: {
     pathname: '/interior-architect-lausanne-medical-practice',
@@ -84,6 +97,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 6,
     },
+    credits: null,
   },
   onexVilla: {
     pathname: null,
@@ -99,6 +113,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   chexbresvilla2024: {
     pathname: null,
@@ -114,6 +129,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   pestalozziFundation: {
     pathname: null,
@@ -129,6 +145,7 @@ const projects = {
       copyrights: { 0: '©ClaireDuchamp' },
       count: 0,
     },
+    credits: null,
   },
   contactUs: {
     pathname: null,
@@ -144,6 +161,7 @@ const projects = {
       copyrights: { 0: null },
       count: 0,
     },
+    credits: null,
   },
 } as const;
 
