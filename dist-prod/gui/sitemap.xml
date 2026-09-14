@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://claireduchamp.ch/about-us</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/a-propos"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/about-us"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/a-propos</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/a-propos"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/about-us"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/contact-us</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/nous-contacter"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/contact-us"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/nous-contacter</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/nous-contacter"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/contact-us"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architect</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/legal-notice</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/mentions-legales"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/legal-notice"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/mentions-legales</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/mentions-legales"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/legal-notice"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/press</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/presse"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/press"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/presse</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/presse"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/press"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/privacy-policy</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/politique-de-confidentialite"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/privacy-policy"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/politique-de-confidentialite</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/politique-de-confidentialite"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/privacy-policy"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architect-grandvaux-villa-renovation</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-grandvaux-renovation-villa"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-grandvaux-villa-renovation"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architecte-grandvaux-renovation-villa</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-grandvaux-renovation-villa"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-grandvaux-villa-renovation"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architect-chardonne-mont-pelerin</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-chardonne-mont-pelerin"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-chardonne-mont-pelerin"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architecte-chardonne-mont-pelerin</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-chardonne-mont-pelerin"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-chardonne-mont-pelerin"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/interior-designer-lamp-lacustre</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/designer-interieur-lampe-lacustre"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/interior-designer-lamp-lacustre"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/designer-interieur-lampe-lacustre</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/designer-interieur-lampe-lacustre"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/interior-designer-lamp-lacustre"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architect-lavaux-grandvaux-mirror-pool</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-lavaux-grandvaux-piscine-miroir"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-lavaux-grandvaux-mirror-pool"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architecte-lavaux-grandvaux-piscine-miroir</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-lavaux-grandvaux-piscine-miroir"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/architect-lavaux-grandvaux-mirror-pool"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/interior-architect-lausanne-medical-practice</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-interieur-lausanne-cabinet-medical"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/interior-architect-lausanne-medical-practice"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/architecte-interieur-lausanne-cabinet-medical</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/architecte-interieur-lausanne-cabinet-medical"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/interior-architect-lausanne-medical-practice"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/projects</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/realisations"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/projects"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/realisations</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/realisations"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/projects"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/services</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/prestations"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/services"></xhtml:link>
+  </url>
+  <url>
+    <loc>http://claireduchamp.ch/prestations</loc>
+    <lastmod>2026-09-14T18:56:12+02:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hrefLang="fr" href="http://claireduchamp.ch/prestations"></xhtml:link>
+    <xhtml:link rel="alternate" hrefLang="en" href="http://claireduchamp.ch/services"></xhtml:link>
+  </url>
+</urlset>
