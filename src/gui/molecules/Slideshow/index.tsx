@@ -5,10 +5,12 @@ export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
   const me = React.useComponent(
     () => ({
       currentSlide: null as Element | null,
-      nextSlide: (skip = 0): void => me.setSlide(me.slideIndex + skip + 1),
-      prevSlide: (skip = 0): void => me.setSlide(me.slideIndex - skip - 1),
+      firstSlide: () => me.setSlide(0),
+      lastSlide: () => me.setSlide(me.slideIndex),
+      nextSlide: (skip = 0) => me.setSlide(me.slideIndex + skip + 1),
+      prevSlide: (skip = 0) => me.setSlide(me.slideIndex - skip - 1),
       rootRef: React.createRef<HTMLDivElement>(),
-      setSlide: (index: number, triggerOnSlideChange = true): void => {
+      setSlide: (index: number, triggerOnSlideChange = true) => {
         React.removeClass(me.currentSlide, me.styles.current);
         if (!me.props.loop) {
           me.slideIndex = Math.min(Math.max(index, 0), me.slides.length - 1);

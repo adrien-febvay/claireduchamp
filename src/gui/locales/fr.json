@@ -91,6 +91,7 @@
     "title": "Politique de confidentialité"
   },
   "Screens/Project": {
+    "cover": "Couverture",
     "photography": "Photographie",
     "picture": "Photo",
     "thumbnail": "Miniature"

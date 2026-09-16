@@ -3,7 +3,7 @@
 // Only solution found ATM: turn return type to never upon bad CssExports.
 
 // Another solution would be to find a way to have CssExports as mapped types
-// instead of interfaces, because they extend Dict<string> and would allow
+// instead of interfaces, because they extend _.Dict<string> and would allow
 // for clean code. Unfortunately the module css-modules-typescript-loader
 // is not customizable. This solution would require to fork the module,
 // or find a way to change the declaration files as soon as they are

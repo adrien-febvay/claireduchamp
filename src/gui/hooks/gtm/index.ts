@@ -34,7 +34,7 @@ function usePush() {
 function usePushContactFormOutcome() {
   const push = usePush();
 
-  function pushContactFormOutcome(status: 'Succès' | 'Echec', label: string): void {
+  function pushContactFormOutcome(status: 'Succès' | 'Echec', label: string) {
     push({ event: 'contactFormOutcome', status, label });
   }
 
@@ -45,7 +45,7 @@ let landing = true;
 function usePushPageView() {
   const push = usePush();
 
-  function pushPageView(pathnameFr: string): void {
+  function pushPageView(pathnameFr: string) {
     push({ event: 'pageView', landing, language: i18n.language, pathnameFr });
     landing = false;
   }

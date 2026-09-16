@@ -9,7 +9,7 @@ export function useChangeLanguage(language?: i18n.Language): [typeof changeLangu
   const [, i18n] = useTranslation();
   const navigate = useNavigate();
   const params = useParams();
-  function changeLanguage(innerLanguage = language ?? i18n.fallbackLng): void {
+  function changeLanguage(innerLanguage = language ?? i18n.fallbackLng) {
     if (innerLanguage !== i18n.language) {
       const meta = locales[innerLanguage];
       const pathname = meta && applyParamsToUrl(meta.pathname, params);

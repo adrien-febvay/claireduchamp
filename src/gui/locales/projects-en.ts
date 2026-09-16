@@ -7,12 +7,13 @@ const projects = {
     seoDescription:
       'Claire Duchamp, an SIA architect based in Vevey, designed the complete transformation of a timber-frame villa in Grandvaux, opening it up to the Lavaux landscape and the lake.',
     year: '2023',
-    surface: '404m²',
+    surface: '404 m² SBPU',
     longDescription:
       'Interior transformation of an existing villa with annex and construction of an extension in Grandvaux.',
     quote: null,
     text: 'The project profoundly transforms a villa in Grandvaux by gutting the existing structure and rebuilding it with a timber frame, creating a contemporary and fluid floor plan.\nThe new structure redefines the hierarchy of spaces and orients them towards the landscape. The living areas are visually and physically seamlessly integrated with the surrounding area, framing views of the Lavaux vineyards and the lake.\nThe villa comprises contrasting sequences, designed according to the different uses and their relationship to the landscape.\nFor this renovation in Grandvaux, Claire Duchamp, a SIA-certified architect, developed an architecture that is attentive to the existing structure, its uses, and its location.',
     info: null,
+    coverPhotos: [{ width: 2160, copyright: '©JulieMasson' }],
     pictures: {
       basename: 'villa-grandvaux',
       copyrights: { 0: '©JulieMasson' },
@@ -31,11 +32,12 @@ const projects = {
     seoDescription:
       'Claire Duchamp, an SIA architect based in Vevey, carried out an architectural project at Mont-Pèlerin, in the hills above Chardonne, designed around light and the landscape.',
     year: '2024',
-    surface: '85m²',
+    surface: '85 m² SBPU',
     longDescription: 'Transformation of an apartment at Mont-Pèlerin',
     quote: null,
     text: 'Located on Mont-Pèlerin in the hills above Chardonne, the project organizes spaces according to a gradation of light, from twilight to areas fully open to the landscape.\nInspired by the terrain, the atmospheres articulate altitude and depth to create a sensitive spatial sequence, where light becomes the primary compositional element.\nFor this project on Mont-Pèlerin, Claire Duchamp, a SIA architect, has developed an architecture in dialogue with the light, the views, and the landscape of Chardonne.',
     info: null,
+    coverPhotos: [{ width: 2573, copyright: '©ClaireDuchamp' }],
     pictures: {
       basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
@@ -58,26 +60,30 @@ const projects = {
     longDescription: 'Blown glass beads mounted on a brass frame.',
     quote: {
       text: '“I dreamed of a large necklace, crystallizing the hues of a sunset over Lake Geneva, suspended with a kind of nonchalance.”',
-      author: 'C. Duchamp',
+      author: 'Claire Duchamp',
     },
     text: 'Lacustre is a light fixture conceived and designed by Claire Duchamp, inspired by sunsets over Lake Geneva.\nIts colors are derived from an in-depth study of the hues of the sky and the lake at dusk, based on photographs of the landscape.\nIndividually crafted from blown glass, its spheres translate these nuances into plays of color, transparency, and light.\nLike a suspended luminous necklace, Lacustre brings a fragment of the landscape into the interior space.\nThrough Lacustre, Claire Duchamp, an architect and interior designer in French-speaking Switzerland, extends her exploration of light, color, and landscape to the scale of the object.',
     info: [
       [
-        'Dessinée par : Claire Duchamp, Architecte',
-        'Exécutée par : Ludivine Loursel, Souffleuse de verre',
-        'Matériaux : Verre soufflé et laiton',
-        '',
-        'Fabrication à la commande, réalisée en Normandie',
-        'Assemblée sur site, prix sur demande',
+        'Designed by: Claire Duchamp, Architect',
+        'Crafted by: Ludivine Loursel, Glassblower',
+        'Materials: Blown glass and brass',
+        ' ',
+        'Made to order, crafted in Normandy',
+        'On-site assembly, price upon request',
       ],
       [
         'Dimensions',
-        'Longueur : 212 cm',
-        'Largeur : 30 cm',
-        'Hauteur au centre : 73 cm',
-        'Hauteur pendant 1 : 65 cm',
-        'Hauteur pendant 2 : 108 cm',
+        'Length: 212 cm',
+        'Width: 30 cm',
+        'Height at center: 73 cm',
+        'Height of pendant 1: 65 cm',
+        'Height of pendant 2: 108 cm',
       ],
+    ],
+    coverPhotos: [
+      { width: 950, copyright: '©JulieMasson' },
+      { width: 859, copyright: '©JulieMasson' },
     ],
     pictures: {
       basename: 'lampe-lacustre',
@@ -108,6 +114,7 @@ const projects = {
     quote: null,
     text: "Located on the heights of Grandvaux, this infinity pool blends seamlessly into the Lavaux landscape.\nIts overflow design blurs the pool's edge and visually extends the water's surface towards the lake and the hills of the opposite shore.\nConceived as a horizontal plane set into the slope, the pool becomes an integral part of the landscape rather than a standalone object.\nThe sky, the mountains, and the changing light are reflected on its surface, creating a constant dialogue between architecture, water, and the surrounding landscape.",
     info: null,
+    coverPhotos: [{ width: 2015, copyright: '©ClaireDuchamp' }],
     pictures: {
       basename: 'piscine-miroir-grandvaux',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -123,11 +130,12 @@ const projects = {
     seoDescription:
       'Claire Duchamp, an SIA architect and interior designer based in Vevey, designed the renovation of a medical practice in Lausanne where architecture, light, and artworks engage in a dialogue.',
     year: null,
-    surface: null,
-    longDescription: 'Renovation and artistic consulting for a clinic in Lausanne.',
+    surface: '95 m² SBPU',
+    longDescription: 'Renovation and decoration for a clinic in Lausanne.',
     quote: null,
     text: 'This renovation and interior design project transforms a medical practice in Lausanne into a warm and calming space, adapting residential design principles to the world of healthcare.\nWhile respecting the functional requirements and hygiene standards specific to medical practice, the design prioritizes a sensitive atmosphere, enhanced by earthy tones and warm lighting.\nArtworks on the theme of the human body punctuate the spaces and contribute fully to the identity of the place.\nFor this project in Lausanne, Claire Duchamp, a Swiss architect and interior designer, developed an approach focused on care, where architecture, art, and well-being converge.',
     info: null,
+    coverPhotos: [{ width: 2015, copyright: '©ClaireDuchamp' }],
     pictures: {
       basename: 'cabinet-medical-lausanne',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -147,6 +155,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'villa-onex',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -166,6 +175,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'villa-chexbres',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -186,6 +196,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'fondation-pestalozzi',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -205,6 +216,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'nous-contacter',
       copyrights: { 0: null },

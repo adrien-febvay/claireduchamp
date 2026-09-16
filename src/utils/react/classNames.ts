@@ -7,7 +7,7 @@
  */
 export function classNames(...classItems: Item[]): string | undefined {
   const indexedClasses: Index = {};
-  function deepProcess(classItems: Item[]): void {
+  function deepProcess(classItems: Item[]) {
     for (const item of classItems) {
       if (item instanceof Array) {
         deepProcess(item);

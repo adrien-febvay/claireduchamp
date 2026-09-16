@@ -17,7 +17,7 @@
 .header {
   grid-area: header;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   width: 100%;
   margin: 0 0 12px;
@@ -28,12 +28,6 @@
 
   > h2 {
     @include title-level-6;
-  }
-
-  > p {
-    line-height: 1em;
-    margin: .6em 0 0;
-    font-size: 13pt;
   }
 }
 

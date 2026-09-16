@@ -3,7 +3,7 @@ import { Fullscreen } from './Fullscreen';
 const updaters: Updater[] = [];
 
 /** Broadcasts the fullscreen status change through all subscribed components. */
-function broadcast(): void {
+function broadcast() {
   if (document) {
     for (const updater of updaters) {
       updater(document.fullscreenElement);
@@ -19,11 +19,11 @@ export function useFullscreen(element: Fullscreen.Target = { current: document?.
   const fullscreen = React.useMemo(() => new Fullscreen(element), []);
   const [, setState] = React.useState(fullscreen.active);
   React.useEffect(() => {
-    const updater = (): void => setState(fullscreen.active);
+    const updater = () => setState(fullscreen.active);
     if (updaters.push(updater) === 1) {
       document?.addEventListener('fullscreenchange', broadcast);
     }
-    return (): void => {
+    return () => {
       const index = updaters.indexOf(updater);
       if (index >= 0) {
         updaters.splice(index, 1);

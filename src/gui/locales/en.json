@@ -91,6 +91,7 @@
     "title": "Privacy Policy"
   },
   "Screens/Project": {
+    "cover": "Cover",
     "photography": "Photography",
     "picture": "Picture",
     "thumbnail": "Thumbnail"

@@ -4,7 +4,7 @@ import type { _ } from '@/utils/types';
 
 import { OpenPromise } from '../Open';
 
-function voidFunction(): void {}
+function voidFunction() {}
 
 export class AbortablePromise<Value, ExtraFulfillment = never> extends OpenPromise<
   Value,
@@ -31,7 +31,7 @@ export class AbortablePromise<Value, ExtraFulfillment = never> extends OpenPromi
   }
 
   /** Aborts the promise. */
-  public abort(): void {
+  public abort() {
     if (!this.fulfillment) {
       void Object.defineProperties(this, {
         fulfillment: { value: 'aborted' },

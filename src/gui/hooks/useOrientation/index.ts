@@ -12,7 +12,7 @@ export function useOrientation(): Orientation {
     return portrait ? 'portrait' : 'landscape';
   }
 
-  function updateOrientation(): void {
+  function updateOrientation() {
     setOrientation(getOrientation());
   }
 

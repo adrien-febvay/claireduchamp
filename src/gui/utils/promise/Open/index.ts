@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
 import type { _ } from '@/utils/types';
 
-function voidFunction(): void {}
+function voidFunction() {}
 
 export class OpenPromise<Value> extends Promise<Value> {
   /**
@@ -30,7 +30,7 @@ export class OpenPromise<Value> extends Promise<Value> {
    * Resolves the open promise with the provided value.
    * @param value The value to resolve the open promise to.
    */
-  public resolve(value: _.Promise.Like.Or<Value>): void {
+  public resolve(value: _.Promise.Like.Or<Value>) {
     if (!this.fulfillment) {
       Promise.resolve(value)
         .then((value) => {
@@ -48,7 +48,7 @@ export class OpenPromise<Value> extends Promise<Value> {
    * Rejects the open promise for the provided reason.
    * @param reason The reason the promise is rejected.
    */
-  public reject(reason: unknown): void {
+  public reject(reason: unknown) {
     if (!this.fulfillment) {
       void Object.defineProperties(this, {
         fulfillment: { value: 'resolved' },

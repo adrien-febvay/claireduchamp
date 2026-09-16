@@ -13,11 +13,11 @@ export class TimeoutController extends AbortController {
     void this.timeoutPromise?.then(() => this.abort(reason));
   }
 
-  public abort(reason = this.reason): void {
+  public abort(reason = this.reason) {
     super.abort(reason);
   }
 
-  public stop(): void {
+  public stop() {
     this.timeoutPromise?.abort();
   }
 

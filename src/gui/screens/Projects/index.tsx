@@ -17,7 +17,7 @@ const baseImageUrl = '/img/projects/claire-duchamp';
 const projects = { en: Object.entries(en), fr: Object.entries(fr) };
 
 /** Ensures an element won't be glitchy at the end of its animation. */
-function onAnimationEnd(event: React.AnimationEvent<HTMLElement>): void {
+function onAnimationEnd(event: React.AnimationEvent<HTMLElement>) {
   event.currentTarget.style.animation = 'none';
   event.currentTarget.style.opacity = '1';
 }
@@ -44,7 +44,7 @@ export const Screen_Projects: React.FC = () => {
                 <div className={styles.text}>
                   <h2>{project.caption}</h2>
                   <h3>{project.title ?? translate('in-progress')}</h3>
-                  {project.thumbnailDescription?.split('\n').map((line) => <p>{line}</p>)}
+                  {project.thumbnailDescription?.split('\n').map((line, index) => <p key={index}>{line}</p>)}
                 </div>
               </>
             ),

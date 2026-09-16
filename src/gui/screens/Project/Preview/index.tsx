@@ -18,7 +18,7 @@ export const Screen_Project_Preview: React.FC<Props> = (props) => {
         <div key={trypticIndex} className={allStyles.triptych}>
           {trypticPictures.map(([projectId, pictureNo]) => {
             const { caption, pictures, title } = projects[projectId];
-            const copyrights: Dict<string> | null = pictures.copyrights;
+            const copyrights: { [key in number]?: string | null } = pictures.copyrights;
             const copyright = copyrights[pictureNo] ?? pictures.copyrights[0];
             const path = `/img/projects/claire-duchamp-${pictures.basename}`;
             const suffix = copyright ? `--${copyright}` : '';

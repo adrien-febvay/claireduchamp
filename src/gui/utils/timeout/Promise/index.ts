@@ -3,7 +3,7 @@ import type { _ } from '@/utils/types';
 
 import EventEmitter from 'events';
 
-function voidFunction(): void {}
+function voidFunction() {}
 type VoidFunction = () => void;
 
 export class TimeoutPromise extends Promise<void> {
@@ -14,7 +14,7 @@ export class TimeoutPromise extends Promise<void> {
   public constructor(params: Argument | typeof executor) {
     let legacyResolve = voidFunction;
     let legacyReject = voidFunction;
-    function executor(resolve: VoidFunction, reject: VoidFunction): void {
+    function executor(resolve: VoidFunction, reject: VoidFunction) {
       legacyResolve = resolve;
       legacyReject = reject;
     }
@@ -35,7 +35,7 @@ export class TimeoutPromise extends Promise<void> {
 
   public abort(reject: _.Nullish<boolean>): void;
   public abort(reason?: string, reject?: _.Nullish<boolean>): void;
-  public abort(arg0?: _.Nullish<string | boolean>, arg1?: _.Nullish<boolean>): void {
+  public abort(arg0?: _.Nullish<string | boolean>, arg1?: _.Nullish<boolean>) {
     const reason = typeof arg0 === 'string' ? arg0 : '';
     const reject = arg1 ?? (typeof arg0 === 'boolean' ? arg0 : null);
     if (this.aborted === void 0) {
@@ -48,7 +48,7 @@ export class TimeoutPromise extends Promise<void> {
     }
   }
 
-  public end(): void {
+  public end() {
     if (this.aborted === void 0) {
       void Object.defineProperty(this, 'aborted', { enumerable: false, value: false });
       clearTimeout(this.timeout);

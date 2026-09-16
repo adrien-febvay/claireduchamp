@@ -10,13 +10,13 @@ export function extendStyles<BaseClasses extends object>(
   baseClasses: BaseClasses,
   ...additionalClasses: React.Styles<BaseClasses>['styles'][]
 ): Static<BaseClasses> {
-  const extendedStyles = { ...baseClasses } as Dict<string>;
+  const extendedStyles = { ...baseClasses } as _.Dict<string>;
   const flatClasses = additionalClasses.flat() as _.Optional<React.DynamicClasses<BaseClasses>>[];
   for (const name in extendedStyles) {
     const items = flatClasses.map((classes: _.Optional<React.DynamicClasses<_.Dict>>) =>
       classes ? classes[name] : null,
     );
-    extendedStyles[name] = React.classNames((baseClasses as Dict<string>)[name], items) ?? '';
+    extendedStyles[name] = React.classNames((baseClasses as _.Dict<string>)[name], items) ?? '';
   }
   return extendedStyles as Static<BaseClasses>;
 }

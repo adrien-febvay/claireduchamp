@@ -3,7 +3,7 @@ export class StatelessComponent {
    * Executes a callback function when the component has been mounted.
    * @param cb Callback function to execute.
    */
-  public didMount(cb: React.EffectCallback): void {
+  public didMount(cb: React.EffectCallback) {
     React.useEffect(cb, []);
   }
 
@@ -11,7 +11,7 @@ export class StatelessComponent {
    * Executes a callback function when the component has been rendered.
    * @param cb Callback function to execute.
    */
-  public didRender(cb: React.EffectCallback): void {
+  public didRender(cb: React.EffectCallback) {
     React.useEffect(cb);
   }
 
@@ -19,7 +19,7 @@ export class StatelessComponent {
    * Executes a callback function when the component has been updated.
    * @param cb Callback function to execute.
    */
-  public didUpdate(cb: React.EffectCallback): void {
+  public didUpdate(cb: React.EffectCallback) {
     React.useEffect(() => {
       if (this.prev) {
         cb();
@@ -31,7 +31,7 @@ export class StatelessComponent {
    * Executes a callback function when the component has been unmounted.
    * @param cb Callback function to execute.
    */
-  public didUnmount(cb: () => void): void {
+  public didUnmount(cb: () => void) {
     React.useEffect(() => cb, []);
   }
 }

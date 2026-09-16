@@ -60,13 +60,13 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     };
   }
 
-  function didMount(): void {
+  function didMount() {
     onScroll();
     toggleMenuElements(false);
   }
 
   /** Document scroll listener. */
-  function onScroll(): void {
+  function onScroll() {
     updateNavPadding();
 
     const scrollY = window?.scrollY ?? 0;
@@ -80,7 +80,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     }
   }
 
-  function toggleMenuElements(open: boolean): void {
+  function toggleMenuElements(open: boolean) {
     const menuContainer = me.menuContainer.current;
     const smallNav = me.smallNav.current;
     if (menuContainer && smallNav) {
@@ -89,7 +89,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     }
   }
 
-  function toggleMenu(state = !me.state.open): void {
+  function toggleMenu(state = !me.state.open) {
     if (state) {
       menuTimeoutPromiseManager.abort();
       toggleMenuElements(true);
@@ -99,7 +99,7 @@ export const Molecule_Nav = React.forwardRef<Ref, Props>((props, ref) => {
     void openTimeoutPromiseManager.restart()?.then(() => me.updateState({ open: state }));
   }
 
-  function updateNavPadding(): void {
+  function updateNavPadding() {
     if (me.nav.current) {
       const paddingTop = Math.max(60 - (scrollY ?? 0), 8);
       me.nav.current.style.paddingTop = `${paddingTop}px`;

@@ -24,11 +24,11 @@ export class LocalStorageItem {
     return getItem(this.key);
   }
 
-  public remove(): void {
+  public remove() {
     removeItem(this.key);
   }
 
-  public set(value: unknown): void {
+  public set(value: unknown) {
     setItem(this.key, value, this.expiration);
   }
 }
@@ -47,11 +47,11 @@ export function getItem(key: string): unknown {
   return null;
 }
 
-export function removeItem(key: string): void {
+export function removeItem(key: string) {
   window?.localStorage?.removeItem(key);
 }
 
-export function setItem(key: string, value: unknown, expiration?: Expiration): void {
+export function setItem(key: string, value: unknown, expiration?: Expiration) {
   const date = expiration instanceof Date ? expiration : expiration ? Number(new Date()) + expiration : null;
   const json = JSON.stringify({ expiration: date, value });
   window?.localStorage?.setItem(key, json);

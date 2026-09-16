@@ -45,11 +45,11 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     return typeof innerWidth === 'undefined' ? 0 : (1 - me.currSlideIndex) * (innerWidth + 2);
   }
 
-  function close(): void {
+  function close() {
     window?.history.back();
   }
 
-  function finalizePhotoChange(): void {
+  function finalizePhotoChange() {
     if (!me.currSlideIndex) {
       me.currSlideIndex = me.props.project.pictures.count;
     } else if (me.currSlideIndex > me.props.project.pictures.count) {
@@ -60,7 +60,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     updateUrl();
   }
 
-  function handleSwipe(event: TouchEvent, data: useSwipe.Event.Data): void {
+  function handleSwipe(event: TouchEvent, data: useSwipe.Event.Data) {
     const { axis, deltaX, deltaY, deltaT, speedX, speedY } = data;
     if (event.type === 'touchend') {
       const { innerWidth = 1, innerHeight = 1 } = window ?? {};
@@ -86,7 +86,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     }
   }
 
-  function moveRoot(y = 0, animate = false): void {
+  function moveRoot(y = 0, animate = false) {
     const frame = me.ref.frame.current;
     const root = me.ref.root.current;
     if (frame && root) {
@@ -100,7 +100,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     }
   }
 
-  function moveSlider(x = 0, animate = false): void {
+  function moveSlider(x = 0, animate = false) {
     const slider = me.ref.slider.current;
     if (slider) {
       slider.style.transition = animate ? '' : 'none';
@@ -108,13 +108,13 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     }
   }
 
-  function onResize(): void {
+  function onResize() {
     toggleSwiping();
     moveSlider();
     toggleSwiping();
   }
 
-  function reset(): void {
+  function reset() {
     const { photoIndex } = me.props;
     if (photoIndex !== me.prev?.props.photoIndex && photoIndex !== me.state.photoIndex) {
       me.setState({ photoIndex });
@@ -127,15 +127,15 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
     }
   }
 
-  function updateUrl(): void {
+  function updateUrl() {
     const { photoIndex } = me.state;
     const { pathname, pathnameFr, pictures } = me.props.project;
-    const urlPhotoIndex = photoIndex && (photoIndex + me.currSlideIndex - 1) % pictures.count;
+    const urlPhotoIndex = photoIndex && (photoIndex + me.currSlideIndex - 1) % (pictures.count + 1);
     const url = urlPhotoIndex ? `${pathname}/${urlPhotoIndex}` : pathname;
     if (url !== location?.pathname) {
       window?.history?.replaceState(null, document?.title ?? '', url);
       if (urlPhotoIndex || me.prev) {
-        pushPageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathname);
+        pushPageView(urlPhotoIndex ? `${pathnameFr}/${urlPhotoIndex}` : pathnameFr);
       }
     }
   }
@@ -144,7 +144,7 @@ export const Screen_Project_Viewer: React.FC<Props> = (props) => {
   const { caption, pictures, title } = project;
   const { basename, count } = pictures;
   const countMin10 = Math.max(count, 10);
-  const copyrights: Dict<string> | null = project.pictures.copyrights;
+  const copyrights: { [key in number]?: string | null } = project.pictures.copyrights;
   const picture = translate('picture');
   const photos = arrayGen(count + 2, (index) => {
     const finalIndex = ((me.state.photoIndex + index + count - 2) % count) + 1;

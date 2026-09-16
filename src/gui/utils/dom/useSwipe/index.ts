@@ -8,7 +8,7 @@ export function useSwipe(host: MaybeHostOrRef, handler: Handler, deps: unknown[]
   onEvent(host, 'touchmove', touchMove, deps);
   onEvent(host, 'touchend', touchEnd, deps);
 
-  function touchStart(this: Emitter, event: TouchEvent): void {
+  function touchStart(this: Emitter, event: TouchEvent) {
     event.preventDefault();
     const data = memo.restart(event.targetTouches[0]);
     if (data) {
@@ -16,7 +16,7 @@ export function useSwipe(host: MaybeHostOrRef, handler: Handler, deps: unknown[]
     }
   }
 
-  function touchMove(event: TouchEvent): void {
+  function touchMove(event: TouchEvent) {
     event.preventDefault();
     const data = memo.update(event.targetTouches[0]);
     if (data) {
@@ -24,7 +24,7 @@ export function useSwipe(host: MaybeHostOrRef, handler: Handler, deps: unknown[]
     }
   }
 
-  function touchEnd(event: TouchEvent): void {
+  function touchEnd(event: TouchEvent) {
     event.preventDefault();
     const data = memo.end();
     if (data) {

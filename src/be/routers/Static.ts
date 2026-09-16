@@ -24,7 +24,7 @@ const contentTypes: _.Dict<string> = {
   woff2: 'font/woff2',
 };
 
-function setHeaders(res: Response, path: string): void {
+function setHeaders(res: Response, path: string) {
   const pathExt = path.replace(/.*\./, '');
   const contentType = contentTypes[pathExt];
   res.setHeader('Content-Type', contentType ?? 'text/html');

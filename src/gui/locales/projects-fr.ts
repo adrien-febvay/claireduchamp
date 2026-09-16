@@ -7,12 +7,13 @@ const projects = {
     seoDescription:
       "Claire Duchamp, architecte SIA à Vevey, signe à Grandvaux la transformation complète d'une villa en ossature bois, ouverte sur le paysage du Lavaux et le lac.",
     year: '2023',
-    surface: '404m²',
+    surface: '404 m² SBPU',
     longDescription:
       "Transformation intérieure d'une villa existante avec annexe et construction d'une extension à Grandvaux.",
     quote: null,
     text: "Le projet transforme en profondeur une villa à Grandvaux par évidement de l'existant et reconstruction en ossature bois, libérant un plan contemporain et fluide.\nLa nouvelle structure redéfinit la hiérarchie des espaces et les oriente vers le paysage. Les espaces de jour s'inscrivent dans une continuité visuelle et physique avec le territoire, cadrant les vues sur le Lavaux et le lac.\nLa villa se compose de séquences contrastées, pensées en fonction des différents usages et de leur relation au paysage.\nPour cette rénovation à Grandvaux, Claire Duchamp, architecte SIA, développe une architecture attentive à l'existant, aux usages et au territoire.",
     info: null,
+    coverPhotos: [{ width: 2160, copyright: '©JulieMasson' }],
     pictures: {
       basename: 'villa-grandvaux',
       copyrights: { 0: '©JulieMasson' },
@@ -31,11 +32,13 @@ const projects = {
     seoDescription:
       "Claire Duchamp, architecte SIA à Vevey, réalise au Mont-Pèlerin, sur les hauteurs de Chardonne, un projet d'architecture pensé autour de la lumière et du paysage.",
     year: '2024',
-    surface: '85m²',
+    surface: '85 m² SBPU',
     longDescription: "Transformation d'un appartement au Mont-Pèlerin",
     quote: null,
     text: 'Situé au Mont-Pèlerin sur les hauteurs de Chardonne, le projet organise les espaces selon une gradation lumineuse, de la pénombre aux zones pleinement ouvertes sur le paysage.\nInspirées par le territoire, les ambiances articulent altitude et profondeur pour créer une séquence spatiale sensible, où la lumière devient le principal vecteur de composition.\nPour ce projet au Mont-Pèlerin, Claire Duchamp, architecte SIA, développe une architecture en dialogue avec la lumière, les vues et le paysage de Chardonne.',
     info: null,
+    coverPhotos: [{ width: 2573, copyright: '©ClaireDuchamp' }],
+    coverPhotoWidth: 2573,
     pictures: {
       basename: 'appartement-chardonne',
       copyrights: { 0: '©JulieMasson' },
@@ -57,16 +60,16 @@ const projects = {
     surface: null,
     longDescription: 'Perles en verre soufflé montées sur structure en laiton.',
     quote: {
-      text: "«J'ai rêvé d'un grand collier, cristallisant les teintes d'un coucher de soleil sur le lac Léman, suspendu avec une forme de nonchalance.»",
-      author: 'C. Duchamp',
+      text: "« J'ai rêvé d'un grand collier, cristallisant les teintes d'un coucher de soleil sur le lac Léman, suspendu avec une forme de nonchalance. »",
+      author: 'Claire Duchamp',
     },
-    text: "Lacustre est un luminaire pensé et dessiné par Claire Duchamp, inspiré des couchers de soleil sur le lac Léman.\nSes couleurs sont issues d'une étude approfondie des teintes du ciel et du lac à la tombée du jour, à partir de photographies du paysage.\nFaçonnées individuellement en verre soufflé, ses sphères traduisent ces nuances en jeux de couleur, de transparence et de lumière.\nTel un collier lumineux suspendu, Lacustre fait entrer un fragment de paysage dans l'espace intérieur.\nFaçonnéesÀ travers Lacustre, Claire Duchamp, architecte et designer d'intérieur en Suisse romande, prolonge sa réflexion sur la lumière, la couleur et le paysage à l'échelle de l'objet.",
+    text: "Lacustre est un luminaire pensé et dessiné par Claire Duchamp, inspiré des couchers de soleil sur le lac Léman.\nSes couleurs sont issues d'une étude approfondie des teintes du ciel et du lac à la tombée du jour, à partir de photographies du paysage.\nFaçonnées individuellement en verre soufflé, ses sphères traduisent ces nuances en jeux de couleur, de transparence et de lumière.\nTel un collier lumineux suspendu, Lacustre fait entrer un fragment de paysage dans l'espace intérieur.\nÀ travers Lacustre, Claire Duchamp, architecte et designer d'intérieur en Suisse romande, prolonge sa réflexion sur la lumière, la couleur et le paysage à l'échelle de l'objet.",
     info: [
       [
         'Dessinée par : Claire Duchamp, Architecte',
         'Exécutée par : Ludivine Loursel, Souffleuse de verre',
         'Matériaux : Verre soufflé et laiton',
-        '',
+        ' ',
         'Fabrication à la commande, réalisée en Normandie',
         'Assemblée sur site, prix sur demande',
       ],
@@ -78,6 +81,10 @@ const projects = {
         'Hauteur pendant 1 : 65 cm',
         'Hauteur pendant 2 : 108 cm',
       ],
+    ],
+    coverPhotos: [
+      { width: 950, copyright: '©JulieMasson' },
+      { width: 859, copyright: '©JulieMasson' },
     ],
     pictures: {
       basename: 'lampe-lacustre',
@@ -108,6 +115,7 @@ const projects = {
     quote: null,
     text: "Implantée sur les hauteurs de Grandvaux, cette piscine miroir s'inscrit dans la continuité du paysage du Lavaux.\nSon débordement efface la limite du bassin et prolonge visuellement la surface de l'eau vers le lac et les reliefs de la rive opposée.\nPensée comme un plan horizontal posé dans la pente, la piscine devient un élément du paysage plutôt qu'un objet autonome.\nLe ciel, les montagnes et les variations de lumière se reflètent à sa surface, créant un dialogue permanent entre architecture, eau et territoire.",
     info: null,
+    coverPhotos: [{ width: 2015, copyright: '©ClaireDuchamp' }],
     pictures: {
       basename: 'piscine-miroir-grandvaux',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -123,11 +131,12 @@ const projects = {
     seoDescription:
       "Claire Duchamp, architecte SIA et architecte d'intérieur à Vevey, signe à Lausanne la rénovation d'un cabinet médical où architecture, lumière et œuvres d'art dialoguent.",
     year: null,
-    surface: null,
-    longDescription: 'Rénovation et conseil artistique pour une clinique à Lausanne.',
+    surface: '95 m² SBPU',
+    longDescription: 'Rénovation et décoration pour une clinique à Lausanne.',
     quote: null,
     text: "Ce projet de rénovation et d'architecture d'intérieur transforme un cabinet médical à Lausanne en un lieu chaleureux et apaisant, en transposant les codes de l'habitat à l'univers du soin.\nTout en respectant les exigences fonctionnelles et les normes d'hygiène propres à la pratique médicale, la conception privilégie une atmosphère sensible, portée par des teintes terreuses et un éclairage chaleureux.\nDes œuvres d'art autour du thème du corps humain ponctuent les espaces et participent pleinement à l'identité du lieu.\nPour ce projet à Lausanne, Claire Duchamp, architecte SIA et architecte d'intérieur, développe une approche au service du « prendre soin », où architecture, art et bien-être se rencontrent.",
     info: null,
+    coverPhotos: [{ width: 2015, copyright: '©ClaireDuchamp' }],
     pictures: {
       basename: 'cabinet-medical-lausanne',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -147,6 +156,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'villa-onex',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -166,6 +176,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'villa-chexbres',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -186,6 +197,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'fondation-pestalozzi',
       copyrights: { 0: '©ClaireDuchamp' },
@@ -205,6 +217,7 @@ const projects = {
     quote: null,
     text: null,
     info: null,
+    coverPhotos: null,
     pictures: {
       basename: 'nous-contacter',
       copyrights: { 0: null },

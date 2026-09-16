@@ -9,6 +9,12 @@ declare module '.' {
       /** Current slide element. */
       currentSlide: Element | null;
 
+      /** Show first slide. */
+      firstSlide(): void;
+
+      /** Show last slide. */
+      lastSlide(): void;
+
       /**
        * Show next slide.
        * @param skip Number of slides to skip.

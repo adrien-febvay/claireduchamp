@@ -17,7 +17,7 @@ function jsonReplacer(_key: string, value: unknown): unknown {
   }
 }
 
-export function log(message: string, data?: unknown): void {
+export function log(message: string, data?: unknown) {
   if (devMove) {
     try {
       safeConsole.log('[debug]', message, data);

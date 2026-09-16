@@ -39,7 +39,7 @@ const Support_Router_Route: React.FC<Props> = ({ desc }) => {
 
   React.useEffect(pageView, [desc.meta.pathname]);
 
-  function pageView(): void {
+  function pageView() {
     pushPageView(applyParamsToUrl(pathnameFr, params));
   }
 

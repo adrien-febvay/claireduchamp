@@ -45,6 +45,7 @@ const ProjectScreen: React.FC = () => {
 
   const prevPathname = pathname.prev;
   const { id, photo } = params;
+  const photoIndex = photo ? Number.parseInt(photo) || 0 : 0;
 
   function getAvailableSize(): _.Size | null {
     const credsHeight = getOuter.height(me.ref.credits.current) ?? 0;
@@ -60,13 +61,13 @@ const ProjectScreen: React.FC = () => {
     return width && height && width > 0 && height > 0 ? { width, height } : null;
   }
 
-  function autoFullscreen(): void {
+  function autoFullscreen() {
     if (device.desktop && localStorage.getItem(FULLSCREEN) !== 'false') {
       toggleFullscreen();
     }
   }
 
-  function toggleFullscreen(): void {
+  function toggleFullscreen() {
     void fullscreen.toggle();
     localStorage.setItem(FULLSCREEN, String(!fullscreen.active));
   }
@@ -83,19 +84,14 @@ const ProjectScreen: React.FC = () => {
           <div className={styles.properties}>
             <h2>{project.caption}</h2>
             <h1>{project.title}</h1>
-            {project.info && <p>{project.info}</p>}
           </div>
           <FullscreenButton classNames={styles.button} onClick={toggleFullscreen} revoke={fullscreen.active} />
           <CloseButton className={styles.button} onClick={() => void (prevPathname ? navigate(-1) : navigate('/'))} />
         </div>
-        <ProjectSlideshow
-          getAvailableSize={getAvailableSize}
-          project={project}
-          photoIndex={photo ? Number.parseInt(photo) : NaN}
-        />
+        <ProjectSlideshow getAvailableSize={getAvailableSize} project={project} photoIndex={photoIndex} />
         <ProjectThumbnailGrid
           className={styles.thumbnailGrid}
-          photoIndex={photo ? Number.parseInt(photo) : 0}
+          photoIndex={photoIndex}
           project={{ ...project, id, pathnameFr }}
         />
         {project.credits && (

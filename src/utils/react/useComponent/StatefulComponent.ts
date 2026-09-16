@@ -12,7 +12,7 @@ export class StatefulComponent<Data extends { state: unknown } = { state: unknow
    * Updates the component state.
    * @param state New state, possibly partial.
    */
-  public updateState(state: Partial<Data['state']>): void {
+  public updateState(state: Partial<Data['state']>) {
     let value = this[STATE];
     value = _.isObject(value) ? { ...value, ...state } : state;
     this.setState(value);
@@ -22,7 +22,7 @@ export class StatefulComponent<Data extends { state: unknown } = { state: unknow
    * Sets the component state.
    * @param state New state.
    */
-  public setState(state: Data['state']): void {
+  public setState(state: Data['state']) {
     Object.defineProperty(this, STATE, {
       configurable: true,
       enumerable: false,

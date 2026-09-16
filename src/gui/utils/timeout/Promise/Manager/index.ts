@@ -3,7 +3,7 @@ import type { _ } from '@/utils/types';
 import { mergeSimilarObjects } from '@/gui/utils/object/mergeSimilar';
 import { TimeoutPromise } from '@/gui/utils/timeout/Promise';
 
-function voidFunction(): void {}
+function voidFunction() {}
 
 export class TimeoutPromiseManager {
   public params: Params;

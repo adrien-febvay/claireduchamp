@@ -53,7 +53,7 @@ export const Screen_ContactUs: React.FC = () => {
   const sendFormTimeoutManager = useTimeoutPromiseManager(5e3);
   React.useEffect(loadForm, []);
 
-  function checkForm(event: React.FormEvent<HTMLFormElement>): void {
+  function checkForm(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (me.state.formStatus === 'ready') {
       resetForm();
@@ -91,7 +91,7 @@ export const Screen_ContactUs: React.FC = () => {
     return listener;
   }
 
-  function focusNextEmptyInput(event: React.ChangeEvent<HTMLInputElement>): void {
+  function focusNextEmptyInput(event: React.ChangeEvent<HTMLInputElement>) {
     const form = me.ref.form.current;
     if (form && InputEvent && HTMLInputElement && HTMLTextAreaElement && !(event.nativeEvent instanceof InputEvent)) {
       let nextInputs = false;
@@ -149,13 +149,13 @@ export const Screen_ContactUs: React.FC = () => {
     }
   }
 
-  function resetForm(): void {
+  function resetForm() {
     getErrors()?.forEach((input) => {
       input.className = '';
     });
   }
 
-  function saveForm(): void {
+  function saveForm() {
     if (me.state.formStatus !== 'sent') {
       formStorage.set(me.formData);
     }

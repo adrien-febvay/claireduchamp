@@ -15,7 +15,7 @@ export const Screen_Project_ThumbnailGrid: React.FC<Props> = (props) => {
   const [translate] = useTranslation(Project.namespace);
 
   const { caption, id, pictures, title } = project;
-  const copyrights: Dict<string> | null = pictures.copyrights;
+  const copyrights: { [key in number]?: string | null } = pictures.copyrights;
   const path = `${BASEPATH}-${pictures.basename}`;
   const pad = padNumber.accordingTo(Math.max(pictures.count, 10));
   const thumbnail = translate('thumbnail');
