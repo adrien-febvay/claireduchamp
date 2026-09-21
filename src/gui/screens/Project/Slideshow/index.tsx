@@ -9,6 +9,7 @@ import { gridGen } from '@/gui/utils/grid/gen';
 import { getOuter } from '@/gui/utils/dom/getOuterSize';
 import { between } from '@/gui/utils/number/between';
 import { pad as padNumber } from '@/gui/utils/number/pad';
+import { ProjectCoverText } from '../CoverText';
 
 import styles from './styles.scss';
 
@@ -32,7 +33,7 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
   const me = React.useComponent(
     () => ({
       ref: {
-        coverTextPanelContent: React.createRef<HTMLDivElement>(),
+        coverText: React.createRef<ProjectCoverText.Handle>(),
         next: React.createRef<HTMLDivElement>(),
         prev: React.createRef<HTMLDivElement>(),
         slideshow: React.createRef<Slideshow.Handle>(),
@@ -93,7 +94,7 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
     const nextWidth = getOuter.width(me.ref.next.current);
     const prevWidth = getOuter.width(me.ref.prev.current);
     const slideshow = me.ref.slideshow.current?.rootRef.current;
-    const coverTextPanelContent = me.ref.coverTextPanelContent.current;
+    const coverTextDiv = me.ref.coverText.current?.rootRef.current;
     if (availableSize && nextWidth && prevWidth) {
       const { width, height } = availableSize;
       const freeWidth = width - nextWidth - prevWidth - GAP;
@@ -107,8 +108,8 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
         slideshow.style.width = `${finalWidth}px`;
         slideshow.style.height = `${finalHeight}px`;
       }
-      if (coverTextPanelContent) {
-        coverTextPanelContent.style.transform = `scale(${scale})`;
+      if (coverTextDiv) {
+        coverTextDiv.style.transform = `scale(${scale})`;
       }
     }
   }
@@ -118,7 +119,7 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
     navigate(slideIndex ? `${pathname}/${slideIndex * 3}` : pathname, { replace: true });
   }
 
-  const { caption, pictures, title, longDescription, surface, quote, text, info } = me.props.project;
+  const { caption, pictures, title } = me.props.project;
   const copyrights: { [key in number]?: string | null } = pictures.copyrights;
   const path = `/img/projects/claire-duchamp-${pictures.basename}`;
   const pad = padNumber.accordingTo(Math.max(pictures.count, 10));
@@ -149,42 +150,16 @@ export const Screen_Project_Slideshow: React.FC<Props> = (props) => {
       <Slideshow className={styles.slideshow} loop ref={me.ref.slideshow} onSlideChange={updatePathname}>
         <div className={styles.cover}>
           <div className={styles.coverTextPanel}>
-            <div
-              className={styles.coverTextPanelContent}
-              ref={me.ref.coverTextPanelContent}
+            <ProjectCoverText
+              className={styles.coverText}
+              project={me.props.project}
+              ref={me.ref.coverText}
               style={{ width: `${3105 - (coverPhotosWidth ?? 0)}px` }}
-            >
-              <div className={styles.coverBlock}>
-                {longDescription && <p>{longDescription}</p>}
-                {surface && <p>{surface}</p>}
-              </div>
-              {quote?.text && (
-                <div className={styles.quote}>
-                  <i>{quote.text}</i>
-                  {quote.author && <i>—&nbsp;{quote.author}</i>}
-                </div>
-              )}
-              <div classNames={[styles.coverBlock, styles.textBlock]}>
-                {text?.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-              </div>
-              {info?.flat().length && (
-                <div className={styles.info}>
-                  {info.map((infoColumn, columnIndex) => (
-                    <div key={columnIndex} className={styles.infoColumn}>
-                      {infoColumn.map((infoCell, rowIndex) => (
-                        <div key={rowIndex} className={styles.infoCell}>
-                          {infoCell}
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            />
           </div>
           <div className={styles.coverPhotosContainer}>
-            {coverPhotos.map((attrs) => (
-              <img className={styles.coverPhoto} {...attrs} />
+            {coverPhotos.map((attrs, index) => (
+              <img key={index} className={styles.coverPhoto} {...attrs} />
             ))}
           </div>
         </div>
