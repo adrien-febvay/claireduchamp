@@ -83,7 +83,7 @@ const projects = {
       ],
     ],
     coverPhotos: [
-      { width: 950, copyright: '©JulieMasson' },
+      { width: 1029, copyright: '©JulieMasson' },
       { width: 859, copyright: '©JulieMasson' },
     ],
     pictures: {
