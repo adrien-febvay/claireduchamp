@@ -21,10 +21,10 @@ const GAP = 10;
 
 /** Slideshow key mapping. */
 const KEYS = {
-  ArrowDown: ['prevSlide', 'firstSlide'],
+  ArrowDown: ['nextSlide', 'lastSlide'],
   ArrowLeft: ['prevSlide', 'firstSlide'],
   ArrowRight: ['nextSlide', 'lastSlide'],
-  ArrowUp: ['nextSlide', 'lastSlide'],
+  ArrowUp: ['prevSlide', 'firstSlide'],
 } as const;
 type Key = keyof typeof KEYS;
 

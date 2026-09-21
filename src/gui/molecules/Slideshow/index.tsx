@@ -6,7 +6,7 @@ export const Slideshow = React.forwardRef<Handle, Props>((props, ref) => {
     () => ({
       currentSlide: null as Element | null,
       firstSlide: () => me.setSlide(0),
-      lastSlide: () => me.setSlide(me.slideIndex),
+      lastSlide: () => me.setSlide(me.slides.length - 1),
       nextSlide: (skip = 0) => me.setSlide(me.slideIndex + skip + 1),
       prevSlide: (skip = 0) => me.setSlide(me.slideIndex - skip - 1),
       rootRef: React.createRef<HTMLDivElement>(),
