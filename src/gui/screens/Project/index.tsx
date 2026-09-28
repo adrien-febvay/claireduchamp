@@ -50,7 +50,8 @@ const ProjectScreen: React.FC = () => {
   function getAvailableSize(): _.Size | null {
     const credsHeight = getOuter.height(me.ref.credits.current) ?? 0;
     const headHeight = getOuter.height(me.ref.header.current) ?? 0;
-    const heightSum = credsHeight + headHeight;
+    // TODO: Find why credsHeight is wrong.
+    const heightSum = credsHeight * 2 + headHeight;
     const content = me.ref.content.current;
     const colGap = getCssValue.toFloat(content, 'column-gap') ?? 0;
     const rowGap = getCssValue.toFloat(content, 'row-gap') ?? 0;
