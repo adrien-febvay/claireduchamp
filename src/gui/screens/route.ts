@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 const metaSchema = z.object({
   pathname: z.string(),
-  params: z.record(z.string().optional()).optional(),
+  params: z.record(z.string(), z.string().optional()).optional(),
   description: z.string().optional(),
   goto: z.string().optional(),
   keywords: z.string().optional(),

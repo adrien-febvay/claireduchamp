@@ -1,4 +1,4 @@
-export function stringifyPath(path: (string | number)[]): string {
+export function stringifyPath(path: (string | number | symbol)[]): string {
   const keys = path.map((key) => {
     const strKey = String(key);
     if (/^(0|[1-9]\d*)$/.test(strKey)) {
