@@ -10,7 +10,7 @@ declare module '.' {
       rootRef: React.RefObject<HTMLDivElement>;
     };
 
-    type Props = Omit<React.DivAttributes, 'children'> &
+    type Props = React.DivAttributes &
       React.Styles<typeof ownStyles> & {
         /** Project to display. */
         project: Project.Data[Project.Id];

@@ -12,7 +12,7 @@ export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, 
 
   React.useImperativeHandle(ref, () => me);
 
-  const { className, project, styles, ...divAttributes } = props;
+  const { children, className, project, styles, ...divAttributes } = props;
   const { longDescription, surface, quote, text, info } = project;
   const allStyles = React.extendStyles(ownStyles, styles);
 
@@ -31,6 +31,7 @@ export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, 
       <div classNames={[allStyles.coverBlock, allStyles.textBlock]}>
         {text?.split('\n').map((paragraph, index) => <p key={index}>{paragraph}</p>)}
       </div>
+      {children}
       {info?.flat().length && (
         <div className={allStyles.info}>
           {info.map((infoColumn, columnIndex) => (

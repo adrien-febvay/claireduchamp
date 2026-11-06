@@ -1,5 +1,12 @@
 .root {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2px;
 }

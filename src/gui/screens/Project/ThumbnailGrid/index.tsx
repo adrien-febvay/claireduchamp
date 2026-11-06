@@ -4,8 +4,10 @@ import { pad as padNumber } from '@/gui/utils/number/pad';
 import { Link } from '@/gui/atoms/Link';
 import { Project } from '@/gui/screens/Project';
 import { ProjectViewer } from '@/gui/screens/Project/Viewer';
+import { ProjectCoverText } from '../CoverText';
 
 import styles from './styles.scss';
+import coverTextStyles from './cover-text.scss';
 
 const BASEPATH = '/img/projects/claire-duchamp';
 
@@ -29,14 +31,18 @@ export const Screen_Project_ThumbnailGrid: React.FC<Props> = (props) => {
 
   return (
     <div classNames={styles.root} {...divAttrs}>
-      {imgs.map((imgAttrs, index) => {
-        const photo = String(index + 1);
-        return (
-          <Link key={index} to={Project[id]} params={{ photo }} preventScrollReset>
-            <img className={styles.thumbnail} {...imgAttrs} />
-          </Link>
-        );
-      })}
+      <ProjectCoverText styles={coverTextStyles} project={project}>
+        <div classNames={styles.grid}>
+          {imgs.map((imgAttrs, index) => {
+            const photo = String(index + 1);
+            return (
+              <Link key={index} to={Project[id]} params={{ photo }} preventScrollReset>
+                <img className={styles.thumbnail} {...imgAttrs} />
+              </Link>
+            );
+          })}
+        </div>
+      </ProjectCoverText>
       <ProjectViewer photoIndex={photoIndex} project={project} />
     </div>
   );

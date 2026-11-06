@@ -32,8 +32,9 @@
 .info {
   display: flex;
   flex-grow: 1;
+  flex-wrap: wrap;
   align-items: end;
-  gap: 2em;
+  gap: 1em 2em;
   font-size: 0.8125em;
 }
 
