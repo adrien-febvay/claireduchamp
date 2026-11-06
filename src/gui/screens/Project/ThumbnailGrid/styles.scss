@@ -5,6 +5,16 @@
   overflow: hidden;
 }
 
+.cover-photos-container {
+  display: flex;
+  gap: 2px;
+}
+
+.cover-photo {
+  width: 0;
+  user-select: none;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

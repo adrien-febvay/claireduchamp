@@ -29,8 +29,23 @@ export const Screen_Project_ThumbnailGrid: React.FC<Props> = (props) => {
     return { src, alt };
   });
 
+  const coverPhotos = props.project.coverPhotos.map(({ copyright, width }, index) => {
+    const suffix = copyright ? `--${copyright}` : '';
+    const src = `${path}--couverture-${index + 1}${suffix}.jpg`;
+    const alt = `${caption} – ${title} – ${translate('cover')}`;
+    const style = { flexGrow: width, aspectRatio: `${width}/1440` };
+    return { src, alt, style };
+  });
+
+  const coverPhotosWidths = props.project.coverPhotos.map(({ width }) => `${width}fr`);
+
   return (
     <div classNames={styles.root} {...divAttrs}>
+      <div className={styles.coverPhotosContainer} style={{ gridTemplateColumns: coverPhotosWidths.join(' ') }}>
+        {coverPhotos.map((attrs, index) => (
+          <img key={index} className={styles.coverPhoto} {...attrs} />
+        ))}
+      </div>
       <ProjectCoverText styles={coverTextStyles} project={project}>
         <div classNames={styles.grid}>
           {imgs.map((imgAttrs, index) => {
