@@ -1,5 +1,26 @@
 const articles = [
   {
+    mediaName: 'Marie Claire',
+    thumbnails: [
+      {
+        alt: 'Marie Claire – Novembre 2026 Cover',
+        src: 'marie-claire-2026-11-cover-thumbnail-claire-duchamp.jpg',
+        width: 270,
+        height: 352,
+      },
+      {
+        alt: 'Maisons & Ambiances – Passionately, Madly',
+        src: 'marie-claire-2026-11-page-16-passionnement-a-la-folie-thumbnail-claire-duchamp.jpg',
+        width: 270,
+        height: 352,
+      },
+    ],
+    link: {
+      href: '/docs/marie-claire-2026-11-pages-16-17-passionnement-a-la-folie-claire-duchamp.pdf',
+      label: 'View the original article in PDF format',
+    },
+  },
+  {
     mediaName: 'Maisons & Ambiances',
     thumbnails: [
       {
