@@ -21,8 +21,7 @@
 
 .project {
   position: relative;
-  width: 260px;
-  height: 348px;
+  aspect-ratio: 400 / 535;
   overflow: hidden;
   background-color: #d6dde3a0;
   box-shadow: 0 0 0 0 #80808080;
@@ -67,9 +66,9 @@ div.project {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  inset: 0.8em;
+  inset: 6%;
   padding: 14px 10px 10px;
-  background-image: linear-gradient(white, #ffffffcc 30%, #ffffffc0 70%, transparent);
+  background-image: linear-gradient(white, #ffffffcc 30%, #ffffffc0 60%, transparent 90%, transparent);
   overflow: hidden;
   
   > h2 {
@@ -103,14 +102,16 @@ div.project {
 
 @include media-width(0, 860px) {
   .article {
-    padding: 100px 0 60px;
+    padding: 100px 20px 60px;
   }
 }
 
 @include media-width(0, 580px) {
   .content {
-    grid-template-columns: 260px;
-    width: 260px;
+    grid-template-columns: 1fr;
+    min-width: 260px;
+    max-width: 400px;
+    width: 100%;
   }
 }
 
