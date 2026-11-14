@@ -54,9 +54,11 @@ export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, 
       )}
       {callToAction && (
         <Link to={screens.ContactUs} classNames={[allStyles.callToAction]}>
-          <Trans t={translate} i18nKey="contact-and-order">
-            <span className={allStyles.noWrap} />
-          </Trans>
+          <div>
+            <Trans t={translate} i18nKey="contact-and-order">
+              <span className={allStyles.noWrap} />
+            </Trans>
+          </div>
         </Link>
       )}
     </div>
