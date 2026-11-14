@@ -1,4 +1,9 @@
+import { Trans, useTranslation } from 'react-i18next';
+import { Link, screens } from '@/gui/atoms/Link';
+
 import ownStyles from './styles.scss';
+
+const namespace = 'Screens/Project/CoverText';
 
 export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, ref) => {
   const me = React.useComponent(
@@ -12,8 +17,10 @@ export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, 
 
   React.useImperativeHandle(ref, () => me);
 
+  const [translate] = useTranslation(namespace);
+
   const { children, className, project, styles, ...divAttributes } = props;
-  const { longDescription, surface, quote, text, info } = project;
+  const { longDescription, surface, quote, text, info, callToAction } = project;
   const allStyles = React.extendStyles(ownStyles, styles);
 
   return (
@@ -44,6 +51,13 @@ export const Screen_Project_CoverText = React.forwardRef<Handle, Props>((props, 
             </div>
           ))}
         </div>
+      )}
+      {callToAction && (
+        <Link to={screens.ContactUs} classNames={[allStyles.callToAction]}>
+          <Trans t={translate} i18nKey="contact-and-order">
+            <span className={allStyles.noWrap} />
+          </Trans>
+        </Link>
       )}
     </div>
   );

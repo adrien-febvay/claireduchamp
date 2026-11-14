@@ -47,3 +47,32 @@
 .info-cell {
   white-space: nowrap;
 }
+
+.call-to-action {
+  padding: 0.3em 0;
+  background: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to right, $lite-brown 0%, $lite-brown 80%, transparent 100%) 1;
+  color: $lite-brown;
+  font-family: 'Bodoni MT', Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+
+  > div {
+    transform-origin: center left;
+    transition: transform 350ms;  
+  }
+
+  &:focus, &:hover {
+    > div {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.no-wrap {
+  white-space: nowrap;
+}

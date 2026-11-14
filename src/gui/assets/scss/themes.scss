@@ -86,6 +86,23 @@ $lite-brown: #895e34;
 }
 
 @mixin scaled-button($color) {
+  @include static-button($color);
+  @include link {
+    color: $color;
+  }
+
+  @content;
+}
+
+@mixin scaled-link($color) {
+  @include link {
+    color: $color;
+
+    @content;
+  }
+}
+
+@mixin static-button($color) {
   display: block;
   margin: 60px auto;
   padding: 6px 40px;
@@ -103,19 +120,7 @@ $lite-brown: #895e34;
   font-weight: 300;
   text-align: center;
 
-  @include link {
-    color: $color;
-  }
-
   @content;
-}
-
-@mixin scaled-link($color) {
-  @include link {
-    color: $color;
-
-    @content;
-  }
 }
 
 @mixin underlined-link($color) {
@@ -162,6 +167,10 @@ $lite-brown: #895e34;
 
   .scaled-link {
     @include scaled-link($secondary-color);
+  }
+
+  .static-button {
+    @include static-button($secondary-color);
   }
 
   .underlined-link {

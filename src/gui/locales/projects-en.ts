@@ -23,6 +23,7 @@ const projects = {
       href: 'https://www.juliemasson.ch/',
       label: '©JulieMasson',
     },
+    callToAction: false,
   },
   chardonneApartment2024: {
     pathname: '/architect-chardonne-mont-pelerin',
@@ -47,6 +48,7 @@ const projects = {
       href: 'https://www.juliemasson.ch/',
       label: '©JulieMasson',
     },
+    callToAction: false,
   },
   lacustreLamp: {
     pathname: '/interior-designer-lamp-lacustre',
@@ -100,6 +102,7 @@ const projects = {
       href: 'https://www.juliemasson.ch/',
       label: '©JulieMasson',
     },
+    callToAction: true,
   },
   grandvauxMirrorPool: {
     pathname: '/architect-lavaux-grandvaux-mirror-pool',
@@ -121,6 +124,7 @@ const projects = {
       count: 6,
     },
     credits: null,
+    callToAction: false,
   },
   lausanneMedicalPractice: {
     pathname: '/interior-architect-lausanne-medical-practice',
@@ -142,6 +146,7 @@ const projects = {
       count: 6,
     },
     credits: null,
+    callToAction: false,
   },
   onexVilla: {
     pathname: null,
@@ -162,6 +167,7 @@ const projects = {
       count: 0,
     },
     credits: null,
+    callToAction: false,
   },
   chexbresvilla2024: {
     pathname: null,
@@ -182,6 +188,7 @@ const projects = {
       count: 0,
     },
     credits: null,
+    callToAction: false,
   },
   pestalozziFundation: {
     pathname: null,
@@ -203,6 +210,7 @@ const projects = {
       count: 0,
     },
     credits: null,
+    callToAction: false,
   },
   contactUs: {
     pathname: null,
@@ -223,6 +231,7 @@ const projects = {
       count: 0,
     },
     credits: null,
+    callToAction: false,
   },
 } as const;
 

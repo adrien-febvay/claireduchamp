@@ -96,6 +96,9 @@
     "picture": "Picture",
     "thumbnail": "Thumbnail"
   },
+  "Screens/Project/CoverText": {
+    "contact-and-order": "Contact us and <0>place an order</0>"
+  },
   "Screens/Projects": {
     "coming-soon": "Content coming soon",
     "pathname": "/projects",

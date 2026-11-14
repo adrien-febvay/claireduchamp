@@ -96,6 +96,9 @@
     "picture": "Photo",
     "thumbnail": "Miniature"
   },
+  "Screens/Project/CoverText": {
+    "contact-and-order": "Nous contacter et <0>passer une commande</0>"
+  },
   "Screens/Projects": {
     "coming-soon": "Contenu disponible prochainement",
     "pathname": "/realisations",
